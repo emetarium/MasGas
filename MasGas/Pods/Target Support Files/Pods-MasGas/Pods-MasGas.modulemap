@@ -1,0 +1,6 @@
+framework module Pods_MasGas {
+  umbrella header "Pods-MasGas-umbrella.h"
+
+  export *
+  module * { export * }
+}

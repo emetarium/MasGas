@@ -1,0 +1,865 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4C45347E27A1B5810026E02C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4C45347D27A1B5810026E02C /* GoogleService-Info.plist */; };
+		4C45348627A1D6C30026E02C /* Montserrat-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4C45348527A1D6C10026E02C /* Montserrat-VariableFont_wght.ttf */; };
+		4C45348927A1D81E0026E02C /* Comfortaa-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4C45348827A1D7620026E02C /* Comfortaa-VariableFont_wght.ttf */; };
+		4C45348A27A1D8200026E02C /* Aleo-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4C45348727A1D6DC0026E02C /* Aleo-Regular.ttf */; };
+		4C45349327A1DB970026E02C /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C45349227A1DB970026E02C /* Login.storyboard */; };
+		4C45349627A1E3900026E02C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C45349527A1E3900026E02C /* LoginViewController.swift */; };
+		4C579036E2881C44F276B095 /* Pods_MasGas.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 267F76832B175E1E706A47F1 /* Pods_MasGas.framework */; };
+		4C9471DA27A1B1D2001F49F9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9471D927A1B1D2001F49F9 /* AppDelegate.swift */; };
+		4C9471DC27A1B1D2001F49F9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9471DB27A1B1D2001F49F9 /* SceneDelegate.swift */; };
+		4C9471E127A1B1D2001F49F9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C9471DF27A1B1D2001F49F9 /* Main.storyboard */; };
+		4C9471E327A1B1D2001F49F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C9471E227A1B1D2001F49F9 /* Assets.xcassets */; };
+		4C9471E627A1B1D2001F49F9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C9471E427A1B1D2001F49F9 /* LaunchScreen.storyboard */; };
+		4C9471F127A1B1D2001F49F9 /* MasGasTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9471F027A1B1D2001F49F9 /* MasGasTests.swift */; };
+		4C9471FB27A1B1D2001F49F9 /* MasGasUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9471FA27A1B1D2001F49F9 /* MasGasUITests.swift */; };
+		4C9471FD27A1B1D2001F49F9 /* MasGasUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9471FC27A1B1D2001F49F9 /* MasGasUITestsLaunchTests.swift */; };
+		E8EAEB7D146EBCE0C58D316C /* Pods_MasGas_MasGasUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 887AE942E0534BF6818305FE /* Pods_MasGas_MasGasUITests.framework */; };
+		FE30C066FDC55D9D6C47E73A /* Pods_MasGasTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E7260AC8CB1FBB90AB7F772 /* Pods_MasGasTests.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4C9471ED27A1B1D2001F49F9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4C9471CE27A1B1D1001F49F9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4C9471D527A1B1D2001F49F9;
+			remoteInfo = MasGas;
+		};
+		4C9471F727A1B1D2001F49F9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4C9471CE27A1B1D1001F49F9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4C9471D527A1B1D2001F49F9;
+			remoteInfo = MasGas;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		24880C38190229E20ADFA345 /* Pods-MasGasTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MasGasTests.release.xcconfig"; path = "Target Support Files/Pods-MasGasTests/Pods-MasGasTests.release.xcconfig"; sourceTree = "<group>"; };
+		267F76832B175E1E706A47F1 /* Pods_MasGas.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MasGas.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		27E130D69D8F7E104A72F643 /* Pods-MasGas.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MasGas.debug.xcconfig"; path = "Target Support Files/Pods-MasGas/Pods-MasGas.debug.xcconfig"; sourceTree = "<group>"; };
+		4C45347D27A1B5810026E02C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		4C45348527A1D6C10026E02C /* Montserrat-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-VariableFont_wght.ttf"; sourceTree = "<group>"; };
+		4C45348727A1D6DC0026E02C /* Aleo-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Aleo-Regular.ttf"; sourceTree = "<group>"; };
+		4C45348827A1D7620026E02C /* Comfortaa-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Comfortaa-VariableFont_wght.ttf"; sourceTree = "<group>"; };
+		4C45349227A1DB970026E02C /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		4C45349527A1E3900026E02C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		4C9471D627A1B1D2001F49F9 /* MasGas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MasGas.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4C9471D927A1B1D2001F49F9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		4C9471DB27A1B1D2001F49F9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		4C9471E027A1B1D2001F49F9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		4C9471E227A1B1D2001F49F9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4C9471E527A1B1D2001F49F9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		4C9471E727A1B1D2001F49F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4C9471EC27A1B1D2001F49F9 /* MasGasTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MasGasTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4C9471F027A1B1D2001F49F9 /* MasGasTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasGasTests.swift; sourceTree = "<group>"; };
+		4C9471F627A1B1D2001F49F9 /* MasGasUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MasGasUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4C9471FA27A1B1D2001F49F9 /* MasGasUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasGasUITests.swift; sourceTree = "<group>"; };
+		4C9471FC27A1B1D2001F49F9 /* MasGasUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasGasUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		887AE942E0534BF6818305FE /* Pods_MasGas_MasGasUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MasGas_MasGasUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9E7260AC8CB1FBB90AB7F772 /* Pods_MasGasTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MasGasTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A980AA75A3976A38950B99B4 /* Pods-MasGas.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MasGas.release.xcconfig"; path = "Target Support Files/Pods-MasGas/Pods-MasGas.release.xcconfig"; sourceTree = "<group>"; };
+		C595D1FDCE044EA52C265430 /* Pods-MasGasTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MasGasTests.debug.xcconfig"; path = "Target Support Files/Pods-MasGasTests/Pods-MasGasTests.debug.xcconfig"; sourceTree = "<group>"; };
+		D30BCB60A73821A5712B0A85 /* Pods-MasGas-MasGasUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MasGas-MasGasUITests.debug.xcconfig"; path = "Target Support Files/Pods-MasGas-MasGasUITests/Pods-MasGas-MasGasUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		F7D6584D95B95C233EC32874 /* Pods-MasGas-MasGasUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MasGas-MasGasUITests.release.xcconfig"; path = "Target Support Files/Pods-MasGas-MasGasUITests/Pods-MasGas-MasGasUITests.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4C9471D327A1B1D2001F49F9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4C579036E2881C44F276B095 /* Pods_MasGas.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4C9471E927A1B1D2001F49F9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FE30C066FDC55D9D6C47E73A /* Pods_MasGasTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4C9471F327A1B1D2001F49F9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E8EAEB7D146EBCE0C58D316C /* Pods_MasGas_MasGasUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4C45347F27A1D5DE0026E02C /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				4C9471E227A1B1D2001F49F9 /* Assets.xcassets */,
+				4C45348327A1D65B0026E02C /* Fonts */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		4C45348327A1D65B0026E02C /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				4C45348827A1D7620026E02C /* Comfortaa-VariableFont_wght.ttf */,
+				4C45348727A1D6DC0026E02C /* Aleo-Regular.ttf */,
+				4C45348527A1D6C10026E02C /* Montserrat-VariableFont_wght.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		4C45348B27A1DB280026E02C /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				4C45347D27A1B5810026E02C /* GoogleService-Info.plist */,
+			);
+			path = Firebase;
+			sourceTree = "<group>";
+		};
+		4C45348C27A1DB330026E02C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		4C45348D27A1DB3F0026E02C /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		4C45348E27A1DB440026E02C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		4C45348F27A1DB4B0026E02C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4C45349127A1DB800026E02C /* Storyboards */,
+				4C45349027A1DB740026E02C /* Controllers */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4C45349027A1DB740026E02C /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				4C45349427A1E37F0026E02C /* Login */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		4C45349127A1DB800026E02C /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				4C9471DF27A1B1D2001F49F9 /* Main.storyboard */,
+				4C45349227A1DB970026E02C /* Login.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		4C45349427A1E37F0026E02C /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				4C45349527A1E3900026E02C /* LoginViewController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		4C9471CD27A1B1D1001F49F9 = {
+			isa = PBXGroup;
+			children = (
+				4C9471D827A1B1D2001F49F9 /* MasGas */,
+				4C9471EF27A1B1D2001F49F9 /* MasGasTests */,
+				4C9471F927A1B1D2001F49F9 /* MasGasUITests */,
+				4C9471D727A1B1D2001F49F9 /* Products */,
+				D66F3C4EE6C575070CFD7B2C /* Pods */,
+				DB3D246269D7BDCC10258210 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		4C9471D727A1B1D2001F49F9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4C9471D627A1B1D2001F49F9 /* MasGas.app */,
+				4C9471EC27A1B1D2001F49F9 /* MasGasTests.xctest */,
+				4C9471F627A1B1D2001F49F9 /* MasGasUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4C9471D827A1B1D2001F49F9 /* MasGas */ = {
+			isa = PBXGroup;
+			children = (
+				4C45348F27A1DB4B0026E02C /* View */,
+				4C45348E27A1DB440026E02C /* Model */,
+				4C45348D27A1DB3F0026E02C /* Presenter */,
+				4C45348C27A1DB330026E02C /* Extensions */,
+				4C45348B27A1DB280026E02C /* Firebase */,
+				4C45347F27A1D5DE0026E02C /* Resources */,
+				4C9471D927A1B1D2001F49F9 /* AppDelegate.swift */,
+				4C9471DB27A1B1D2001F49F9 /* SceneDelegate.swift */,
+				4C9471E427A1B1D2001F49F9 /* LaunchScreen.storyboard */,
+				4C9471E727A1B1D2001F49F9 /* Info.plist */,
+			);
+			path = MasGas;
+			sourceTree = "<group>";
+		};
+		4C9471EF27A1B1D2001F49F9 /* MasGasTests */ = {
+			isa = PBXGroup;
+			children = (
+				4C9471F027A1B1D2001F49F9 /* MasGasTests.swift */,
+			);
+			path = MasGasTests;
+			sourceTree = "<group>";
+		};
+		4C9471F927A1B1D2001F49F9 /* MasGasUITests */ = {
+			isa = PBXGroup;
+			children = (
+				4C9471FA27A1B1D2001F49F9 /* MasGasUITests.swift */,
+				4C9471FC27A1B1D2001F49F9 /* MasGasUITestsLaunchTests.swift */,
+			);
+			path = MasGasUITests;
+			sourceTree = "<group>";
+		};
+		D66F3C4EE6C575070CFD7B2C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				27E130D69D8F7E104A72F643 /* Pods-MasGas.debug.xcconfig */,
+				A980AA75A3976A38950B99B4 /* Pods-MasGas.release.xcconfig */,
+				D30BCB60A73821A5712B0A85 /* Pods-MasGas-MasGasUITests.debug.xcconfig */,
+				F7D6584D95B95C233EC32874 /* Pods-MasGas-MasGasUITests.release.xcconfig */,
+				C595D1FDCE044EA52C265430 /* Pods-MasGasTests.debug.xcconfig */,
+				24880C38190229E20ADFA345 /* Pods-MasGasTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		DB3D246269D7BDCC10258210 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				267F76832B175E1E706A47F1 /* Pods_MasGas.framework */,
+				887AE942E0534BF6818305FE /* Pods_MasGas_MasGasUITests.framework */,
+				9E7260AC8CB1FBB90AB7F772 /* Pods_MasGasTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4C9471D527A1B1D2001F49F9 /* MasGas */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4C94720027A1B1D2001F49F9 /* Build configuration list for PBXNativeTarget "MasGas" */;
+			buildPhases = (
+				9DCFBBC174D85C5B18AB10B6 /* [CP] Check Pods Manifest.lock */,
+				4C9471D227A1B1D2001F49F9 /* Sources */,
+				4C9471D327A1B1D2001F49F9 /* Frameworks */,
+				4C9471D427A1B1D2001F49F9 /* Resources */,
+				4D21AC7E358E52D8480D3E1A /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MasGas;
+			productName = MasGas;
+			productReference = 4C9471D627A1B1D2001F49F9 /* MasGas.app */;
+			productType = "com.apple.product-type.application";
+		};
+		4C9471EB27A1B1D2001F49F9 /* MasGasTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4C94720327A1B1D2001F49F9 /* Build configuration list for PBXNativeTarget "MasGasTests" */;
+			buildPhases = (
+				D248AF5B5D6BFB087E6429A3 /* [CP] Check Pods Manifest.lock */,
+				4C9471E827A1B1D2001F49F9 /* Sources */,
+				4C9471E927A1B1D2001F49F9 /* Frameworks */,
+				4C9471EA27A1B1D2001F49F9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4C9471EE27A1B1D2001F49F9 /* PBXTargetDependency */,
+			);
+			name = MasGasTests;
+			productName = MasGasTests;
+			productReference = 4C9471EC27A1B1D2001F49F9 /* MasGasTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		4C9471F527A1B1D2001F49F9 /* MasGasUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4C94720627A1B1D2001F49F9 /* Build configuration list for PBXNativeTarget "MasGasUITests" */;
+			buildPhases = (
+				CE6752221803A3DCF515A612 /* [CP] Check Pods Manifest.lock */,
+				4C9471F227A1B1D2001F49F9 /* Sources */,
+				4C9471F327A1B1D2001F49F9 /* Frameworks */,
+				4C9471F427A1B1D2001F49F9 /* Resources */,
+				4019688D9B3FD65FEDCDF134 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4C9471F827A1B1D2001F49F9 /* PBXTargetDependency */,
+			);
+			name = MasGasUITests;
+			productName = MasGasUITests;
+			productReference = 4C9471F627A1B1D2001F49F9 /* MasGasUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4C9471CE27A1B1D1001F49F9 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1320;
+				LastUpgradeCheck = 1320;
+				TargetAttributes = {
+					4C9471D527A1B1D2001F49F9 = {
+						CreatedOnToolsVersion = 13.2.1;
+					};
+					4C9471EB27A1B1D2001F49F9 = {
+						CreatedOnToolsVersion = 13.2.1;
+						TestTargetID = 4C9471D527A1B1D2001F49F9;
+					};
+					4C9471F527A1B1D2001F49F9 = {
+						CreatedOnToolsVersion = 13.2.1;
+						TestTargetID = 4C9471D527A1B1D2001F49F9;
+					};
+				};
+			};
+			buildConfigurationList = 4C9471D127A1B1D1001F49F9 /* Build configuration list for PBXProject "MasGas" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 4C9471CD27A1B1D1001F49F9;
+			productRefGroup = 4C9471D727A1B1D2001F49F9 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4C9471D527A1B1D2001F49F9 /* MasGas */,
+				4C9471EB27A1B1D2001F49F9 /* MasGasTests */,
+				4C9471F527A1B1D2001F49F9 /* MasGasUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4C9471D427A1B1D2001F49F9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4C45349327A1DB970026E02C /* Login.storyboard in Resources */,
+				4C9471E627A1B1D2001F49F9 /* LaunchScreen.storyboard in Resources */,
+				4C45347E27A1B5810026E02C /* GoogleService-Info.plist in Resources */,
+				4C9471E327A1B1D2001F49F9 /* Assets.xcassets in Resources */,
+				4C45348627A1D6C30026E02C /* Montserrat-VariableFont_wght.ttf in Resources */,
+				4C45348927A1D81E0026E02C /* Comfortaa-VariableFont_wght.ttf in Resources */,
+				4C9471E127A1B1D2001F49F9 /* Main.storyboard in Resources */,
+				4C45348A27A1D8200026E02C /* Aleo-Regular.ttf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4C9471EA27A1B1D2001F49F9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4C9471F427A1B1D2001F49F9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4019688D9B3FD65FEDCDF134 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MasGas-MasGasUITests/Pods-MasGas-MasGasUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MasGas-MasGasUITests/Pods-MasGas-MasGasUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MasGas-MasGasUITests/Pods-MasGas-MasGasUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4D21AC7E358E52D8480D3E1A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MasGas/Pods-MasGas-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MasGas/Pods-MasGas-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MasGas/Pods-MasGas-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9DCFBBC174D85C5B18AB10B6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MasGas-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CE6752221803A3DCF515A612 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MasGas-MasGasUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D248AF5B5D6BFB087E6429A3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MasGasTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4C9471D227A1B1D2001F49F9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4C45349627A1E3900026E02C /* LoginViewController.swift in Sources */,
+				4C9471DA27A1B1D2001F49F9 /* AppDelegate.swift in Sources */,
+				4C9471DC27A1B1D2001F49F9 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4C9471E827A1B1D2001F49F9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4C9471F127A1B1D2001F49F9 /* MasGasTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4C9471F227A1B1D2001F49F9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4C9471FD27A1B1D2001F49F9 /* MasGasUITestsLaunchTests.swift in Sources */,
+				4C9471FB27A1B1D2001F49F9 /* MasGasUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4C9471EE27A1B1D2001F49F9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4C9471D527A1B1D2001F49F9 /* MasGas */;
+			targetProxy = 4C9471ED27A1B1D2001F49F9 /* PBXContainerItemProxy */;
+		};
+		4C9471F827A1B1D2001F49F9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4C9471D527A1B1D2001F49F9 /* MasGas */;
+			targetProxy = 4C9471F727A1B1D2001F49F9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		4C9471DF27A1B1D2001F49F9 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4C9471E027A1B1D2001F49F9 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		4C9471E427A1B1D2001F49F9 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4C9471E527A1B1D2001F49F9 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		4C9471FE27A1B1D2001F49F9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		4C9471FF27A1B1D2001F49F9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4C94720127A1B1D2001F49F9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 27E130D69D8F7E104A72F643 /* Pods-MasGas.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = AHRSPCJ485;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MasGas/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "+Gas";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.maria.MasGas;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		4C94720227A1B1D2001F49F9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A980AA75A3976A38950B99B4 /* Pods-MasGas.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = AHRSPCJ485;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MasGas/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "+Gas";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.maria.MasGas;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		4C94720427A1B1D2001F49F9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C595D1FDCE044EA52C265430 /* Pods-MasGasTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = AHRSPCJ485;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.maria.MasGasTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MasGas.app/MasGas";
+			};
+			name = Debug;
+		};
+		4C94720527A1B1D2001F49F9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 24880C38190229E20ADFA345 /* Pods-MasGasTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = AHRSPCJ485;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.maria.MasGasTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MasGas.app/MasGas";
+			};
+			name = Release;
+		};
+		4C94720727A1B1D2001F49F9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D30BCB60A73821A5712B0A85 /* Pods-MasGas-MasGasUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = AHRSPCJ485;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.maria.MasGasUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = MasGas;
+			};
+			name = Debug;
+		};
+		4C94720827A1B1D2001F49F9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F7D6584D95B95C233EC32874 /* Pods-MasGas-MasGasUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = AHRSPCJ485;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.maria.MasGasUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = MasGas;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4C9471D127A1B1D1001F49F9 /* Build configuration list for PBXProject "MasGas" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4C9471FE27A1B1D2001F49F9 /* Debug */,
+				4C9471FF27A1B1D2001F49F9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4C94720027A1B1D2001F49F9 /* Build configuration list for PBXNativeTarget "MasGas" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4C94720127A1B1D2001F49F9 /* Debug */,
+				4C94720227A1B1D2001F49F9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4C94720327A1B1D2001F49F9 /* Build configuration list for PBXNativeTarget "MasGasTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4C94720427A1B1D2001F49F9 /* Debug */,
+				4C94720527A1B1D2001F49F9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4C94720627A1B1D2001F49F9 /* Build configuration list for PBXNativeTarget "MasGasUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4C94720727A1B1D2001F49F9 /* Debug */,
+				4C94720827A1B1D2001F49F9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4C9471CE27A1B1D1001F49F9 /* Project object */;
+}

@@ -1,0 +1,23 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'MasGas' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for MasGas
+  pod 'Firebase/Core'
+  pod 'Firebase/Analytics'
+  pod 'Firebase/Auth'
+  pod 'GoogleSignIn'
+
+  target 'MasGasTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target 'MasGasUITests' do
+    # Pods for testing
+  end
+
+end
