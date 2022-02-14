@@ -1,13 +1,13 @@
 //
-//  LoginViewController.swift
+//  HomeViewController.swift
 //  MasGas
 //
-//  Created by María García Torres on 26/1/22.
+//  Created by María García Torres on 27/1/22.
 //
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
