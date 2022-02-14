@@ -1,0 +1,42 @@
+
+/* Class = "UIButton"; configuration.title = "Regístrate"; ObjectID = "5Fb-IH-wye"; */
+"5Fb-IH-wye.configuration.title" = "Regístrate";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "5Fb-IH-wye"; */
+"5Fb-IH-wye.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Regístrate"; ObjectID = "9h3-CK-apI"; */
+"9h3-CK-apI.text" = "Regístrate";
+
+/* Class = "UILabel"; text = "Crea una cuenta para continuar"; ObjectID = "Auo-Re-rA8"; */
+"Auo-Re-rA8.text" = "Crea una cuenta para continuar";
+
+/* Class = "UITextField"; placeholder = "Correo electrónico"; ObjectID = "Bni-mq-Rbx"; */
+"Bni-mq-Rbx.placeholder" = "Correo electrónico";
+
+/* Class = "UILabel"; text = "Correo electrónico"; ObjectID = "Ify-Cr-G3K"; */
+"Ify-Cr-G3K.text" = "Correo electrónico";
+
+/* Class = "UIButton"; configuration.title = "Iniciar sesión"; ObjectID = "JO9-jU-G6v"; */
+"JO9-jU-G6v.configuration.title" = "Iniciar sesión";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "JO9-jU-G6v"; */
+"JO9-jU-G6v.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "+Gas"; ObjectID = "PSh-7S-lsC"; */
+"PSh-7S-lsC.text" = "+Gas";
+
+/* Class = "UITextField"; placeholder = "Contraseña"; ObjectID = "Xov-9V-Vac"; */
+"Xov-9V-Vac.placeholder" = "Contraseña";
+
+/* Class = "UILabel"; text = "¿No tienes cuenta?"; ObjectID = "XwG-3I-gUo"; */
+"XwG-3I-gUo.text" = "¿No tienes cuenta?";
+
+/* Class = "UIButton"; configuration.title = "Iniciar sesión con Google"; ObjectID = "ZP7-fu-HTT"; */
+"ZP7-fu-HTT.configuration.title" = "Iniciar sesión con Google";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "ZP7-fu-HTT"; */
+"ZP7-fu-HTT.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Contraseña"; ObjectID = "pla-Ox-Vgh"; */
+"pla-Ox-Vgh.text" = "Contraseña";

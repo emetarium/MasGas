@@ -1,0 +1,19 @@
+/* 
+  Localizable.strings
+  MasGas
+
+  Created by María García Torres on 14/2/22.
+  
+*/
+
+/* Login */
+"LOGIN_BUTTON" = "Iniciar sesión";
+"GOOGLE_LOGIN_BUTTON" = "Iniciar sesión con Google";
+"SIGN_UP_LABEL" = "¿No tienes cuenta?";
+"SIGN_UP_BUTTON" = "Regístrate";
+
+/* Sign Up */
+"SIGN_UP_TITLE" = "Regístrate";
+"SIGN_UP_SUBTITLE" = "Crea una cuenta para continuar";
+"SIGN_UP_EMAIL_LABEL" = "Correo electrónico";
+"SIGN_UP_PASSWORD_LABEL" = "Contraseña";
