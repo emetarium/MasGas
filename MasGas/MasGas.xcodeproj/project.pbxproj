@@ -7,14 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C17B2BA27BC305B00B577E7 /* SignUpPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C17B2B927BC305B00B577E7 /* SignUpPresenter.swift */; };
+		4C17B2BC27BC30AB00B577E7 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C17B2BB27BC30AB00B577E7 /* LoginPresenter.swift */; };
+		4C17B2BE27BC3F5500B577E7 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C17B2BD27BC3F5500B577E7 /* TabBarViewController.swift */; };
+		4C17B2C127BC432D00B577E7 /* GasStationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C17B2C027BC432D00B577E7 /* GasStationsViewController.swift */; };
 		4C3662FF27BACB19002A9B10 /* ListaEESSPrecio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3662FE27BACB19002A9B10 /* ListaEESSPrecio.swift */; };
 		4C36630127BACCD9002A9B10 /* Consulta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C36630027BACCD9002A9B10 /* Consulta.swift */; };
-		4C45347E27A1B5810026E02C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4C45347D27A1B5810026E02C /* GoogleService-Info.plist */; };
 		4C45348627A1D6C30026E02C /* Montserrat-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4C45348527A1D6C10026E02C /* Montserrat-VariableFont_wght.ttf */; };
 		4C45348927A1D81E0026E02C /* Comfortaa-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4C45348827A1D7620026E02C /* Comfortaa-VariableFont_wght.ttf */; };
 		4C45348A27A1D8200026E02C /* Aleo-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4C45348727A1D6DC0026E02C /* Aleo-Regular.ttf */; };
 		4C45349627A1E3900026E02C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C45349527A1E3900026E02C /* LoginViewController.swift */; };
+		4C46312827C4F62F00475AE0 /* TownSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C46312727C4F62F00475AE0 /* TownSelectionViewController.swift */; };
+		4C46312A27C4F7A000475AE0 /* FetchTownsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C46312927C4F7A000475AE0 /* FetchTownsUseCase.swift */; };
+		4C46312C27C4F7B400475AE0 /* TownsListRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C46312B27C4F7B400475AE0 /* TownsListRepository.swift */; };
+		4C46312E27C4F8F800475AE0 /* TownSelectionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C46312D27C4F8F800475AE0 /* TownSelectionPresenter.swift */; };
+		4C46313227C4FA4F00475AE0 /* TownSelectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C46313027C4FA4F00475AE0 /* TownSelectionTableViewCell.swift */; };
+		4C46313327C4FA4F00475AE0 /* TownSelectionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C46313127C4FA4F00475AE0 /* TownSelectionTableViewCell.xib */; };
+		4C46313727C50D5200475AE0 /* SearchFuelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C46313627C50D5200475AE0 /* SearchFuelViewController.swift */; };
 		4C579036E2881C44F276B095 /* Pods_MasGas.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 267F76832B175E1E706A47F1 /* Pods_MasGas.framework */; };
+		4C6DFF3827C26989002289B5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4C6DFF3727C26989002289B5 /* GoogleService-Info.plist */; };
 		4C8394D427BADB45002C873F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8394D327BADB45002C873F /* HomeViewController.swift */; };
 		4C8394D627BAE0A0002C873F /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8394D527BAE0A0002C873F /* Colors.swift */; };
 		4C8394D827BAE47B002C873F /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8394D727BAE47B002C873F /* String.swift */; };
@@ -27,12 +38,19 @@
 		4C9471F127A1B1D2001F49F9 /* MasGasTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9471F027A1B1D2001F49F9 /* MasGasTests.swift */; };
 		4C9471FB27A1B1D2001F49F9 /* MasGasUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9471FA27A1B1D2001F49F9 /* MasGasUITests.swift */; };
 		4C9471FD27A1B1D2001F49F9 /* MasGasUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9471FC27A1B1D2001F49F9 /* MasGasUITestsLaunchTests.swift */; };
+		4C96040527BE7ABB002A59CA /* FuelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C96040327BE7ABB002A59CA /* FuelTableViewCell.swift */; };
+		4C96040627BE7ABB002A59CA /* FuelTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C96040427BE7ABB002A59CA /* FuelTableViewCell.xib */; };
+		4C96040827BE8630002A59CA /* FetchFuelsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C96040727BE8630002A59CA /* FetchFuelsUseCase.swift */; };
+		4C96040A27BE87AB002A59CA /* FuelsListRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C96040927BE87AB002A59CA /* FuelsListRepository.swift */; };
+		4C96040C27BE8830002A59CA /* LocalDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C96040B27BE8830002A59CA /* LocalDataStore.swift */; };
 		4C9DD04227BABF7500B65A25 /* RemoteDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9DD04127BABF7500B65A25 /* RemoteDataStore.swift */; };
 		4C9DD04427BAC55D00B65A25 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9DD04327BAC55D00B65A25 /* Constants.swift */; };
 		4CBD01FA27BABDC500C36FE2 /* Carburante.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBD01F927BABDC500C36FE2 /* Carburante.swift */; };
 		4CBD01FC27BABE4D00C36FE2 /* Municipio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBD01FB27BABE4D00C36FE2 /* Municipio.swift */; };
 		4CC77E6227A309CB007589F4 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC77E6127A309CB007589F4 /* UIViewController.swift */; };
 		4CC77E6827A30ED8007589F4 /* AuthenticationLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC77E6727A30ED8007589F4 /* AuthenticationLayer.swift */; };
+		4CD2472E27C119B400E086A4 /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD2472D27C119B400E086A4 /* HomePresenter.swift */; };
+		4CD2473027C1232100E086A4 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD2472F27C1232100E086A4 /* Config.swift */; };
 		4CF016CB27A6C28600A0451E /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF016CA27A6C28600A0451E /* UITextField.swift */; };
 		4CF016CD27A6C4CA00A0451E /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF016CC27A6C4CA00A0451E /* SignUpViewController.swift */; };
 		E8EAEB7D146EBCE0C58D316C /* Pods_MasGas_MasGasUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 887AE942E0534BF6818305FE /* Pods_MasGas_MasGasUITests.framework */; };
@@ -60,13 +78,24 @@
 		24880C38190229E20ADFA345 /* Pods-MasGasTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MasGasTests.release.xcconfig"; path = "Target Support Files/Pods-MasGasTests/Pods-MasGasTests.release.xcconfig"; sourceTree = "<group>"; };
 		267F76832B175E1E706A47F1 /* Pods_MasGas.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MasGas.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		27E130D69D8F7E104A72F643 /* Pods-MasGas.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MasGas.debug.xcconfig"; path = "Target Support Files/Pods-MasGas/Pods-MasGas.debug.xcconfig"; sourceTree = "<group>"; };
+		4C17B2B927BC305B00B577E7 /* SignUpPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpPresenter.swift; sourceTree = "<group>"; };
+		4C17B2BB27BC30AB00B577E7 /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
+		4C17B2BD27BC3F5500B577E7 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TabBarViewController.swift; path = TabBar/TabBarViewController.swift; sourceTree = "<group>"; };
+		4C17B2C027BC432D00B577E7 /* GasStationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GasStationsViewController.swift; sourceTree = "<group>"; };
 		4C3662FE27BACB19002A9B10 /* ListaEESSPrecio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListaEESSPrecio.swift; sourceTree = "<group>"; };
 		4C36630027BACCD9002A9B10 /* Consulta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Consulta.swift; sourceTree = "<group>"; };
-		4C45347D27A1B5810026E02C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4C45348527A1D6C10026E02C /* Montserrat-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-VariableFont_wght.ttf"; sourceTree = "<group>"; };
 		4C45348727A1D6DC0026E02C /* Aleo-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Aleo-Regular.ttf"; sourceTree = "<group>"; };
 		4C45348827A1D7620026E02C /* Comfortaa-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Comfortaa-VariableFont_wght.ttf"; sourceTree = "<group>"; };
 		4C45349527A1E3900026E02C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		4C46312727C4F62F00475AE0 /* TownSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TownSelectionViewController.swift; sourceTree = "<group>"; };
+		4C46312927C4F7A000475AE0 /* FetchTownsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchTownsUseCase.swift; sourceTree = "<group>"; };
+		4C46312B27C4F7B400475AE0 /* TownsListRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TownsListRepository.swift; sourceTree = "<group>"; };
+		4C46312D27C4F8F800475AE0 /* TownSelectionPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TownSelectionPresenter.swift; sourceTree = "<group>"; };
+		4C46313027C4FA4F00475AE0 /* TownSelectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TownSelectionTableViewCell.swift; sourceTree = "<group>"; };
+		4C46313127C4FA4F00475AE0 /* TownSelectionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TownSelectionTableViewCell.xib; sourceTree = "<group>"; };
+		4C46313627C50D5200475AE0 /* SearchFuelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFuelViewController.swift; sourceTree = "<group>"; };
+		4C6DFF3727C26989002289B5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4C8394D327BADB45002C873F /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		4C8394D527BAE0A0002C873F /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		4C8394D727BAE47B002C873F /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
@@ -86,12 +115,19 @@
 		4C9471F627A1B1D2001F49F9 /* MasGasUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MasGasUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C9471FA27A1B1D2001F49F9 /* MasGasUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasGasUITests.swift; sourceTree = "<group>"; };
 		4C9471FC27A1B1D2001F49F9 /* MasGasUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasGasUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		4C96040327BE7ABB002A59CA /* FuelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuelTableViewCell.swift; sourceTree = "<group>"; };
+		4C96040427BE7ABB002A59CA /* FuelTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FuelTableViewCell.xib; sourceTree = "<group>"; };
+		4C96040727BE8630002A59CA /* FetchFuelsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchFuelsUseCase.swift; sourceTree = "<group>"; };
+		4C96040927BE87AB002A59CA /* FuelsListRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuelsListRepository.swift; sourceTree = "<group>"; };
+		4C96040B27BE8830002A59CA /* LocalDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataStore.swift; sourceTree = "<group>"; };
 		4C9DD04127BABF7500B65A25 /* RemoteDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteDataStore.swift; sourceTree = "<group>"; };
 		4C9DD04327BAC55D00B65A25 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		4CBD01F927BABDC500C36FE2 /* Carburante.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Carburante.swift; sourceTree = "<group>"; };
 		4CBD01FB27BABE4D00C36FE2 /* Municipio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Municipio.swift; sourceTree = "<group>"; };
 		4CC77E6127A309CB007589F4 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		4CC77E6727A30ED8007589F4 /* AuthenticationLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationLayer.swift; sourceTree = "<group>"; };
+		4CD2472D27C119B400E086A4 /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
+		4CD2472F27C1232100E086A4 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		4CF016CA27A6C28600A0451E /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
 		4CF016CC27A6C4CA00A0451E /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		887AE942E0534BF6818305FE /* Pods_MasGas_MasGasUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MasGas_MasGasUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -130,6 +166,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4C17B2BF27BC431300B577E7 /* GasStations */ = {
+			isa = PBXGroup;
+			children = (
+				4C17B2C027BC432D00B577E7 /* GasStationsViewController.swift */,
+			);
+			path = GasStations;
+			sourceTree = "<group>";
+		};
 		4C45348327A1D65B0026E02C /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -143,7 +187,7 @@
 		4C45348B27A1DB280026E02C /* Firebase */ = {
 			isa = PBXGroup;
 			children = (
-				4C45347D27A1B5810026E02C /* GoogleService-Info.plist */,
+				4C6DFF3727C26989002289B5 /* GoogleService-Info.plist */,
 			);
 			path = Firebase;
 			sourceTree = "<group>";
@@ -161,6 +205,10 @@
 		4C45348D27A1DB3F0026E02C /* Presenters */ = {
 			isa = PBXGroup;
 			children = (
+				4C17B2B927BC305B00B577E7 /* SignUpPresenter.swift */,
+				4C17B2BB27BC30AB00B577E7 /* LoginPresenter.swift */,
+				4CD2472D27C119B400E086A4 /* HomePresenter.swift */,
+				4C46312D27C4F8F800475AE0 /* TownSelectionPresenter.swift */,
 			);
 			path = Presenters;
 			sourceTree = "<group>";
@@ -168,8 +216,11 @@
 		4C45349027A1DB740026E02C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				4C8394D227BADB35002C873F /* Home */,
+				4C46312627C4F61700475AE0 /* TownSelection */,
+				4C17B2BF27BC431300B577E7 /* GasStations */,
+				4C8394D227BADB35002C873F /* Fuel */,
 				4C45349427A1E37F0026E02C /* Login */,
+				4C17B2BD27BC3F5500B577E7 /* TabBarViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -191,12 +242,32 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
-		4C8394D227BADB35002C873F /* Home */ = {
+		4C46312627C4F61700475AE0 /* TownSelection */ = {
 			isa = PBXGroup;
 			children = (
-				4C8394D327BADB45002C873F /* HomeViewController.swift */,
+				4C46312F27C4FA3800475AE0 /* TownSelectionCell */,
+				4C46312727C4F62F00475AE0 /* TownSelectionViewController.swift */,
 			);
-			path = Home;
+			path = TownSelection;
+			sourceTree = "<group>";
+		};
+		4C46312F27C4FA3800475AE0 /* TownSelectionCell */ = {
+			isa = PBXGroup;
+			children = (
+				4C46313027C4FA4F00475AE0 /* TownSelectionTableViewCell.swift */,
+				4C46313127C4FA4F00475AE0 /* TownSelectionTableViewCell.xib */,
+			);
+			path = TownSelectionCell;
+			sourceTree = "<group>";
+		};
+		4C8394D227BADB35002C873F /* Fuel */ = {
+			isa = PBXGroup;
+			children = (
+				4C96040227BE7A89002A59CA /* FuelCell */,
+				4C8394D327BADB45002C873F /* HomeViewController.swift */,
+				4C46313627C50D5200475AE0 /* SearchFuelViewController.swift */,
+			);
+			path = Fuel;
 			sourceTree = "<group>";
 		};
 		4C8394D927BAE65D002C873F /* Config */ = {
@@ -204,6 +275,7 @@
 			children = (
 				4C9DD04327BAC55D00B65A25 /* Constants.swift */,
 				4C8394D527BAE0A0002C873F /* Colors.swift */,
+				4CD2472F27C1232100E086A4 /* Config.swift */,
 			);
 			path = Config;
 			sourceTree = "<group>";
@@ -252,7 +324,6 @@
 				4CBD01F827BABD9800C36FE2 /* Data */,
 				4CBD01F527BABD4200C36FE2 /* Domain */,
 				4CBD01F427BABCF800C36FE2 /* Presentation */,
-				4CC77E6627A30ECB007589F4 /* Class */,
 				4C45348C27A1DB330026E02C /* Extensions */,
 				4C45348B27A1DB280026E02C /* Firebase */,
 				4C9471D927A1B1D2001F49F9 /* AppDelegate.swift */,
@@ -280,11 +351,23 @@
 			path = MasGasUITests;
 			sourceTree = "<group>";
 		};
+		4C96040227BE7A89002A59CA /* FuelCell */ = {
+			isa = PBXGroup;
+			children = (
+				4C96040327BE7ABB002A59CA /* FuelTableViewCell.swift */,
+				4C96040427BE7ABB002A59CA /* FuelTableViewCell.xib */,
+			);
+			path = FuelCell;
+			sourceTree = "<group>";
+		};
 		4C9DD04027BABF6700B65A25 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
 				4CC77E6727A30ED8007589F4 /* AuthenticationLayer.swift */,
 				4C9DD04127BABF7500B65A25 /* RemoteDataStore.swift */,
+				4C96040927BE87AB002A59CA /* FuelsListRepository.swift */,
+				4C96040B27BE8830002A59CA /* LocalDataStore.swift */,
+				4C46312B27C4F7B400475AE0 /* TownsListRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -333,6 +416,8 @@
 		4CBD01F727BABD5800C36FE2 /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
+				4C96040727BE8630002A59CA /* FetchFuelsUseCase.swift */,
+				4C46312927C4F7A000475AE0 /* FetchTownsUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -344,13 +429,6 @@
 				4C9DD04027BABF6700B65A25 /* Repository */,
 			);
 			path = Data;
-			sourceTree = "<group>";
-		};
-		4CC77E6627A30ECB007589F4 /* Class */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Class;
 			sourceTree = "<group>";
 		};
 		D66F3C4EE6C575070CFD7B2C /* Pods */ = {
@@ -394,6 +472,8 @@
 			dependencies = (
 			);
 			name = MasGas;
+			packageProductDependencies = (
+			);
 			productName = MasGas;
 			productReference = 4C9471D627A1B1D2001F49F9 /* MasGas.app */;
 			productType = "com.apple.product-type.application";
@@ -470,6 +550,9 @@
 				es,
 			);
 			mainGroup = 4C9471CD27A1B1D1001F49F9;
+			packageReferences = (
+				4CD740C227C1805B0073CD94 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = 4C9471D727A1B1D2001F49F9 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -486,12 +569,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C46313327C4FA4F00475AE0 /* TownSelectionTableViewCell.xib in Resources */,
+				4C96040627BE7ABB002A59CA /* FuelTableViewCell.xib in Resources */,
 				4C9471E627A1B1D2001F49F9 /* LaunchScreen.storyboard in Resources */,
-				4C45347E27A1B5810026E02C /* GoogleService-Info.plist in Resources */,
 				4C9471E327A1B1D2001F49F9 /* Assets.xcassets in Resources */,
 				4C45348627A1D6C30026E02C /* Montserrat-VariableFont_wght.ttf in Resources */,
 				4C45348927A1D81E0026E02C /* Comfortaa-VariableFont_wght.ttf in Resources */,
 				4C8394DE27BAE8BB002C873F /* Localizable.strings in Resources */,
+				4C6DFF3827C26989002289B5 /* GoogleService-Info.plist in Resources */,
 				4C9471E127A1B1D2001F49F9 /* Main.storyboard in Resources */,
 				4C45348A27A1D8200026E02C /* Aleo-Regular.ttf in Resources */,
 			);
@@ -622,21 +707,37 @@
 			buildActionMask = 2147483647;
 			files = (
 				4CC77E6827A30ED8007589F4 /* AuthenticationLayer.swift in Sources */,
+				4C17B2C127BC432D00B577E7 /* GasStationsViewController.swift in Sources */,
+				4C17B2BA27BC305B00B577E7 /* SignUpPresenter.swift in Sources */,
 				4C8394D627BAE0A0002C873F /* Colors.swift in Sources */,
 				4CF016CD27A6C4CA00A0451E /* SignUpViewController.swift in Sources */,
 				4C9DD04227BABF7500B65A25 /* RemoteDataStore.swift in Sources */,
 				4C3662FF27BACB19002A9B10 /* ListaEESSPrecio.swift in Sources */,
 				4CBD01FC27BABE4D00C36FE2 /* Municipio.swift in Sources */,
 				4C8394D427BADB45002C873F /* HomeViewController.swift in Sources */,
+				4C46312E27C4F8F800475AE0 /* TownSelectionPresenter.swift in Sources */,
 				4CBD01FA27BABDC500C36FE2 /* Carburante.swift in Sources */,
 				4CF016CB27A6C28600A0451E /* UITextField.swift in Sources */,
 				4C36630127BACCD9002A9B10 /* Consulta.swift in Sources */,
 				4C45349627A1E3900026E02C /* LoginViewController.swift in Sources */,
+				4C46312C27C4F7B400475AE0 /* TownsListRepository.swift in Sources */,
+				4C96040C27BE8830002A59CA /* LocalDataStore.swift in Sources */,
+				4C96040527BE7ABB002A59CA /* FuelTableViewCell.swift in Sources */,
+				4C17B2BC27BC30AB00B577E7 /* LoginPresenter.swift in Sources */,
+				4CD2473027C1232100E086A4 /* Config.swift in Sources */,
+				4C17B2BE27BC3F5500B577E7 /* TabBarViewController.swift in Sources */,
+				4C96040827BE8630002A59CA /* FetchFuelsUseCase.swift in Sources */,
+				4C46312A27C4F7A000475AE0 /* FetchTownsUseCase.swift in Sources */,
 				4C9471DA27A1B1D2001F49F9 /* AppDelegate.swift in Sources */,
 				4CC77E6227A309CB007589F4 /* UIViewController.swift in Sources */,
 				4C9471DC27A1B1D2001F49F9 /* SceneDelegate.swift in Sources */,
 				4C8394D827BAE47B002C873F /* String.swift in Sources */,
+				4C46313727C50D5200475AE0 /* SearchFuelViewController.swift in Sources */,
+				4CD2472E27C119B400E086A4 /* HomePresenter.swift in Sources */,
 				4C9DD04427BAC55D00B65A25 /* Constants.swift in Sources */,
+				4C96040A27BE87AB002A59CA /* FuelsListRepository.swift in Sources */,
+				4C46312827C4F62F00475AE0 /* TownSelectionViewController.swift in Sources */,
+				4C46313227C4FA4F00475AE0 /* TownSelectionTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1001,6 +1102,17 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		4CD740C227C1805B0073CD94 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
 	};
 	rootObject = 4C9471CE27A1B1D1001F49F9 /* Project object */;
 }

@@ -14,3 +14,24 @@ enum APIUrls: String {
     //Aqui hay que hacer un replace
     case urlBusquedaMunicipiosCarburantes = "https://sedeaplicaciones.minetur.gob.es/ServiciosRESTCarburantes/PreciosCarburantes/EstacionesTerrestres/FiltroMunicipioProducto/{IDMUNICIPIO}/{IDPRODUCTO}"
 }
+
+enum Fuels: String, CaseIterable {
+    case G95E5 = "G95E5"
+    case G95E10 = "G95E10"
+    case G95E5P = "G95E5+"
+    case G98E5 = "G98E5"
+    case G98E10 = "G98E10"
+    case GOA = "GOA"
+    case GOAP = "GOA+"
+    case GOB = "GOB"
+    case BIO = "BIO"
+    case GLP = "GLP"
+    case GNC = "GNC"
+    case GNL = "GNL"
+}
+
+enum queryByFuelOptions {
+    case queryByNearby
+    case queryByCheapest
+    case queryByCheapestNearby
+}

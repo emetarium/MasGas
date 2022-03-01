@@ -9,6 +9,13 @@ import UIKit
 import GoogleSignIn
 import Firebase
 
+protocol LoginProtocol {
+    func navigateToHome()
+    func navigateToTownSelection()
+    func getFuels(fuels: [Carburante])
+    func getTowns(towns: [Municipio])
+}
+
 class LoginViewController: UIViewController {
 
     //MARK: - IBOutlets
@@ -19,20 +26,35 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var signUpLabel: UILabel!
     @IBOutlet weak var signUpButton: UIButton!
     
+    //MARK: - Variables
+    var presenter: LoginPresenter<LoginViewController>?
+    var fuels: [Carburante]?
+    var towns: [Municipio]?
+    var selectedTown: Municipio?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        presenter = LoginPresenter(self)
+        fetchData()
         setUpUI()
         // Do any additional setup after loading the view.
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        if isUserLogged() {
-            navigateToHome()
-        }
+        presenter?.checkLogin()
     }
     
     //MARK: - Functions
+    func fetchData() {
+        presenter?.fetchFuels()
+        presenter?.fetchTowns()
+        presenter?.fetchSelectedTown()
+    }
+    
     func setUpUI() {
+        emailTextField.backgroundColor = Colors.lightGray
+        passwordTextField.backgroundColor = Colors.lightGray
+        
         loginButton.tintColor = Colors.green
         loginButton.setTitle(NSLocalizedString("LOGIN_BUTTON", comment: ""), for: .normal)
         
@@ -44,43 +66,17 @@ class LoginViewController: UIViewController {
         signUpButton.setTitle(NSLocalizedString("SIGN_UP_BUTTON", comment: ""), for: .normal)
         signUpButton.tintColor = Colors.green
     }
-    
-    func isUserLogged() -> Bool{
-        let userSession = UserDefaults.standard
-        if userSession.object(forKey: "Email") != nil {
-            return true
-        }
-        else {
-            return false
-        }
-    }
-    
-    func navigateToHome() {
-        let hvc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController
-        guard let vc = hvc else { return }
-        self.navigationController?.pushViewController(vc, animated: true)
-    }
 
     //MARK: - IBActions
     @IBAction func loginButton(_ sender: Any) {
         guard let email = emailTextField.text, let password = passwordTextField.text else {
             return
         }
-        AuthenticationLayer.shared.emailSignIn(email: email, password: password)
-        if isUserLogged() {
-            navigateToHome()
-        }
-        else {
-            let acceptAction = UIAlertAction(title: "Aceptar", style: .default, handler: nil)
-            self.showAlert(title: "Datos incorrectos", message: "Los datos del usuario son incorrectos", alternativeAction: nil, acceptAction: acceptAction)
-        }
+        presenter?.emailLogin(email: email, password: password)
     }
     
     @IBAction func googleLoginButton(_ sender: Any) {
-        AuthenticationLayer.shared.googleSignIn()
-        let hvc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController
-        guard let vc = hvc else { return }
-        self.navigationController?.pushViewController(vc, animated: true)
+        presenter?.googleLogin()
     }
     
     @IBAction func signUpButton(_ sender: Any) {
@@ -90,3 +86,33 @@ class LoginViewController: UIViewController {
     }
 }
 
+extension LoginViewController: LoginProtocol {
+    func navigateToHome() {
+        let tabBarController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabBarController") as? TabBarViewController
+        guard let tbc = tabBarController, let fuels = fuels, let town = selectedTown else { return }
+        tbc.fuels = fuels
+        tbc.towns = towns
+        tbc.town = town
+        self.navigationController?.pushViewController(tbc, animated: true)
+    }
+    
+    func navigateToTownSelection() {
+        let townSelectionViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TownSelectionViewController") as? TownSelectionViewController
+        guard let tvc = townSelectionViewController, let fuels = fuels, let towns = towns else { return }
+        tvc.towns = towns
+        tvc.fuels = fuels
+        self.navigationController?.pushViewController(tvc, animated: true)
+    }
+    
+    func getFuels(fuels: [Carburante]) {
+        self.fuels = fuels
+    }
+    
+    func getTowns(towns: [Municipio]) {
+        self.towns = towns
+    }
+    
+    func getSelectedTown(town: Municipio) {
+        self.selectedTown = town
+    }
+}

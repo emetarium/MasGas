@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 extension UITextField {
-    func setIcon(_ image: UIImage) {
+    func setLeftIcon(_ image: UIImage) {
         let iconView = UIImageView(frame: CGRect(x: 5, y: 5, width: 20, height: 20))
         iconView.image = image
         
@@ -17,5 +17,15 @@ extension UITextField {
         iconContainerView.addSubview(iconView)
         leftView = iconContainerView
         leftViewMode = .always
+    }
+    
+    func setRightIcon(_ image: UIImage) {
+        let iconView = UIImageView(frame: CGRect(x: 5, y: 5, width: 10, height: 10))
+        iconView.image = image
+        
+        let iconContainerView = UIView(frame: CGRect(x: 30, y: 0, width: 20, height: 20))
+        iconContainerView.addSubview(iconView)
+        rightView = iconContainerView
+        rightViewMode = .always
     }
 }

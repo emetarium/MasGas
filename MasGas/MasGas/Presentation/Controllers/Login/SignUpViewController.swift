@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol SignUpProtocol {
+    func navigateToLogin()
+}
+
 class SignUpViewController: UIViewController {
 
     //MARK: - IBOutlets
@@ -18,20 +22,24 @@ class SignUpViewController: UIViewController {
         didSet {
             emailTextField.tintColor = Colors.gray
             guard let image = UIImage(named: "emailIcon") else { return }
-            emailTextField.setIcon(image)
+            emailTextField.setLeftIcon(image)
         }
     }
     @IBOutlet weak var passwordTextField: UITextField! {
         didSet {
             passwordTextField.tintColor = Colors.gray
             guard let image = UIImage(named: "passwordIcon") else { return }
-            passwordTextField.setIcon(image)
+            passwordTextField.setLeftIcon(image)
         }
     }
     @IBOutlet weak var signUpButton: UIButton!
     
+    //MARK: - Variables
+    var presenter: SignUpPresenter<SignUpViewController>?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        presenter = SignUpPresenter(self)
         setUpUI()
         // Do any additional setup after loading the view.
     }
@@ -47,6 +55,9 @@ class SignUpViewController: UIViewController {
         emailLabel.text = NSLocalizedString("SIGN_UP_EMAIL_LABEL", comment: "")
         emailLabel.textColor = Colors.gray
         
+        emailTextField.backgroundColor = Colors.lightGray
+        passwordTextField.backgroundColor = Colors.lightGray
+        
         passwordLabel.text = NSLocalizedString("SIGN_UP_PASSWORD_LABEL", comment: "")
         passwordLabel.textColor = Colors.gray
         
@@ -57,6 +68,12 @@ class SignUpViewController: UIViewController {
     // MARK: - IBActions
     @IBAction func signUpButton(_ sender: Any) {
         guard let email = emailTextField.text, let password = passwordTextField.text else { return }
-        AuthenticationLayer.shared.emailSignUp(email: email, password: password)
+        presenter?.signUp(email: email, password: password)
+    }
+}
+
+extension SignUpViewController: SignUpProtocol {
+    func navigateToLogin() {
+        self.navigationController?.popViewController(animated: true)
     }
 }

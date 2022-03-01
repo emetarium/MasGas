@@ -6,6 +6,10 @@
   
 */
 
+/* Alerts */
+"ACCEPT_ACTION" = "Aceptar";
+"CANCEL_ACTION" = "Cancelar";
+
 /* Login */
 "LOGIN_BUTTON" = "Iniciar sesión";
 "GOOGLE_LOGIN_BUTTON" = "Iniciar sesión con Google";
@@ -17,3 +21,25 @@
 "SIGN_UP_SUBTITLE" = "Crea una cuenta para continuar";
 "SIGN_UP_EMAIL_LABEL" = "Correo electrónico";
 "SIGN_UP_PASSWORD_LABEL" = "Contraseña";
+
+/* Authentication Errors */
+"AUTHENTICATION_ERROR_TITLE" = "Error en la autenticación";
+"INVALID_PASSWORD_ERROR" = "La contraseña debe tener un mínimo de 6 caracteres.";
+"INVALID_EMAIL_ERROR" = "El correo electrónico no es correcto.";
+"WRONG_PASSWORD_ERROR" = "La contraseña no es válida.";
+"USER_NOT_FOUND_ERROR" = "Este usuario no existe.";
+"USED_EMAIL_ERROR" = "Otro usuario está utilizando ese correo electrónico.";
+"UNKNOWN_ERROR" = "Se ha producido un error desconocido.";
+
+/* Tab Bar */
+"FUEL_SCREEN_TAB_BAR_TITLE" = "Carburantes";
+"GAS_STATIONS_SCREEN_TAB_BAR_TITLE" = "Gasolineras";
+
+/* FUEL SCREEN */
+"FUEL_SELECTION_LABEL" = "Selecciona un carburante";
+"FAVORITE_FUELS_HEADING" = "Favoritos";
+
+/* SEARCH FUEL SCREEN*/
+"CHEAPEST_IN_TOWN" = "Precio más competitivo";
+"CHEAPEST_NEARBY" = "Precio cercano más competitivo";
+

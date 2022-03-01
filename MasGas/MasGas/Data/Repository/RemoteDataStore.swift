@@ -7,10 +7,13 @@
 
 import Foundation
 
-class RemoteDataStore {
-    static let shared = RemoteDataStore()
-    
-    private init() {}
+protocol APIDataStore {
+    func getTownsData(completionHandler: @escaping ([Municipio]?) -> ())
+    func getFuelsData(completionHandler: @escaping ([Carburante]?) -> ())
+    func getFuelPriceByTown(fuelIdentifier: String, townIdentifier: String, completionHandler: @escaping ([Consulta]?) -> ())
+}
+
+class RemoteDataStore: APIDataStore {
     
     func getTownsData(completionHandler: @escaping ([Municipio]?) -> ()) {
         guard let url = URL(string: APIUrls.urlMunicipios.rawValue) else { return }
@@ -19,13 +22,9 @@ class RemoteDataStore {
         let task = URLSession.shared.dataTask(with: urlRequest) { data, urlResponse, error in
             guard error == nil, let urlResponse = urlResponse as? HTTPURLResponse, urlResponse.statusCode == 200, let data = data else { return }
             
-            do {
-                let jsonDecoder = JSONDecoder()
-                let townDecode = try! jsonDecoder.decode([Municipio].self, from: data)
-                completionHandler(townDecode)
-            } catch {
-                completionHandler(nil)
-            }
+            let jsonDecoder = JSONDecoder()
+            let townDecode = try! jsonDecoder.decode([Municipio].self, from: data)
+            completionHandler(townDecode)
         }
         task.resume()
     }
@@ -37,13 +36,9 @@ class RemoteDataStore {
         let task = URLSession.shared.dataTask(with: urlRequest) { data, urlResponse, error in
             guard error == nil, let urlResponse = urlResponse as? HTTPURLResponse, urlResponse.statusCode == 200, let data = data else { return }
             
-            do {
-                let jsonDecoder = JSONDecoder()
-                let fuelDecode = try! jsonDecoder.decode([Carburante].self, from: data)
-                completionHandler(fuelDecode)
-            } catch {
-                completionHandler(nil)
-            }
+            let jsonDecoder = JSONDecoder()
+            let fuelDecode = try! jsonDecoder.decode([Carburante].self, from: data)
+            completionHandler(fuelDecode)
         }
         task.resume()
     }
@@ -57,13 +52,9 @@ class RemoteDataStore {
         let task = URLSession.shared.dataTask(with: urlRequest) { data, urlResponse, error in
             guard error == nil, let urlResponse = urlResponse as? HTTPURLResponse, urlResponse.statusCode == 200, let data = data else { return }
             
-            do {
-                let jsonDecoder = JSONDecoder()
-                let queryDecode = try! jsonDecoder.decode([Consulta].self, from: data)
-                completionHandler(queryDecode)
-            } catch {
-                completionHandler(nil)
-            }
+            let jsonDecoder = JSONDecoder()
+            let queryDecode = try! jsonDecoder.decode([Consulta].self, from: data)
+            completionHandler(queryDecode)
         }
         task.resume()
     }

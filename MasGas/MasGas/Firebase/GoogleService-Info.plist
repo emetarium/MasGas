@@ -30,5 +30,7 @@
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
 	<string>1:229254432488:ios:877e8f07c63af5c5006b5d</string>
+	<key>DATABASE_URL</key>
+	<string>https://masgas-13216-default-rtdb.europe-west1.firebasedatabase.app</string>
 </dict>
 </plist>
