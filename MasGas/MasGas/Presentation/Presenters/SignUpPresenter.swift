@@ -19,7 +19,7 @@ class SignUpPresenter<SignUpProtocol> {
         AuthenticationLayer.shared.emailSignUp(email: email, password: password) { result in
             switch result {
                 case .success(let user):
-                    UserDefaults.standard.set(user.email, forKey: "Email")
+                    UserDefaults.standard.set(user.email, forKey: "User")
                     self.view.navigateToLogin()
                 case .failure(let error):
                     let description = error.get()

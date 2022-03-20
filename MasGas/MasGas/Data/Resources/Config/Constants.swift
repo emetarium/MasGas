@@ -30,8 +30,8 @@ enum Fuels: String, CaseIterable {
     case GNL = "GNL"
 }
 
-enum queryByFuelOptions {
-    case queryByNearby
-    case queryByCheapest
-    case queryByCheapestNearby
+enum queryByFuelOptions: String, CaseIterable {
+    case queryByNearby = "QUERY_BY_NEARBY"
+    case queryByCheapest = "QUERY_BY_CHEAPEST"
+    case queryByCheapestNearby = "QUERY_BY_CHEAPEST_NEARBY"
 }

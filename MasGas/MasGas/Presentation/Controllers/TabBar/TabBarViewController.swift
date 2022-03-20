@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
     
@@ -33,13 +34,13 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
         homeViewController.towns = towns
         homeViewController.tabBarItem = homeBarItem
         
-        let gvc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "GasStationsViewController") as? GasStationsViewController
-        guard let gasStationsViewController = gvc else { return }
-        let gasStationsBarItem = UITabBarItem(title: NSLocalizedString("GAS_STATIONS_SCREEN_TAB_BAR_TITLE", comment: ""), image: gasStationsIcon.withTintColor(gray), selectedImage: gasStationsIcon.withTintColor(green))
-        gasStationsViewController.tabBarItem = gasStationsBarItem
+        let fvc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "FavoriteGasStationsViewController") as? FavoriteGasStationsViewController
+        guard let favoriteGasStationsViewController = fvc else { return }
+        let favoriteGasStationsBarItem = UITabBarItem(title: NSLocalizedString("GAS_STATIONS_SCREEN_TAB_BAR_TITLE", comment: ""), image: gasStationsIcon.withTintColor(gray), selectedImage: gasStationsIcon.withTintColor(green))
+        favoriteGasStationsViewController.tabBarItem = favoriteGasStationsBarItem
         
         self.navigationController?.isNavigationBarHidden = true
-        self.viewControllers = [homeViewController, gasStationsViewController]
+        self.viewControllers = [homeViewController, favoriteGasStationsViewController]
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -9,7 +9,7 @@ import Foundation
 
 struct Consulta: Codable {
     let fecha: String
-    let listaPrecio: ListaEESSPrecio
+    let listaPrecio: [ListaEESSPrecio]
     let nota: String
     let resultadoConsulta: String
     

@@ -15,6 +15,8 @@ enum Colors {
     static let darkGray = UIColor(named: "DarkGray")
     static let black = UIColor.black
     static let white = UIColor.white
+    static let clear = UIColor.clear
+    static let yellow = UIColor(named: "Yellow")
     
     //Fuel colors
     static let G95E5 = UIColor(named: "G95E5")

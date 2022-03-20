@@ -21,7 +21,7 @@ class LoginPresenter<LoginProtocol> {
     }
     
     func isUserLogged() -> Bool {
-        if UserDefaults.standard.object(forKey: "Email") != nil {
+        if UserDefaults.standard.object(forKey: "User") != nil {
             return true
         }
         else {
@@ -36,11 +36,11 @@ class LoginPresenter<LoginProtocol> {
     }
     
     func checkTown() {
-        if UserDefaults.standard.object(forKey: "Town") == nil {
-            self.view.navigateToTownSelection()
+        if UserDefaults.standard.object(forKey: "Town") != nil {
+            self.view.navigateToHome()
         }
         else {
-            self.view.navigateToHome()
+            self.view.navigateToTownSelection()
         }
     }
     
@@ -48,7 +48,7 @@ class LoginPresenter<LoginProtocol> {
         AuthenticationLayer.shared.emailSignIn(email: email, password: password) { result in
             switch result {
                 case .success(let user):
-                    UserDefaults.standard.set(user.email, forKey: "Email")
+                    UserDefaults.standard.set(user.email, forKey: "User")
                     self.checkTown()
                 case .failure(let error):
                     let description = error.get()
@@ -62,7 +62,7 @@ class LoginPresenter<LoginProtocol> {
         AuthenticationLayer.shared.googleSignIn { result in
             switch result {
                 case .success(let user):
-                    UserDefaults.standard.set(user.email, forKey: "Email")
+                    UserDefaults.standard.set(user.email, forKey: "User")
                     self.checkTown()
                 case .failure(let error):
                     let description = error.get()

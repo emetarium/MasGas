@@ -119,7 +119,7 @@ class AuthenticationLayer {
         GIDSignIn.sharedInstance.signOut()
         
         do {
-            UserDefaults.standard.removeObject(forKey: "Email")
+            UserDefaults.standard.removeObject(forKey: "User")
             try Auth.auth().signOut()
         } catch {
             print(error.localizedDescription)

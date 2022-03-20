@@ -34,6 +34,17 @@ class FuelsListRepository: FuelsRepository {
         }
     }
     
+    func searchFuels(fuelIdentifier: String, completion: @escaping ([ListaEESSPrecio]?) -> Void) {
+        if let town = localDataStore.fetchSelectedTown() {
+            remoteDataStore.getFuelPriceByTown(fuelIdentifier: fuelIdentifier, townIdentifier: town.idMunicipio) { listaPrecios in
+                if let listaPrecios = listaPrecios {
+                    completion(listaPrecios)
+                }
+                completion(nil)
+            }
+        }
+    }
+    
     func fetchLocalFuels() -> [Carburante]? {
         if let fuels = localDataStore.fetchFuelsfromLocal() {
             return fuels

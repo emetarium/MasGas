@@ -40,6 +40,16 @@
 "FAVORITE_FUELS_HEADING" = "Favoritos";
 
 /* SEARCH FUEL SCREEN*/
-"CHEAPEST_IN_TOWN" = "Precio más competitivo";
-"CHEAPEST_NEARBY" = "Precio cercano más competitivo";
+"QUERY_FUEL_TITLE" = "Busca tu carburante";
+"SUGGESTED_GAS_STATIONS_TITLE" = "Gasolineras sugeridas";
+"QUERY_BY_NEARBY" = "Gasolinera más cercana";
+"QUERY_BY_CHEAPEST" = "Precio más competitivo";
+"QUERY_BY_CHEAPEST_NEARBY" = "Precio cercano más competitivo";
+"NO_FUEL_IN_TOWN" = "No hay gasolineras con el carburante seleccionado.";
 
+/* MAP SCREEN */
+"NO_ROUTE_ERROR_TITLE" = "Ruta no disponible";
+"NO_ROUTE_ERROR_MESSAGE" = "No hay rutas disponibles entre estas ubicaciones";
+
+/* FAVORITES SCREEN */
+"FAVORITE_GAS_STATIONS_TITLE" = "Gasolineras favoritas";

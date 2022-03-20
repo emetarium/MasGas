@@ -7,7 +7,7 @@
 
 import Foundation
 
-class ListaEESSPrecio: Codable {
+struct ListaEESSPrecio: Codable {
     let codigoPostal: String
     let direccion: String
     let horario: String
@@ -32,14 +32,14 @@ class ListaEESSPrecio: Codable {
         case horario = "Horario"
         case latitud = "Latitud"
         case localidad = "Localidad"
-        case longitud = "Longitud_x0020__x0028_WGS84_x0029_"
+        case longitud = "Longitud (WGS84)"
         case margen = "Margen"
         case municipio = "Municipio"
         case precioProducto = "PrecioProducto"
         case provincia = "Provincia"
         case remision = "Remisión"
         case rotulo = "Rótulo"
-        case tipoVenta = "Tipo_x0020_Venta"
+        case tipoVenta = "Tipo Venta"
         case idEESS = "IDEESS"
         case idMunicipio = "IDMunicipio"
         case idProvincia = "IDProvincia"

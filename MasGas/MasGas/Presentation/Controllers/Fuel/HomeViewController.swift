@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 protocol HomeProtocol {
     func navigateToLogin()
@@ -13,6 +14,7 @@ protocol HomeProtocol {
 
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource
 {
+    
     //MARK: - IBOutlets
     @IBOutlet var townLabel: UILabel!
     @IBOutlet var logoutButton: UIButton!
@@ -20,10 +22,15 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet var selectFuelLabel: UILabel!
     @IBOutlet var fuelsTableView: UITableView!
     
+    //MARK: - Variables
     var presenter: HomePresenter<HomeViewController>?
     var fuels: [Carburante] = []
     var towns: [Municipio] = []
     var town: Municipio?
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +46,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         guard let town = town else {
             return
         }
+        
+        self.view.backgroundColor = Colors.darkGray
+        
         self.townLabel.textColor = Colors.white
         self.townLabel.text = town.nombreMunicipio
         
@@ -69,7 +79,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     private func setUpTableView() {
         self.fuelsTableView.delegate = self
         self.fuelsTableView.dataSource = self
-        self.fuelsTableView.isScrollEnabled = false
     }
     
     @objc func selectTown() {
@@ -96,7 +105,11 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        tableView.deselectRow(at: indexPath, animated: true)
+        let qvc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SearchFuelViewController") as? SearchFuelViewController
+        guard let vc = qvc else { return }
+        vc.fuel = fuels[indexPath.row]
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     //MARK: - IBActions
