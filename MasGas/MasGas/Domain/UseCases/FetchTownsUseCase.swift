@@ -8,10 +8,8 @@
 import Foundation
 
 class FetchTownsUseCase {
-    var townsRepository = TownsListRepository()
-    
     func execute(completion: @escaping ([Municipio]) -> Void) {
-        townsRepository.fetchTowns { municipios in
+        Repository.shared.fetchTowns { municipios in
             completion(municipios)
         }
     }

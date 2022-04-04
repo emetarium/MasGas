@@ -12,33 +12,35 @@ class LocationLayer: NSObject {
     static let shared = LocationLayer()
     private let locationManager = CLLocationManager()
     var location: CLLocation?
+    var handleLocation: ((CLLocation?) -> ())?
 
     override private init() {
         super.init()
         locationManager.delegate = self
     }
 
-    func getCurrentLocation(completion: @escaping (CLLocation?) -> ()) {
+    func startGettingLocation() {
+        //handleLocation?(CLLocation(latitude: 37.876691, longitude: -4.791934))
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
         if CLLocationManager.locationServicesEnabled() {
             locationManager.startUpdatingLocation()
         }
-        completion(location)
     }
 
-    func getDistanceBetweenLocations(userLocation: CLLocation, gasStationLocation: CLLocation) -> Double? {
+    func getDistanceBetweenLocations(userLocation: CLLocation, gasStationLocation: CLLocation, completion: (Double?) -> ()) {
         let distanceInMeters = userLocation.distance(from: gasStationLocation)
         let distanceInKm = distanceInMeters/1000
-        return distanceInKm
+        completion(distanceInKm)
     }
 }
 
 extension LocationLayer: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let userLocation: CLLocation = locations[0] as CLLocation
-        manager.stopUpdatingLocation()
-        self.location = userLocation
+        self.location = locations[0] as CLLocation
+        locationManager.stopUpdatingLocation()
+        print(self.location)
+        handleLocation?(self.location)
     }
 
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error)

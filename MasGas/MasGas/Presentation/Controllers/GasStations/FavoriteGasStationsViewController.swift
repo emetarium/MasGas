@@ -10,16 +10,16 @@ import MapKit
 
 protocol FavoriteGasStationsProtocol {
     func updateFavoritesList(favoriteGasStations: [Gasolinera])
-    func showLoading()
-    func hideLoading()
+    func setUpMap(location: CLLocation)
+    func showLoadingIndicator()
+    func hideLoadingIndicator()
 }
 
-class FavoriteGasStationsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class FavoriteGasStationsViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
     
     //MARK: - IBOutlets
     @IBOutlet var mapView: MKMapView!
     @IBOutlet var gasStationsTableView: UITableView!
-    @IBOutlet var activityIndicator: UIActivityIndicatorView!
     
     //MARK: - Variables
     var userLocation: CLLocation?
@@ -41,10 +41,9 @@ class FavoriteGasStationsViewController: UIViewController, UITableViewDelegate, 
     //MARK: - Functions
     func setUpUI() {
         self.view.backgroundColor = Colors.white
-        self.activityIndicator.color = Colors.green
-        self.activityIndicator.isHidden = true
         mapView.pointOfInterestFilter = .some(MKPointOfInterestFilter(including: [MKPointOfInterestCategory.gasStation]))
-        setUpUserLocation()
+        setUpLocation()
+        populateNearByPlaces()
         registerCell()
         setUpTableView()
     }
@@ -53,14 +52,8 @@ class FavoriteGasStationsViewController: UIViewController, UITableViewDelegate, 
         presenter?.getFavorites()
     }
     
-    func setUpUserLocation() {
-        LocationLayer.shared.getCurrentLocation { location in
-            guard let location = location else {
-                return
-            }
-            self.userLocation = location
-            self.mapView.centerToLocation(location)
-        }
+    func setUpLocation() {
+        presenter?.setUpMap()
     }
     
     private func registerCell() {
@@ -73,6 +66,30 @@ class FavoriteGasStationsViewController: UIViewController, UITableViewDelegate, 
         self.gasStationsTableView.dataSource = self
         self.gasStationsTableView.separatorStyle = .none
         self.gasStationsTableView.backgroundColor = Colors.lightGray
+    }
+    
+    func populateNearByPlaces() {
+        let request = MKLocalSearch.Request()
+        request.naturalLanguageQuery = "Gas Stations"
+        request.region = mapView.region
+
+        let search = MKLocalSearch(request: request)
+
+        search.start { response, error in
+            if error != nil {
+                print("Error occured in search: \(error!.localizedDescription)")
+            } else if response!.mapItems.count == 0 {
+                print("No matches found")
+            } else {
+                print("Matches found")
+                for item in response!.mapItems {
+                    let annotation = MKPointAnnotation()
+                    annotation.coordinate = item.placemark.coordinate
+                    annotation.title = item.name
+                    self.mapView.addAnnotation(annotation)
+                }
+            }
+        }
     }
 
     //MARK: - Table View
@@ -98,35 +115,32 @@ class FavoriteGasStationsViewController: UIViewController, UITableViewDelegate, 
         let gvc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "GasStationLocationViewController") as? GasStationLocationViewController
         guard let vc = gvc else { return }
         vc.gasStation = favoriteGasStations[indexPath.row]
-        LocationLayer.shared.getCurrentLocation { location in
-            guard let location = location else {
-                return
-            }
-            vc.userLocation = location
-            self.navigationController?.pushViewController(vc, animated: true)
-        }
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 
 extension FavoriteGasStationsViewController: FavoriteGasStationsProtocol {
+    func showLoadingIndicator() {
+        DispatchQueue.main.async {
+            self.showLoading()
+        }
+    }
+    
+    func hideLoadingIndicator() {
+        DispatchQueue.main.async {
+            self.hideLoading()
+        }
+    }
+    
+    func setUpMap(location: CLLocation) {
+        self.userLocation = location
+        self.mapView.centerToLocation(location)
+    }
+    
     func updateFavoritesList(favoriteGasStations: [Gasolinera]) {
         self.favoriteGasStations = favoriteGasStations
         DispatchQueue.main.async {
             self.gasStationsTableView.reloadData()
-        }
-    }
-    
-    func showLoading() {
-        DispatchQueue.main.async {
-            self.activityIndicator.isHidden = false
-            self.activityIndicator.startAnimating()
-        }
-    }
-    
-    func hideLoading() {
-        DispatchQueue.main.async {
-            self.activityIndicator.isHidden = true
-            self.activityIndicator.stopAnimating()
         }
     }
 }

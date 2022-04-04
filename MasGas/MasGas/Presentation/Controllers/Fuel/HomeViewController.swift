@@ -9,12 +9,15 @@ import UIKit
 import CoreLocation
 
 protocol HomeProtocol {
+    func updateFuels(fuels: [Carburante])
+    func updateTown(town: Municipio)
     func navigateToLogin()
+    func showLoadingIndicator()
+    func hideLoadingIndicator()
 }
 
-class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource
+class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource
 {
-    
     //MARK: - IBOutlets
     @IBOutlet var townLabel: UILabel!
     @IBOutlet var logoutButton: UIButton!
@@ -25,7 +28,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     //MARK: - Variables
     var presenter: HomePresenter<HomeViewController>?
     var fuels: [Carburante] = []
-    var towns: [Municipio] = []
     var town: Municipio?
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -35,15 +37,25 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter = HomePresenter(self)
+        fetchSelectedTown()
+        fetchFuels()
         setUpUI()
         // Do any additional setup after loading the view.
     }
     
     //MARK: - Functions
+    func fetchSelectedTown() {
+        presenter?.fetchSelectedTown()
+    }
+    
+    func fetchFuels() {
+        presenter?.fetchFuels()
+    }
+    
     func setUpUI() {
         self.tabBarController?.navigationItem.hidesBackButton = true
         
-        guard let town = town else {
+        guard let town = self.town else {
             return
         }
         
@@ -53,6 +65,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.townLabel.text = town.nombreMunicipio
         
         self.logoutButton.tintColor = Colors.white
+        self.logoutButton.setTitle("", for: .normal)
         
         self.selectFuelLabel.text = NSLocalizedString("FUEL_SELECTION_LABEL", comment: "")
         self.selectFuelLabel.textColor = Colors.white
@@ -60,9 +73,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.backgroundImage.image = UIImage(named: "gasStationImage")
         self.backgroundImage.contentMode = .scaleAspectFill
         
-        setUpTapGesture()
-        registerCell()
-        setUpTableView()
+        self.setUpTapGesture()
+        self.registerCell()
+        self.setUpTableView()
     }
     
     private func setUpTapGesture() {
@@ -84,8 +97,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     @objc func selectTown() {
         let townSelectionViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TownSelectionViewController") as? TownSelectionViewController
         guard let tvc = townSelectionViewController else { return }
-        tvc.towns = towns
-        tvc.fuels = fuels
         self.navigationController?.pushViewController(tvc, animated: true)
     }
     
@@ -114,12 +125,41 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     //MARK: - IBActions
     @IBAction func logoutButton(_ sender: Any) {
-        presenter?.logout()
+        let accept = UIAlertAction(title: NSLocalizedString("ACCEPT_ACTION", comment: ""), style: .destructive) { accepted in
+            self.presenter?.logout()
+        }
+        let cancel = UIAlertAction(title: NSLocalizedString("CANCEL_ACTION", comment: ""), style: .default)
+        self.showAlert(title: NSLocalizedString("LOG_OUT_ALERT_TITLE", comment: ""), message: NSLocalizedString("LOG_OUT_ALERT_MESSAGE", comment: ""), alternativeAction: cancel, acceptAction: accept)
     }
 }
 
 extension HomeViewController: HomeProtocol {
+    func updateTown(town: Municipio) {
+        self.town = town
+    }
+    
+    func updateFuels(fuels: [Carburante]) {
+        self.fuels = fuels
+        DispatchQueue.main.async {
+            self.fuelsTableView.reloadData()
+        }
+    }
+    
     func navigateToLogin() {
-        self.navigationController?.popToRootViewController(animated: true)
+        let loginViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController
+        guard let vc = loginViewController else { return }
+        (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(vc)
+    }
+    
+    func showLoadingIndicator() {
+        DispatchQueue.main.async {
+            self.showLoading()
+        }
+    }
+    
+    func hideLoadingIndicator() {
+        DispatchQueue.main.async {
+            self.hideLoading()
+        }
     }
 }

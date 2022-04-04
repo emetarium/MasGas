@@ -8,9 +8,8 @@
 import Foundation
 
 class SaveFavoriteGasStationUseCase {
-    var favoritesRepository = FavoritesListRepository()
     
     func execute(gasStation: Gasolinera) {
-        favoritesRepository.saveFavorite(gasStation: gasStation)
+        Repository.shared.saveFavorite(gasStation: gasStation)
     }
 }

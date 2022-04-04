@@ -13,11 +13,17 @@ class LoginPresenter<LoginProtocol> {
     let view: LoginViewController
     let fetchFuelsUseCase: FetchFuelsUseCase?
     let fetchTownsUseCase: FetchTownsUseCase?
+    let fetchSelectedTownUseCase: FetchSelectedTownUseCase?
+    let emailLoginUseCase: EmailLoginUseCase?
+    let googleLoginUseCase: GoogleLoginUseCase?
     
     init(_ view: LoginViewController) {
         self.view = view
         self.fetchFuelsUseCase = FetchFuelsUseCase()
         self.fetchTownsUseCase = FetchTownsUseCase()
+        self.fetchSelectedTownUseCase = FetchSelectedTownUseCase()
+        self.emailLoginUseCase = EmailLoginUseCase()
+        self.googleLoginUseCase = GoogleLoginUseCase()
     }
     
     func isUserLogged() -> Bool {
@@ -36,7 +42,7 @@ class LoginPresenter<LoginProtocol> {
     }
     
     func checkTown() {
-        if UserDefaults.standard.object(forKey: "Town") != nil {
+        if let town = fetchSelectedTownUseCase?.execute() {
             self.view.navigateToHome()
         }
         else {
@@ -45,55 +51,26 @@ class LoginPresenter<LoginProtocol> {
     }
     
     func emailLogin(email: String, password: String) {
-        AuthenticationLayer.shared.emailSignIn(email: email, password: password) { result in
-            switch result {
-                case .success(let user):
-                    UserDefaults.standard.set(user.email, forKey: "User")
-                    self.checkTown()
-                case .failure(let error):
-                    let description = error.get()
-                    let acceptAction = UIAlertAction(title: NSLocalizedString("ACCEPT_ACTION", comment: ""), style: .default, handler: nil)
-                    self.view.showAlert(title: "Error", message: description, alternativeAction: nil, acceptAction: acceptAction)
+        emailLoginUseCase?.execute(email: email, password: password, completion: { authError in
+            if let authError = authError {
+                let description = authError.get()
+                let acceptAction = UIAlertAction(title: NSLocalizedString("ACCEPT_ACTION", comment: ""), style: .default, handler: nil)
+                self.view.showAlert(title: NSLocalizedString("AUTHENTICATION_ERROR_TITLE", comment: ""), message: description, alternativeAction: nil, acceptAction: acceptAction)
+            } else {
+                self.checkTown()
             }
-        }
+        })
     }
     
     func googleLogin() {
-        AuthenticationLayer.shared.googleSignIn { result in
-            switch result {
-                case .success(let user):
-                    UserDefaults.standard.set(user.email, forKey: "User")
-                    self.checkTown()
-                case .failure(let error):
-                    let description = error.get()
-                    let acceptAction = UIAlertAction(title: NSLocalizedString("ACCEPT_ACTION", comment: ""), style: .default, handler: nil)
-                    self.view.showAlert(title: NSLocalizedString("AUTHENTICATION_ERROR_TITLE", comment: ""), message: description, alternativeAction: nil, acceptAction: acceptAction)
+        googleLoginUseCase?.execute(completion: { authError in
+            if let authError = authError {
+                let description = authError.get()
+                let acceptAction = UIAlertAction(title: NSLocalizedString("ACCEPT_ACTION", comment: ""), style: .default, handler: nil)
+                self.view.showAlert(title: NSLocalizedString("AUTHENTICATION_ERROR_TITLE", comment: ""), message: description, alternativeAction: nil, acceptAction: acceptAction)
+            } else {
+                self.checkTown()
             }
-        }
-    }
-    
-    func fetchFuels() {
-        fetchFuelsUseCase?.execute(completion: { carburantes in
-            self.view.getFuels(fuels: carburantes)
         })
-    }
-    
-    func fetchTowns() {
-        fetchTownsUseCase?.execute(completion: { municipios in
-            self.view.getTowns(towns: municipios)
-        })
-    }
-    
-    func fetchSelectedTown() {
-        if let data = UserDefaults.standard.data(forKey: "Town") {
-            do {
-                // Create JSON Decoder
-                let decoder = JSONDecoder()
-
-                // Decode Note
-                let town = try decoder.decode(Municipio.self, from: data)
-                self.view.getSelectedTown(town: town)
-            } catch {}
-        }
     }
 }

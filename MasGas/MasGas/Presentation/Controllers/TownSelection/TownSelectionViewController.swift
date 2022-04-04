@@ -8,10 +8,13 @@
 import UIKit
 
 protocol TownSelectionProtocol {
+    func updateTowns(towns: [Municipio])
     func navigateToHome(selectedTown: Municipio)
+    func showLoadingIndicator()
+    func hideLoadingIndicator()
 }
 
-class TownSelectionViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
+class TownSelectionViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     
     //MARK: - IBOutlets
     @IBOutlet var townSearchBar: UISearchBar!
@@ -20,22 +23,25 @@ class TownSelectionViewController: UIViewController, UITableViewDelegate, UITabl
     //MARK: - Variables
     var towns: [Municipio] = []
     var filteredTowns: [Municipio] = []
-    var fuels: [Carburante] = []
     var presenter: TownSelectionPresenter<TownSelectionViewController>?
 
     //MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter = TownSelectionPresenter(self)
+        fetchTowns()
         setUpUI()
         // Do any additional setup after loading the view.
     }
     
     //MARK: - Functions
     func setUpUI() {
-        filteredTowns = towns
         registerCell()
         setUpTableView()
+    }
+    
+    func fetchTowns() {
+        presenter?.fetchTowns()
     }
     
     private func registerCell() {
@@ -71,7 +77,7 @@ class TownSelectionViewController: UIViewController, UITableViewDelegate, UITabl
     //MARK: - Search Bar
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         filteredTowns = towns.filter({ municipio in
-            if municipio.nombreMunicipio.lowercased().contains(searchText.lowercased()) {
+            if municipio.nombreMunicipio.applyingTransform(.stripDiacritics, reverse: false)!.lowercased().contains(searchText.applyingTransform(.stripDiacritics, reverse: false)!.lowercased()) {
                 return true
             }
             else { return false }
@@ -85,12 +91,29 @@ class TownSelectionViewController: UIViewController, UITableViewDelegate, UITabl
 }
 
 extension TownSelectionViewController: TownSelectionProtocol {
+    func updateTowns(towns: [Municipio]) {
+        self.towns = towns
+        self.filteredTowns = towns
+        DispatchQueue.main.async {
+            self.townTableView.reloadData()
+        }
+    }
+    
     func navigateToHome(selectedTown: Municipio) {
         let tabBarController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabBarController") as? TabBarViewController
         guard let tbc = tabBarController else { return }
-        tbc.fuels = fuels
-        tbc.town = selectedTown
-        tbc.towns = towns
-        self.navigationController?.pushViewController(tbc, animated: true)
+        (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(tbc)
+    }
+    
+    func showLoadingIndicator() {
+        DispatchQueue.main.async {
+            self.showLoading()
+        }
+    }
+    
+    func hideLoadingIndicator() {
+        DispatchQueue.main.async {
+            self.hideLoading()
+        }
     }
 }

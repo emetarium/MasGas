@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="y5A-hd-HQd">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -224,6 +225,7 @@
             <objects>
                 <tabBarController storyboardIdentifier="TabBarController" automaticallyAdjustsScrollViewInsets="NO" id="mrW-24-w8F" customClass="TabBarViewController" customModule="MasGas" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="Sq2-7R-wI6"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Eaj-w7-bCD">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -377,9 +379,6 @@
                                     <navigationItem title="Title" id="Vdw-u4-Nax"/>
                                 </items>
                             </navigationBar>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="NoK-5N-xVL">
-                                <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
-                            </activityIndicatorView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2wn-FD-lha">
                                 <rect key="frame" x="0.0" y="862" width="414" height="34"/>
                                 <color key="backgroundColor" name="LightGray"/>
@@ -393,10 +392,8 @@
                             <constraint firstItem="TeQ-bI-hdD" firstAttribute="bottom" secondItem="RBY-Tb-c2c" secondAttribute="bottom" id="GMo-uZ-fNG"/>
                             <constraint firstItem="cqo-gx-cAP" firstAttribute="top" secondItem="TeQ-bI-hdD" secondAttribute="top" id="Gs7-Ys-INN"/>
                             <constraint firstItem="TeQ-bI-hdD" firstAttribute="trailing" secondItem="2wn-FD-lha" secondAttribute="trailing" id="M7c-pG-aqK"/>
-                            <constraint firstItem="NoK-5N-xVL" firstAttribute="centerY" secondItem="bWg-g5-gDi" secondAttribute="centerY" id="Mqx-Nz-q4E"/>
                             <constraint firstItem="LA0-ae-ikt" firstAttribute="top" secondItem="cqo-gx-cAP" secondAttribute="bottom" id="RLQ-4z-5gz"/>
                             <constraint firstItem="LA0-ae-ikt" firstAttribute="height" secondItem="bWg-g5-gDi" secondAttribute="height" multiplier="0.13" id="Wre-wr-Sl3"/>
-                            <constraint firstItem="NoK-5N-xVL" firstAttribute="centerX" secondItem="bWg-g5-gDi" secondAttribute="centerX" id="Wz5-dz-LhW"/>
                             <constraint firstItem="RBY-Tb-c2c" firstAttribute="top" secondItem="LA0-ae-ikt" secondAttribute="bottom" id="fiF-Bg-LaQ"/>
                             <constraint firstItem="RBY-Tb-c2c" firstAttribute="leading" secondItem="TeQ-bI-hdD" secondAttribute="leading" id="gwf-Bf-39T"/>
                             <constraint firstItem="2wn-FD-lha" firstAttribute="top" secondItem="RBY-Tb-c2c" secondAttribute="bottom" id="ho1-Ja-e6Y"/>
@@ -408,7 +405,6 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="activityIndicator" destination="NoK-5N-xVL" id="R4F-6h-DK9"/>
                         <outlet property="fuelColorIcon" destination="shn-R7-M2s" id="6lV-Jg-lPj"/>
                         <outlet property="fuelLabel" destination="Btc-9u-nSX" id="veS-bM-d7c"/>
                         <outlet property="fuelPricesTableView" destination="RBY-Tb-c2c" id="PHP-rc-FKd"/>
@@ -464,6 +460,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="backButton" destination="bDR-3S-OlN" id="g4U-Sd-4Pl"/>
                         <outlet property="favoriteIcon" destination="rly-y7-qh2" id="lYt-H6-Mgt"/>
                         <outlet property="mapView" destination="wpV-Mp-TLh" id="Ng1-st-Z2W"/>
                     </connections>
@@ -524,9 +521,6 @@
                                 <rect key="frame" x="0.0" y="453" width="414" height="409"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="vFp-aU-6eN">
-                                <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
-                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="yit-xT-kTd"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -536,15 +530,12 @@
                             <constraint firstItem="3vw-dt-rWf" firstAttribute="leading" secondItem="yit-xT-kTd" secondAttribute="leading" id="AJp-Sj-rXZ"/>
                             <constraint firstItem="Oqr-KQ-AYa" firstAttribute="leading" secondItem="yit-xT-kTd" secondAttribute="leading" id="I6l-cx-uJM"/>
                             <constraint firstItem="Oqr-KQ-AYa" firstAttribute="top" secondItem="3vw-dt-rWf" secondAttribute="bottom" id="PVC-Wa-ro3"/>
-                            <constraint firstItem="vFp-aU-6eN" firstAttribute="centerX" secondItem="FPe-Qz-07a" secondAttribute="centerX" id="RX5-WA-ebf"/>
                             <constraint firstItem="3vw-dt-rWf" firstAttribute="top" secondItem="yit-xT-kTd" secondAttribute="top" id="ScU-Ws-eyU"/>
                             <constraint firstItem="yit-xT-kTd" firstAttribute="trailing" secondItem="3vw-dt-rWf" secondAttribute="trailing" id="Wpn-1j-PTG"/>
                             <constraint firstItem="yit-xT-kTd" firstAttribute="trailing" secondItem="Oqr-KQ-AYa" secondAttribute="trailing" id="jjW-1r-FSV"/>
-                            <constraint firstItem="vFp-aU-6eN" firstAttribute="centerY" secondItem="FPe-Qz-07a" secondAttribute="centerY" id="sA9-ow-yfQ"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="activityIndicator" destination="vFp-aU-6eN" id="Mck-fJ-4vb"/>
                         <outlet property="gasStationsTableView" destination="Oqr-KQ-AYa" id="Kmf-2g-BSs"/>
                         <outlet property="mapView" destination="3vw-dt-rWf" id="IHJ-wI-4Si"/>
                     </connections>

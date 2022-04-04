@@ -12,8 +12,6 @@ import Firebase
 protocol LoginProtocol {
     func navigateToHome()
     func navigateToTownSelection()
-    func getFuels(fuels: [Carburante])
-    func getTowns(towns: [Municipio])
 }
 
 class LoginViewController: UIViewController {
@@ -28,14 +26,10 @@ class LoginViewController: UIViewController {
     
     //MARK: - Variables
     var presenter: LoginPresenter<LoginViewController>?
-    var fuels: [Carburante]?
-    var towns: [Municipio]?
-    var selectedTown: Municipio?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter = LoginPresenter(self)
-        fetchData()
         setUpUI()
         // Do any additional setup after loading the view.
     }
@@ -45,12 +39,6 @@ class LoginViewController: UIViewController {
     }
     
     //MARK: - Functions
-    func fetchData() {
-        presenter?.fetchFuels()
-        presenter?.fetchTowns()
-        presenter?.fetchSelectedTown()
-    }
-    
     func setUpUI() {
         emailTextField.backgroundColor = Colors.lightGray
         passwordTextField.backgroundColor = Colors.lightGray
@@ -89,30 +77,13 @@ class LoginViewController: UIViewController {
 extension LoginViewController: LoginProtocol {
     func navigateToHome() {
         let tabBarController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabBarController") as? TabBarViewController
-        guard let tbc = tabBarController, let fuels = fuels, let town = selectedTown else { return }
-        tbc.fuels = fuels
-        tbc.towns = towns
-        tbc.town = town
-        self.navigationController?.pushViewController(tbc, animated: true)
+        guard let tbc = tabBarController else { return }
+        (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(tbc)
     }
     
     func navigateToTownSelection() {
         let townSelectionViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TownSelectionViewController") as? TownSelectionViewController
-        guard let tvc = townSelectionViewController, let fuels = fuels, let towns = towns else { return }
-        tvc.towns = towns
-        tvc.fuels = fuels
+        guard let tvc = townSelectionViewController else { return }
         self.navigationController?.pushViewController(tvc, animated: true)
-    }
-    
-    func getFuels(fuels: [Carburante]) {
-        self.fuels = fuels
-    }
-    
-    func getTowns(towns: [Municipio]) {
-        self.towns = towns
-    }
-    
-    func getSelectedTown(town: Municipio) {
-        self.selectedTown = town
     }
 }

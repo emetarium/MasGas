@@ -8,10 +8,8 @@
 import Foundation
 
 class GetFavoriteGasStationsUseCase {
-    var favoritesRepository = FavoritesListRepository()
-    
     func execute(completion: @escaping ([Gasolinera]?) -> ()) {
-        favoritesRepository.getFavoritesList { gasolineras in
+        Repository.shared.getFavoritesList { gasolineras in
             completion(gasolineras)
         }
     }

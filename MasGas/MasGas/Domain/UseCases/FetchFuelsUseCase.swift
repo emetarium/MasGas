@@ -8,11 +8,9 @@
 import Foundation
 
 class FetchFuelsUseCase {
-    var fuelsRepository =  FuelsListRepository()
-    
     func execute(completion: @escaping ([Carburante]) -> Void) {
         var carburantesFiltrados: [Carburante] = []
-        fuelsRepository.fetchFuels { carburantes in
+        Repository.shared.fetchFuels { carburantes in
             carburantes.forEach { carburante in
                 if filteredFuels.contains(carburante.nombreProductoAbreviatura) {
                     carburantesFiltrados.append(carburante)

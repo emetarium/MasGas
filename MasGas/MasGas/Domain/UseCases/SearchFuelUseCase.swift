@@ -8,14 +8,9 @@
 import Foundation
 
 class SearchFuelUseCase {
-    var fuelsRepository = FuelsListRepository()
-    
     func execute(fuelIdentifier: String, completion: @escaping ([ListaEESSPrecio]?) -> Void) {
-        fuelsRepository.searchFuels(fuelIdentifier: fuelIdentifier) { listaPrecios in
-            if let listaPrecios = listaPrecios {
-                completion(listaPrecios)
-            }
-            completion(nil)
+        Repository.shared.searchFuels(fuelIdentifier: fuelIdentifier) { listaPrecios in
+            completion(listaPrecios)
         }
     }
 }

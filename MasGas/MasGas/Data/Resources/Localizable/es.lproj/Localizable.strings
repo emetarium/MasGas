@@ -24,6 +24,7 @@
 
 /* Authentication Errors */
 "AUTHENTICATION_ERROR_TITLE" = "Error en la autenticación";
+"SIGN_UP_ERROR_TITLE" = "Error en el registro";
 "INVALID_PASSWORD_ERROR" = "La contraseña debe tener un mínimo de 6 caracteres.";
 "INVALID_EMAIL_ERROR" = "El correo electrónico no es correcto.";
 "WRONG_PASSWORD_ERROR" = "La contraseña no es válida.";
@@ -50,6 +51,11 @@
 /* MAP SCREEN */
 "NO_ROUTE_ERROR_TITLE" = "Ruta no disponible";
 "NO_ROUTE_ERROR_MESSAGE" = "No hay rutas disponibles entre estas ubicaciones";
+"NO_LOCATION_ERROR_MESSAGE" = "No se ha podido encontrar su ubicación";
 
 /* FAVORITES SCREEN */
 "FAVORITE_GAS_STATIONS_TITLE" = "Gasolineras favoritas";
+
+/* LOG OUT */
+"LOG_OUT_ALERT_TITLE" = "Cerrar sesión";
+"LOG_OUT_ALERT_MESSAGE" = "¿Estás seguro de que quieres cerrar sesión?";

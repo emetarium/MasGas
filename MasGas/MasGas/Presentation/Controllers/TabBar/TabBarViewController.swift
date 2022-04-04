@@ -10,16 +10,11 @@ import CoreLocation
 
 class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
     
-    var fuels: [Carburante]?
-    var towns: [Municipio]?
-    var town: Municipio?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.delegate = self
         setUpUI()
         setUpTabs()
-        // Do any additional setup after loading the view.
     }
     
     func setUpTabs() {
@@ -28,10 +23,6 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
         let hvc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController
         guard let homeViewController = hvc else { return }
         let homeBarItem = UITabBarItem(title: NSLocalizedString("FUEL_SCREEN_TAB_BAR_TITLE", comment: ""), image: fuelPumpIcon.withTintColor(gray), selectedImage: fuelPumpIcon.withTintColor(green))
-        guard let fuels = fuels, let towns = towns else { return }
-        homeViewController.fuels = fuels
-        homeViewController.town = town
-        homeViewController.towns = towns
         homeViewController.tabBarItem = homeBarItem
         
         let fvc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "FavoriteGasStationsViewController") as? FavoriteGasStationsViewController
@@ -40,7 +31,7 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
         favoriteGasStationsViewController.tabBarItem = favoriteGasStationsBarItem
         
         self.navigationController?.isNavigationBarHidden = true
-        self.viewControllers = [homeViewController, favoriteGasStationsViewController]
+        self.viewControllers = [favoriteGasStationsViewController, homeViewController]
     }
     
     override func viewWillAppear(_ animated: Bool) {

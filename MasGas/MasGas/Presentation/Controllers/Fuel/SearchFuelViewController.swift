@@ -15,11 +15,11 @@ protocol SearchModeProtocol {
 
 protocol SearchFuelProtocol {
     func updateFuelList(fuelList: [BusquedaCarburante])
-    func showLoading()
-    func hideLoading()
+    func showLoadingIndicator()
+    func hideLoadingIndicator()
 }
 
-class SearchFuelViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UIAdaptivePresentationControllerDelegate {
+class SearchFuelViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource, UIAdaptivePresentationControllerDelegate {
     
     //MARK: - IBOutlets
     @IBOutlet var headerView: UIView!
@@ -30,7 +30,6 @@ class SearchFuelViewController: UIViewController, UITableViewDelegate, UITableVi
     @IBOutlet var fuelPricesTableView: UITableView!
     @IBOutlet var navigationBar: UINavigationBar!
     @IBOutlet var navigationBarItem: UINavigationItem!
-    @IBOutlet var activityIndicator: UIActivityIndicatorView!
     
     //MARK: - Variables
     var presenter: SearchFuelPresenter<SearchFuelViewController>?
@@ -76,8 +75,6 @@ class SearchFuelViewController: UIViewController, UITableViewDelegate, UITableVi
         
         self.fuelColorIcon.tintColor = UIColor(named: fuel.nombreProductoAbreviatura)
         self.headerView.backgroundColor = Colors.darkGray
-        
-        self.activityIndicator.color = Colors.green
         
         setUpTapGesture()
         registerCell()
@@ -167,13 +164,14 @@ class SearchFuelViewController: UIViewController, UITableViewDelegate, UITableVi
         presenter?.isFavorite(gasStation: fuelList[indexPath.row], completion: { result in
             let gasolinera = Gasolinera(nombre: fuelList[indexPath.row].nombre, ubicacion: fuelList[indexPath.row].coordenadas, favorita: result, id: fuelList[indexPath.row].id)
             vc.gasStation = gasolinera
-            LocationLayer.shared.getCurrentLocation { location in
-                guard let location = location else {
-                    return
-                }
-                vc.userLocation = location
-                self.navigationController?.pushViewController(vc, animated: true)
-            }
+            
+//            LocationLayer.shared.getCurrentLocation { location in
+//                guard let location = location else {
+//                    return
+//                }
+                vc.userLocation = CLLocation(latitude: 37.876691, longitude: -4.791934)
+//            }
+            self.navigationController?.pushViewController(vc, animated: true)
         })
     }
 }
@@ -191,24 +189,22 @@ extension SearchFuelViewController: SearchModeProtocol {
 }
 
 extension SearchFuelViewController: SearchFuelProtocol {
+    func showLoadingIndicator() {
+        DispatchQueue.main.async {
+            self.showLoading()
+        }
+    }
+    
+    func hideLoadingIndicator() {
+        DispatchQueue.main.async {
+            self.hideLoading()
+        }
+    }
+    
     func updateFuelList(fuelList: [BusquedaCarburante]) {
         self.fuelList = fuelList
         DispatchQueue.main.async {
             self.fuelPricesTableView.reloadData()
-        }
-    }
-    
-    func showLoading() {
-        DispatchQueue.main.async {
-            self.activityIndicator.isHidden = false
-            self.activityIndicator.startAnimating()
-        }
-    }
-    
-    func hideLoading() {
-        DispatchQueue.main.async {
-            self.activityIndicator.isHidden = true
-            self.activityIndicator.stopAnimating()
         }
     }
 }

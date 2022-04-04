@@ -10,22 +10,22 @@ import UIKit
 
 class SignUpPresenter<SignUpProtocol> {
     let view: SignUpViewController
+    let signUpUseCase: EmailSignUpUseCase?
     
     init(_ view: SignUpViewController) {
         self.view = view
+        self.signUpUseCase = EmailSignUpUseCase()
     }
     
     func signUp(email: String, password: String) {
-        AuthenticationLayer.shared.emailSignUp(email: email, password: password) { result in
-            switch result {
-                case .success(let user):
-                    UserDefaults.standard.set(user.email, forKey: "User")
-                    self.view.navigateToLogin()
-                case .failure(let error):
-                    let description = error.get()
-                    let acceptAction = UIAlertAction(title: NSLocalizedString("ACCEPT_ACTION", comment: ""), style: .default, handler: nil)
-                    self.view.showAlert(title: "Error", message: description, alternativeAction: nil, acceptAction: acceptAction)
+        signUpUseCase?.execute(email: email, password: password, completion: { authError in
+            if let authError = authError {
+                let description = authError.get()
+                let acceptAction = UIAlertAction(title: NSLocalizedString("ACCEPT_ACTION", comment: ""), style: .default, handler: nil)
+                self.view.showAlert(title: NSLocalizedString("SIGN_UP_ERROR_TITLE", comment: ""), message: description, alternativeAction: nil, acceptAction: acceptAction)
+            } else {
+                self.view.navigateToLogin()
             }
-        }
+        })
     }
 }

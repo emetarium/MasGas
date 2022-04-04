@@ -8,9 +8,7 @@
 import Foundation
 
 class RemoveFavoriteUseCase {
-    var favoritesRepository = FavoritesListRepository()
-    
     func execute(gasStation: Gasolinera) {
-        favoritesRepository.removeFavorite(gasStation: gasStation)
+        Repository.shared.removeFavorite(gasStation: gasStation)
     }
 }

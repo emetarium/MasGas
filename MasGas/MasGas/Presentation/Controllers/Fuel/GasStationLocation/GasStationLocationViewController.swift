@@ -8,11 +8,18 @@
 import UIKit
 import MapKit
 
-class GasStationLocationViewController: UIViewController, MKMapViewDelegate {
+protocol UpdateLocationProtocol {
+    func updateLocation(location: CLLocation)
+    func showLoadingIndicator()
+    func hideLoadingIndicator()
+}
+
+class GasStationLocationViewController: BaseViewController, MKMapViewDelegate {
     
     //MARK: - IBOutlets
     @IBOutlet var mapView: MKMapView!
     @IBOutlet var favoriteIcon: UIImageView!
+    @IBOutlet var backButton: UIButton!
     
     //MARK: - Variables
     var gasStation: Gasolinera?
@@ -23,7 +30,7 @@ class GasStationLocationViewController: UIViewController, MKMapViewDelegate {
         super.viewDidLoad()
         presenter = GasStationLocationPresenter(self)
         setUpUI()
-        showRouteOnMap()
+        setUpLocation()
     }
     
     //MARK: - Functions
@@ -37,6 +44,7 @@ class GasStationLocationViewController: UIViewController, MKMapViewDelegate {
         else {
             self.favoriteIcon.tintColor = Colors.white
         }
+        self.backButton.setTitle("", for: .normal)
         
         setUpMap()
         setUpTapGesture()
@@ -50,6 +58,10 @@ class GasStationLocationViewController: UIViewController, MKMapViewDelegate {
     
     func setUpMap() {
         mapView.delegate = self
+    }
+    
+    func setUpLocation() {
+        presenter?.getLocation()
     }
     
     @objc func addFav() {
@@ -139,6 +151,27 @@ class GasStationLocationViewController: UIViewController, MKMapViewDelegate {
         return renderer
     }
 
+}
+
+extension GasStationLocationViewController: UpdateLocationProtocol {
+    func updateLocation(location: CLLocation) {
+        self.userLocation = location
+        DispatchQueue.main.async {
+            self.showRouteOnMap()
+        }
+    }
+    
+    func showLoadingIndicator() {
+        DispatchQueue.main.async {
+            self.showLoading()
+        }
+    }
+    
+    func hideLoadingIndicator() {
+        DispatchQueue.main.async {
+            self.hideLoading()
+        }
+    }
 }
 
 private extension MKMapView {

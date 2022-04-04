@@ -51,15 +51,10 @@ class RemoteDataStore: APIDataStore {
         replacedString = replacedString.replace(occurrences: ["{IDPRODUCTO}" : fuelIdentifier])
         guard let url = URL(string: replacedString) else { return }
         let urlRequest = URLRequest(url: url)
-        
         let task = URLSession.shared.dataTask(with: urlRequest) { data, urlResponse, error in
             guard error == nil, let urlResponse = urlResponse as? HTTPURLResponse, urlResponse.statusCode == 200, let data = data else { return }
             
                 let jsonDecoder = JSONDecoder()
-            
-//                let prettyPrintedString = NSString(data: data, encoding: String.Encoding.utf8.rawValue)
-//                print(prettyPrintedString)
-
             
                 let queryDecode = try! jsonDecoder.decode(Consulta.self, from: data)
 
