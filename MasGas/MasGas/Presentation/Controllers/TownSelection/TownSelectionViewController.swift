@@ -9,7 +9,7 @@ import UIKit
 
 protocol TownSelectionProtocol {
     func updateTowns(towns: [Municipio])
-    func navigateToHome(selectedTown: Municipio)
+    func navigateToTabBar(selectedTown: Municipio)
     func showLoadingIndicator()
     func hideLoadingIndicator()
 }
@@ -99,7 +99,7 @@ extension TownSelectionViewController: TownSelectionProtocol {
         }
     }
     
-    func navigateToHome(selectedTown: Municipio) {
+    func navigateToTabBar(selectedTown: Municipio) {
         let tabBarController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabBarController") as? TabBarViewController
         guard let tbc = tabBarController else { return }
         (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(tbc)

@@ -236,10 +236,10 @@
             </objects>
             <point key="canvasLocation" x="-1439" y="895"/>
         </scene>
-        <!--Home View Controller-->
+        <!--Fuels View Controller-->
         <scene sceneID="Nr0-RO-8fL">
             <objects>
-                <viewController storyboardIdentifier="HomeViewController" extendedLayoutIncludesOpaqueBars="YES" id="Psp-49-iPJ" customClass="HomeViewController" customModule="MasGas" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FuelsViewController" extendedLayoutIncludesOpaqueBars="YES" id="Psp-49-iPJ" customClass="FuelsViewController" customModule="MasGas" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bH1-wn-YGm">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

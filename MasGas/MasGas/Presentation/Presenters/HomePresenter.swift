@@ -1,5 +1,5 @@
 //
-//  HomePresenter.swift
+//  FuelsPresenter.swift
 //  MasGas
 //
 //  Created by María García Torres on 19/2/22.
@@ -7,13 +7,13 @@
 
 import Foundation
 
-class HomePresenter<FuelSelectionProtocol> {
+class FuelsPresenter<FuelSelectionProtocol> {
     let fetchFuelsUseCase: FetchFuelsUseCase?
     let fetchSelectedTownUseCase: FetchSelectedTownUseCase?
     let logoutUseCase: LogOutUseCase?
-    let view: HomeViewController
+    let view: FuelsViewController
     
-    init(_ view: HomeViewController) {
+    init(_ view: FuelsViewController) {
         self.view = view
         self.fetchFuelsUseCase = FetchFuelsUseCase()
         self.fetchSelectedTownUseCase = FetchSelectedTownUseCase()

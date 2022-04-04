@@ -32,6 +32,6 @@ class TownSelectionPresenter<TownSelectionProtocol> {
 
             UserDefaults.standard.set(data, forKey: "Town")
         } catch { }
-        self.view.navigateToHome(selectedTown: town)
+        self.view.navigateToTabBar(selectedTown: town)
     }
 }

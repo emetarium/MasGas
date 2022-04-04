@@ -43,7 +43,7 @@ class LoginPresenter<LoginProtocol> {
     
     func checkTown() {
         if let town = fetchSelectedTownUseCase?.execute() {
-            self.view.navigateToHome()
+            self.view.navigateToTabBar()
         }
         else {
             self.view.navigateToTownSelection()

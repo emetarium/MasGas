@@ -20,18 +20,18 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
     func setUpTabs() {
         guard let gasStationsIcon = UIImage(named: "gasStationIcon"), let fuelPumpIcon = UIImage(named: "fuelPumpIcon"), let green = Colors.green, let gray = Colors.gray else { return }
         
-        let hvc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController
-        guard let homeViewController = hvc else { return }
-        let homeBarItem = UITabBarItem(title: NSLocalizedString("FUEL_SCREEN_TAB_BAR_TITLE", comment: ""), image: fuelPumpIcon.withTintColor(gray), selectedImage: fuelPumpIcon.withTintColor(green))
-        homeViewController.tabBarItem = homeBarItem
+        let fvc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "FuelsViewController") as? FuelsViewController
+        guard let fuelsViewController = fvc else { return }
+        let fuelsBarItem = UITabBarItem(title: NSLocalizedString("FUEL_SCREEN_TAB_BAR_TITLE", comment: ""), image: fuelPumpIcon.withTintColor(gray), selectedImage: fuelPumpIcon.withTintColor(green))
+        fuelsViewController.tabBarItem = fuelsBarItem
         
-        let fvc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "FavoriteGasStationsViewController") as? FavoriteGasStationsViewController
-        guard let favoriteGasStationsViewController = fvc else { return }
+        let gvc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "FavoriteGasStationsViewController") as? FavoriteGasStationsViewController
+        guard let favoriteGasStationsViewController = gvc else { return }
         let favoriteGasStationsBarItem = UITabBarItem(title: NSLocalizedString("GAS_STATIONS_SCREEN_TAB_BAR_TITLE", comment: ""), image: gasStationsIcon.withTintColor(gray), selectedImage: gasStationsIcon.withTintColor(green))
         favoriteGasStationsViewController.tabBarItem = favoriteGasStationsBarItem
         
         self.navigationController?.isNavigationBarHidden = true
-        self.viewControllers = [favoriteGasStationsViewController, homeViewController]
+        self.viewControllers = [favoriteGasStationsViewController, fuelsViewController]
     }
     
     override func viewWillAppear(_ animated: Bool) {

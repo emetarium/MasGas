@@ -1,5 +1,5 @@
 //
-//  HomeViewController.swift
+//  FuelsViewController.swift
 //  MasGas
 //
 //  Created by María García Torres on 14/2/22.
@@ -8,7 +8,7 @@
 import UIKit
 import CoreLocation
 
-protocol HomeProtocol {
+protocol FuelsProtocol {
     func updateFuels(fuels: [Carburante])
     func updateTown(town: Municipio)
     func navigateToLogin()
@@ -16,7 +16,7 @@ protocol HomeProtocol {
     func hideLoadingIndicator()
 }
 
-class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource
+class FuelsViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource
 {
     //MARK: - IBOutlets
     @IBOutlet var townLabel: UILabel!
@@ -26,7 +26,7 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet var fuelsTableView: UITableView!
     
     //MARK: - Variables
-    var presenter: HomePresenter<HomeViewController>?
+    var presenter: FuelsPresenter<FuelsViewController>?
     var fuels: [Carburante] = []
     var town: Municipio?
     
@@ -36,7 +36,7 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter = HomePresenter(self)
+        presenter = FuelsPresenter(self)
         fetchSelectedTown()
         fetchFuels()
         setUpUI()
@@ -133,7 +133,7 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
     }
 }
 
-extension HomeViewController: HomeProtocol {
+extension FuelsViewController: FuelsProtocol {
     func updateTown(town: Municipio) {
         self.town = town
     }

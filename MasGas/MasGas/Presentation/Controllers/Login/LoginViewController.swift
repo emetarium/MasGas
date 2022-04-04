@@ -10,7 +10,7 @@ import GoogleSignIn
 import Firebase
 
 protocol LoginProtocol {
-    func navigateToHome()
+    func navigateToTabBar()
     func navigateToTownSelection()
 }
 
@@ -75,7 +75,7 @@ class LoginViewController: UIViewController {
 }
 
 extension LoginViewController: LoginProtocol {
-    func navigateToHome() {
+    func navigateToTabBar() {
         let tabBarController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabBarController") as? TabBarViewController
         guard let tbc = tabBarController else { return }
         (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(tbc)
