@@ -65,7 +65,7 @@ class RemoteDataStore: APIDataStore {
     
     func saveFavorite(gasStation: Gasolinera) {
         guard var user = UserDefaults.standard.string(forKey: "User") else { return }
-        user = user.components(separatedBy: ("@"))[0]
+        user = user.components(separatedBy: ("."))[0]
         ref.child("\(user)/\(gasStation.id)/nombre").setValue(gasStation.nombre)
         ref.child("\(user)/\(gasStation.id)/longitud").setValue(String(format: "%f", gasStation.ubicacion.coordinate.longitude))
         ref.child("\(user)/\(gasStation.id)/latitud").setValue(String(format: "%f", gasStation.ubicacion.coordinate.latitude))
@@ -73,14 +73,14 @@ class RemoteDataStore: APIDataStore {
     
     func removeFavorite(gasStation: Gasolinera) {
         guard var user = UserDefaults.standard.string(forKey: "User") else { return }
-        user = user.components(separatedBy: ("@"))[0]
+        user = user.components(separatedBy: ("."))[0]
         ref.child("\(user)/\(gasStation.id)").removeValue()
     }
     
     func getFavoritesList(completion: @escaping ([Gasolinera]?) -> ()) {
         var favoritesList: [Gasolinera] = []
         guard var user = UserDefaults.standard.string(forKey: "User") else { return }
-        user = user.components(separatedBy: ("@"))[0]
+        user = user.components(separatedBy: ("."))[0]
         
         let postRef = self.ref.child(user) //self.ref points to my firebase
         postRef.observeSingleEvent(of: .value, with: { snapshot in

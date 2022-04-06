@@ -39,7 +39,6 @@ extension LocationLayer: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         self.location = locations[0] as CLLocation
         locationManager.stopUpdatingLocation()
-        print(self.location)
         handleLocation?(self.location)
     }
 

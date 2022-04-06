@@ -19,9 +19,7 @@ class FavoriteGasStationsPresenter<FavoriteGasStationsProtocol> {
     }
     
     func setUpMap() {
-        self.view.showLoadingIndicator()
         self.getLocationUseCase?.execute(completion: { location in
-            self.view.hideLoadingIndicator()
             if let location = location {
                 self.view.setUpMap(location: location)
             }

@@ -283,7 +283,7 @@
                             <constraint firstItem="vpq-wl-Rzg" firstAttribute="top" secondItem="Oz8-4l-7Yw" secondAttribute="bottom" id="L4a-Nv-gNB"/>
                             <constraint firstItem="tkt-QJ-K7t" firstAttribute="top" secondItem="f3m-Po-FxV" secondAttribute="top" constant="24" id="Sz3-Lz-fJK"/>
                             <constraint firstItem="f3m-Po-FxV" firstAttribute="trailing" secondItem="1LJ-zW-HDZ" secondAttribute="trailing" constant="24" id="gAl-vR-zSw"/>
-                            <constraint firstItem="1LJ-zW-HDZ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="tkt-QJ-K7t" secondAttribute="trailing" constant="48" id="gFD-V4-fVL"/>
+                            <constraint firstItem="1LJ-zW-HDZ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="tkt-QJ-K7t" secondAttribute="trailing" constant="24" id="gFD-V4-fVL"/>
                             <constraint firstItem="1LJ-zW-HDZ" firstAttribute="top" secondItem="f3m-Po-FxV" secondAttribute="top" constant="24" id="hAu-Go-p6S"/>
                             <constraint firstItem="9vz-yH-Rzb" firstAttribute="top" secondItem="tkt-QJ-K7t" secondAttribute="top" constant="60" id="hZd-fd-UUd"/>
                             <constraint firstItem="Oz8-4l-7Yw" firstAttribute="top" secondItem="f3m-Po-FxV" secondAttribute="top" id="j9m-lO-Xnk"/>
@@ -521,21 +521,45 @@
                                 <rect key="frame" x="0.0" y="453" width="414" height="409"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="509-Fc-Q0t">
+                                <rect key="frame" x="0.0" y="453" width="414" height="409"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eml-T8-0Mq">
+                                        <rect key="frame" x="190.5" y="197" width="33" height="15"/>
+                                        <fontDescription key="fontDescription" name="MontserratRoman-Regular" family="Montserrat" pointSize="12"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="Eml-T8-0Mq" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="509-Fc-Q0t" secondAttribute="leading" constant="24" id="Q3W-R4-6Ob"/>
+                                    <constraint firstItem="Eml-T8-0Mq" firstAttribute="centerY" secondItem="509-Fc-Q0t" secondAttribute="centerY" id="dah-kZ-nwq"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Eml-T8-0Mq" secondAttribute="trailing" constant="24" id="sfd-At-ZIq"/>
+                                    <constraint firstItem="Eml-T8-0Mq" firstAttribute="centerX" secondItem="509-Fc-Q0t" secondAttribute="centerX" id="zDC-76-ST7"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="yit-xT-kTd"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="509-Fc-Q0t" firstAttribute="top" secondItem="Oqr-KQ-AYa" secondAttribute="top" id="3sE-yg-NgS"/>
                             <constraint firstItem="yit-xT-kTd" firstAttribute="bottom" secondItem="Oqr-KQ-AYa" secondAttribute="bottom" id="5dG-ud-VpO"/>
                             <constraint firstItem="3vw-dt-rWf" firstAttribute="height" secondItem="yit-xT-kTd" secondAttribute="height" multiplier="0.5" id="7yQ-ys-Os9"/>
                             <constraint firstItem="3vw-dt-rWf" firstAttribute="leading" secondItem="yit-xT-kTd" secondAttribute="leading" id="AJp-Sj-rXZ"/>
+                            <constraint firstItem="Oqr-KQ-AYa" firstAttribute="trailing" secondItem="509-Fc-Q0t" secondAttribute="trailing" id="Fcz-pl-Fe6"/>
                             <constraint firstItem="Oqr-KQ-AYa" firstAttribute="leading" secondItem="yit-xT-kTd" secondAttribute="leading" id="I6l-cx-uJM"/>
                             <constraint firstItem="Oqr-KQ-AYa" firstAttribute="top" secondItem="3vw-dt-rWf" secondAttribute="bottom" id="PVC-Wa-ro3"/>
+                            <constraint firstItem="509-Fc-Q0t" firstAttribute="leading" secondItem="Oqr-KQ-AYa" secondAttribute="leading" id="PzO-9U-vu4"/>
                             <constraint firstItem="3vw-dt-rWf" firstAttribute="top" secondItem="yit-xT-kTd" secondAttribute="top" id="ScU-Ws-eyU"/>
                             <constraint firstItem="yit-xT-kTd" firstAttribute="trailing" secondItem="3vw-dt-rWf" secondAttribute="trailing" id="Wpn-1j-PTG"/>
+                            <constraint firstItem="Oqr-KQ-AYa" firstAttribute="bottom" secondItem="509-Fc-Q0t" secondAttribute="bottom" id="dbg-ES-nGN"/>
                             <constraint firstItem="yit-xT-kTd" firstAttribute="trailing" secondItem="Oqr-KQ-AYa" secondAttribute="trailing" id="jjW-1r-FSV"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="emptyListLabel" destination="Eml-T8-0Mq" id="sAY-Nn-Mff"/>
+                        <outlet property="emptyListView" destination="509-Fc-Q0t" id="Kxm-R6-Fz8"/>
                         <outlet property="gasStationsTableView" destination="Oqr-KQ-AYa" id="Kmf-2g-BSs"/>
                         <outlet property="mapView" destination="3vw-dt-rWf" id="IHJ-wI-4Si"/>
                     </connections>

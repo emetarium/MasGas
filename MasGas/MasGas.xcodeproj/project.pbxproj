@@ -36,7 +36,7 @@
 		4C767EAB27D6882A0034CEBA /* GasStationLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C767EAA27D6882A0034CEBA /* GasStationLocationViewController.swift */; };
 		4C8313F027D14AC90014E956 /* BusquedaCarburante.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8313EF27D14AC90014E956 /* BusquedaCarburante.swift */; };
 		4C8313F227D14F5E0014E956 /* LocationLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8313F127D14F5E0014E956 /* LocationLayer.swift */; };
-		4C8394D427BADB45002C873F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8394D327BADB45002C873F /* HomeViewController.swift */; };
+		4C8394D427BADB45002C873F /* FuelsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8394D327BADB45002C873F /* FuelsViewController.swift */; };
 		4C8394D627BAE0A0002C873F /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8394D527BAE0A0002C873F /* Colors.swift */; };
 		4C8394D827BAE47B002C873F /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8394D727BAE47B002C873F /* String.swift */; };
 		4C8394DE27BAE8BB002C873F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4C8394E027BAE8BB002C873F /* Localizable.strings */; };
@@ -73,7 +73,7 @@
 		4CBD01FC27BABE4D00C36FE2 /* Municipio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBD01FB27BABE4D00C36FE2 /* Municipio.swift */; };
 		4CC77E6227A309CB007589F4 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC77E6127A309CB007589F4 /* UIViewController.swift */; };
 		4CC77E6827A30ED8007589F4 /* AuthenticationLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC77E6727A30ED8007589F4 /* AuthenticationLayer.swift */; };
-		4CD2472E27C119B400E086A4 /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD2472D27C119B400E086A4 /* HomePresenter.swift */; };
+		4CD2472E27C119B400E086A4 /* FuelsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD2472D27C119B400E086A4 /* FuelsPresenter.swift */; };
 		4CD2473027C1232100E086A4 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD2472F27C1232100E086A4 /* Config.swift */; };
 		4CF016CB27A6C28600A0451E /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF016CA27A6C28600A0451E /* UITextField.swift */; };
 		4CF016CD27A6C4CA00A0451E /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF016CC27A6C4CA00A0451E /* SignUpViewController.swift */; };
@@ -130,7 +130,7 @@
 		4C767EAA27D6882A0034CEBA /* GasStationLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GasStationLocationViewController.swift; sourceTree = "<group>"; };
 		4C8313EF27D14AC90014E956 /* BusquedaCarburante.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusquedaCarburante.swift; sourceTree = "<group>"; };
 		4C8313F127D14F5E0014E956 /* LocationLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationLayer.swift; sourceTree = "<group>"; };
-		4C8394D327BADB45002C873F /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		4C8394D327BADB45002C873F /* FuelsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuelsViewController.swift; sourceTree = "<group>"; };
 		4C8394D527BAE0A0002C873F /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		4C8394D727BAE47B002C873F /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		4C8394DF27BAE8BB002C873F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -174,7 +174,7 @@
 		4CBD01FB27BABE4D00C36FE2 /* Municipio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Municipio.swift; sourceTree = "<group>"; };
 		4CC77E6127A309CB007589F4 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		4CC77E6727A30ED8007589F4 /* AuthenticationLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationLayer.swift; sourceTree = "<group>"; };
-		4CD2472D27C119B400E086A4 /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
+		4CD2472D27C119B400E086A4 /* FuelsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuelsPresenter.swift; sourceTree = "<group>"; };
 		4CD2472F27C1232100E086A4 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		4CF016CA27A6C28600A0451E /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
 		4CF016CC27A6C4CA00A0451E /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -265,7 +265,7 @@
 			children = (
 				4C17B2B927BC305B00B577E7 /* SignUpPresenter.swift */,
 				4C17B2BB27BC30AB00B577E7 /* LoginPresenter.swift */,
-				4CD2472D27C119B400E086A4 /* HomePresenter.swift */,
+				4CD2472D27C119B400E086A4 /* FuelsPresenter.swift */,
 				4C46312D27C4F8F800475AE0 /* TownSelectionPresenter.swift */,
 				4CAE5D9827CF68E5001E560A /* SearchFuelPresenter.swift */,
 				4C9CE5BE27E10D1500B174CA /* FavoriteGasStationsPresenter.swift */,
@@ -363,7 +363,7 @@
 				4C767EA927D687D20034CEBA /* GasStationLocation */,
 				4C3543A227CE3E300098F408 /* QueryFuelCell */,
 				4C96040227BE7A89002A59CA /* FuelCell */,
-				4C8394D327BADB45002C873F /* HomeViewController.swift */,
+				4C8394D327BADB45002C873F /* FuelsViewController.swift */,
 				4C46313627C50D5200475AE0 /* SearchFuelViewController.swift */,
 				4C3543A727CE46D90098F408 /* QueryOptionsTableViewController.swift */,
 			);
@@ -830,7 +830,7 @@
 				4C9DD04227BABF7500B65A25 /* RemoteDataStore.swift in Sources */,
 				4C3662FF27BACB19002A9B10 /* ListaEESSPrecio.swift in Sources */,
 				4CBD01FC27BABE4D00C36FE2 /* Municipio.swift in Sources */,
-				4C8394D427BADB45002C873F /* HomeViewController.swift in Sources */,
+				4C8394D427BADB45002C873F /* FuelsViewController.swift in Sources */,
 				4CA334C627ED01AE004DE029 /* EmailSignUpUseCase.swift in Sources */,
 				4C3543A527CE3E4B0098F408 /* QueryFuelTableViewCell.swift in Sources */,
 				4C46312E27C4F8F800475AE0 /* TownSelectionPresenter.swift in Sources */,
@@ -867,7 +867,7 @@
 				4C5A7ED027D76C290096FB55 /* GasStationTableViewCell.swift in Sources */,
 				4CA334CA27ED0567004DE029 /* GoogleLoginUseCase.swift in Sources */,
 				4C46313727C50D5200475AE0 /* SearchFuelViewController.swift in Sources */,
-				4CD2472E27C119B400E086A4 /* HomePresenter.swift in Sources */,
+				4CD2472E27C119B400E086A4 /* FuelsPresenter.swift in Sources */,
 				4C9DD04427BAC55D00B65A25 /* Constants.swift in Sources */,
 				4CA334CC27ED0671004DE029 /* GetLocationUseCase.swift in Sources */,
 				4C46312827C4F62F00475AE0 /* TownSelectionViewController.swift in Sources */,

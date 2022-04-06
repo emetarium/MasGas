@@ -26,6 +26,6 @@ class BaseViewController: UIViewController {
     }
     
     func hideLoading() {
-        self.activityIndicator.stopAnimating()
+        activityIndicator.stopAnimating()
     }
 }

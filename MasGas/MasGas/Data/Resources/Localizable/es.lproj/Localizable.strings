@@ -55,6 +55,7 @@
 
 /* FAVORITES SCREEN */
 "FAVORITE_GAS_STATIONS_TITLE" = "Gasolineras favoritas";
+"EMPTY_LIST_MESSAGE" = "Todavía no has guardado ninguna gasolinera favorita";
 
 /* LOG OUT */
 "LOG_OUT_ALERT_TITLE" = "Cerrar sesión";

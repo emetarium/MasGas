@@ -164,13 +164,6 @@ class SearchFuelViewController: BaseViewController, UITableViewDelegate, UITable
         presenter?.isFavorite(gasStation: fuelList[indexPath.row], completion: { result in
             let gasolinera = Gasolinera(nombre: fuelList[indexPath.row].nombre, ubicacion: fuelList[indexPath.row].coordenadas, favorita: result, id: fuelList[indexPath.row].id)
             vc.gasStation = gasolinera
-            
-//            LocationLayer.shared.getCurrentLocation { location in
-//                guard let location = location else {
-//                    return
-//                }
-                vc.userLocation = CLLocation(latitude: 37.876691, longitude: -4.791934)
-//            }
             self.navigationController?.pushViewController(vc, animated: true)
         })
     }

@@ -20,6 +20,8 @@ class FavoriteGasStationsViewController: BaseViewController, UITableViewDelegate
     //MARK: - IBOutlets
     @IBOutlet var mapView: MKMapView!
     @IBOutlet var gasStationsTableView: UITableView!
+    @IBOutlet var emptyListView: UIView!
+    @IBOutlet var emptyListLabel: UILabel!
     
     //MARK: - Variables
     var userLocation: CLLocation?
@@ -41,6 +43,7 @@ class FavoriteGasStationsViewController: BaseViewController, UITableViewDelegate
     //MARK: - Functions
     func setUpUI() {
         self.view.backgroundColor = Colors.white
+        self.emptyListView.backgroundColor = Colors.clear
         mapView.pointOfInterestFilter = .some(MKPointOfInterestFilter(including: [MKPointOfInterestCategory.gasStation]))
         setUpLocation()
         populateNearByPlaces()
@@ -140,7 +143,13 @@ extension FavoriteGasStationsViewController: FavoriteGasStationsProtocol {
     func updateFavoritesList(favoriteGasStations: [Gasolinera]) {
         self.favoriteGasStations = favoriteGasStations
         DispatchQueue.main.async {
-            self.gasStationsTableView.reloadData()
+            if favoriteGasStations.isEmpty {
+                self.emptyListView.isHidden = false
+                self.emptyListLabel.text = NSLocalizedString("EMPTY_LIST_MESSAGE", comment: "")
+            } else {
+                self.emptyListView.isHidden = true
+                self.gasStationsTableView.reloadData()
+            }
         }
     }
 }
