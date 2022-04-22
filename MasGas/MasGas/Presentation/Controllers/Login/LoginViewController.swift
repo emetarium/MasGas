@@ -14,7 +14,7 @@ protocol LoginProtocol {
     func navigateToTownSelection()
 }
 
-class LoginViewController: UIViewController {
+class LoginViewController: BaseViewController {
 
     //MARK: - IBOutlets
     @IBOutlet weak var emailTextField: UITextField!
@@ -31,6 +31,7 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         presenter = LoginPresenter(self)
         setUpUI()
+        setGestureHideKeyboard()
         // Do any additional setup after loading the view.
     }
     
@@ -53,6 +54,11 @@ class LoginViewController: UIViewController {
         
         signUpButton.setTitle(NSLocalizedString("SIGN_UP_BUTTON", comment: ""), for: .normal)
         signUpButton.tintColor = Colors.green
+    }
+    
+    func setGestureHideKeyboard() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.hideKeyboard))
+        self.view.addGestureRecognizer(tap)
     }
 
     //MARK: - IBActions

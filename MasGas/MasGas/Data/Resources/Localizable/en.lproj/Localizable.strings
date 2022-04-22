@@ -5,3 +5,58 @@
   Created by María García Torres on 14/2/22.
   
 */
+
+/* Alerts */
+"ACCEPT_ACTION" = "Accept";
+"CANCEL_ACTION" = "Cancel";
+
+/* Login */
+"LOGIN_BUTTON" = "Login";
+"GOOGLE_LOGIN_BUTTON" = "Login with Google";
+"SIGN_UP_LABEL" = "Don't have an account?";
+"SIGN_UP_BUTTON" = "Sign up";
+
+/* Sign Up */
+"SIGN_UP_TITLE" = "Sign up";
+"SIGN_UP_SUBTITLE" = "Create an account to continue";
+"SIGN_UP_EMAIL_LABEL" = "E-mail";
+"SIGN_UP_PASSWORD_LABEL" = "Password";
+
+/* Authentication Errors */
+"AUTHENTICATION_ERROR_TITLE" = "Authentication failed";
+"SIGN_UP_ERROR_TITLE" = "Sign up failed";
+"INVALID_PASSWORD_ERROR" = "Password must have at least six characters.";
+"INVALID_EMAIL_ERROR" = "Incorrect e-mail.";
+"WRONG_PASSWORD_ERROR" = "Incorrect password.";
+"USER_NOT_FOUND_ERROR" = "User doesn't exist.";
+"USED_EMAIL_ERROR" = "Email is already in use by an existing user.";
+"UNKNOWN_ERROR" = "An unknown error has occurred.";
+
+/* Tab Bar */
+"FUEL_SCREEN_TAB_BAR_TITLE" = "Fuels";
+"GAS_STATIONS_SCREEN_TAB_BAR_TITLE" = "Gas Stations";
+
+/* FUEL SCREEN */
+"FUEL_SELECTION_LABEL" = "Select a fuel";
+"FAVORITE_FUELS_HEADING" = "Favorites";
+
+/* SEARCH FUEL SCREEN*/
+"QUERY_FUEL_TITLE" = "Find your fuel";
+"SUGGESTED_GAS_STATIONS_TITLE" = "Suggested gas gtations";
+"QUERY_BY_NEARBY" = "Closest gas station";
+"QUERY_BY_CHEAPEST" = "Most competitive price";
+"QUERY_BY_CHEAPEST_NEARBY" = "Closest most competitive price";
+"NO_FUEL_IN_TOWN" = "There are no gas stations with the selected fuel.";
+
+/* MAP SCREEN */
+"NO_ROUTE_ERROR_TITLE" = "Route not available";
+"NO_ROUTE_ERROR_MESSAGE" = "There are no routes available between these locations";
+"NO_LOCATION_ERROR_MESSAGE" = "Your location couldn't be found";
+
+/* FAVORITES SCREEN */
+"FAVORITE_GAS_STATIONS_TITLE" = "Favorite gas stations";
+"EMPTY_LIST_MESSAGE" = "You haven't saved any favorite gas stations yet";
+
+/* LOG OUT */
+"LOG_OUT_ALERT_TITLE" = "Log out";
+"LOG_OUT_ALERT_MESSAGE" = "Are you sure you want to log out?";

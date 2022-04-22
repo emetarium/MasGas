@@ -21,10 +21,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             
         // if user is logged in before
         if let loggedUsername = UserDefaults.standard.string(forKey: "User") {
-            let tabBarController = storyboard.instantiateViewController(identifier: "TabBarController") as! TabBarViewController
-            let nav = UINavigationController(rootViewController: tabBarController)
-            window?.rootViewController = nav
-            window?.makeKeyAndVisible()
+            if let town = UserDefaults.standard.object(forKey: "Town") as? Data {
+                let tabBarController = storyboard.instantiateViewController(identifier: "TabBarController") as! TabBarViewController
+                let nav = UINavigationController(rootViewController: tabBarController)
+                window?.rootViewController = nav
+                window?.makeKeyAndVisible()
+            }
+            else {
+                let townSelectionVC = storyboard.instantiateViewController(withIdentifier: "TownSelectionViewController") as! TownSelectionViewController
+                let nav = UINavigationController(rootViewController: townSelectionVC)
+                window?.rootViewController = nav
+            }
         } else {
             let loginViewController = storyboard.instantiateViewController(identifier: "LoginViewController") as! LoginViewController
             let nav = UINavigationController(rootViewController: loginViewController)

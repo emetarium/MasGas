@@ -20,7 +20,6 @@ class LocationLayer: NSObject {
     }
 
     func startGettingLocation() {
-        //handleLocation?(CLLocation(latitude: 37.876691, longitude: -4.791934))
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
         if CLLocationManager.locationServicesEnabled() {

@@ -143,12 +143,12 @@ extension FavoriteGasStationsViewController: FavoriteGasStationsProtocol {
     func updateFavoritesList(favoriteGasStations: [Gasolinera]) {
         self.favoriteGasStations = favoriteGasStations
         DispatchQueue.main.async {
+            self.gasStationsTableView.reloadData()
             if favoriteGasStations.isEmpty {
                 self.emptyListView.isHidden = false
                 self.emptyListLabel.text = NSLocalizedString("EMPTY_LIST_MESSAGE", comment: "")
             } else {
                 self.emptyListView.isHidden = true
-                self.gasStationsTableView.reloadData()
             }
         }
     }

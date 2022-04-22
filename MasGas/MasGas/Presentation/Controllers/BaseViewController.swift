@@ -28,4 +28,8 @@ class BaseViewController: UIViewController {
     func hideLoading() {
         activityIndicator.stopAnimating()
     }
+    
+    @objc func hideKeyboard() {
+        self.view.endEditing(true)
+    }
 }

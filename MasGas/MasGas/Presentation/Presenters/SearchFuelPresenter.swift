@@ -27,14 +27,15 @@ class SearchFuelPresenter<SearchFuelProtocol> {
         self.view.showLoadingIndicator()
         searchFuelUseCase?.execute(fuelIdentifier: fuel.idProducto, completion: { priceList in
             self.view.hideLoadingIndicator()
-            guard let priceList = priceList else { return }
-            self.getLocationUseCase?.execute(completion: { location in
-                if let location = location {
-                    self.calculateDistance(userLocation: location, gasStationInformation: priceList) { fuelList in
-                        self.sortFuels(searchMode: .queryByCheapestNearby, fuelList: fuelList)
+            if let priceList = priceList {
+                self.getLocationUseCase?.execute(completion: { location in
+                    if let location = location {
+                        self.calculateDistance(userLocation: location, gasStationInformation: priceList) { fuelList in
+                            self.sortFuels(searchMode: .queryByCheapestNearby, fuelList: fuelList)
+                        }
                     }
-                }
-            })
+                })
+            }
         })
     }
     
@@ -46,7 +47,7 @@ class SearchFuelPresenter<SearchFuelProtocol> {
             case .queryByCheapest:
                 orderedList.sort { $0.precioProducto < $1.precioProducto }
             case .queryByCheapestNearby:
-                orderedList.sort { $0.precioProducto < $1.precioProducto &&  $0.distancia < $1.distancia }
+                orderedList.sort { $0.precioProducto < $1.precioProducto && $0.distancia < $1.distancia }
         }
         self.view.updateFuelList(fuelList: orderedList)
     }
@@ -57,7 +58,6 @@ class SearchFuelPresenter<SearchFuelProtocol> {
             let latitud = (gasStation.latitud.replacingOccurrences(of: ",", with: ".") as NSString).doubleValue
             let longitud = (gasStation.longitud.replacingOccurrences(of: ",", with: ".") as NSString).doubleValue
             let gasStationLocation = CLLocation(latitude: latitud, longitude: longitud)
-            
             
             self.calculateDistanceUseCase?.execute(userLocation: userLocation, gasStation: gasStationLocation, completion: { distance in
                 let fuelInformation = BusquedaCarburante(nombre: gasStation.rotulo, id: gasStation.idEESS, precioProducto: gasStation.precioProducto, horario: gasStation.horario, distancia: distance, coordenadas: gasStationLocation)

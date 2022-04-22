@@ -11,7 +11,7 @@ protocol SignUpProtocol {
     func navigateToLogin()
 }
 
-class SignUpViewController: UIViewController {
+class SignUpViewController: BaseViewController {
 
     //MARK: - IBOutlets
     @IBOutlet weak var signUpTitleLabel: UILabel!
@@ -41,6 +41,7 @@ class SignUpViewController: UIViewController {
         super.viewDidLoad()
         presenter = SignUpPresenter(self)
         setUpUI()
+        setGestureHideKeyboard()
         // Do any additional setup after loading the view.
     }
     
@@ -63,6 +64,11 @@ class SignUpViewController: UIViewController {
         
         signUpButton.setTitle(NSLocalizedString("SIGN_UP_BUTTON", comment: ""), for: .normal)
         signUpButton.tintColor = Colors.green
+    }
+    
+    func setGestureHideKeyboard() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.hideKeyboard))
+        self.view.addGestureRecognizer(tap)
     }
     
     // MARK: - IBActions
