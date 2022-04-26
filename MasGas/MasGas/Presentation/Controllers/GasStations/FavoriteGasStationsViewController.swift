@@ -11,6 +11,7 @@ import MapKit
 protocol FavoriteGasStationsProtocol {
     func updateFavoritesList(favoriteGasStations: [Gasolinera])
     func setUpMap(location: CLLocation)
+    func showNoConnectionAlert()
     func showLoadingIndicator()
     func hideLoadingIndicator()
 }
@@ -37,6 +38,7 @@ class FavoriteGasStationsViewController: BaseViewController, UITableViewDelegate
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        checkInternetConnection()
         getFavoriteGasStations()
     }
     
@@ -44,11 +46,14 @@ class FavoriteGasStationsViewController: BaseViewController, UITableViewDelegate
     func setUpUI() {
         self.view.backgroundColor = Colors.white
         self.emptyListView.backgroundColor = Colors.clear
-        mapView.pointOfInterestFilter = .some(MKPointOfInterestFilter(including: [MKPointOfInterestCategory.gasStation]))
+        self.emptyListLabel.text = NSLocalizedString("EMPTY_LIST_MESSAGE", comment: "")
         setUpLocation()
-        populateNearByPlaces()
         registerCell()
         setUpTableView()
+    }
+    
+    func checkInternetConnection() {
+        presenter?.checkInternetConnection()
     }
     
     func getFavoriteGasStations() {
@@ -69,30 +74,6 @@ class FavoriteGasStationsViewController: BaseViewController, UITableViewDelegate
         self.gasStationsTableView.dataSource = self
         self.gasStationsTableView.separatorStyle = .none
         self.gasStationsTableView.backgroundColor = Colors.lightGray
-    }
-    
-    func populateNearByPlaces() {
-        let request = MKLocalSearch.Request()
-        request.naturalLanguageQuery = "Gas Stations"
-        request.region = mapView.region
-
-        let search = MKLocalSearch(request: request)
-
-        search.start { response, error in
-            if error != nil {
-                print("Error occured in search: \(error!.localizedDescription)")
-            } else if response!.mapItems.count == 0 {
-                print("No matches found")
-            } else {
-                print("Matches found")
-                for item in response!.mapItems {
-                    let annotation = MKPointAnnotation()
-                    annotation.coordinate = item.placemark.coordinate
-                    annotation.title = item.name
-                    self.mapView.addAnnotation(annotation)
-                }
-            }
-        }
     }
 
     //MARK: - Table View
@@ -135,9 +116,17 @@ extension FavoriteGasStationsViewController: FavoriteGasStationsProtocol {
         }
     }
     
+    func showNoConnectionAlert() {
+        let acceptAction = UIAlertAction(title: NSLocalizedString("ACCEPT_ACTION", comment: ""), style: .default) { action in
+            UIApplication.shared.perform(#selector(NSXPCConnection.suspend))
+        }
+        self.showAlert(title: NSLocalizedString("NO_CONNECTION_ERROR_TITLE", comment: ""), message: NSLocalizedString("NO_CONNECTION_ERROR_MESSAGE", comment: ""), alternativeAction: nil, acceptAction: acceptAction)
+    }
+    
     func setUpMap(location: CLLocation) {
         self.userLocation = location
         self.mapView.centerToLocation(location)
+        self.mapView.showsUserLocation = true
     }
     
     func updateFavoritesList(favoriteGasStations: [Gasolinera]) {
@@ -149,6 +138,18 @@ extension FavoriteGasStationsViewController: FavoriteGasStationsProtocol {
                 self.emptyListLabel.text = NSLocalizedString("EMPTY_LIST_MESSAGE", comment: "")
             } else {
                 self.emptyListView.isHidden = true
+                var favoriteGasStationsAnnotations: [MKPointAnnotation] = []
+                
+                favoriteGasStations.forEach { gasStation in
+                    let gasStationPlacemark = MKPlacemark(coordinate: gasStation.ubicacion.coordinate, addressDictionary: nil)
+                    let gasStationAnnotation = MKPointAnnotation()
+                    if let location = gasStationPlacemark.location {
+                        gasStationAnnotation.coordinate = location.coordinate
+                    }
+                    favoriteGasStationsAnnotations.append(gasStationAnnotation)
+                }
+
+                self.mapView.showAnnotations(favoriteGasStationsAnnotations, animated: true)
             }
         }
     }

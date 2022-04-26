@@ -39,6 +39,18 @@
 /* FUEL SCREEN */
 "FUEL_SELECTION_LABEL" = "Selecciona un carburante";
 "FAVORITE_FUELS_HEADING" = "Favoritos";
+"G95E5" = "Gasolina 95 E5";
+"G95E10" = "Gasolina 95 E10";
+"G95E5+" = "Gasolina 95 E5 Premium";
+"G98E5" = "Gasolina 98 E5";
+"G98E10" = "Gasolina 98 E10";
+"GOA" = "Gasóleo A habitual";
+"GOA+" = "Gasóleo Premium";
+"GOB" = "Gasóleo B";
+"BIO" = "Biodiésel";
+"GLP" = "Gases licuados del petróleo";
+"GNC" = "Gas natural comprimido";
+"GNL" = "Gas natural licuado";
 
 /* SEARCH FUEL SCREEN*/
 "QUERY_FUEL_TITLE" = "Busca tu carburante";
@@ -47,15 +59,19 @@
 "QUERY_BY_CHEAPEST" = "Precio más competitivo";
 "QUERY_BY_CHEAPEST_NEARBY" = "Precio cercano más competitivo";
 "NO_FUEL_IN_TOWN" = "No hay gasolineras con el carburante seleccionado.";
+"SCHEDULE_LABEL" = "Horario";
 
 /* MAP SCREEN */
 "NO_ROUTE_ERROR_TITLE" = "Ruta no disponible";
 "NO_ROUTE_ERROR_MESSAGE" = "No hay rutas disponibles entre estas ubicaciones";
 "NO_LOCATION_ERROR_MESSAGE" = "No se ha podido encontrar su ubicación";
+"NO_LOCATION_PERMISSION_MESSAGE" = "Ubicación no habilitada";
 
 /* FAVORITES SCREEN */
 "FAVORITE_GAS_STATIONS_TITLE" = "Gasolineras favoritas";
 "EMPTY_LIST_MESSAGE" = "Todavía no has guardado ninguna gasolinera favorita";
+"NO_CONNECTION_ERROR_TITLE" = "Sin conexión";
+"NO_CONNECTION_ERROR_MESSAGE" = "No tiene conexión a Internet. Por favor, inténtelo más tarde.";
 
 /* LOG OUT */
 "LOG_OUT_ALERT_TITLE" = "Cerrar sesión";

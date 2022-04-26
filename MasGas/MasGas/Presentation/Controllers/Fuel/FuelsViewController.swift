@@ -12,6 +12,7 @@ protocol FuelsProtocol {
     func updateFuels(fuels: [Carburante])
     func updateTown(town: Municipio)
     func navigateToLogin()
+    func showNoConnectionAlert()
     func showLoadingIndicator()
     func hideLoadingIndicator()
 }
@@ -41,6 +42,10 @@ class FuelsViewController: BaseViewController, UITableViewDelegate, UITableViewD
         fetchFuels()
         setUpUI()
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        presenter?.checkInternetConnection()
     }
     
     //MARK: - Functions
@@ -111,7 +116,7 @@ class FuelsViewController: BaseViewController, UITableViewDelegate, UITableViewD
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = fuelsTableView.dequeueReusableCell(withIdentifier: "fuelTableViewCell", for: indexPath) as! FuelTableViewCell
-        cell.setUpUI(fuelName: fuels[indexPath.row].nombreProducto, fuelAbb: fuels[indexPath.row].nombreProductoAbreviatura)
+        cell.setUpUI(fuelName: NSLocalizedString(fuels[indexPath.row].nombreProductoAbreviatura, comment: ""), fuelAbb: fuels[indexPath.row].nombreProductoAbreviatura)
         return cell
     }
     
@@ -149,6 +154,13 @@ extension FuelsViewController: FuelsProtocol {
         let loginViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController
         guard let vc = loginViewController else { return }
         (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(vc)
+    }
+    
+    func showNoConnectionAlert() {
+        let acceptAction = UIAlertAction(title: NSLocalizedString("ACCEPT_ACTION", comment: ""), style: .default) { action in
+            UIApplication.shared.perform(#selector(NSXPCConnection.suspend))
+        }
+        self.showAlert(title: NSLocalizedString("NO_CONNECTION_ERROR_TITLE", comment: ""), message: NSLocalizedString("NO_CONNECTION_ERROR_MESSAGE", comment: ""), alternativeAction: nil, acceptAction: acceptAction)
     }
     
     func showLoadingIndicator() {

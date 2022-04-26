@@ -8,7 +8,7 @@
 import Foundation
 import CoreLocation
 
-class SearchFuelPresenter<SearchFuelProtocol> {
+class SearchFuelPresenter<SearchFuelProtocol>: BasePresenter {
     let view: SearchFuelViewController
     let searchFuelUseCase: SearchFuelUseCase?
     let isFavoriteUseCase: SearchFavoriteUseCase?
@@ -47,7 +47,7 @@ class SearchFuelPresenter<SearchFuelProtocol> {
             case .queryByCheapest:
                 orderedList.sort { $0.precioProducto < $1.precioProducto }
             case .queryByCheapestNearby:
-                orderedList.sort { $0.precioProducto < $1.precioProducto && $0.distancia < $1.distancia }
+            orderedList.sort { $0.precioProducto == $1.precioProducto ? $0.distancia < $1.distancia : $0.precioProducto < $1.precioProducto }
         }
         self.view.updateFuelList(fuelList: orderedList)
     }
@@ -71,5 +71,11 @@ class SearchFuelPresenter<SearchFuelProtocol> {
         isFavoriteUseCase?.execute(gasStationID: gasStation.id, completion: { result in
             completion(result)
         })
+    }
+    
+    func checkInternetConnection() {
+        if !isInternetAvailable() {
+            self.view.showNoConnectionAlert()
+        }
     }
 }

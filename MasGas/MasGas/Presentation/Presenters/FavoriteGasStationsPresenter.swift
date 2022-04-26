@@ -7,7 +7,7 @@
 
 import Foundation
 
-class FavoriteGasStationsPresenter<FavoriteGasStationsProtocol> {
+class FavoriteGasStationsPresenter<FavoriteGasStationsProtocol>: BasePresenter {
     let view: FavoriteGasStationsViewController
     let favoriteGasStationsUseCase: GetFavoriteGasStationsUseCase?
     let getLocationUseCase: GetLocationUseCase?
@@ -34,5 +34,11 @@ class FavoriteGasStationsPresenter<FavoriteGasStationsProtocol> {
                 self.view.updateFavoritesList(favoriteGasStations: favoritesList)
             }
         })
+    }
+    
+    func checkInternetConnection() {
+        if !isInternetAvailable() {
+            self.view.showNoConnectionAlert()
+        }
     }
 }

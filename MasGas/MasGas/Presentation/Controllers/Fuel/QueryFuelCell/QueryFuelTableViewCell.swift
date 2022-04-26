@@ -13,6 +13,7 @@ class QueryFuelTableViewCell: UITableViewCell {
     @IBOutlet var fuelPrice: UILabel!
     @IBOutlet var fuelIcon: UIImageView!
     @IBOutlet var gasStationName: UILabel!
+    @IBOutlet var scheduleLabel: UILabel!
     @IBOutlet var gasStationSchedule: UILabel!
     @IBOutlet var backgroundCellView: UIView!
     @IBOutlet var distanceLabel: UILabel!
@@ -32,8 +33,9 @@ class QueryFuelTableViewCell: UITableViewCell {
         self.contentView.backgroundColor = Colors.lightGray
         self.backgroundCellView.layer.cornerRadius = 10
         self.fuelIcon.tintColor = Colors.black
-        self.fuelPrice.text = price + "/L"
+        self.fuelPrice.text = price + "€/L"
         self.gasStationName.text = gasStationName
+        self.scheduleLabel.text = "\( NSLocalizedString("SCHEDULE_LABEL", comment: "")):"
         self.gasStationSchedule.text = gasStationSchedule
         self.distanceLabel.text = "\(String(format:"%.02f", distanceToGasStation)) km"
     }

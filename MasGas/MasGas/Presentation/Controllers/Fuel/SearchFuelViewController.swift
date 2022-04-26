@@ -15,6 +15,7 @@ protocol SearchModeProtocol {
 
 protocol SearchFuelProtocol {
     func updateFuelList(fuelList: [BusquedaCarburante])
+    func showNoConnectionAlert()
     func showLoadingIndicator()
     func hideLoadingIndicator()
 }
@@ -47,6 +48,10 @@ class SearchFuelViewController: BaseViewController, UITableViewDelegate, UITable
         presenter = SearchFuelPresenter(self)
         setUpUI()
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        presenter?.checkInternetConnection()
     }
     
     //MARK: - Functions
@@ -199,5 +204,12 @@ extension SearchFuelViewController: SearchFuelProtocol {
         DispatchQueue.main.async {
             self.fuelPricesTableView.reloadData()
         }
+    }
+    
+    func showNoConnectionAlert() {
+        let acceptAction = UIAlertAction(title: NSLocalizedString("ACCEPT_ACTION", comment: ""), style: .default) { action in
+            UIApplication.shared.perform(#selector(NSXPCConnection.suspend))
+        }
+        self.showAlert(title: NSLocalizedString("NO_CONNECTION_ERROR_TITLE", comment: ""), message: NSLocalizedString("NO_CONNECTION_ERROR_MESSAGE", comment: ""), alternativeAction: nil, acceptAction: acceptAction)
     }
 }

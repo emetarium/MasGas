@@ -32,6 +32,17 @@ class LocationLayer: NSObject {
         let distanceInKm = distanceInMeters/1000
         completion(distanceInKm)
     }
+    
+    func isLocationEnabled() -> Bool {
+        switch(CLLocationManager.authorizationStatus()) {
+            case .restricted, .denied:
+                return false
+            case .authorizedAlways, .authorizedWhenInUse:
+                return true
+            case .notDetermined:
+                return false
+        }
+    }
 }
 
 extension LocationLayer: CLLocationManagerDelegate {

@@ -39,23 +39,39 @@
 /* FUEL SCREEN */
 "FUEL_SELECTION_LABEL" = "Select a fuel";
 "FAVORITE_FUELS_HEADING" = "Favorites";
+"G95E5" = "Unleaded 95 E5";
+"G95E10" = "Unleaded 95 E10";
+"G95E5+" = "Premium unleaded 95 E5";
+"G98E5" = "Unleaded 98 E5";
+"G98E10" = "Unleaded 98 E10";
+"GOA" = "Regular Diesel";
+"GOA+" = "Premium Diesel";
+"GOB" = "Agricultural Diesel";
+"BIO" = "Biodiesel";
+"GLP" = "Liquid petroleum gas";
+"GNC" = "Compressed natural gas";
+"GNL" = "Liquid natural gas";
 
 /* SEARCH FUEL SCREEN*/
 "QUERY_FUEL_TITLE" = "Find your fuel";
-"SUGGESTED_GAS_STATIONS_TITLE" = "Suggested gas gtations";
+"SUGGESTED_GAS_STATIONS_TITLE" = "Suggested gas stations";
 "QUERY_BY_NEARBY" = "Closest gas station";
 "QUERY_BY_CHEAPEST" = "Most competitive price";
 "QUERY_BY_CHEAPEST_NEARBY" = "Closest most competitive price";
 "NO_FUEL_IN_TOWN" = "There are no gas stations with the selected fuel.";
+"SCHEDULE_LABEL" = "Schedule";
 
 /* MAP SCREEN */
 "NO_ROUTE_ERROR_TITLE" = "Route not available";
 "NO_ROUTE_ERROR_MESSAGE" = "There are no routes available between these locations";
 "NO_LOCATION_ERROR_MESSAGE" = "Your location couldn't be found";
+"NO_LOCATION_PERMISSION_MESSAGE" = "Location not enabled";
 
 /* FAVORITES SCREEN */
 "FAVORITE_GAS_STATIONS_TITLE" = "Favorite gas stations";
 "EMPTY_LIST_MESSAGE" = "You haven't saved any favorite gas stations yet";
+"NO_CONNECTION_ERROR_TITLE" = "No connection";
+"NO_CONNECTION_ERROR_MESSAGE" = "No Internet Connection. Please try again later.";
 
 /* LOG OUT */
 "LOG_OUT_ALERT_TITLE" = "Log out";

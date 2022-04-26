@@ -7,7 +7,7 @@
 
 import Foundation
 
-class FuelsPresenter<FuelSelectionProtocol> {
+class FuelsPresenter<FuelSelectionProtocol>: BasePresenter {
     let fetchFuelsUseCase: FetchFuelsUseCase?
     let fetchSelectedTownUseCase: FetchSelectedTownUseCase?
     let logoutUseCase: LogOutUseCase?
@@ -39,5 +39,11 @@ class FuelsPresenter<FuelSelectionProtocol> {
     func logout() {
         logoutUseCase?.execute()
         self.view.navigateToLogin()
+    }
+    
+    func checkInternetConnection() {
+        if !isInternetAvailable() {
+            self.view.showNoConnectionAlert()
+        }
     }
 }

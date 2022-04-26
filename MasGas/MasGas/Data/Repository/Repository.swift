@@ -37,6 +37,7 @@ protocol UserRepository {
 protocol LocationRepository {
     func getLocation(completion: @escaping (CLLocation?) -> ())
     func calculateDistanceBetweenLocations(userLocation: CLLocation, gasStationLocation: CLLocation, completion: @escaping (Double) -> ())
+    func isLocationEnabled() -> Bool
 }
 
 class Repository {
@@ -204,6 +205,10 @@ extension Repository: LocationRepository {
             }
             completion(distance)
         }
+    }
+    
+    func isLocationEnabled() -> Bool {
+        return LocationLayer.shared.isLocationEnabled()
     }
 }
 

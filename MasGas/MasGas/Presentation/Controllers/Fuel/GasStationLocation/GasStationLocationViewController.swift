@@ -10,6 +10,7 @@ import MapKit
 
 protocol UpdateLocationProtocol {
     func updateLocation(location: CLLocation)
+    func showNoConnectionAlert()
     func showLoadingIndicator()
     func hideLoadingIndicator()
 }
@@ -26,11 +27,16 @@ class GasStationLocationViewController: BaseViewController, MKMapViewDelegate {
     var userLocation: CLLocation?
     var presenter: GasStationLocationPresenter?
 
+    //MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter = GasStationLocationPresenter(self)
         setUpUI()
         setUpLocation()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        presenter?.checkInternetConnection()
     }
     
     //MARK: - Functions
@@ -159,6 +165,13 @@ extension GasStationLocationViewController: UpdateLocationProtocol {
         DispatchQueue.main.async {
             self.showRouteOnMap()
         }
+    }
+    
+    func showNoConnectionAlert() {
+        let acceptAction = UIAlertAction(title: NSLocalizedString("ACCEPT_ACTION", comment: ""), style: .default) { action in
+            UIApplication.shared.perform(#selector(NSXPCConnection.suspend))
+        }
+        self.showAlert(title: NSLocalizedString("NO_CONNECTION_ERROR_TITLE", comment: ""), message: NSLocalizedString("NO_CONNECTION_ERROR_MESSAGE", comment: ""), alternativeAction: nil, acceptAction: acceptAction)
     }
     
     func showLoadingIndicator() {

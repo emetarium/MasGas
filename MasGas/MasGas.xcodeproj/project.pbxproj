@@ -19,6 +19,7 @@
 		4C3543A827CE46D90098F408 /* QueryOptionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3543A727CE46D90098F408 /* QueryOptionsTableViewController.swift */; };
 		4C3662FF27BACB19002A9B10 /* ListaEESSPrecio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C3662FE27BACB19002A9B10 /* ListaEESSPrecio.swift */; };
 		4C36630127BACCD9002A9B10 /* Consulta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C36630027BACCD9002A9B10 /* Consulta.swift */; };
+		4C38D2DB28132BF10090FE98 /* IsLocationEnabledUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C38D2DA28132BF10090FE98 /* IsLocationEnabledUseCase.swift */; };
 		4C45348627A1D6C30026E02C /* Montserrat-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4C45348527A1D6C10026E02C /* Montserrat-VariableFont_wght.ttf */; };
 		4C45348927A1D81E0026E02C /* Comfortaa-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4C45348827A1D7620026E02C /* Comfortaa-VariableFont_wght.ttf */; };
 		4C45348A27A1D8200026E02C /* Aleo-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4C45348727A1D6DC0026E02C /* Aleo-Regular.ttf */; };
@@ -40,6 +41,7 @@
 		4C8394D627BAE0A0002C873F /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8394D527BAE0A0002C873F /* Colors.swift */; };
 		4C8394D827BAE47B002C873F /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8394D727BAE47B002C873F /* String.swift */; };
 		4C8394DE27BAE8BB002C873F /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4C8394E027BAE8BB002C873F /* Localizable.strings */; };
+		4C92ACEA28185FDB0055F94F /* BasePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C92ACE928185FDB0055F94F /* BasePresenter.swift */; };
 		4C9471DA27A1B1D2001F49F9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9471D927A1B1D2001F49F9 /* AppDelegate.swift */; };
 		4C9471DC27A1B1D2001F49F9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9471DB27A1B1D2001F49F9 /* SceneDelegate.swift */; };
 		4C9471E127A1B1D2001F49F9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C9471DF27A1B1D2001F49F9 /* Main.storyboard */; };
@@ -114,6 +116,7 @@
 		4C3543A727CE46D90098F408 /* QueryOptionsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryOptionsTableViewController.swift; sourceTree = "<group>"; };
 		4C3662FE27BACB19002A9B10 /* ListaEESSPrecio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListaEESSPrecio.swift; sourceTree = "<group>"; };
 		4C36630027BACCD9002A9B10 /* Consulta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Consulta.swift; sourceTree = "<group>"; };
+		4C38D2DA28132BF10090FE98 /* IsLocationEnabledUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsLocationEnabledUseCase.swift; sourceTree = "<group>"; };
 		4C45348527A1D6C10026E02C /* Montserrat-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-VariableFont_wght.ttf"; sourceTree = "<group>"; };
 		4C45348727A1D6DC0026E02C /* Aleo-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Aleo-Regular.ttf"; sourceTree = "<group>"; };
 		4C45348827A1D7620026E02C /* Comfortaa-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Comfortaa-VariableFont_wght.ttf"; sourceTree = "<group>"; };
@@ -137,6 +140,7 @@
 		4C8394E127BAE8E3002C873F /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
 		4C8394E227BAE8E3002C873F /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		4C8394E327BAE8E3002C873F /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		4C92ACE928185FDB0055F94F /* BasePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasePresenter.swift; sourceTree = "<group>"; };
 		4C9471D627A1B1D2001F49F9 /* MasGas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MasGas.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C9471D927A1B1D2001F49F9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4C9471DB27A1B1D2001F49F9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -270,6 +274,7 @@
 				4CAE5D9827CF68E5001E560A /* SearchFuelPresenter.swift */,
 				4C9CE5BE27E10D1500B174CA /* FavoriteGasStationsPresenter.swift */,
 				4C9CE5C027E110CD00B174CA /* GasStationLocationPresenter.swift */,
+				4C92ACE928185FDB0055F94F /* BasePresenter.swift */,
 			);
 			path = Presenters;
 			sourceTree = "<group>";
@@ -528,6 +533,7 @@
 				4CA334CB27ED0671004DE029 /* GetLocationUseCase.swift */,
 				4CAF247727F0D52300FD3D4B /* CalculateDistanceBetweenLocationsUseCase.swift */,
 				4C11049327F4BC1200C36B69 /* FetchSelectedTownUseCase.swift */,
+				4C38D2DA28132BF10090FE98 /* IsLocationEnabledUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -821,6 +827,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4CC77E6827A30ED8007589F4 /* AuthenticationLayer.swift in Sources */,
+				4C92ACEA28185FDB0055F94F /* BasePresenter.swift in Sources */,
 				4CA334C827ED0523004DE029 /* LogOutUseCase.swift in Sources */,
 				4C17B2C127BC432D00B577E7 /* FavoriteGasStationsViewController.swift in Sources */,
 				4C17B2BA27BC305B00B577E7 /* SignUpPresenter.swift in Sources */,
@@ -862,6 +869,7 @@
 				4CAF247827F0D52300FD3D4B /* CalculateDistanceBetweenLocationsUseCase.swift in Sources */,
 				4C9CE5C127E110CE00B174CA /* GasStationLocationPresenter.swift in Sources */,
 				4C9E65CC27DFCF4D002DF59F /* SearchFavoriteUseCase.swift in Sources */,
+				4C38D2DB28132BF10090FE98 /* IsLocationEnabledUseCase.swift in Sources */,
 				4C8394D827BAE47B002C873F /* String.swift in Sources */,
 				4CA334C427ECFD9A004DE029 /* EmailLoginUseCase.swift in Sources */,
 				4C5A7ED027D76C290096FB55 /* GasStationTableViewCell.swift in Sources */,
