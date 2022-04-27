@@ -6,12 +6,14 @@
 //
 
 import Foundation
+import UIKit
 import CoreLocation
 
 class SearchFuelPresenter<SearchFuelProtocol>: BasePresenter {
     let view: SearchFuelViewController
     let searchFuelUseCase: SearchFuelUseCase?
     let isFavoriteUseCase: SearchFavoriteUseCase?
+    let isLocationEnabledUseCase: IsLocationEnabledUseCase?
     let getLocationUseCase: GetLocationUseCase?
     let calculateDistanceUseCase: CalculateDistanceBetweenLocationsUseCase?
     
@@ -19,24 +21,32 @@ class SearchFuelPresenter<SearchFuelProtocol>: BasePresenter {
         self.view = view
         self.searchFuelUseCase = SearchFuelUseCase()
         self.isFavoriteUseCase = SearchFavoriteUseCase()
+        self.isLocationEnabledUseCase = IsLocationEnabledUseCase()
         self.getLocationUseCase = GetLocationUseCase()
         self.calculateDistanceUseCase = CalculateDistanceBetweenLocationsUseCase()
     }
     
     func searchFuel(fuel: Carburante) {
         self.view.showLoadingIndicator()
-        searchFuelUseCase?.execute(fuelIdentifier: fuel.idProducto, completion: { priceList in
-            self.view.hideLoadingIndicator()
-            if let priceList = priceList {
-                self.getLocationUseCase?.execute(completion: { location in
-                    if let location = location {
-                        self.calculateDistance(userLocation: location, gasStationInformation: priceList) { fuelList in
-                            self.sortFuels(searchMode: .queryByCheapestNearby, fuelList: fuelList)
+        
+        guard let isLocationEnabled = isLocationEnabledUseCase?.execute() else { return }
+        if isLocationEnabled {
+            searchFuelUseCase?.execute(fuelIdentifier: fuel.idProducto, completion: { priceList in
+                self.view.hideLoadingIndicator()
+                if let priceList = priceList {
+                    self.getLocationUseCase?.execute(completion: { location in
+                        if let location = location {
+                            self.calculateDistance(userLocation: location, gasStationInformation: priceList) { fuelList in
+                                self.sortFuels(searchMode: .queryByCheapestNearby, fuelList: fuelList)
+                            }
                         }
-                    }
-                })
-            }
-        })
+                    })
+                }
+            })
+        } else {
+            self.view.hideLoadingIndicator()
+            self.view.showNoLocationPermissionAlert()
+        }
     }
     
     func sortFuels(searchMode: queryByFuelOptions, fuelList: [BusquedaCarburante]) {
@@ -47,7 +57,7 @@ class SearchFuelPresenter<SearchFuelProtocol>: BasePresenter {
             case .queryByCheapest:
                 orderedList.sort { $0.precioProducto < $1.precioProducto }
             case .queryByCheapestNearby:
-            orderedList.sort { $0.precioProducto == $1.precioProducto ? $0.distancia < $1.distancia : $0.precioProducto < $1.precioProducto }
+                orderedList.sort { $0.distancia == $1.distancia ? $0.precioProducto < $1.precioProducto : $0.distancia < $1.distancia }
         }
         self.view.updateFuelList(fuelList: orderedList)
     }

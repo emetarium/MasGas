@@ -81,6 +81,7 @@ class FuelsViewController: BaseViewController, UITableViewDelegate, UITableViewD
         self.setUpTapGesture()
         self.registerCell()
         self.setUpTableView()
+        presenter?.checkInternetConnection()
     }
     
     private func setUpTapGesture() {

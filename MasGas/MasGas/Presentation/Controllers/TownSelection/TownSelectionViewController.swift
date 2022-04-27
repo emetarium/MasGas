@@ -10,6 +10,7 @@ import UIKit
 protocol TownSelectionProtocol {
     func updateTowns(towns: [Municipio])
     func navigateToTabBar(selectedTown: Municipio)
+    func showNoConnectionAlert()
     func showLoadingIndicator()
     func hideLoadingIndicator()
 }
@@ -103,6 +104,13 @@ extension TownSelectionViewController: TownSelectionProtocol {
         let tabBarController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabBarController") as? TabBarViewController
         guard let tbc = tabBarController else { return }
         (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(tbc)
+    }
+    
+    func showNoConnectionAlert() {
+        let acceptAction = UIAlertAction(title: NSLocalizedString("ACCEPT_ACTION", comment: ""), style: .default) { action in
+            UIApplication.shared.perform(#selector(NSXPCConnection.suspend))
+        }
+        self.showAlert(title: NSLocalizedString("NO_CONNECTION_ERROR_TITLE", comment: ""), message: NSLocalizedString("NO_CONNECTION_ERROR_MESSAGE", comment: ""), alternativeAction: nil, acceptAction: acceptAction)
     }
     
     func showLoadingIndicator() {

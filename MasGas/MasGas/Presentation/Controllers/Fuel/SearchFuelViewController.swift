@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import CoreMedia
 import CoreLocation
 
 protocol SearchModeProtocol {
@@ -16,6 +15,7 @@ protocol SearchModeProtocol {
 protocol SearchFuelProtocol {
     func updateFuelList(fuelList: [BusquedaCarburante])
     func showNoConnectionAlert()
+    func showNoLocationPermissionAlert()
     func showLoadingIndicator()
     func hideLoadingIndicator()
 }
@@ -50,10 +50,6 @@ class SearchFuelViewController: BaseViewController, UITableViewDelegate, UITable
         // Do any additional setup after loading the view.
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        presenter?.checkInternetConnection()
-    }
-    
     //MARK: - Functions
     func setUpUI() {
         guard let fuel = fuel else {
@@ -85,6 +81,7 @@ class SearchFuelViewController: BaseViewController, UITableViewDelegate, UITable
         registerCell()
         setUpTableView()
         searchFuel(fuel: fuel)
+        presenter?.checkInternetConnection()
     }
     
     func searchFuel(fuel: Carburante) {
@@ -211,5 +208,10 @@ extension SearchFuelViewController: SearchFuelProtocol {
             UIApplication.shared.perform(#selector(NSXPCConnection.suspend))
         }
         self.showAlert(title: NSLocalizedString("NO_CONNECTION_ERROR_TITLE", comment: ""), message: NSLocalizedString("NO_CONNECTION_ERROR_MESSAGE", comment: ""), alternativeAction: nil, acceptAction: acceptAction)
+    }
+    
+    func showNoLocationPermissionAlert() {
+        let acceptAction = UIAlertAction(title: NSLocalizedString("ACCEPT_ACTION", comment: ""), style: .default)
+        self.showAlert(title: NSLocalizedString("NO_LOCATION_PERMISSION_MESSAGE", comment: ""), message: "", alternativeAction: nil, acceptAction: acceptAction)
     }
 }

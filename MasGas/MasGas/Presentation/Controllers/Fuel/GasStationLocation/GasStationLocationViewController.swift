@@ -35,10 +35,6 @@ class GasStationLocationViewController: BaseViewController, MKMapViewDelegate {
         setUpLocation()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        presenter?.checkInternetConnection()
-    }
-    
     //MARK: - Functions
     func setUpUI() {
         guard let gasStation = gasStation, let yellow = Colors.yellow else {
@@ -54,6 +50,7 @@ class GasStationLocationViewController: BaseViewController, MKMapViewDelegate {
         
         setUpMap()
         setUpTapGesture()
+        presenter?.checkInternetConnection()
     }
     
     func setUpTapGesture() {

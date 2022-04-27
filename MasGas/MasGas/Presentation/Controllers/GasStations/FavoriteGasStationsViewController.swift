@@ -38,7 +38,6 @@ class FavoriteGasStationsViewController: BaseViewController, UITableViewDelegate
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        checkInternetConnection()
         getFavoriteGasStations()
     }
     
@@ -50,9 +49,6 @@ class FavoriteGasStationsViewController: BaseViewController, UITableViewDelegate
         setUpLocation()
         registerCell()
         setUpTableView()
-    }
-    
-    func checkInternetConnection() {
         presenter?.checkInternetConnection()
     }
     
@@ -136,6 +132,7 @@ extension FavoriteGasStationsViewController: FavoriteGasStationsProtocol {
             if favoriteGasStations.isEmpty {
                 self.emptyListView.isHidden = false
                 self.emptyListLabel.text = NSLocalizedString("EMPTY_LIST_MESSAGE", comment: "")
+                self.mapView.showAnnotations([], animated: true)
             } else {
                 self.emptyListView.isHidden = true
                 var favoriteGasStationsAnnotations: [MKPointAnnotation] = []

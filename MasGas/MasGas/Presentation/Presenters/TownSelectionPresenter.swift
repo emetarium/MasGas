@@ -7,7 +7,7 @@
 
 import Foundation
 
-class TownSelectionPresenter<TownSelectionProtocol> {
+class TownSelectionPresenter<TownSelectionProtocol>: BasePresenter {
     let view: TownSelectionViewController
     let fetchTownsUseCase: FetchTownsUseCase?
     
@@ -33,5 +33,11 @@ class TownSelectionPresenter<TownSelectionProtocol> {
             UserDefaults.standard.set(data, forKey: "Town")
         } catch { }
         self.view.navigateToTabBar(selectedTown: town)
+    }
+    
+    func checkInternetConnection() {
+        if !isInternetAvailable() {
+            self.view.showNoConnectionAlert()
+        }
     }
 }
