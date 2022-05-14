@@ -57,8 +57,13 @@ class RemoteDataStore: APIDataStore {
                 let jsonDecoder = JSONDecoder()
             
                 let queryDecode = try! jsonDecoder.decode(Consulta.self, from: data)
-
-                completionHandler(queryDecode.listaPrecio)
+                var listaPrecios: [ListaEESSPrecio] = []
+                queryDecode.listaPrecio.enumerated().forEach { element in
+                    if element.element.tipoVenta == "P" {
+                        listaPrecios.append(element.element)
+                    }
+                }
+                completionHandler(listaPrecios)
         }
         task.resume()
     }

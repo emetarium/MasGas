@@ -4,8 +4,6 @@
 <dict>
 	<key>UIAppFonts</key>
 	<array>
-		<string>Comfortaa-VariableFont_wght.ttf</string>
-		<string>Aleo-Regular.ttf</string>
 		<string>Montserrat-VariableFont_wght.ttf</string>
 	</array>
 	<key>UIUserInterfaceStyle</key>
