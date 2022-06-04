@@ -13,7 +13,9 @@ class GasStationTableViewCell: UITableViewCell {
     @IBOutlet var favoriteIcon: UIImageView!
     @IBOutlet var gasStationIcon: UIImageView!
     @IBOutlet var gasStationName: UILabel!
-
+    @IBOutlet var gasStationAddressLabel: UILabel!
+    @IBOutlet var gasStationTownLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -25,10 +27,12 @@ class GasStationTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func setUpUI(gasStationName: String) {
+    func setUpUI(gasStationName: String, gasStationAddress: String, gasStationTown: String) {
         self.favoriteIcon.tintColor = Colors.yellow
         self.gasStationIcon.tintColor = Colors.black
         self.gasStationName.text = gasStationName
+        self.gasStationAddressLabel.text = gasStationAddress
+        self.gasStationTownLabel.text = gasStationTown
     }
     
 }

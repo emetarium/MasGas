@@ -58,8 +58,6 @@ class FuelsViewController: BaseViewController, UITableViewDelegate, UITableViewD
     }
     
     func setUpUI() {
-        self.tabBarController?.navigationItem.hidesBackButton = true
-        
         guard let town = self.town else {
             return
         }

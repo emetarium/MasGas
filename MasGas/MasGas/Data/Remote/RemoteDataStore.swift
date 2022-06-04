@@ -72,6 +72,8 @@ class RemoteDataStore: APIDataStore {
         guard var user = UserDefaults.standard.string(forKey: "User") else { return }
         user = user.components(separatedBy: ("."))[0]
         ref.child("\(user)/\(gasStation.id)/nombre").setValue(gasStation.nombre)
+        ref.child("\(user)/\(gasStation.id)/direccion").setValue(gasStation.direccion)
+        ref.child("\(user)/\(gasStation.id)/municipio").setValue(gasStation.municipio)
         ref.child("\(user)/\(gasStation.id)/longitud").setValue(String(format: "%f", gasStation.ubicacion.coordinate.longitude))
         ref.child("\(user)/\(gasStation.id)/latitud").setValue(String(format: "%f", gasStation.ubicacion.coordinate.latitude))
     }
@@ -92,9 +94,9 @@ class RemoteDataStore: APIDataStore {
             let allFavorites = snapshot.children.allObjects as! [DataSnapshot]
             for favorite in allFavorites {
                 let id = favorite.key
-                guard let name = favorite.childSnapshot(forPath: "nombre").value as? String, let longitude = favorite.childSnapshot(forPath: "longitud").value as? String, let latitude = favorite.childSnapshot(forPath: "latitud").value as? String else { return }
+                guard let name = favorite.childSnapshot(forPath: "nombre").value as? String, let address = favorite.childSnapshot(forPath: "direccion").value as? String, let town = favorite.childSnapshot(forPath: "municipio").value as? String, let longitude = favorite.childSnapshot(forPath: "longitud").value as? String, let latitude = favorite.childSnapshot(forPath: "latitud").value as? String else { return }
                 let location = CLLocation(latitude: (latitude as NSString).doubleValue, longitude: (longitude as NSString).doubleValue)
-                let gasStation = Gasolinera(nombre: name, ubicacion: location, favorita: true, id: id)
+                let gasStation = Gasolinera(nombre: name, ubicacion: location, direccion: address, municipio: town, favorita: true, id: id)
                 favoritesList.append(gasStation)
             }
             completion(favoritesList)

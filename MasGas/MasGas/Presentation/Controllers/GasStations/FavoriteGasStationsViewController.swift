@@ -87,7 +87,7 @@ class FavoriteGasStationsViewController: BaseViewController, UITableViewDelegate
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = gasStationsTableView.dequeueReusableCell(withIdentifier: "gasStationCell", for: indexPath) as! GasStationTableViewCell
-        cell.setUpUI(gasStationName: favoriteGasStations[indexPath.row].nombre)
+        cell.setUpUI(gasStationName: favoriteGasStations[indexPath.row].nombre, gasStationAddress: favoriteGasStations[indexPath.row].direccion, gasStationTown: favoriteGasStations[indexPath.row].municipio)
         return cell
     }
     

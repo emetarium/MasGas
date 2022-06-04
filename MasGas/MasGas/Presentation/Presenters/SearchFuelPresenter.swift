@@ -70,7 +70,7 @@ class SearchFuelPresenter<SearchFuelProtocol>: BasePresenter {
             let gasStationLocation = CLLocation(latitude: latitud, longitude: longitud)
             
             self.calculateDistanceUseCase?.execute(userLocation: userLocation, gasStation: gasStationLocation, completion: { distance in
-                let fuelInformation = BusquedaCarburante(nombre: gasStation.rotulo, id: gasStation.idEESS, precioProducto: gasStation.precioProducto, horario: gasStation.horario, distancia: distance, coordenadas: gasStationLocation)
+                let fuelInformation = BusquedaCarburante(nombre: gasStation.rotulo, id: gasStation.idEESS, precioProducto: gasStation.precioProducto, horario: gasStation.horario, distancia: distance, coordenadas: gasStationLocation, direccion: gasStation.direccion, municipio: gasStation.municipio)
                 fuelInformationList.append(fuelInformation)
             })
         }

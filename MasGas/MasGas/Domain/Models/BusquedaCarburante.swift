@@ -15,4 +15,6 @@ struct BusquedaCarburante {
     let horario: String
     let distancia: Double
     let coordenadas: CLLocation
+    let direccion: String
+    let municipio: String
 }

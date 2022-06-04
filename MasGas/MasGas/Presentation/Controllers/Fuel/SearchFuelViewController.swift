@@ -164,7 +164,7 @@ class SearchFuelViewController: BaseViewController, UITableViewDelegate, UITable
         let gvc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "GasStationLocationViewController") as? GasStationLocationViewController
         guard let vc = gvc, let fuelList = fuelList else { return }
         presenter?.isFavorite(gasStation: fuelList[indexPath.row], completion: { result in
-            let gasolinera = Gasolinera(nombre: fuelList[indexPath.row].nombre, ubicacion: fuelList[indexPath.row].coordenadas, favorita: result, id: fuelList[indexPath.row].id)
+            let gasolinera = Gasolinera(nombre: fuelList[indexPath.row].nombre, ubicacion: fuelList[indexPath.row].coordenadas, direccion: fuelList[indexPath.row].direccion, municipio: fuelList[indexPath.row].municipio, favorita: result, id: fuelList[indexPath.row].id)
             vc.gasStation = gasolinera
             self.navigationController?.pushViewController(vc, animated: true)
         })
