@@ -62,6 +62,9 @@ class SignUpViewController: BaseViewController {
         passwordLabel.text = NSLocalizedString("SIGN_UP_PASSWORD_LABEL", comment: "")
         passwordLabel.textColor = Colors.gray
         
+        signUpButton.backgroundColor = Colors.green
+        signUpButton.layer.cornerRadius = 4
+        signUpButton.setTitleColor(Colors.white, for: .normal)
         signUpButton.setTitle(NSLocalizedString("SIGN_UP_BUTTON", comment: ""), for: .normal)
         signUpButton.tintColor = Colors.green
     }

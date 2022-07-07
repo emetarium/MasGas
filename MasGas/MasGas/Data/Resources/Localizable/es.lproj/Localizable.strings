@@ -11,6 +11,8 @@
 "CANCEL_ACTION" = "Cancelar";
 
 /* Login */
+"EMAIL_TEXT_FIELD_PLACEHOLDER" = "Correo electrónico";
+"PASSWORD_TEXT_FIELD_PLACEHOLDER" = "Contraseña";
 "LOGIN_BUTTON" = "Iniciar sesión";
 "GOOGLE_LOGIN_BUTTON" = "Iniciar sesión con Google";
 "SIGN_UP_LABEL" = "¿No tienes cuenta?";

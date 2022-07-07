@@ -38,6 +38,9 @@ class TownSelectionViewController: BaseViewController, UITableViewDelegate, UITa
     //MARK: - Functions
     func setUpUI() {
         self.navigationController?.isNavigationBarHidden = false
+        
+        townSearchBar.searchBarStyle = .minimal
+        
         registerCell()
         setUpTableView()
     }

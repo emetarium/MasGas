@@ -42,18 +42,25 @@ class LoginViewController: BaseViewController {
     //MARK: - Functions
     func setUpUI() {
         emailTextField.backgroundColor = Colors.lightGray
+        emailTextField.placeholder = NSLocalizedString("EMAIL_TEXT_FIELD_PLACEHOLDER", comment: "")
+        
         passwordTextField.backgroundColor = Colors.lightGray
+        passwordTextField.placeholder = NSLocalizedString("PASSWORD_TEXT_FIELD_PLACEHOLDER", comment: "")
         
         loginButton.tintColor = Colors.green
+        loginButton.backgroundColor = Colors.green
+        loginButton.layer.cornerRadius = 4
+        loginButton.setTitleColor(Colors.white, for: .normal)
         loginButton.setTitle(NSLocalizedString("LOGIN_BUTTON", comment: ""), for: .normal)
         
         googleLoginButton.setTitle(NSLocalizedString("GOOGLE_LOGIN_BUTTON", comment: ""), for: .normal)
-        googleLoginButton.tintColor = Colors.green
+        googleLoginButton.setTitleColor(Colors.green, for: .normal)
         
         signUpLabel.text = NSLocalizedString("SIGN_UP_LABEL", comment: "")
         
         signUpButton.setTitle(NSLocalizedString("SIGN_UP_BUTTON", comment: ""), for: .normal)
-        signUpButton.tintColor = Colors.green
+        signUpButton.tintColor = Colors.clear
+        signUpButton.setTitleColor(Colors.green, for: .normal)
     }
     
     func setGestureHideKeyboard() {
