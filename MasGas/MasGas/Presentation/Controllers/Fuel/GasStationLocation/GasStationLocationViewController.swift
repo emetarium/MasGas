@@ -47,6 +47,7 @@ class GasStationLocationViewController: BaseViewController, MKMapViewDelegate {
             self.favoriteIcon.tintColor = Colors.white
         }
         self.backButton.setTitle("", for: .normal)
+        self.backButton.tintColor = Colors.green
         
         setUpMap()
         setUpTapGesture()

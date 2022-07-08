@@ -577,26 +577,37 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="w7Y-vw-ArA">
-                                <rect key="frame" x="0.0" y="44" width="414" height="51"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="51"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="3JV-QH-v15">
-                                <rect key="frame" x="0.0" y="95" width="414" height="767"/>
+                                <rect key="frame" x="0.0" y="139" width="414" height="723"/>
                             </tableView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jTU-Jc-d30">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <items>
+                                    <navigationItem title="Title" id="VAW-Ev-6wq"/>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Hr9-4U-Yrp"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="jTU-Jc-d30" firstAttribute="trailing" secondItem="Hr9-4U-Yrp" secondAttribute="trailing" id="AsQ-7A-S5j"/>
                             <constraint firstItem="3JV-QH-v15" firstAttribute="leading" secondItem="Hr9-4U-Yrp" secondAttribute="leading" id="Fg9-k3-8nf"/>
                             <constraint firstItem="w7Y-vw-ArA" firstAttribute="trailing" secondItem="Hr9-4U-Yrp" secondAttribute="trailing" id="HmN-id-yO9"/>
+                            <constraint firstItem="jTU-Jc-d30" firstAttribute="top" secondItem="Hr9-4U-Yrp" secondAttribute="top" id="IGj-jy-uTw"/>
                             <constraint firstItem="Hr9-4U-Yrp" firstAttribute="bottom" secondItem="3JV-QH-v15" secondAttribute="bottom" id="JBX-6Y-qM5"/>
                             <constraint firstItem="Hr9-4U-Yrp" firstAttribute="trailing" secondItem="3JV-QH-v15" secondAttribute="trailing" id="NDh-cN-NTo"/>
                             <constraint firstItem="3JV-QH-v15" firstAttribute="top" secondItem="w7Y-vw-ArA" secondAttribute="bottom" id="OTK-JL-ic5"/>
-                            <constraint firstItem="w7Y-vw-ArA" firstAttribute="top" secondItem="Hr9-4U-Yrp" secondAttribute="top" id="VkU-5Q-vyr"/>
+                            <constraint firstItem="w7Y-vw-ArA" firstAttribute="top" secondItem="jTU-Jc-d30" secondAttribute="bottom" id="VkU-5Q-vyr"/>
+                            <constraint firstItem="jTU-Jc-d30" firstAttribute="leading" secondItem="Hr9-4U-Yrp" secondAttribute="leading" id="j0N-6V-HJ5"/>
                             <constraint firstItem="w7Y-vw-ArA" firstAttribute="leading" secondItem="Hr9-4U-Yrp" secondAttribute="leading" id="uxH-MR-i4t"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="navigationBar" destination="jTU-Jc-d30" id="xPJ-Tv-eai"/>
+                        <outlet property="navigationBarItem" destination="VAW-Ev-6wq" id="Uzl-hF-BOJ"/>
                         <outlet property="townSearchBar" destination="w7Y-vw-ArA" id="ozU-ud-ZiE"/>
                         <outlet property="townTableView" destination="3JV-QH-v15" id="38g-KX-uif"/>
                     </connections>

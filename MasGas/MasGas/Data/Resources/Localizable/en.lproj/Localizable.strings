@@ -63,6 +63,9 @@
 "NO_FUEL_IN_TOWN" = "There are no gas stations with the selected fuel.";
 "SCHEDULE_LABEL" = "Schedule";
 
+/* TOWN SELECTION SCREEN */
+"TOWN_SELECTION_TITLE" = "Municipios";
+
 /* MAP SCREEN */
 "NO_ROUTE_ERROR_TITLE" = "Route not available";
 "NO_ROUTE_ERROR_MESSAGE" = "There are no routes available between these locations";

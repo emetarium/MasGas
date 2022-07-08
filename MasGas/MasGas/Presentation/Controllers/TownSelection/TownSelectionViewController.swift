@@ -19,8 +19,10 @@ class TownSelectionViewController: BaseViewController, UITableViewDelegate, UITa
     
     //MARK: - IBOutlets
     @IBOutlet var townSearchBar: UISearchBar!
+    @IBOutlet var navigationBar: UINavigationBar!
     @IBOutlet var townTableView: UITableView!
-
+    @IBOutlet var navigationBarItem: UINavigationItem!
+    
     //MARK: - Variables
     var towns: [Municipio] = []
     var filteredTowns: [Municipio] = []
@@ -35,10 +37,26 @@ class TownSelectionViewController: BaseViewController, UITableViewDelegate, UITa
         // Do any additional setup after loading the view.
     }
     
+//    override func viewWillAppear(_ animated: Bool) {
+//        self.navigationController?.isNavigationBarHidden = false
+//    }
+//
+//    override func viewWillDisappear(_ animated: Bool) {
+//        self.navigationController?.isNavigationBarHidden = true
+//    }
+    
     //MARK: - Functions
     func setUpUI() {
-        self.navigationController?.isNavigationBarHidden = false
-        
+        self.navigationBar.isTranslucent = false
+        self.navigationBar.barTintColor = Colors.white
+        self.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "Montserrat", size: 15)!, NSAttributedString.Key.foregroundColor: Colors.black]
+        self.navigationBarItem.title = NSLocalizedString("TOWN_SELECTION_TITLE", comment: "")
+        if let green = Colors.green {
+            let barButtonItem = UIBarButtonItem(image: UIImage(named: "backButton"), style: .plain, target: self, action: #selector(popToPrevious))
+            barButtonItem.tintColor = green
+            self.navigationBarItem.leftBarButtonItem = barButtonItem
+        }
+                                                                   
         townSearchBar.searchBarStyle = .minimal
         
         registerCell()
@@ -59,6 +77,10 @@ class TownSelectionViewController: BaseViewController, UITableViewDelegate, UITa
         self.townTableView.dataSource = self
         self.townSearchBar.delegate = self
     }
+                                                                   
+   @objc private func popToPrevious() {
+       self.navigationController?.popViewController(animated: true)
+   }
     
     //MARK: - Table View
     func numberOfSections(in tableView: UITableView) -> Int {

@@ -57,17 +57,15 @@ class SearchFuelViewController: BaseViewController, UITableViewDelegate, UITable
         }
         self.view.backgroundColor = Colors.darkGray
         
-        let backImage = UIImage(named: "backButton")
-        self.navigationController?.navigationBar.backIndicatorImage = backImage
-        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = backImage
-        
         self.navigationBar.isTranslucent = false
         self.navigationBar.barTintColor = Colors.darkGray
         self.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "Montserrat", size: 15)!, NSAttributedString.Key.foregroundColor: Colors.white]
         self.navigationBarItem.title = NSLocalizedString("QUERY_FUEL_TITLE", comment: "")
-        self.navigationBarItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "backButton"), style: .plain, target: nil, action: #selector(popToPrevious))
+        let barButtonItem = UIBarButtonItem(image: UIImage(named: "backButton"), style: .plain, target: self, action: #selector(popToPrevious))
+        barButtonItem.tintColor = Colors.white
+        self.navigationBarItem.leftBarButtonItem = barButtonItem
         
-        self.fuelLabel.text = fuel.nombreProducto
+        self.fuelLabel.text = NSLocalizedString(fuel.nombreProductoAbreviatura, comment: "")
         self.fuelView.backgroundColor = Colors.white
         self.fuelView.layer.cornerRadius = 5
         

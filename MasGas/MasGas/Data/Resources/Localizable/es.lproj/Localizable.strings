@@ -54,6 +54,9 @@
 "GNC" = "Gas natural comprimido";
 "GNL" = "Gas natural licuado";
 
+/* TOWN SELECTION SCREEN */
+"TOWN_SELECTION_TITLE" = "Municipios";
+
 /* SEARCH FUEL SCREEN*/
 "QUERY_FUEL_TITLE" = "Busca tu carburante";
 "SUGGESTED_GAS_STATIONS_TITLE" = "Gasolineras sugeridas";
