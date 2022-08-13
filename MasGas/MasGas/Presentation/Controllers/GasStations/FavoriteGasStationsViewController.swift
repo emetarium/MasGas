@@ -97,6 +97,18 @@ class FavoriteGasStationsViewController: BaseViewController, UITableViewDelegate
         vc.gasStation = favoriteGasStations[indexPath.row]
         self.navigationController?.pushViewController(vc, animated: true)
     }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if (editingStyle == .delete) {
+            presenter?.removeFavorite(gasStation: favoriteGasStations[indexPath.row])
+            favoriteGasStations.remove(at: indexPath.row)
+            tableView.reloadData()
+        }
+    }
 }
 
 extension FavoriteGasStationsViewController: FavoriteGasStationsProtocol {

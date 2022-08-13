@@ -47,6 +47,8 @@ class TownSelectionViewController: BaseViewController, UITableViewDelegate, UITa
     
     //MARK: - Functions
     func setUpUI() {
+        self.navigationController?.isNavigationBarHidden = true
+        
         self.navigationBar.isTranslucent = false
         self.navigationBar.barTintColor = Colors.white
         self.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "Montserrat", size: 15)!, NSAttributedString.Key.foregroundColor: Colors.black]

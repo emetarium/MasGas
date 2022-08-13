@@ -10,11 +10,13 @@ import Foundation
 class FavoriteGasStationsPresenter<FavoriteGasStationsProtocol>: BasePresenter {
     let view: FavoriteGasStationsViewController
     let favoriteGasStationsUseCase: GetFavoriteGasStationsUseCase?
+    let removeFavoriteUseCase: RemoveFavoriteUseCase?
     let getLocationUseCase: GetLocationUseCase?
     
     init(_ view: FavoriteGasStationsViewController) {
         self.view = view
         self.favoriteGasStationsUseCase = GetFavoriteGasStationsUseCase()
+        self.removeFavoriteUseCase = RemoveFavoriteUseCase()
         self.getLocationUseCase = GetLocationUseCase()
     }
     
@@ -34,6 +36,10 @@ class FavoriteGasStationsPresenter<FavoriteGasStationsProtocol>: BasePresenter {
                 self.view.updateFavoritesList(favoriteGasStations: favoritesList)
             }
         })
+    }
+    
+    func removeFavorite(gasStation: Gasolinera) {
+        removeFavoriteUseCase?.execute(gasStation: gasStation)
     }
     
     func checkInternetConnection() {
