@@ -9,6 +9,7 @@ import Foundation
 import Firebase
 import FirebaseAuth
 import GoogleSignIn
+import CryptoKit
 
 enum AuthenticationError: Error {
     case invalidPassword(description: String)
@@ -116,7 +117,14 @@ class AuthenticationLayer {
     }
     
     func signOut() {
-        GIDSignIn.sharedInstance.signOut()
+        if let providerId = Auth.auth().currentUser?.providerData.first?.providerID {
+            if providerId == "apple.com" {
+                // Clear saved user ID
+                UserDefaults.standard.set(nil, forKey: "appleAuthorizedUserIdKey")
+            } else if providerId == "google.com" {
+                GIDSignIn.sharedInstance.signOut()
+            }
+        }
         
         do {
             try Auth.auth().signOut()

@@ -14,7 +14,8 @@
 "EMAIL_TEXT_FIELD_PLACEHOLDER" = "E-mail";
 "PASSWORD_TEXT_FIELD_PLACEHOLDER" = "Password";
 "LOGIN_BUTTON" = "Login";
-"GOOGLE_LOGIN_BUTTON" = "Login with Google";
+"GOOGLE_LOGIN_BUTTON" = "Sign in with Google";
+"APPLE_LOGIN_BUTTON" = "Sign in with Apple";
 "SIGN_UP_LABEL" = "Don't have an account?";
 "SIGN_UP_BUTTON" = "Sign up";
 

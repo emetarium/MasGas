@@ -1,0 +1,8 @@
+/* 
+  InfoPlist.strings
+  MasGas
+
+  Created by María García Torres on 20/8/22.
+  
+*/
+"NSLocationWhenInUseUsageDescription" = "We use your location to personalize your app experience";

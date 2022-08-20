@@ -15,6 +15,7 @@
 "PASSWORD_TEXT_FIELD_PLACEHOLDER" = "Contraseña";
 "LOGIN_BUTTON" = "Iniciar sesión";
 "GOOGLE_LOGIN_BUTTON" = "Iniciar sesión con Google";
+"APPLE_LOGIN_BUTTON" = "Iniciar sesión con Apple";
 "SIGN_UP_LABEL" = "¿No tienes cuenta?";
 "SIGN_UP_BUTTON" = "Regístrate";
 

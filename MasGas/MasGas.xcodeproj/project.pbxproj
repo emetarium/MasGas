@@ -28,6 +28,9 @@
 		4C46313227C4FA4F00475AE0 /* TownSelectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C46313027C4FA4F00475AE0 /* TownSelectionTableViewCell.swift */; };
 		4C46313327C4FA4F00475AE0 /* TownSelectionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C46313127C4FA4F00475AE0 /* TownSelectionTableViewCell.xib */; };
 		4C46313727C50D5200475AE0 /* SearchFuelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C46313627C50D5200475AE0 /* SearchFuelViewController.swift */; };
+		4C4D596F28B1126C005E1A85 /* LoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4D596E28B1126C005E1A85 /* LoginButton.swift */; };
+		4C4D597628B1345E005E1A85 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4C4D597828B1345E005E1A85 /* InfoPlist.strings */; };
+		4C4D597B28B134A8005E1A85 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4C4D597D28B134A8005E1A85 /* InfoPlist.strings */; };
 		4C579036E2881C44F276B095 /* Pods_MasGas.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 267F76832B175E1E706A47F1 /* Pods_MasGas.framework */; };
 		4C5A7ED027D76C290096FB55 /* GasStationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5A7ECE27D76C290096FB55 /* GasStationTableViewCell.swift */; };
 		4C5A7ED127D76C290096FB55 /* GasStationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C5A7ECF27D76C290096FB55 /* GasStationTableViewCell.xib */; };
@@ -123,6 +126,10 @@
 		4C46313027C4FA4F00475AE0 /* TownSelectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TownSelectionTableViewCell.swift; sourceTree = "<group>"; };
 		4C46313127C4FA4F00475AE0 /* TownSelectionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TownSelectionTableViewCell.xib; sourceTree = "<group>"; };
 		4C46313627C50D5200475AE0 /* SearchFuelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFuelViewController.swift; sourceTree = "<group>"; };
+		4C4D596C28B10FEB005E1A85 /* MasGas.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MasGas.entitlements; sourceTree = "<group>"; };
+		4C4D596E28B1126C005E1A85 /* LoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButton.swift; sourceTree = "<group>"; };
+		4C4D597728B1345E005E1A85 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		4C4D597C28B134A8005E1A85 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		4C5A7ECE27D76C290096FB55 /* GasStationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GasStationTableViewCell.swift; sourceTree = "<group>"; };
 		4C5A7ECF27D76C290096FB55 /* GasStationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GasStationTableViewCell.xib; sourceTree = "<group>"; };
 		4C6DFF3727C26989002289B5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -321,6 +328,23 @@
 			path = TownSelectionCell;
 			sourceTree = "<group>";
 		};
+		4C4D596D28B11252005E1A85 /* CustomComponents */ = {
+			isa = PBXGroup;
+			children = (
+				4C4D596E28B1126C005E1A85 /* LoginButton.swift */,
+			);
+			path = CustomComponents;
+			sourceTree = "<group>";
+		};
+		4C4D597328B13449005E1A85 /* InfoPlist */ = {
+			isa = PBXGroup;
+			children = (
+				4C4D597828B1345E005E1A85 /* InfoPlist.strings */,
+				4C4D597D28B134A8005E1A85 /* InfoPlist.strings */,
+			);
+			path = InfoPlist;
+			sourceTree = "<group>";
+		};
 		4C5A7ECB27D74DBB0096FB55 /* Local */ = {
 			isa = PBXGroup;
 			children = (
@@ -390,6 +414,7 @@
 		4C8394DB27BAE68D002C873F /* Localizable */ = {
 			isa = PBXGroup;
 			children = (
+				4C4D597328B13449005E1A85 /* InfoPlist */,
 				4C8394E027BAE8BB002C873F /* Localizable.strings */,
 			);
 			path = Localizable;
@@ -420,6 +445,7 @@
 		4C9471D827A1B1D2001F49F9 /* MasGas */ = {
 			isa = PBXGroup;
 			children = (
+				4C4D596C28B10FEB005E1A85 /* MasGas.entitlements */,
 				4CBD01F827BABD9800C36FE2 /* Data */,
 				4CBD01F527BABD4200C36FE2 /* Domain */,
 				4CBD01F427BABCF800C36FE2 /* Presentation */,
@@ -481,6 +507,7 @@
 		4CBD01F427BABCF800C36FE2 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				4C4D596D28B11252005E1A85 /* CustomComponents */,
 				4C45349027A1DB740026E02C /* Controllers */,
 				4C45349127A1DB800026E02C /* Storyboards */,
 				4C45348D27A1DB3F0026E02C /* Presenters */,
@@ -682,6 +709,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C5A7ED127D76C290096FB55 /* GasStationTableViewCell.xib in Resources */,
+				4C4D597B28B134A8005E1A85 /* InfoPlist.strings in Resources */,
 				4C46313327C4FA4F00475AE0 /* TownSelectionTableViewCell.xib in Resources */,
 				4C96040627BE7ABB002A59CA /* FuelTableViewCell.xib in Resources */,
 				4C9471E627A1B1D2001F49F9 /* LaunchScreen.storyboard in Resources */,
@@ -690,6 +718,7 @@
 				4C8394DE27BAE8BB002C873F /* Localizable.strings in Resources */,
 				4C3543A627CE3E4B0098F408 /* QueryFuelTableViewCell.xib in Resources */,
 				4C6DFF3827C26989002289B5 /* GoogleService-Info.plist in Resources */,
+				4C4D597628B1345E005E1A85 /* InfoPlist.strings in Resources */,
 				4C9471E127A1B1D2001F49F9 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -837,6 +866,7 @@
 				4C11049227F4B84400C36B69 /* BaseViewController.swift in Sources */,
 				4C01255327E372110026572B /* RemoveFavoriteUseCase.swift in Sources */,
 				4CA334C027ECF975004DE029 /* Repository.swift in Sources */,
+				4C4D596F28B1126C005E1A85 /* LoginButton.swift in Sources */,
 				4C9CE5BF27E10D1500B174CA /* FavoriteGasStationsPresenter.swift in Sources */,
 				4CA26EA527DF680B002E10C6 /* GetFavoriteGasStationsUseCase.swift in Sources */,
 				4CF016CB27A6C28600A0451E /* UITextField.swift in Sources */,
@@ -910,6 +940,22 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		4C4D597828B1345E005E1A85 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4C4D597728B1345E005E1A85 /* es */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		4C4D597D28B134A8005E1A85 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4C4D597C28B134A8005E1A85 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 		4C8394E027BAE8BB002C873F /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1064,13 +1110,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MasGas/MasGas.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = AHRSPCJ485;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MasGas/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "+Gas";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This app uses your location to offer you a personalized experience";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -1097,13 +1143,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MasGas/MasGas.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = AHRSPCJ485;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MasGas/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "+Gas";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This app uses your location to offer you a personalized experience";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

@@ -41,30 +41,30 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="23" translatesAutoresizingMaskIntoConstraints="NO" id="gSu-TV-0EA">
-                                <rect key="frame" x="41.5" y="297.5" width="331" height="241"/>
+                                <rect key="frame" x="42" y="267.5" width="330" height="241"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+Gas" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PSh-7S-lsC">
-                                        <rect key="frame" x="0.0" y="0.0" width="331" height="43"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="330" height="43"/>
                                         <fontDescription key="fontDescription" name="MontserratRoman-Medium" family="Montserrat" pointSize="35"/>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Bni-mq-Rbx">
-                                        <rect key="frame" x="0.0" y="66" width="331" height="43"/>
+                                        <rect key="frame" x="0.0" y="66" width="330" height="43"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Xov-9V-Vac">
-                                        <rect key="frame" x="0.0" y="132" width="331" height="43"/>
+                                        <rect key="frame" x="0.0" y="132" width="330" height="43"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JO9-jU-G6v">
-                                        <rect key="frame" x="0.0" y="198" width="331" height="43"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JO9-jU-G6v" customClass="LoginButton" customModule="MasGas" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="198" width="330" height="43"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="filled" title="Iniciar sesión"/>
                                         <connections>
-                                            <action selector="loginButton:" destination="U50-tb-WdJ" eventType="touchUpInside" id="1DN-Tv-BaS"/>
+                                            <action selector="loginButton:" destination="U50-tb-WdJ" eventType="touchUpInside" id="mUi-Y2-geG"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -74,12 +74,15 @@
                                     <constraint firstItem="JO9-jU-G6v" firstAttribute="height" secondItem="PSh-7S-lsC" secondAttribute="height" id="Gf4-TY-wzI"/>
                                 </constraints>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZP7-fu-HTT">
-                                <rect key="frame" x="99" y="584.5" width="216" height="34"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZP7-fu-HTT" customClass="LoginButton" customModule="MasGas" customModuleProvider="target">
+                                <rect key="frame" x="42" y="559.5" width="330" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="sOs-jR-hL9"/>
+                                </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="GoogleIcon" title="Iniciar sesión con Google" imagePadding="10"/>
                                 <connections>
-                                    <action selector="googleLoginButton:" destination="U50-tb-WdJ" eventType="touchUpInside" id="RHR-uS-0cR"/>
+                                    <action selector="googleLoginButton:" destination="U50-tb-WdJ" eventType="touchUpInside" id="Swe-ov-O8d"/>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="RyB-Kv-Qx0">
@@ -101,34 +104,61 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="15y-wS-kNh" customClass="LoginButton" customModule="MasGas" customModuleProvider="target">
+                                <rect key="frame" x="42" y="623.5" width="330" height="34"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="AppleIcon" title="Iniciar sesión con Apple" imagePadding="10"/>
+                                <connections>
+                                    <action selector="appleLoginButton:" destination="U50-tb-WdJ" eventType="touchUpInside" id="pdB-pH-gx6"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iDz-tC-1h8">
+                                <rect key="frame" x="42" y="533.5" width="330" height="1"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="3v3-Jt-Hft"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="5th-93-afu"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="gSu-TV-0EA" firstAttribute="centerX" secondItem="5th-93-afu" secondAttribute="centerX" id="3tR-As-YIG"/>
                             <constraint firstItem="RyB-Kv-Qx0" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="5th-93-afu" secondAttribute="leading" constant="48" id="42Z-8Y-P6Z"/>
+                            <constraint firstItem="15y-wS-kNh" firstAttribute="leading" secondItem="5th-93-afu" secondAttribute="leading" constant="42" id="4a9-3a-DBG"/>
                             <constraint firstItem="RyB-Kv-Qx0" firstAttribute="centerX" secondItem="5th-93-afu" secondAttribute="centerX" id="AtM-YD-Pq1"/>
                             <constraint firstItem="5th-93-afu" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="RyB-Kv-Qx0" secondAttribute="trailing" constant="48" id="CFA-cb-lXh"/>
+                            <constraint firstItem="5th-93-afu" firstAttribute="trailing" secondItem="15y-wS-kNh" secondAttribute="trailing" constant="42" id="F27-T6-2Mu"/>
+                            <constraint firstItem="5th-93-afu" firstAttribute="trailing" secondItem="gSu-TV-0EA" secondAttribute="trailing" constant="42" id="Hqj-04-9Qs"/>
+                            <constraint firstItem="iDz-tC-1h8" firstAttribute="leading" secondItem="5th-93-afu" secondAttribute="leading" constant="42" id="IFh-m7-1fc"/>
                             <constraint firstItem="RyB-Kv-Qx0" firstAttribute="bottom" secondItem="5th-93-afu" secondAttribute="bottom" constant="-12" id="MeW-ZK-eq4"/>
-                            <constraint firstItem="gSu-TV-0EA" firstAttribute="width" secondItem="7XP-6q-K7o" secondAttribute="width" multiplier="0.8" id="T8b-uT-fmY"/>
-                            <constraint firstItem="ZP7-fu-HTT" firstAttribute="top" secondItem="gSu-TV-0EA" secondAttribute="bottom" constant="46" id="juZ-PJ-CbK"/>
-                            <constraint firstItem="gSu-TV-0EA" firstAttribute="centerY" secondItem="7XP-6q-K7o" secondAttribute="centerY" constant="-30" id="jxj-9B-FDq"/>
+                            <constraint firstItem="ZP7-fu-HTT" firstAttribute="leading" secondItem="5th-93-afu" secondAttribute="leading" constant="42" id="WfB-60-szm"/>
+                            <constraint firstItem="gSu-TV-0EA" firstAttribute="leading" secondItem="5th-93-afu" secondAttribute="leading" constant="42" id="Yi9-Gx-peS"/>
+                            <constraint firstItem="5th-93-afu" firstAttribute="trailing" secondItem="ZP7-fu-HTT" secondAttribute="trailing" constant="42" id="aCR-Sq-qBy"/>
+                            <constraint firstItem="RyB-Kv-Qx0" firstAttribute="top" relation="greaterThanOrEqual" secondItem="15y-wS-kNh" secondAttribute="bottom" constant="40" id="e0Z-Rg-OU7"/>
+                            <constraint firstItem="5th-93-afu" firstAttribute="trailing" secondItem="iDz-tC-1h8" secondAttribute="trailing" constant="42" id="h65-vy-jEP"/>
+                            <constraint firstItem="gSu-TV-0EA" firstAttribute="centerY" secondItem="7XP-6q-K7o" secondAttribute="centerY" constant="-60" id="jxj-9B-FDq"/>
                             <constraint firstItem="ZP7-fu-HTT" firstAttribute="centerX" secondItem="5th-93-afu" secondAttribute="centerX" id="pcg-2B-FQP"/>
+                            <constraint firstItem="iDz-tC-1h8" firstAttribute="top" secondItem="gSu-TV-0EA" secondAttribute="bottom" constant="25" id="qTE-gb-pue"/>
+                            <constraint firstItem="15y-wS-kNh" firstAttribute="top" secondItem="ZP7-fu-HTT" secondAttribute="bottom" constant="24" id="rRR-Jq-zmY"/>
+                            <constraint firstItem="ZP7-fu-HTT" firstAttribute="top" secondItem="iDz-tC-1h8" secondAttribute="bottom" constant="25" id="xT8-lz-T2f"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="PRh-fR-rPd"/>
                     <connections>
+                        <outlet property="appleSignInButton" destination="15y-wS-kNh" id="teU-CN-1qy"/>
                         <outlet property="emailTextField" destination="Bni-mq-Rbx" id="AGB-Fv-qrS"/>
-                        <outlet property="googleLoginButton" destination="ZP7-fu-HTT" id="x3n-YF-7Vu"/>
-                        <outlet property="loginButton" destination="JO9-jU-G6v" id="Cnv-sD-F0k"/>
+                        <outlet property="googleSignInButton" destination="ZP7-fu-HTT" id="rG3-sM-D1Z"/>
+                        <outlet property="loginButton" destination="JO9-jU-G6v" id="TSN-Kq-q9q"/>
                         <outlet property="passwordTextField" destination="Xov-9V-Vac" id="E20-ER-pNZ"/>
+                        <outlet property="separatorLine" destination="iDz-tC-1h8" id="kTc-Aw-v5N"/>
                         <outlet property="signUpButton" destination="5Fb-IH-wye" id="PAs-Rl-upi"/>
                         <outlet property="signUpLabel" destination="XwG-3I-gUo" id="Fmz-DS-1V1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IHd-Ej-C9m" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-680" y="74"/>
+            <point key="canvasLocation" x="-681.15942028985512" y="73.660714285714278"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="6Kk-7a-qbK">
@@ -618,6 +648,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="AppleIcon" width="20" height="20"/>
         <image name="GoogleIcon" width="20" height="20"/>
         <image name="backButton" width="30" height="30"/>
         <image name="circle.fill" catalog="system" width="128" height="121"/>

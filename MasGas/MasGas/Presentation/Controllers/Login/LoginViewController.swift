@@ -8,6 +8,8 @@
 import UIKit
 import GoogleSignIn
 import Firebase
+import CryptoKit
+import AuthenticationServices
 
 protocol LoginProtocol {
     func navigateToTabBar()
@@ -19,13 +21,16 @@ class LoginViewController: BaseViewController {
     //MARK: - IBOutlets
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var loginButton: UIButton!
-    @IBOutlet weak var googleLoginButton: UIButton!
+    @IBOutlet var loginButton: LoginButton!
+    @IBOutlet var separatorLine: UIView!
+    @IBOutlet var googleSignInButton: LoginButton!
+    @IBOutlet var appleSignInButton: LoginButton!
     @IBOutlet weak var signUpLabel: UILabel!
     @IBOutlet weak var signUpButton: UIButton!
     
     //MARK: - Variables
     var presenter: LoginPresenter<LoginViewController>?
+    var currentNonce: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,14 +52,16 @@ class LoginViewController: BaseViewController {
         passwordTextField.backgroundColor = Colors.lightGray
         passwordTextField.placeholder = NSLocalizedString("PASSWORD_TEXT_FIELD_PLACEHOLDER", comment: "")
         
-        loginButton.tintColor = Colors.green
-        loginButton.backgroundColor = Colors.green
-        loginButton.layer.cornerRadius = 4
-        loginButton.setTitleColor(Colors.white, for: .normal)
-        loginButton.setTitle(NSLocalizedString("LOGIN_BUTTON", comment: ""), for: .normal)
+        loginButton.titleText = NSLocalizedString("LOGIN_BUTTON", comment: "")
+        loginButton.style = .filled
         
-        googleLoginButton.setTitle(NSLocalizedString("GOOGLE_LOGIN_BUTTON", comment: ""), for: .normal)
-        googleLoginButton.setTitleColor(Colors.green, for: .normal)
+        separatorLine.backgroundColor = Colors.mediumLightGray
+        
+        googleSignInButton.titleText = NSLocalizedString("GOOGLE_LOGIN_BUTTON", comment: "")
+        googleSignInButton.style = .bordered
+        
+        appleSignInButton.titleText = NSLocalizedString("APPLE_LOGIN_BUTTON", comment: "")
+        appleSignInButton.style = .bordered
         
         signUpLabel.text = NSLocalizedString("SIGN_UP_LABEL", comment: "")
         
@@ -80,6 +87,23 @@ class LoginViewController: BaseViewController {
         presenter?.googleLogin()
     }
     
+    @IBAction func appleLoginButton(_ sender: Any) {
+        let appleIDProvider = ASAuthorizationAppleIDProvider()
+        let request = appleIDProvider.createRequest()
+        request.requestedScopes = [.fullName, .email]
+
+        // Generate nonce for validation after authentication successful
+        self.currentNonce = presenter?.randomNonceString()
+        // Set the SHA256 hashed nonce to ASAuthorizationAppleIDRequest
+        request.nonce = presenter?.sha256(currentNonce!)
+
+        // Present Apple authorization form
+        let authorizationController = ASAuthorizationController(authorizationRequests: [request])
+        authorizationController.delegate = self
+        authorizationController.presentationContextProvider = self
+        authorizationController.performRequests()
+    }
+    
     @IBAction func signUpButton(_ sender: Any) {
         let svc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "SignUpViewController") as? SignUpViewController
         guard let vc = svc else { return }
@@ -98,5 +122,55 @@ extension LoginViewController: LoginProtocol {
         let townSelectionViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TownSelectionViewController") as? TownSelectionViewController
         guard let tvc = townSelectionViewController else { return }
         self.navigationController?.pushViewController(tvc, animated: true)
+    }
+}
+
+extension LoginViewController: ASAuthorizationControllerDelegate {
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+
+        if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
+            // Save authorised user ID for future reference
+            UserDefaults.standard.set(appleIDCredential.user, forKey: "appleAuthorizedUserIdKey")
+            UserDefaults.standard.set(appleIDCredential.email, forKey: "User")
+            
+            // Retrieve the secure nonce generated during Apple sign in
+            guard let nonce = currentNonce else {
+                fatalError("Invalid state: A login callback was received, but no login request was sent.")
+            }
+
+            // Retrieve Apple identity token
+            guard let appleIDToken = appleIDCredential.identityToken else {
+                print("Failed to fetch identity token")
+                return
+            }
+
+            // Convert Apple identity token to string
+            guard let idTokenString = String(data: appleIDToken, encoding: .utf8) else {
+                print("Failed to decode identity token")
+                return
+            }
+
+            // Initialize a Firebase credential using secure nonce and Apple identity token
+            let firebaseCredential = OAuthProvider.credential(withProviderID: "apple.com",
+                                                              idToken: idTokenString,
+                                                              rawNonce: nonce)
+            
+            // Sign in with Firebase
+            Auth.auth().signIn(with: firebaseCredential) { [weak self] (authResult, error) in
+                
+                if let authResult = authResult {
+                    let changeRequest = authResult.user.createProfileChangeRequest()
+                    changeRequest.displayName = appleIDCredential.fullName?.givenName
+                    changeRequest.commitChanges()
+                    self?.presenter?.checkTown()
+                }
+            }
+        }
+    }
+}
+
+extension LoginViewController: ASAuthorizationControllerPresentationContextProviding {
+    func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
+        return ASPresentationAnchor()
     }
 }
