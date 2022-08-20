@@ -27,6 +27,7 @@ class LoginViewController: BaseViewController {
     @IBOutlet var appleSignInButton: LoginButton!
     @IBOutlet weak var signUpLabel: UILabel!
     @IBOutlet weak var signUpButton: UIButton!
+    @IBOutlet var notNowButton: UIButton!
     
     //MARK: - Variables
     var presenter: LoginPresenter<LoginViewController>?
@@ -68,6 +69,10 @@ class LoginViewController: BaseViewController {
         signUpButton.setTitle(NSLocalizedString("SIGN_UP_BUTTON", comment: ""), for: .normal)
         signUpButton.tintColor = Colors.clear
         signUpButton.setTitleColor(Colors.green, for: .normal)
+        
+        notNowButton.tintColor = Colors.green
+        notNowButton.setTitleColor(Colors.green, for: .normal)
+        notNowButton.setTitle(NSLocalizedString("NOT_NOW_BUTTON", comment: ""), for: .normal)
     }
     
     func setGestureHideKeyboard() {
@@ -109,6 +114,10 @@ class LoginViewController: BaseViewController {
         guard let vc = svc else { return }
         self.navigationController?.pushViewController(vc, animated: true)
     }
+    
+    @IBAction func notNowButton(_ sender: Any) {
+        presenter?.checkTown()
+    }
 }
 
 extension LoginViewController: LoginProtocol {
@@ -131,7 +140,6 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
         if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
             // Save authorised user ID for future reference
             UserDefaults.standard.set(appleIDCredential.user, forKey: "appleAuthorizedUserIdKey")
-            UserDefaults.standard.set(appleIDCredential.email, forKey: "User")
             
             // Retrieve the secure nonce generated during Apple sign in
             guard let nonce = currentNonce else {
@@ -157,8 +165,8 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
             
             // Sign in with Firebase
             Auth.auth().signIn(with: firebaseCredential) { [weak self] (authResult, error) in
-                
                 if let authResult = authResult {
+                    UserDefaults.standard.set(authResult.user.email, forKey: "User")
                     let changeRequest = authResult.user.createProfileChangeRequest()
                     changeRequest.displayName = appleIDCredential.fullName?.givenName
                     changeRequest.commitChanges()

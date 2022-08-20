@@ -32,6 +32,7 @@ protocol UserRepository {
     func emailSignUp(email: String, password: String, completion: @escaping ( AuthenticationError?) -> ())
     func signOut()
     func googleSignIn(completion: @escaping (AuthenticationError?) -> ())
+    func deleteAccount(completion: @escaping (AuthenticationError?) -> ())
 }
 
 protocol LocationRepository {
@@ -186,6 +187,12 @@ extension Repository: UserRepository {
                 case .failure(let error):
                     completion(error)
             }
+        }
+    }
+    
+    func deleteAccount(completion: @escaping (AuthenticationError?) -> ()) {
+        AuthenticationLayer.shared.deleteAccount { error in
+            completion(error)
         }
     }
 }

@@ -53,7 +53,11 @@ class FavoriteGasStationsViewController: BaseViewController, UITableViewDelegate
     }
     
     func getFavoriteGasStations() {
-        presenter?.getFavorites()
+        if let isLogged = presenter?.isUserLogged() {
+            if isLogged {
+                presenter?.getFavorites()
+            }
+        }
     }
     
     func setUpLocation() {

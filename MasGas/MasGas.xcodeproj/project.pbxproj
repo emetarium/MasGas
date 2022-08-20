@@ -78,6 +78,13 @@
 		4CC77E6827A30ED8007589F4 /* AuthenticationLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC77E6727A30ED8007589F4 /* AuthenticationLayer.swift */; };
 		4CD2472E27C119B400E086A4 /* FuelsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD2472D27C119B400E086A4 /* FuelsPresenter.swift */; };
 		4CD2473027C1232100E086A4 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD2472F27C1232100E086A4 /* Config.swift */; };
+		4CD9D0C828B15D1C007CBE83 /* OptionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD9D0C728B15D1C007CBE83 /* OptionsTableViewController.swift */; };
+		4CD9D0CB28B15D8D007CBE83 /* OptionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD9D0C928B15D8D007CBE83 /* OptionsTableViewCell.swift */; };
+		4CD9D0CC28B15D8D007CBE83 /* OptionsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CD9D0CA28B15D8D007CBE83 /* OptionsTableViewCell.xib */; };
+		4CD9D0CE28B15F8C007CBE83 /* OptionsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD9D0CD28B15F8C007CBE83 /* OptionsModel.swift */; };
+		4CD9D0D028B16682007CBE83 /* OptionsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD9D0CF28B16682007CBE83 /* OptionsPresenter.swift */; };
+		4CD9D0D228B170D9007CBE83 /* DeleteAccountUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD9D0D128B170D9007CBE83 /* DeleteAccountUseCase.swift */; };
+		4CD9D0D428B17A65007CBE83 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD9D0D328B17A65007CBE83 /* AboutViewController.swift */; };
 		4CF016CB27A6C28600A0451E /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF016CA27A6C28600A0451E /* UITextField.swift */; };
 		4CF016CD27A6C4CA00A0451E /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF016CC27A6C4CA00A0451E /* SignUpViewController.swift */; };
 		E8EAEB7D146EBCE0C58D316C /* Pods_MasGas_MasGasUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 887AE942E0534BF6818305FE /* Pods_MasGas_MasGasUITests.framework */; };
@@ -183,6 +190,13 @@
 		4CC77E6727A30ED8007589F4 /* AuthenticationLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationLayer.swift; sourceTree = "<group>"; };
 		4CD2472D27C119B400E086A4 /* FuelsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuelsPresenter.swift; sourceTree = "<group>"; };
 		4CD2472F27C1232100E086A4 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		4CD9D0C728B15D1C007CBE83 /* OptionsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsTableViewController.swift; sourceTree = "<group>"; };
+		4CD9D0C928B15D8D007CBE83 /* OptionsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsTableViewCell.swift; sourceTree = "<group>"; };
+		4CD9D0CA28B15D8D007CBE83 /* OptionsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OptionsTableViewCell.xib; sourceTree = "<group>"; };
+		4CD9D0CD28B15F8C007CBE83 /* OptionsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsModel.swift; sourceTree = "<group>"; };
+		4CD9D0CF28B16682007CBE83 /* OptionsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsPresenter.swift; sourceTree = "<group>"; };
+		4CD9D0D128B170D9007CBE83 /* DeleteAccountUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccountUseCase.swift; sourceTree = "<group>"; };
+		4CD9D0D328B17A65007CBE83 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		4CF016CA27A6C28600A0451E /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
 		4CF016CC27A6C4CA00A0451E /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		887AE942E0534BF6818305FE /* Pods_MasGas_MasGasUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MasGas_MasGasUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -276,6 +290,7 @@
 				4C9CE5BE27E10D1500B174CA /* FavoriteGasStationsPresenter.swift */,
 				4C9CE5C027E110CD00B174CA /* GasStationLocationPresenter.swift */,
 				4C92ACE928185FDB0055F94F /* BasePresenter.swift */,
+				4CD9D0CF28B16682007CBE83 /* OptionsPresenter.swift */,
 			);
 			path = Presenters;
 			sourceTree = "<group>";
@@ -289,6 +304,7 @@
 				4C45349427A1E37F0026E02C /* Login */,
 				4C17B2BD27BC3F5500B577E7 /* TabBarViewController.swift */,
 				4C11049127F4B84400C36B69 /* BaseViewController.swift */,
+				4CD9D0D328B17A65007CBE83 /* AboutViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -383,12 +399,14 @@
 		4C8394D227BADB35002C873F /* Fuel */ = {
 			isa = PBXGroup;
 			children = (
+				4CD9D0C628B15CF7007CBE83 /* OptionsCell */,
 				4C767EA927D687D20034CEBA /* GasStationLocation */,
 				4C3543A227CE3E300098F408 /* QueryFuelCell */,
 				4C96040227BE7A89002A59CA /* FuelCell */,
 				4C8394D327BADB45002C873F /* FuelsViewController.swift */,
 				4C46313627C50D5200475AE0 /* SearchFuelViewController.swift */,
 				4C3543A727CE46D90098F408 /* QueryOptionsTableViewController.swift */,
+				4CD9D0C728B15D1C007CBE83 /* OptionsTableViewController.swift */,
 			);
 			path = Fuel;
 			sourceTree = "<group>";
@@ -533,6 +551,7 @@
 				4C36630027BACCD9002A9B10 /* Consulta.swift */,
 				4C8313EF27D14AC90014E956 /* BusquedaCarburante.swift */,
 				4CAF0B3E27D781D40030DC2B /* Gasolinera.swift */,
+				4CD9D0CD28B15F8C007CBE83 /* OptionsModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -555,6 +574,7 @@
 				4CAF247727F0D52300FD3D4B /* CalculateDistanceBetweenLocationsUseCase.swift */,
 				4C11049327F4BC1200C36B69 /* FetchSelectedTownUseCase.swift */,
 				4C38D2DA28132BF10090FE98 /* IsLocationEnabledUseCase.swift */,
+				4CD9D0D128B170D9007CBE83 /* DeleteAccountUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -568,6 +588,15 @@
 				4C9DD04027BABF6700B65A25 /* Repository */,
 			);
 			path = Data;
+			sourceTree = "<group>";
+		};
+		4CD9D0C628B15CF7007CBE83 /* OptionsCell */ = {
+			isa = PBXGroup;
+			children = (
+				4CD9D0C928B15D8D007CBE83 /* OptionsTableViewCell.swift */,
+				4CD9D0CA28B15D8D007CBE83 /* OptionsTableViewCell.xib */,
+			);
+			path = OptionsCell;
 			sourceTree = "<group>";
 		};
 		D66F3C4EE6C575070CFD7B2C /* Pods */ = {
@@ -719,6 +748,7 @@
 				4C3543A627CE3E4B0098F408 /* QueryFuelTableViewCell.xib in Resources */,
 				4C6DFF3827C26989002289B5 /* GoogleService-Info.plist in Resources */,
 				4C4D597628B1345E005E1A85 /* InfoPlist.strings in Resources */,
+				4CD9D0CC28B15D8D007CBE83 /* OptionsTableViewCell.xib in Resources */,
 				4C9471E127A1B1D2001F49F9 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -850,6 +880,7 @@
 				4CC77E6827A30ED8007589F4 /* AuthenticationLayer.swift in Sources */,
 				4C92ACEA28185FDB0055F94F /* BasePresenter.swift in Sources */,
 				4CA334C827ED0523004DE029 /* LogOutUseCase.swift in Sources */,
+				4CD9D0D428B17A65007CBE83 /* AboutViewController.swift in Sources */,
 				4C17B2C127BC432D00B577E7 /* FavoriteGasStationsViewController.swift in Sources */,
 				4C17B2BA27BC305B00B577E7 /* SignUpPresenter.swift in Sources */,
 				4CAE5D9727CF65F2001E560A /* SearchFuelUseCase.swift in Sources */,
@@ -859,10 +890,12 @@
 				4C3662FF27BACB19002A9B10 /* ListaEESSPrecio.swift in Sources */,
 				4CBD01FC27BABE4D00C36FE2 /* Municipio.swift in Sources */,
 				4C8394D427BADB45002C873F /* FuelsViewController.swift in Sources */,
+				4CD9D0D228B170D9007CBE83 /* DeleteAccountUseCase.swift in Sources */,
 				4CA334C627ED01AE004DE029 /* EmailSignUpUseCase.swift in Sources */,
 				4C3543A527CE3E4B0098F408 /* QueryFuelTableViewCell.swift in Sources */,
 				4C46312E27C4F8F800475AE0 /* TownSelectionPresenter.swift in Sources */,
 				4CBD01FA27BABDC500C36FE2 /* Carburante.swift in Sources */,
+				4CD9D0C828B15D1C007CBE83 /* OptionsTableViewController.swift in Sources */,
 				4C11049227F4B84400C36B69 /* BaseViewController.swift in Sources */,
 				4C01255327E372110026572B /* RemoveFavoriteUseCase.swift in Sources */,
 				4CA334C027ECF975004DE029 /* Repository.swift in Sources */,
@@ -896,11 +929,14 @@
 				4CA334C427ECFD9A004DE029 /* EmailLoginUseCase.swift in Sources */,
 				4C5A7ED027D76C290096FB55 /* GasStationTableViewCell.swift in Sources */,
 				4CA334CA27ED0567004DE029 /* GoogleLoginUseCase.swift in Sources */,
+				4CD9D0CE28B15F8C007CBE83 /* OptionsModel.swift in Sources */,
 				4C46313727C50D5200475AE0 /* SearchFuelViewController.swift in Sources */,
 				4CD2472E27C119B400E086A4 /* FuelsPresenter.swift in Sources */,
 				4C9DD04427BAC55D00B65A25 /* Constants.swift in Sources */,
 				4CA334CC27ED0671004DE029 /* GetLocationUseCase.swift in Sources */,
+				4CD9D0CB28B15D8D007CBE83 /* OptionsTableViewCell.swift in Sources */,
 				4C46312827C4F62F00475AE0 /* TownSelectionViewController.swift in Sources */,
+				4CD9D0D028B16682007CBE83 /* OptionsPresenter.swift in Sources */,
 				4C46313227C4FA4F00475AE0 /* TownSelectionTableViewCell.swift in Sources */,
 				4CAF0B3F27D781D40030DC2B /* Gasolinera.swift in Sources */,
 				4C767EAB27D6882A0034CEBA /* GasStationLocationViewController.swift in Sources */,

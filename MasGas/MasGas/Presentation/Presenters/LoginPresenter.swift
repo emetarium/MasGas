@@ -9,7 +9,7 @@ import Foundation
 import CryptoKit
 import UIKit
 
-class LoginPresenter<LoginProtocol> {
+class LoginPresenter<LoginProtocol>: BasePresenter {
     
     let view: LoginViewController
     let fetchFuelsUseCase: FetchFuelsUseCase?
@@ -25,15 +25,6 @@ class LoginPresenter<LoginProtocol> {
         self.fetchSelectedTownUseCase = FetchSelectedTownUseCase()
         self.emailLoginUseCase = EmailLoginUseCase()
         self.googleLoginUseCase = GoogleLoginUseCase()
-    }
-    
-    func isUserLogged() -> Bool {
-        if UserDefaults.standard.object(forKey: "User") != nil {
-            return true
-        }
-        else {
-            return false
-        }
     }
     
     func checkLogin() {

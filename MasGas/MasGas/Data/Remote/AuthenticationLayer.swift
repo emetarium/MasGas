@@ -133,6 +133,21 @@ class AuthenticationLayer {
         }
     }
     
+    
+    func deleteAccount(completion: @escaping (AuthenticationError?) -> ()) {
+        
+        let user = Auth.auth().currentUser
+
+        user?.delete(completion: { error in
+          if let error = error {
+              completion(AuthenticationError(rawValue: error._code))
+              return
+          } else {
+              completion(nil)
+          }
+        })
+    }
+    
     private func authenticateGoogleUser(for user: GIDGoogleUser?, with error: Error?, completion: @escaping ((Result<User, AuthenticationError>)) -> ()) {
         if let authError = error {
             completion(.failure(AuthenticationError(rawValue: authError._code)))

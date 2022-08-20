@@ -1,19 +1,8 @@
 {
   "images" : [
     {
-      "filename" : "logoutIcon-1.png",
-      "idiom" : "universal",
-      "scale" : "1x"
-    },
-    {
-      "filename" : "logoutIcon-2.png",
-      "idiom" : "universal",
-      "scale" : "2x"
-    },
-    {
-      "filename" : "logoutIcon.png",
-      "idiom" : "universal",
-      "scale" : "3x"
+      "filename" : "icons8-cierre-de-sesión-redondeado-50.png",
+      "idiom" : "universal"
     }
   ],
   "info" : {

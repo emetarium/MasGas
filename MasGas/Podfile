@@ -1,5 +1,7 @@
+# Override Firebase SDK Version
+$FirebaseSDKVersion = '9.4.0'
 # Uncomment the next line to define a global platform for your project
-# platform :ios, '9.0'
+platform :ios, '13.0'
 
 target 'MasGas' do
   # Comment the next line if you don't want to use dynamic frameworks
@@ -11,6 +13,7 @@ target 'MasGas' do
   pod 'Firebase/Database'
   pod 'Firebase/Auth'
   pod 'GoogleSignIn'
+  pod 'FirebaseAppCheck'
 
   target 'MasGasTests' do
     inherit! :search_paths

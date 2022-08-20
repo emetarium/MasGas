@@ -63,7 +63,7 @@ class LoginButton: UIButton {
             self.backgroundColor = Colors.white
             self.setTitleColor(Colors.black, for: .normal)
             self.layer.borderWidth = 1
-            self.layer.borderColor = Colors.black.cgColor
+            self.layer.borderColor = Colors.mediumLightGray?.cgColor
         }
     }
 

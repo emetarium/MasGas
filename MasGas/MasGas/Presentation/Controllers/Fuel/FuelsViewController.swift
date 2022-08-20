@@ -8,6 +8,11 @@
 import UIKit
 import CoreLocation
 
+protocol OptionsProtocol {
+    func loggedOptionSelected(option: LoggedOptions)
+    func notLoggedOptionSelected(option: NotLoggedOptions)
+}
+
 protocol FuelsProtocol {
     func updateFuels(fuels: [Carburante])
     func updateTown(town: Municipio)
@@ -20,8 +25,8 @@ protocol FuelsProtocol {
 class FuelsViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource
 {
     //MARK: - IBOutlets
+    @IBOutlet var optionsButton: UIButton!
     @IBOutlet var townLabel: UILabel!
-    @IBOutlet var logoutButton: UIButton!
     @IBOutlet var backgroundImage: UIImageView!
     @IBOutlet var selectFuelLabel: UILabel!
     @IBOutlet var fuelsTableView: UITableView!
@@ -67,8 +72,8 @@ class FuelsViewController: BaseViewController, UITableViewDelegate, UITableViewD
         self.townLabel.textColor = Colors.white
         self.townLabel.text = town.nombreMunicipio
         
-        self.logoutButton.tintColor = Colors.white
-        self.logoutButton.setTitle("", for: .normal)
+        self.optionsButton.tintColor = Colors.white
+        self.optionsButton.setTitle("", for: .normal)
         
         self.selectFuelLabel.text = NSLocalizedString("FUEL_SELECTION_LABEL", comment: "")
         self.selectFuelLabel.textColor = Colors.white
@@ -128,12 +133,23 @@ class FuelsViewController: BaseViewController, UITableViewDelegate, UITableViewD
     }
     
     //MARK: - IBActions
-    @IBAction func logoutButton(_ sender: Any) {
-        let accept = UIAlertAction(title: NSLocalizedString("ACCEPT_ACTION", comment: ""), style: .destructive) { accepted in
-            self.presenter?.logout()
+    @IBAction func optionsButtonPressed(_ sender: Any) {
+        let ovc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "OptionsTableViewController") as? OptionsTableViewController
+        guard let vc = ovc, let isLogged = presenter?.isUserLogged() else { return }
+        vc.delegate = self
+        if isLogged {
+            vc.preferredContentSize = CGSize(width: self.view.frame.width * 0.66, height: 120)
+        } else {
+            vc.preferredContentSize = CGSize(width: self.view.frame.width * 0.66, height: 80)
         }
-        let cancel = UIAlertAction(title: NSLocalizedString("CANCEL_ACTION", comment: ""), style: .default)
-        self.showAlert(title: NSLocalizedString("LOG_OUT_ALERT_TITLE", comment: ""), message: NSLocalizedString("LOG_OUT_ALERT_MESSAGE", comment: ""), alternativeAction: cancel, acceptAction: accept)
+        vc.modalPresentationStyle = .popover
+        if let pres = vc.presentationController {
+            pres.delegate = self
+        }
+        if let pop = vc.popoverPresentationController {
+            pop.sourceView = self.optionsButton
+        }
+        self.present(vc, animated: true, completion: nil)
     }
 }
 
@@ -172,5 +188,43 @@ extension FuelsViewController: FuelsProtocol {
         DispatchQueue.main.async {
             self.hideLoading()
         }
+    }
+}
+
+extension FuelsViewController: OptionsProtocol {
+    func loggedOptionSelected(option: LoggedOptions) {
+        switch option {
+        case .logout:
+            let accept = UIAlertAction(title: NSLocalizedString("ACCEPT_ACTION", comment: ""), style: .destructive) { accepted in
+                self.presenter?.logout()
+            }
+            let cancel = UIAlertAction(title: NSLocalizedString("CANCEL_ACTION", comment: ""), style: .default)
+            self.showAlert(title: NSLocalizedString("LOG_OUT_ALERT_TITLE", comment: ""), message: NSLocalizedString("LOG_OUT_ALERT_MESSAGE", comment: ""), alternativeAction: cancel, acceptAction: accept)
+        case .deleteAccount:
+            presenter?.deleteAccount()
+        case .about:
+            let avc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AboutViewController") as? AboutViewController
+            guard let vc = avc else { return }
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+    
+    func notLoggedOptionSelected(option: NotLoggedOptions) {
+        switch option {
+        case .login:
+            let loginVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController
+            guard let vc = loginVC else { return }
+            (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(vc)
+        case .about:
+            let avc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AboutViewController") as? AboutViewController
+            guard let vc = avc else { return }
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+}
+
+extension FuelsViewController: UIAdaptivePresentationControllerDelegate {
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return UIModalPresentationStyle.none
     }
 }

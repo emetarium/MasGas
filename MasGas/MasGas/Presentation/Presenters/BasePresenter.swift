@@ -29,4 +29,13 @@ class BasePresenter {
         let needsConnection = flags.contains(.connectionRequired)
         return (isReachable && !needsConnection)
     }
+    
+    func isUserLogged() -> Bool {
+        if UserDefaults.standard.object(forKey: "User") != nil {
+            return true
+        }
+        else {
+            return false
+        }
+    }
 }

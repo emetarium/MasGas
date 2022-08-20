@@ -10,6 +10,7 @@ import Foundation
 class FuelsPresenter<FuelSelectionProtocol>: BasePresenter {
     let fetchFuelsUseCase: FetchFuelsUseCase?
     let fetchSelectedTownUseCase: FetchSelectedTownUseCase?
+    let deleteAccountUseCase: DeleteAccountUseCase?
     let logoutUseCase: LogOutUseCase?
     let view: FuelsViewController
     
@@ -17,6 +18,7 @@ class FuelsPresenter<FuelSelectionProtocol>: BasePresenter {
         self.view = view
         self.fetchFuelsUseCase = FetchFuelsUseCase()
         self.fetchSelectedTownUseCase = FetchSelectedTownUseCase()
+        self.deleteAccountUseCase = DeleteAccountUseCase()
         self.logoutUseCase = LogOutUseCase()
     }
     
@@ -39,6 +41,13 @@ class FuelsPresenter<FuelSelectionProtocol>: BasePresenter {
     func logout() {
         logoutUseCase?.execute()
         self.view.navigateToLogin()
+    }
+    
+    func deleteAccount() {
+        deleteAccountUseCase?.execute(completion: { error in
+            print(error?.localizedDescription)
+        })
+        logout()
     }
     
     func checkInternetConnection() {

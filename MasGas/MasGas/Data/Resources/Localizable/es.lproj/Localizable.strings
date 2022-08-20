@@ -18,6 +18,7 @@
 "APPLE_LOGIN_BUTTON" = "Iniciar sesión con Apple";
 "SIGN_UP_LABEL" = "¿No tienes cuenta?";
 "SIGN_UP_BUTTON" = "Regístrate";
+"NOT_NOW_BUTTON" = "Ahora no";
 
 /* Sign Up */
 "SIGN_UP_TITLE" = "Regístrate";
@@ -72,6 +73,8 @@
 "NO_ROUTE_ERROR_MESSAGE" = "No hay rutas disponibles entre estas ubicaciones";
 "NO_LOCATION_ERROR_MESSAGE" = "No se ha podido encontrar su ubicación";
 "NO_LOCATION_PERMISSION_MESSAGE" = "Ubicación no habilitada";
+"USER_NOT_LOGGED_TITLE" = "Usuario no autenticado";
+"USER_NOT_LOGGED_MESSAGE" = "Debes haber iniciado sesión para guardar favoritos";
 
 /* FAVORITES SCREEN */
 "FAVORITE_GAS_STATIONS_TITLE" = "Gasolineras favoritas";
@@ -82,3 +85,13 @@
 /* LOG OUT */
 "LOG_OUT_ALERT_TITLE" = "Cerrar sesión";
 "LOG_OUT_ALERT_MESSAGE" = "¿Estás seguro de que quieres cerrar sesión?";
+
+/* OPTIONS */
+"LOGOUT_OPTION_TITLE" = "Cerrar sesión";
+"DELETE_ACCOUNT_OPTION_TITLE" = "Borrar cuenta";
+"ABOUT_OPTION_TITLE" = "Acerca de";
+"LOGIN_OPTION_TITLE" = "Iniciar sesión";
+
+/* ABOUT */
+"APP_VERSION_LABEL" = "Versión [version]";
+"ABOUT_TITLE" = "Acerca de";

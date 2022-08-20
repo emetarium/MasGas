@@ -18,6 +18,7 @@
 "APPLE_LOGIN_BUTTON" = "Sign in with Apple";
 "SIGN_UP_LABEL" = "Don't have an account?";
 "SIGN_UP_BUTTON" = "Sign up";
+"NOT_NOW_BUTTON" = "Not now";
 
 /* Sign Up */
 "SIGN_UP_TITLE" = "Sign up";
@@ -72,6 +73,8 @@
 "NO_ROUTE_ERROR_MESSAGE" = "There are no routes available between these locations";
 "NO_LOCATION_ERROR_MESSAGE" = "Your location couldn't be found";
 "NO_LOCATION_PERMISSION_MESSAGE" = "Location not enabled";
+"USER_NOT_LOGGED_TITLE" = "User not logged";
+"USER_NOT_LOGGED_MESSAGE" = "You must be logged in to save favorites";
 
 /* FAVORITES SCREEN */
 "FAVORITE_GAS_STATIONS_TITLE" = "Favorite gas stations";
@@ -82,3 +85,7 @@
 /* LOG OUT */
 "LOG_OUT_ALERT_TITLE" = "Log out";
 "LOG_OUT_ALERT_MESSAGE" = "Are you sure you want to log out?";
+
+/* ABOUT */
+"APP_VERSION_LABEL" = "Version [version]";
+"ABOUT_TITLE" = "About";

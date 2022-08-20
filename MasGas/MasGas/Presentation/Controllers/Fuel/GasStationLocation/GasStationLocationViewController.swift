@@ -69,18 +69,23 @@ class GasStationLocationViewController: BaseViewController, MKMapViewDelegate {
     }
     
     @objc func addFav() {
-        guard var gasStation = gasStation, let yellow = Colors.yellow else {
+        guard var gasStation = gasStation, let yellow = Colors.yellow, let isLogged = presenter?.isUserLogged() else {
             return
         }
-        if gasStation.favorita {
-            presenter?.removeFavorite(gasStation: gasStation)
-            gasStation.favorita = false
-            self.favoriteIcon.tintColor = Colors.white
-        }
-        else {
-            presenter?.saveFavorite(gasStation: gasStation)
-            gasStation.favorita = true
-            self.favoriteIcon.tintColor = yellow
+        if isLogged {
+            if gasStation.favorita {
+                presenter?.removeFavorite(gasStation: gasStation)
+                gasStation.favorita = false
+                self.favoriteIcon.tintColor = Colors.white
+            }
+            else {
+                presenter?.saveFavorite(gasStation: gasStation)
+                gasStation.favorita = true
+                self.favoriteIcon.tintColor = yellow
+            }
+        } else {
+            let acceptAction = UIAlertAction(title: NSLocalizedString("ACCEPT_ACTION", comment: ""), style: .default)
+            self.showAlert(title: NSLocalizedString("USER_NOT_LOGGED_TITLE", comment: ""), message: NSLocalizedString("USER_NOT_LOGGED_MESSAGE", comment: ""), alternativeAction: nil, acceptAction: acceptAction)
         }
     }
     

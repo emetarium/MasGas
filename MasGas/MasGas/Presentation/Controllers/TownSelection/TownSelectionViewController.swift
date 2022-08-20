@@ -37,14 +37,6 @@ class TownSelectionViewController: BaseViewController, UITableViewDelegate, UITa
         // Do any additional setup after loading the view.
     }
     
-//    override func viewWillAppear(_ animated: Bool) {
-//        self.navigationController?.isNavigationBarHidden = false
-//    }
-//
-//    override func viewWillDisappear(_ animated: Bool) {
-//        self.navigationController?.isNavigationBarHidden = true
-//    }
-    
     //MARK: - Functions
     func setUpUI() {
         self.navigationController?.isNavigationBarHidden = true
