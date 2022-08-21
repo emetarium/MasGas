@@ -165,12 +165,13 @@ class SearchFuelViewController: BaseViewController, UITableViewDelegate, UITable
             presenter?.isFavorite(gasStation: fuelList[indexPath.row], completion: { result in
                 let gasolinera = Gasolinera(nombre: fuelList[indexPath.row].nombre, ubicacion: fuelList[indexPath.row].coordenadas, direccion: fuelList[indexPath.row].direccion, municipio: fuelList[indexPath.row].municipio, favorita: result, id: fuelList[indexPath.row].id)
                 vc.gasStation = gasolinera
+                self.navigationController?.pushViewController(vc, animated: true)
             })
         } else {
             let gasolinera = Gasolinera(nombre: fuelList[indexPath.row].nombre, ubicacion: fuelList[indexPath.row].coordenadas, direccion: fuelList[indexPath.row].direccion, municipio: fuelList[indexPath.row].municipio, favorita: false, id: fuelList[indexPath.row].id)
             vc.gasStation = gasolinera
+            self.navigationController?.pushViewController(vc, animated: true)
         }
-        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 
