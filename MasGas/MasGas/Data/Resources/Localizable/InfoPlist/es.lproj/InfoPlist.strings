@@ -5,4 +5,4 @@
   Created by María García Torres on 20/8/22.
   
 */
-"NSLocationWhenInUseUsageDescription" = "Usamos tu ubicación para personalizar tu experiencia en la app";
+"NSLocationWhenInUseUsageDescription" = "Usamos tu ubicación para calcular las gasolineras más cercanas a ti";

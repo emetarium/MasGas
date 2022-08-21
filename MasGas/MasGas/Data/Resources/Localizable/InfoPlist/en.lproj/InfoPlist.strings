@@ -5,4 +5,4 @@
   Created by María García Torres on 20/8/22.
   
 */
-"NSLocationWhenInUseUsageDescription" = "We use your location to personalize your app experience";
+"NSLocationWhenInUseUsageDescription" = "We use your location to calculate the nearest gas stations to you.";
