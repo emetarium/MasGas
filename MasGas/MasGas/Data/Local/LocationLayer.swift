@@ -22,7 +22,7 @@ class LocationLayer: NSObject {
     func startGettingLocation() {
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
-        if CLLocationManager.locationServicesEnabled() {
+        if isLocationEnabled() {
             locationManager.startUpdatingLocation()
         }
     }
@@ -35,12 +35,10 @@ class LocationLayer: NSObject {
     
     func isLocationEnabled() -> Bool {
         switch(CLLocationManager.authorizationStatus()) {
-            case .restricted, .denied:
-                return false
-            case .authorizedAlways, .authorizedWhenInUse:
-                return true
-            case .notDetermined:
-                return false
+        case .authorizedAlways, .authorizedWhenInUse:
+            return true
+        default:
+            return false
         }
     }
 }

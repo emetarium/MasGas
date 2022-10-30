@@ -1,3 +1,9 @@
+# 10.1.0
+- [fixed] Fix a bug where multi factor phone number returns `NULL`. (#10296)
+
+# 9.5.0
+- [fixed] Fix a bug where phone multi factor id is not correctly retrieved. (#10061)
+
 # 9.2.0
 - [fixed] Catch keychain errors instead of using the `isProtectedDataAvailable` API for handling prewarming issue. (#9869)
 

@@ -17,17 +17,11 @@ enum APIUrls: String {
 
 enum Fuels: String, CaseIterable {
     case G95E5 = "G95E5"
-    case G95E10 = "G95E10"
     case G95E5P = "G95E5+"
     case G98E5 = "G98E5"
-    case G98E10 = "G98E10"
     case GOA = "GOA"
     case GOAP = "GOA+"
-    case GOB = "GOB"
-    case BIO = "BIO"
     case GLP = "GLP"
-    case GNC = "GNC"
-    case GNL = "GNL"
 }
 
 enum queryByFuelOptions: String, CaseIterable {

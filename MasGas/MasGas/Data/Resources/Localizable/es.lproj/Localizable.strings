@@ -43,18 +43,12 @@
 /* FUEL SCREEN */
 "FUEL_SELECTION_LABEL" = "Selecciona un carburante";
 "FAVORITE_FUELS_HEADING" = "Favoritos";
-"G95E5" = "Gasolina 95 E5";
-"G95E10" = "Gasolina 95 E10";
-"G95E5+" = "Gasolina 95 E5 Premium";
-"G98E5" = "Gasolina 98 E5";
-"G98E10" = "Gasolina 98 E10";
-"GOA" = "Gasóleo A habitual";
-"GOA+" = "Gasóleo Premium";
-"GOB" = "Gasóleo B";
-"BIO" = "Biodiésel";
+"G95E5" = "Gasolina 95";
+"G95E5+" = "Gasolina 95+";
+"G98E5" = "Gasolina 98";
+"GOA" = "Diésel";
+"GOA+" = "Diésel+";
 "GLP" = "Gases licuados del petróleo";
-"GNC" = "Gas natural comprimido";
-"GNL" = "Gas natural licuado";
 
 /* TOWN SELECTION SCREEN */
 "TOWN_SELECTION_TITLE" = "Municipios";
