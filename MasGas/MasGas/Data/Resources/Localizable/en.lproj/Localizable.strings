@@ -49,6 +49,8 @@
 "GOA" = "Diesel";
 "GOA+" = "Diesel+";
 "GLP" = "Liquid petroleum gas";
+"LOCATION_CHANGED_ALERT_TITLE" = "We have detected a change in your location";
+"LOCATION_CHANGED_ALERT_MESSAGE" = "Do you wish to change the search to [town]?";
 
 /* SEARCH FUEL SCREEN*/
 "QUERY_FUEL_TITLE" = "Find your fuel";

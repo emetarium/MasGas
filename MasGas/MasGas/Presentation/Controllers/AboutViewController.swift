@@ -23,7 +23,8 @@ class AboutViewController: UIViewController {
     func setUpUI() {
         self.view.backgroundColor = Colors.darkGray
         
-        self.appVersionLabel.text = NSLocalizedString("APP_VERSION_LABEL", comment: "").replace(occurrences: ["[version]" : "1.0"])
+        let replace: [String : String] = ["[version]" : UIApplication.appVersion()]
+        self.appVersionLabel.text = NSLocalizedString("APP_VERSION_LABEL", comment: "").replace(occurrences: replace)
         self.appVersionLabel.textColor = Colors.white
         
         self.navigationBar.isTranslucent = false

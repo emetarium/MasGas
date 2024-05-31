@@ -95,6 +95,10 @@ class TownSelectionViewController: BaseViewController, UITableViewDelegate, UITa
         presenter?.saveTown(town: filteredTowns[indexPath.row])
     }
     
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+    
     //MARK: - Search Bar
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         filteredTowns = towns.filter({ municipio in

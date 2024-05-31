@@ -102,9 +102,13 @@ class AuthenticationLayer {
         
             guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
             guard let rootViewController = windowScene.windows.first?.rootViewController else { return }
-        
-            GIDSignIn.sharedInstance.signIn(with: configuration, presenting: rootViewController) { [unowned self] user, error in
-                authenticateGoogleUser(for: user, with: error) { result in
+            
+            GIDSignIn.sharedInstance.configuration = configuration
+            GIDSignIn.sharedInstance.signIn(withPresenting: rootViewController, completion: { authentication, error in
+                
+                guard let googleUser = authentication?.user else { return }
+                
+                self.authenticateGoogleUser(for: googleUser, with: error) { result in
                     switch result {
                         case .success(let user):
                             completion(.success(user))
@@ -112,7 +116,7 @@ class AuthenticationLayer {
                             completion(.failure(AuthenticationError(rawValue: error._code)))
                     }
                 }
-            }
+            })
         }
     }
     
@@ -153,10 +157,9 @@ class AuthenticationLayer {
             completion(.failure(AuthenticationError(rawValue: authError._code)))
             return
         }
-        
-        guard let authentication = user?.authentication, let idToken = authentication.idToken else { return }
+        guard let idToken = user?.idToken, let accessToken = user?.accessToken else { return }
       
-        let credential = GoogleAuthProvider.credential(withIDToken: idToken, accessToken: authentication.accessToken)
+        let credential = GoogleAuthProvider.credential(withIDToken: idToken.tokenString, accessToken: accessToken.tokenString)
       
         Auth.auth().signIn(with: credential) { authData, error in
             if let error = error {

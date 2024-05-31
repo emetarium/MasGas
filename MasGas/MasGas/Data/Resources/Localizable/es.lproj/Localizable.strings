@@ -49,6 +49,8 @@
 "GOA" = "Diésel";
 "GOA+" = "Diésel+";
 "GLP" = "Gases licuados del petróleo";
+"LOCATION_CHANGED_ALERT_TITLE" = "Hemos detectado un cambio en tu ubicación";
+"LOCATION_CHANGED_ALERT_MESSAGE" = "¿Deseas cambiar la búsqueda a [town]?";
 
 /* TOWN SELECTION SCREEN */
 "TOWN_SELECTION_TITLE" = "Municipios";

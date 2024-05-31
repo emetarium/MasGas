@@ -20,8 +20,4 @@ target 'MasGas' do
     # Pods for testing
   end
 
-  target 'MasGasUITests' do
-    # Pods for testing
-  end
-
 end

@@ -15,4 +15,15 @@ extension String {
         }
         return replaced
     }
+    
+    func formatName() -> String {
+        var separatedName = self.components(separatedBy: CharacterSet(charactersIn: "()"))
+        if separatedName.count > 1 {
+            var removeLast = separatedName[0].removeLast()
+            let finalName = separatedName[1] + " " + separatedName[0]
+            return finalName
+        } else {
+            return self
+        }
+    }
 }

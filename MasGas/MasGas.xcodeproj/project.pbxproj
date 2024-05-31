@@ -49,8 +49,6 @@
 		4C9471E327A1B1D2001F49F9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C9471E227A1B1D2001F49F9 /* Assets.xcassets */; };
 		4C9471E627A1B1D2001F49F9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C9471E427A1B1D2001F49F9 /* LaunchScreen.storyboard */; };
 		4C9471F127A1B1D2001F49F9 /* MasGasTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9471F027A1B1D2001F49F9 /* MasGasTests.swift */; };
-		4C9471FB27A1B1D2001F49F9 /* MasGasUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9471FA27A1B1D2001F49F9 /* MasGasUITests.swift */; };
-		4C9471FD27A1B1D2001F49F9 /* MasGasUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9471FC27A1B1D2001F49F9 /* MasGasUITestsLaunchTests.swift */; };
 		4C96040527BE7ABB002A59CA /* FuelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C96040327BE7ABB002A59CA /* FuelTableViewCell.swift */; };
 		4C96040627BE7ABB002A59CA /* FuelTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C96040427BE7ABB002A59CA /* FuelTableViewCell.xib */; };
 		4C96040827BE8630002A59CA /* FetchFuelsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C96040727BE8630002A59CA /* FetchFuelsUseCase.swift */; };
@@ -74,6 +72,7 @@
 		4CAF247827F0D52300FD3D4B /* CalculateDistanceBetweenLocationsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAF247727F0D52300FD3D4B /* CalculateDistanceBetweenLocationsUseCase.swift */; };
 		4CBD01FA27BABDC500C36FE2 /* Carburante.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBD01F927BABDC500C36FE2 /* Carburante.swift */; };
 		4CBD01FC27BABE4D00C36FE2 /* Municipio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CBD01FB27BABE4D00C36FE2 /* Municipio.swift */; };
+		4CC0A7682C09E2F9002CE3D8 /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC0A7672C09E2F9002CE3D8 /* UIApplication.swift */; };
 		4CC77E6227A309CB007589F4 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC77E6127A309CB007589F4 /* UIViewController.swift */; };
 		4CC77E6827A30ED8007589F4 /* AuthenticationLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC77E6727A30ED8007589F4 /* AuthenticationLayer.swift */; };
 		4CD2472E27C119B400E086A4 /* FuelsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD2472D27C119B400E086A4 /* FuelsPresenter.swift */; };
@@ -87,19 +86,11 @@
 		4CD9D0D428B17A65007CBE83 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD9D0D328B17A65007CBE83 /* AboutViewController.swift */; };
 		4CF016CB27A6C28600A0451E /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF016CA27A6C28600A0451E /* UITextField.swift */; };
 		4CF016CD27A6C4CA00A0451E /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF016CC27A6C4CA00A0451E /* SignUpViewController.swift */; };
-		E8EAEB7D146EBCE0C58D316C /* Pods_MasGas_MasGasUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 887AE942E0534BF6818305FE /* Pods_MasGas_MasGasUITests.framework */; };
 		FE30C066FDC55D9D6C47E73A /* Pods_MasGasTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E7260AC8CB1FBB90AB7F772 /* Pods_MasGasTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		4C9471ED27A1B1D2001F49F9 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4C9471CE27A1B1D1001F49F9 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 4C9471D527A1B1D2001F49F9;
-			remoteInfo = MasGas;
-		};
-		4C9471F727A1B1D2001F49F9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 4C9471CE27A1B1D1001F49F9 /* Project object */;
 			proxyType = 1;
@@ -160,7 +151,6 @@
 		4C9471E727A1B1D2001F49F9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4C9471EC27A1B1D2001F49F9 /* MasGasTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MasGasTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C9471F027A1B1D2001F49F9 /* MasGasTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasGasTests.swift; sourceTree = "<group>"; };
-		4C9471F627A1B1D2001F49F9 /* MasGasUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MasGasUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C9471FA27A1B1D2001F49F9 /* MasGasUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasGasUITests.swift; sourceTree = "<group>"; };
 		4C9471FC27A1B1D2001F49F9 /* MasGasUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasGasUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		4C96040327BE7ABB002A59CA /* FuelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuelTableViewCell.swift; sourceTree = "<group>"; };
@@ -186,6 +176,7 @@
 		4CAF247727F0D52300FD3D4B /* CalculateDistanceBetweenLocationsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculateDistanceBetweenLocationsUseCase.swift; sourceTree = "<group>"; };
 		4CBD01F927BABDC500C36FE2 /* Carburante.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Carburante.swift; sourceTree = "<group>"; };
 		4CBD01FB27BABE4D00C36FE2 /* Municipio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Municipio.swift; sourceTree = "<group>"; };
+		4CC0A7672C09E2F9002CE3D8 /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
 		4CC77E6127A309CB007589F4 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		4CC77E6727A30ED8007589F4 /* AuthenticationLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationLayer.swift; sourceTree = "<group>"; };
 		4CD2472D27C119B400E086A4 /* FuelsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuelsPresenter.swift; sourceTree = "<group>"; };
@@ -221,14 +212,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				FE30C066FDC55D9D6C47E73A /* Pods_MasGasTests.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		4C9471F327A1B1D2001F49F9 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E8EAEB7D146EBCE0C58D316C /* Pods_MasGas_MasGasUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,6 +258,7 @@
 				4CC77E6127A309CB007589F4 /* UIViewController.swift */,
 				4CF016CA27A6C28600A0451E /* UITextField.swift */,
 				4C8394D727BAE47B002C873F /* String.swift */,
+				4CC0A7672C09E2F9002CE3D8 /* UIApplication.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -455,7 +439,6 @@
 			children = (
 				4C9471D627A1B1D2001F49F9 /* MasGas.app */,
 				4C9471EC27A1B1D2001F49F9 /* MasGasTests.xctest */,
-				4C9471F627A1B1D2001F49F9 /* MasGasUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -665,26 +648,6 @@
 			productReference = 4C9471EC27A1B1D2001F49F9 /* MasGasTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		4C9471F527A1B1D2001F49F9 /* MasGasUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 4C94720627A1B1D2001F49F9 /* Build configuration list for PBXNativeTarget "MasGasUITests" */;
-			buildPhases = (
-				CE6752221803A3DCF515A612 /* [CP] Check Pods Manifest.lock */,
-				4C9471F227A1B1D2001F49F9 /* Sources */,
-				4C9471F327A1B1D2001F49F9 /* Frameworks */,
-				4C9471F427A1B1D2001F49F9 /* Resources */,
-				4019688D9B3FD65FEDCDF134 /* [CP] Embed Pods Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				4C9471F827A1B1D2001F49F9 /* PBXTargetDependency */,
-			);
-			name = MasGasUITests;
-			productName = MasGasUITests;
-			productReference = 4C9471F627A1B1D2001F49F9 /* MasGasUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -699,10 +662,6 @@
 						CreatedOnToolsVersion = 13.2.1;
 					};
 					4C9471EB27A1B1D2001F49F9 = {
-						CreatedOnToolsVersion = 13.2.1;
-						TestTargetID = 4C9471D527A1B1D2001F49F9;
-					};
-					4C9471F527A1B1D2001F49F9 = {
 						CreatedOnToolsVersion = 13.2.1;
 						TestTargetID = 4C9471D527A1B1D2001F49F9;
 					};
@@ -727,7 +686,6 @@
 			targets = (
 				4C9471D527A1B1D2001F49F9 /* MasGas */,
 				4C9471EB27A1B1D2001F49F9 /* MasGasTests */,
-				4C9471F527A1B1D2001F49F9 /* MasGasUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -760,33 +718,9 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		4C9471F427A1B1D2001F49F9 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		4019688D9B3FD65FEDCDF134 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MasGas-MasGasUITests/Pods-MasGas-MasGasUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MasGas-MasGasUITests/Pods-MasGas-MasGasUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MasGas-MasGasUITests/Pods-MasGas-MasGasUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		4D21AC7E358E52D8480D3E1A /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -826,28 +760,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		CE6752221803A3DCF515A612 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-MasGas-MasGasUITests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 		D248AF5B5D6BFB087E6429A3 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -877,6 +789,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4CC0A7682C09E2F9002CE3D8 /* UIApplication.swift in Sources */,
 				4CC77E6827A30ED8007589F4 /* AuthenticationLayer.swift in Sources */,
 				4C92ACEA28185FDB0055F94F /* BasePresenter.swift in Sources */,
 				4CA334C827ED0523004DE029 /* LogOutUseCase.swift in Sources */,
@@ -951,15 +864,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		4C9471F227A1B1D2001F49F9 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				4C9471FD27A1B1D2001F49F9 /* MasGasUITestsLaunchTests.swift in Sources */,
-				4C9471FB27A1B1D2001F49F9 /* MasGasUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -967,11 +871,6 @@
 			isa = PBXTargetDependency;
 			target = 4C9471D527A1B1D2001F49F9 /* MasGas */;
 			targetProxy = 4C9471ED27A1B1D2001F49F9 /* PBXContainerItemProxy */;
-		};
-		4C9471F827A1B1D2001F49F9 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 4C9471D527A1B1D2001F49F9 /* MasGas */;
-			targetProxy = 4C9471F727A1B1D2001F49F9 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1166,7 +1065,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.maria.MasGas;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1205,7 +1104,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.maria.MasGas;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "+Gas";
@@ -1260,44 +1159,6 @@
 			};
 			name = Release;
 		};
-		4C94720727A1B1D2001F49F9 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = D30BCB60A73821A5712B0A85 /* Pods-MasGas-MasGasUITests.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = AHRSPCJ485;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.maria.MasGasUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = MasGas;
-			};
-			name = Debug;
-		};
-		4C94720827A1B1D2001F49F9 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = F7D6584D95B95C233EC32874 /* Pods-MasGas-MasGasUITests.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = AHRSPCJ485;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.maria.MasGasUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = MasGas;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1324,15 +1185,6 @@
 			buildConfigurations = (
 				4C94720427A1B1D2001F49F9 /* Debug */,
 				4C94720527A1B1D2001F49F9 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		4C94720627A1B1D2001F49F9 /* Build configuration list for PBXNativeTarget "MasGasUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				4C94720727A1B1D2001F49F9 /* Debug */,
-				4C94720827A1B1D2001F49F9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

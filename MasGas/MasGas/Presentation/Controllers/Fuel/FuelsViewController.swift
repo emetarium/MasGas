@@ -18,6 +18,7 @@ protocol FuelsProtocol {
     func updateTown(town: Municipio)
     func navigateToLogin()
     func showNoConnectionAlert()
+    func showChangeTownAlert(town: Municipio)
     func showLoadingIndicator()
     func hideLoadingIndicator()
 }
@@ -70,7 +71,7 @@ class FuelsViewController: BaseViewController, UITableViewDelegate, UITableViewD
         self.view.backgroundColor = Colors.darkGray
         
         self.townLabel.textColor = Colors.white
-        self.townLabel.text = town.nombreMunicipio
+        self.townLabel.text = town.nombreMunicipio.formatName()
         
         self.optionsButton.tintColor = Colors.white
         self.optionsButton.setTitle("", for: .normal)
@@ -156,6 +157,9 @@ class FuelsViewController: BaseViewController, UITableViewDelegate, UITableViewD
 extension FuelsViewController: FuelsProtocol {
     func updateTown(town: Municipio) {
         self.town = town
+        DispatchQueue.main.async {
+            self.townLabel.text = town.nombreMunicipio.formatName()
+        }
     }
     
     func updateFuels(fuels: [Carburante]) {
@@ -176,6 +180,18 @@ extension FuelsViewController: FuelsProtocol {
             UIApplication.shared.perform(#selector(NSXPCConnection.suspend))
         }
         self.showAlert(title: NSLocalizedString("NO_CONNECTION_ERROR_TITLE", comment: ""), message: NSLocalizedString("NO_CONNECTION_ERROR_MESSAGE", comment: ""), alternativeAction: nil, acceptAction: acceptAction)
+    }
+    
+    func showChangeTownAlert(town: Municipio) {
+        let acceptAction = UIAlertAction(title: NSLocalizedString("ACCEPT_ACTION", comment: ""), style: .default) { action in
+            self.presenter?.saveTown(town: town)
+        }
+        let cancelAction = UIAlertAction(title: NSLocalizedString("CANCEL_ACTION", comment: ""), style: .default)
+        
+        DispatchQueue.main.async {
+            let replace: [String : String] = ["[town]" : town.nombreMunicipio.formatName()]
+            self.showAlert(title: NSLocalizedString("LOCATION_CHANGED_ALERT_TITLE", comment: ""), message: NSLocalizedString("LOCATION_CHANGED_ALERT_MESSAGE", comment: "").replace(occurrences: replace), alternativeAction: cancelAction, acceptAction: acceptAction)
+        }
     }
     
     func showLoadingIndicator() {
