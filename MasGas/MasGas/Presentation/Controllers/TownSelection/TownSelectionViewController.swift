@@ -15,7 +15,7 @@ protocol TownSelectionProtocol {
     func hideLoadingIndicator()
 }
 
-class TownSelectionViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
+class TownSelectionViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
     
     //MARK: - IBOutlets
     @IBOutlet var townSearchBar: UISearchBar!
@@ -98,8 +98,9 @@ class TownSelectionViewController: BaseViewController, UITableViewDelegate, UITa
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
-    
-    //MARK: - Search Bar
+}
+
+extension TownSelectionViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         filteredTowns = towns.filter({ municipio in
             if municipio.nombreMunicipio.applyingTransform(.stripDiacritics, reverse: false)!.lowercased().contains(searchText.applyingTransform(.stripDiacritics, reverse: false)!.lowercased()) {
@@ -112,7 +113,10 @@ class TownSelectionViewController: BaseViewController, UITableViewDelegate, UITa
         }
         self.townTableView.reloadData()
     }
-
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
 }
 
 extension TownSelectionViewController: TownSelectionProtocol {

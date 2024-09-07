@@ -82,6 +82,10 @@
 "LOG_OUT_ALERT_TITLE" = "Cerrar sesión";
 "LOG_OUT_ALERT_MESSAGE" = "¿Estás seguro de que quieres cerrar sesión?";
 
+/* DELETE ACCOUNT */
+"DELETE_ACCOUNT_ALERT_TITLE" = "¿Estás seguro de que quieres borrar tu cuenta?";
+"DELETE_ACCOUNT_ALERT_MESSAGE" = "Se borrarán todos tus datos";
+
 /* OPTIONS */
 "LOGOUT_OPTION_TITLE" = "Cerrar sesión";
 "DELETE_ACCOUNT_OPTION_TITLE" = "Borrar cuenta";

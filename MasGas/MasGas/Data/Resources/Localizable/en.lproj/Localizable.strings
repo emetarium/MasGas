@@ -82,6 +82,10 @@
 "LOG_OUT_ALERT_TITLE" = "Log out";
 "LOG_OUT_ALERT_MESSAGE" = "Are you sure you want to log out?";
 
+/* DELETE ACCOUNT */
+"DELETE_ACCOUNT_ALERT_TITLE" = "Are you sure you want to delete your account?";
+"DELETE_ACCOUNT_ALERT_MESSAGE" = "Your data will be deleted";
+
 /* ABOUT */
 "APP_VERSION_LABEL" = "Version [version]";
 "ABOUT_TITLE" = "About";

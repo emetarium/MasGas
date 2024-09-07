@@ -118,6 +118,12 @@ class RemoteDataStore: APIDataStore {
             }
         })
     }
+    
+    func deleteUserData() {
+        guard let user = Auth.auth().currentUser else { return }
+        
+        ref.child("users").child(user.uid).removeValue()
+    }
 }
 
 // Código para migrar datos en base de datos

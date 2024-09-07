@@ -149,6 +149,7 @@ class AuthenticationLayer {
               completion(AuthenticationError(rawValue: error._code))
               return
           } else {
+              RemoteDataStore().deleteUserData()
               completion(nil)
           }
         })

@@ -217,7 +217,11 @@ extension FuelsViewController: OptionsProtocol {
             let cancel = UIAlertAction(title: NSLocalizedString("CANCEL_ACTION", comment: ""), style: .default)
             self.showAlert(title: NSLocalizedString("LOG_OUT_ALERT_TITLE", comment: ""), message: NSLocalizedString("LOG_OUT_ALERT_MESSAGE", comment: ""), alternativeAction: cancel, acceptAction: accept)
         case .deleteAccount:
-            presenter?.deleteAccount()
+            let accept = UIAlertAction(title: NSLocalizedString("ACCEPT_ACTION", comment: ""), style: .destructive) { accepted in
+                self.presenter?.deleteAccount()
+            }
+            let cancel = UIAlertAction(title: NSLocalizedString("CANCEL_ACTION", comment: ""), style: .default)
+            self.showAlert(title: NSLocalizedString("DELETE_ACCOUNT_ALERT_TITLE", comment: ""), message: NSLocalizedString("DELETE_ACCOUNT_ALERT_MESSAGE", comment: ""), alternativeAction: cancel, acceptAction: accept)
         case .about:
             let avc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AboutViewController") as? AboutViewController
             guard let vc = avc else { return }
