@@ -60,13 +60,14 @@ class AuthenticationLayer {
     private init() {}
     
     func emailSignIn(email: String, password: String, completion: @escaping ((Result<User, AuthenticationError>)) -> ()) {
-        Auth.auth().signIn(withEmail: email, password: password) { user, error in
+        Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
             if let authError = error {
                 completion(.failure(AuthenticationError(rawValue: authError._code)))
                 return
             }
-            else if let user = user {
-                completion(.success(user.user))
+            else if let authResult = authResult {
+                RemoteDataStore().checkUserMigration(uid: authResult.user.uid)
+                completion(.success(authResult.user))
             }
         }
     }
@@ -77,8 +78,9 @@ class AuthenticationLayer {
                 completion(.failure(AuthenticationError(rawValue: authError._code)))
                 return
             }
-            else if let user = authResult {
-                completion(.success(user.user))
+            else if let authResult = authResult {
+                RemoteDataStore().checkUserMigration(uid: authResult.user.uid)
+                completion(.success(authResult.user))
             }
         }
     }
@@ -161,13 +163,14 @@ class AuthenticationLayer {
       
         let credential = GoogleAuthProvider.credential(withIDToken: idToken.tokenString, accessToken: accessToken.tokenString)
       
-        Auth.auth().signIn(with: credential) { authData, error in
+        Auth.auth().signIn(with: credential) { authResult, error in
             if let error = error {
                 completion(.failure(AuthenticationError(rawValue: error._code)))
                 return
             }
-            else if let user = authData {
-                completion(.success(user.user))
+            else if let authResult = authResult {
+                RemoteDataStore().checkUserMigration(uid: authResult.user.uid)
+                completion(.success(authResult.user))
             }
         }
     }

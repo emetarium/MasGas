@@ -170,6 +170,9 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
                     let changeRequest = authResult.user.createProfileChangeRequest()
                     changeRequest.displayName = appleIDCredential.fullName?.givenName
                     changeRequest.commitChanges()
+                    
+                    RemoteDataStore().checkUserMigration(uid: authResult.user.uid)
+                    
                     self?.presenter?.checkTown()
                 }
             }

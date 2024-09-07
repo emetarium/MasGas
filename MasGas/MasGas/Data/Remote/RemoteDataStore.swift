@@ -8,6 +8,7 @@
 import Foundation
 import Firebase
 import CoreLocation
+import CryptoKit
 
 protocol APIDataStore {
     func getTownsData(completionHandler: @escaping ([Municipio]?) -> ())
@@ -69,27 +70,30 @@ class RemoteDataStore: APIDataStore {
     }
     
     func saveFavorite(gasStation: Gasolinera) {
-        guard var user = UserDefaults.standard.string(forKey: "User") else { return }
-        user = user.components(separatedBy: ("."))[0]
-        ref.child("\(user)/\(gasStation.id)/nombre").setValue(gasStation.nombre)
-        ref.child("\(user)/\(gasStation.id)/direccion").setValue(gasStation.direccion)
-        ref.child("\(user)/\(gasStation.id)/municipio").setValue(gasStation.municipio)
-        ref.child("\(user)/\(gasStation.id)/longitud").setValue(String(format: "%f", gasStation.ubicacion.coordinate.longitude))
-        ref.child("\(user)/\(gasStation.id)/latitud").setValue(String(format: "%f", gasStation.ubicacion.coordinate.latitude))
+        guard let user = Auth.auth().currentUser else { return }
+        
+        ref.child("users").child(user.uid).child("\(gasStation.id)/nombre").setValue(gasStation.nombre)
+        ref.child("users").child(user.uid).child("\(gasStation.id)/direccion").setValue(gasStation.direccion)
+        ref.child("users").child(user.uid).child("\(gasStation.id)/municipio").setValue(gasStation.municipio)
+        ref.child("users").child(user.uid).child("\(gasStation.id)/longitud").setValue(String(format: "%f", gasStation.ubicacion.coordinate.longitude))
+        ref.child("users").child(user.uid).child("\(gasStation.id)/latitud").setValue(String(format: "%f", gasStation.ubicacion.coordinate.latitude))
     }
     
     func removeFavorite(gasStation: Gasolinera) {
-        guard var user = UserDefaults.standard.string(forKey: "User") else { return }
-        user = user.components(separatedBy: ("."))[0]
-        ref.child("\(user)/\(gasStation.id)").removeValue()
+        guard let user = Auth.auth().currentUser else { return }
+        
+        ref.child("users").child(user.uid).child(gasStation.id).removeValue()
     }
     
     func getFavoritesList(completion: @escaping ([Gasolinera]?) -> ()) {
         var favoritesList: [Gasolinera] = []
-        guard var user = UserDefaults.standard.string(forKey: "User") else { return }
-        user = user.components(separatedBy: ("."))[0]
         
-        let postRef = self.ref.child(user) //self.ref points to my firebase
+        guard let user = Auth.auth().currentUser else {
+            completion(nil)
+            return
+        }
+        
+        let postRef = ref.child("users").child(user.uid)
         postRef.observeSingleEvent(of: .value, with: { snapshot in
             let allFavorites = snapshot.children.allObjects as! [DataSnapshot]
             for favorite in allFavorites {
@@ -104,15 +108,85 @@ class RemoteDataStore: APIDataStore {
     }
     
     func isFavorite(gasStationID: String, completion: @escaping (Bool) -> ()) {
-        guard var user = UserDefaults.standard.string(forKey: "User") else { return }
-        user = user.components(separatedBy: ("@"))[0]
+        guard let user = Auth.auth().currentUser else { return }
         
-        ref.child(user).observeSingleEvent(of: .value, with: { (snapshot) in
+        ref.child("users").child(user.uid).observeSingleEvent(of: .value, with: { (snapshot) in
             if snapshot.hasChild(gasStationID){
                 completion(true)
             } else{
                 completion(false)
             }
         })
+    }
+}
+
+// Código para migrar datos en base de datos
+extension RemoteDataStore {
+    func checkUserMigration(uid: String) {
+        let userRef = Database.database().reference().child("users").child(uid)
+        userRef.observeSingleEvent(of: .value) { snapshot in
+            if snapshot.exists() {
+                // Los datos ya están migrados
+                print("Datos del usuario ya migrados.")
+            } else {
+                // Los datos aún no están migrados
+                self.migrateUserData(uid: uid)
+            }
+        }
+    }
+    
+    // Función para migrar los datos del usuario desde el identificador antiguo al UID
+    func migrateUserData(uid: String) {
+        // Referencia a la base de datos de usuarios con el identificador basado en el email modificado
+        guard var user = UserDefaults.standard.string(forKey: "User") else { return }
+        user = user.components(separatedBy: ("."))[0]
+        let oldRef = Database.database().reference().child(user)
+        
+        oldRef.observeSingleEvent(of: .value) { snapshot in
+            guard let children = snapshot.children.allObjects as? [DataSnapshot], let childSnapshot = children.first else {
+                print("No se encontraron datos antiguos para migrar.")
+                return
+            }
+            
+            for child in children {
+                // Para cada identificador de datos del usuario
+                let dataId = child.key
+                let dataRef = child.ref
+                
+                // Leer los datos para este identificador
+                dataRef.observeSingleEvent(of: .value) { dataSnapshot in
+                    if let data = dataSnapshot.value as? [String: Any] {
+                        // Crear una referencia al nuevo nodo del usuario basado en el UID
+                        let newRef = Database.database().reference().child("users").child(uid).child(dataId)
+                        
+                        // Escribir los datos bajo el nuevo identificador (UID)
+                        newRef.setValue(data) { error, _ in
+                            if let error = error {
+                                print("Error al migrar datos del usuario \(user): \(error)")
+                            } else {
+                                // Eliminar los datos antiguos
+                                self.deleteOldUserData(for: childSnapshot.key)
+                            }
+                        }
+                    } else {
+                        print("No se encontraron datos antiguos para migrar.")
+                    }
+                }
+            }
+        }
+    }
+    
+    // Función para eliminar los datos del usuario bajo el identificador antiguo basado en el email
+    func deleteOldUserData(for currentIdentifier: String) {
+        guard var user = UserDefaults.standard.string(forKey: "User") else { return }
+        user = user.components(separatedBy: ("."))[0]
+        let oldRef = Database.database().reference().child(user)
+        oldRef.removeValue { error, _ in
+            if let error = error {
+                print("Error al eliminar datos antiguos: \(error)")
+            } else {
+                print("Datos antiguos eliminados correctamente.")
+            }
+        }
     }
 }
