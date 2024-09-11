@@ -21,7 +21,7 @@ protocol TownsRepository {
 }
 
 protocol FavoritesRepository {
-    func getFavoritesList(completion: @escaping ([Gasolinera]?) -> ())
+    func getFavoritesList(completion: @escaping ([PreciosGasolinera]?) -> ())
     func isFavorite(gasStationID: String, completion: @escaping (Bool) -> ())
     func saveFavorite(gasStation: Gasolinera)
     func removeFavorite(gasStation: Gasolinera)
@@ -125,10 +125,31 @@ extension Repository: TownsRepository {
 }
 
 extension Repository: FavoritesRepository {
-    func getFavoritesList(completion: @escaping ([Gasolinera]?) -> ()) {
+    func getFavoritesList(completion: @escaping ([PreciosGasolinera]?) -> ()) {
         remoteDataStore.getFavoritesList { gasolineras in
-            completion(gasolineras)
-        }
+                guard let gasolineras, !gasolineras.isEmpty else {
+                    completion(nil)
+                    return
+                }
+                
+                var gasStations: [PreciosGasolinera] = []
+                let dispatchGroup = DispatchGroup()
+                
+                // Itera sobre cada gasolinera
+                for gasolinera in gasolineras {
+                    dispatchGroup.enter() // Entrar al grupo
+                    
+                    self.remoteDataStore.getFuelPriceByGasStation(gasStation: gasolinera) { precios in
+                        gasStations.append(precios)
+                        dispatchGroup.leave() // Salir del grupo
+                    }
+                }
+                
+                // Notificar cuando todas las tareas en el grupo se hayan completado
+                dispatchGroup.notify(queue: .main) {
+                    completion(gasStations)
+                }
+            }
     }
     
     func isFavorite(gasStationID: String, completion: @escaping (Bool) -> ()) {

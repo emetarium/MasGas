@@ -69,6 +69,38 @@ class RemoteDataStore: APIDataStore {
         task.resume()
     }
     
+    func getFuelPriceByGasStation(gasStation: Gasolinera, completionHandler: @escaping (PreciosGasolinera) -> ()) {
+        var prices = PreciosGasolinera(gasolinera: gasStation, precios: [])
+        let dispatchGroup = DispatchGroup()
+        
+        self.getTownsData { listaMunicipios in
+            guard let listaMunicipios = listaMunicipios,
+                  let municipio = listaMunicipios.first(where: { $0.nombreMunicipio == gasStation.municipio }) else {
+                completionHandler(prices)
+                return
+            }
+            
+            // Obtener los datos de los combustibles
+            FetchFuelsUseCase().execute { fuels in
+                fuels.forEach { fuel in
+                    dispatchGroup.enter() // Entrar al grupo
+                    
+                    self.getFuelPriceByTown(fuelIdentifier: fuel.idProducto, townIdentifier: municipio.idMunicipio) { gasolineras in
+                        if let gasolineras = gasolineras, let gasolinera = gasolineras.first(where: { $0.idEESS == gasStation.id }) {
+                            prices.precios.append(PrecioCarburante(carburante: fuel, precio: gasolinera.precioProducto))
+                        }
+                        dispatchGroup.leave()
+                    }
+                }
+                
+                // Notificar cuando todas las tareas en el grupo se hayan completado
+                dispatchGroup.notify(queue: .main) {
+                    completionHandler(prices)
+                }
+            }
+        }
+    }
+    
     func saveFavorite(gasStation: Gasolinera) {
         guard let user = Auth.auth().currentUser else { return }
         

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,48 +15,51 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="gasStationCell" rowHeight="104" id="KGk-i7-Jjw" customClass="GasStationTableViewCell" customModule="MasGas" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="323" height="103"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="gasStationCell" rowHeight="159" id="KGk-i7-Jjw" customClass="GasStationTableViewCell" customModule="MasGas" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="323" height="158"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="323" height="103"/>
+                <rect key="frame" x="0.0" y="0.0" width="323" height="158"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gasStationIcon" translatesAutoresizingMaskIntoConstraints="NO" id="a4Z-xH-u3n">
-                        <rect key="frame" x="39" y="39.5" width="24" height="24"/>
+                        <rect key="frame" x="39" y="43.5" width="24" height="24"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="24" id="52I-w1-5R5"/>
                             <constraint firstAttribute="width" constant="24" id="FLb-Zj-pnO"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HPA-Av-WlX">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HPA-Av-WlX">
                         <rect key="frame" x="75" y="12" width="224" height="21"/>
                         <fontDescription key="fontDescription" name="MontserratRoman-SemiBold" family="Montserrat" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="filledFavoriteIcon" translatesAutoresizingMaskIntoConstraints="NO" id="oc7-1d-TXK">
-                        <rect key="frame" x="12" y="44" width="15" height="15"/>
+                        <rect key="frame" x="12" y="48" width="15" height="15"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="15" id="Nel-Ca-aMo"/>
                             <constraint firstAttribute="width" constant="15" id="Qxi-NB-pMa"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ulx-9q-53Y">
-                        <rect key="frame" x="75" y="44.5" width="224" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ulx-9q-53Y">
+                        <rect key="frame" x="75" y="45" width="224" height="20.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aiN-VL-Na7">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aiN-VL-Na7">
                         <rect key="frame" x="75" y="70.5" width="224" height="20.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="spf-nK-GNr">
+                        <rect key="frame" x="12" y="103" width="299" height="43"/>
+                    </stackView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="Ulx-9q-53Y" firstAttribute="top" secondItem="HPA-Av-WlX" secondAttribute="bottom" constant="11.5" id="0SC-uR-csG"/>
+                    <constraint firstItem="Ulx-9q-53Y" firstAttribute="top" secondItem="HPA-Av-WlX" secondAttribute="bottom" constant="12" id="0SC-uR-csG"/>
                     <constraint firstAttribute="trailing" secondItem="HPA-Av-WlX" secondAttribute="trailing" constant="24" id="0Xh-vH-nnp"/>
                     <constraint firstItem="HPA-Av-WlX" firstAttribute="leading" secondItem="a4Z-xH-u3n" secondAttribute="trailing" constant="12" id="0b6-lN-tAn"/>
                     <constraint firstItem="oc7-1d-TXK" firstAttribute="centerY" secondItem="a4Z-xH-u3n" secondAttribute="centerY" id="68i-dL-Jbs"/>
@@ -64,23 +67,28 @@
                     <constraint firstItem="Ulx-9q-53Y" firstAttribute="leading" secondItem="a4Z-xH-u3n" secondAttribute="trailing" constant="12" id="88v-4W-v6f"/>
                     <constraint firstItem="HPA-Av-WlX" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="Bsb-tk-S7a"/>
                     <constraint firstItem="a4Z-xH-u3n" firstAttribute="leading" secondItem="oc7-1d-TXK" secondAttribute="trailing" constant="12" id="FRF-3M-OeM"/>
-                    <constraint firstAttribute="bottom" secondItem="aiN-VL-Na7" secondAttribute="bottom" constant="12" id="G4m-hx-q6j"/>
                     <constraint firstItem="aiN-VL-Na7" firstAttribute="leading" secondItem="a4Z-xH-u3n" secondAttribute="trailing" constant="12" id="ITh-l6-TP5"/>
+                    <constraint firstAttribute="bottom" secondItem="spf-nK-GNr" secondAttribute="bottom" constant="12" id="K1b-ZB-nbc"/>
                     <constraint firstAttribute="trailing" secondItem="Ulx-9q-53Y" secondAttribute="trailing" constant="24" id="KoC-2a-NMX"/>
+                    <constraint firstItem="spf-nK-GNr" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="RSE-K5-P1i"/>
+                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="spf-nK-GNr" secondAttribute="trailing" constant="12" id="XZh-kf-deu"/>
+                    <constraint firstItem="spf-nK-GNr" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="c7E-n3-sew"/>
                     <constraint firstAttribute="trailing" secondItem="aiN-VL-Na7" secondAttribute="trailing" constant="24" id="dnM-pz-qsA"/>
-                    <constraint firstItem="a4Z-xH-u3n" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="g85-tj-iDG"/>
+                    <constraint firstItem="a4Z-xH-u3n" firstAttribute="centerY" secondItem="Ulx-9q-53Y" secondAttribute="centerY" id="g85-tj-iDG"/>
+                    <constraint firstItem="spf-nK-GNr" firstAttribute="top" secondItem="aiN-VL-Na7" secondAttribute="bottom" constant="12" id="lGi-ef-J5o"/>
                     <constraint firstItem="oc7-1d-TXK" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="zku-Gd-9u9"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="favoriteIcon" destination="oc7-1d-TXK" id="07V-tO-nHN"/>
+                <outlet property="gasPricesStackView" destination="spf-nK-GNr" id="QlU-hr-O2Y"/>
                 <outlet property="gasStationAddressLabel" destination="Ulx-9q-53Y" id="Uie-5H-279"/>
                 <outlet property="gasStationIcon" destination="a4Z-xH-u3n" id="EId-eT-neF"/>
                 <outlet property="gasStationName" destination="HPA-Av-WlX" id="1I2-ah-H2g"/>
                 <outlet property="gasStationTownLabel" destination="aiN-VL-Na7" id="ejP-TO-wuh"/>
             </connections>
-            <point key="canvasLocation" x="139.85507246376812" y="99.441964285714278"/>
+            <point key="canvasLocation" x="139.85507246376812" y="117.85714285714285"/>
         </tableViewCell>
     </objects>
     <resources>

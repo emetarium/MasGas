@@ -9,7 +9,7 @@ import UIKit
 import MapKit
 
 protocol FavoriteGasStationsProtocol {
-    func updateFavoritesList(favoriteGasStations: [Gasolinera])
+    func updateFavoritesList(favoriteGasStations: [PreciosGasolinera])
     func setUpMap(location: CLLocation)
     func showNoConnectionAlert()
     func showLoadingIndicator()
@@ -26,7 +26,7 @@ class FavoriteGasStationsViewController: BaseViewController, UITableViewDelegate
     
     //MARK: - Variables
     var userLocation: CLLocation?
-    var favoriteGasStations: [Gasolinera] = []
+    var favoriteGasStations: [PreciosGasolinera] = []
     var presenter: FavoriteGasStationsPresenter<FavoriteGasStationsViewController>?
 
     //MARK: - Life cycle
@@ -91,14 +91,14 @@ class FavoriteGasStationsViewController: BaseViewController, UITableViewDelegate
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = gasStationsTableView.dequeueReusableCell(withIdentifier: "gasStationCell", for: indexPath) as! GasStationTableViewCell
-        cell.setUpUI(gasStationName: favoriteGasStations[indexPath.row].nombre, gasStationAddress: favoriteGasStations[indexPath.row].direccion, gasStationTown: favoriteGasStations[indexPath.row].municipio)
+        cell.setUpUI(gasStationName: favoriteGasStations[indexPath.row].gasolinera.nombre, gasStationAddress: favoriteGasStations[indexPath.row].gasolinera.direccion, gasStationTown: favoriteGasStations[indexPath.row].gasolinera.municipio, fuelPrices: favoriteGasStations[indexPath.row].precios)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let gvc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "GasStationLocationViewController") as? GasStationLocationViewController
         guard let vc = gvc else { return }
-        vc.gasStation = favoriteGasStations[indexPath.row]
+        vc.gasStation = favoriteGasStations[indexPath.row].gasolinera
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -108,7 +108,7 @@ class FavoriteGasStationsViewController: BaseViewController, UITableViewDelegate
 
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if (editingStyle == .delete) {
-            presenter?.removeFavorite(gasStation: favoriteGasStations[indexPath.row])
+            presenter?.removeFavorite(gasStation: favoriteGasStations[indexPath.row].gasolinera)
             favoriteGasStations.remove(at: indexPath.row)
             tableView.reloadData()
         }
@@ -141,7 +141,7 @@ extension FavoriteGasStationsViewController: FavoriteGasStationsProtocol {
         self.mapView.showsUserLocation = true
     }
     
-    func updateFavoritesList(favoriteGasStations: [Gasolinera]) {
+    func updateFavoritesList(favoriteGasStations: [PreciosGasolinera]) {
         self.favoriteGasStations = favoriteGasStations
         DispatchQueue.main.async {
             self.gasStationsTableView.reloadData()
@@ -154,7 +154,7 @@ extension FavoriteGasStationsViewController: FavoriteGasStationsProtocol {
                 var favoriteGasStationsAnnotations: [MKPointAnnotation] = []
                 
                 favoriteGasStations.forEach { gasStation in
-                    let gasStationPlacemark = MKPlacemark(coordinate: gasStation.ubicacion.coordinate, addressDictionary: nil)
+                    let gasStationPlacemark = MKPlacemark(coordinate: gasStation.gasolinera.ubicacion.coordinate, addressDictionary: nil)
                     let gasStationAnnotation = MKPointAnnotation()
                     if let location = gasStationPlacemark.location {
                         gasStationAnnotation.coordinate = location.coordinate
