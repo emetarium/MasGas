@@ -183,11 +183,36 @@ class GasStationLocationViewController: BaseViewController, MKMapViewDelegate {
     
     //MARK: - IBActions
     @IBAction func goToGasStationButtonPressed(_ sender: Any) {
-        let targetURL = URL(string: "http://maps.apple.com/?q=cupertino")!
+        guard let gasStationLocation = gasStation?.gasolinera.ubicacion else { return }
+        let latitud = gasStationLocation.coordinate.latitude
+        let longitud = gasStationLocation.coordinate.longitude
         
-        if UIApplication.shared.canOpenURL(targetURL) {
-            UIApplication.shared.open(targetURL)
+        let appleURL = "http://maps.apple.com/?daddr=\(latitud),\(longitud)"
+        let googleURL = "comgooglemaps://?daddr=\(latitud),\(longitud)&directionsmode=driving"
+        let wazeURL = "waze://?ll=\(latitud),\(longitud)&navigate=false"
+
+        let googleItem = ("Google Maps", URL(string:googleURL)!)
+        let wazeItem = ("Waze", URL(string:wazeURL)!)
+        var installedNavigationApps = [("Apple Maps", URL(string:appleURL)!)]
+
+        if UIApplication.shared.canOpenURL(googleItem.1) {
+            installedNavigationApps.append(googleItem)
         }
+
+        if UIApplication.shared.canOpenURL(wazeItem.1) {
+            installedNavigationApps.append(wazeItem)
+        }
+
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        for app in installedNavigationApps {
+            let button = UIAlertAction(title: app.0, style: .default, handler: { _ in
+                UIApplication.shared.open(app.1, options: [:], completionHandler: nil)
+            })
+            alert.addAction(button)
+        }
+        let cancel = UIAlertAction(title: NSLocalizedString("CANCEL_ACTION", comment: ""), style: .cancel, handler: nil)
+        alert.addAction(cancel)
+        present(alert, animated: true)
     }
     
     @IBAction func backButton(_ sender: Any) {
