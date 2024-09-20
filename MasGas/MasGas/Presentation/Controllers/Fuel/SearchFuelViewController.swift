@@ -160,16 +160,18 @@ class SearchFuelViewController: BaseViewController, UITableViewDelegate, UITable
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let gvc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "GasStationLocationViewController") as? GasStationLocationViewController
-        guard let vc = gvc, let fuelList = fuelList, let isLogged = presenter?.isUserLogged() else { return }
+        guard let vc = gvc, let fuelList = fuelList, let isLogged = presenter?.isUserLogged(), let fuel else { return }
         if isLogged {
             presenter?.isFavorite(gasStation: fuelList[indexPath.row], completion: { result in
                 let gasolinera = Gasolinera(nombre: fuelList[indexPath.row].nombre, ubicacion: fuelList[indexPath.row].coordenadas, direccion: fuelList[indexPath.row].direccion, municipio: fuelList[indexPath.row].municipio, favorita: result, id: fuelList[indexPath.row].id)
-                vc.gasStation = gasolinera
+                let preciosGasolinera = PreciosGasolinera(gasolinera: gasolinera, precios: [PrecioCarburante(carburante: fuel, precio: fuelList[indexPath.row].precioProducto)])
+                vc.gasStation = preciosGasolinera
                 self.navigationController?.pushViewController(vc, animated: true)
             })
         } else {
             let gasolinera = Gasolinera(nombre: fuelList[indexPath.row].nombre, ubicacion: fuelList[indexPath.row].coordenadas, direccion: fuelList[indexPath.row].direccion, municipio: fuelList[indexPath.row].municipio, favorita: false, id: fuelList[indexPath.row].id)
-            vc.gasStation = gasolinera
+            let preciosGasolinera = PreciosGasolinera(gasolinera: gasolinera, precios: [PrecioCarburante(carburante: fuel, precio: fuelList[indexPath.row].precioProducto)])
+            vc.gasStation = preciosGasolinera
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }

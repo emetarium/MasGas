@@ -1,5 +1,5 @@
 //
-//  LoginButton.swift
+//  CustomButton.swift
 //  MasGas
 //
 //  Created by María García Torres on 20/8/22.
@@ -12,7 +12,7 @@ enum LoginButtonStyle {
     case bordered
 }
 
-class LoginButton: UIButton {
+class CustomButton: UIButton {
     
     var style: LoginButtonStyle = .filled {
         didSet {
@@ -63,7 +63,7 @@ class LoginButton: UIButton {
             self.backgroundColor = Colors.white
             self.setTitleColor(Colors.black, for: .normal)
             self.layer.borderWidth = 1
-            self.layer.borderColor = Colors.mediumLightGray?.cgColor
+            self.layer.borderColor = Colors.mediumLightGray.cgColor
         }
     }
 

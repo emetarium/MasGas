@@ -54,11 +54,26 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="spf-nK-GNr">
-                        <rect key="frame" x="12" y="103" width="299" height="43"/>
-                    </stackView>
+                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VRy-WS-DKy">
+                        <rect key="frame" x="0.0" y="103" width="323" height="43"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="H0s-wp-qYx">
+                                <rect key="frame" x="0.0" y="0.0" width="323" height="43"/>
+                            </stackView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="H0s-wp-qYx" secondAttribute="bottom" id="D5e-VT-5Ty"/>
+                            <constraint firstItem="H0s-wp-qYx" firstAttribute="width" secondItem="VRy-WS-DKy" secondAttribute="width" id="Nz1-Kg-SkA"/>
+                            <constraint firstItem="H0s-wp-qYx" firstAttribute="height" secondItem="VRy-WS-DKy" secondAttribute="height" id="cVJ-Ru-uiH"/>
+                            <constraint firstItem="H0s-wp-qYx" firstAttribute="centerX" secondItem="VRy-WS-DKy" secondAttribute="centerX" id="cn3-RX-lPa"/>
+                            <constraint firstItem="H0s-wp-qYx" firstAttribute="top" secondItem="VRy-WS-DKy" secondAttribute="top" id="tso-p3-dDZ"/>
+                        </constraints>
+                        <viewLayoutGuide key="contentLayoutGuide" id="iSl-81-uPf"/>
+                        <viewLayoutGuide key="frameLayoutGuide" id="fOb-vd-JrX"/>
+                    </scrollView>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="VRy-WS-DKy" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="04p-WA-hag"/>
                     <constraint firstItem="Ulx-9q-53Y" firstAttribute="top" secondItem="HPA-Av-WlX" secondAttribute="bottom" constant="12" id="0SC-uR-csG"/>
                     <constraint firstAttribute="trailing" secondItem="HPA-Av-WlX" secondAttribute="trailing" constant="24" id="0Xh-vH-nnp"/>
                     <constraint firstItem="HPA-Av-WlX" firstAttribute="leading" secondItem="a4Z-xH-u3n" secondAttribute="trailing" constant="12" id="0b6-lN-tAn"/>
@@ -68,21 +83,19 @@
                     <constraint firstItem="HPA-Av-WlX" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="Bsb-tk-S7a"/>
                     <constraint firstItem="a4Z-xH-u3n" firstAttribute="leading" secondItem="oc7-1d-TXK" secondAttribute="trailing" constant="12" id="FRF-3M-OeM"/>
                     <constraint firstItem="aiN-VL-Na7" firstAttribute="leading" secondItem="a4Z-xH-u3n" secondAttribute="trailing" constant="12" id="ITh-l6-TP5"/>
-                    <constraint firstAttribute="bottom" secondItem="spf-nK-GNr" secondAttribute="bottom" constant="12" id="K1b-ZB-nbc"/>
                     <constraint firstAttribute="trailing" secondItem="Ulx-9q-53Y" secondAttribute="trailing" constant="24" id="KoC-2a-NMX"/>
-                    <constraint firstItem="spf-nK-GNr" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="RSE-K5-P1i"/>
-                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="spf-nK-GNr" secondAttribute="trailing" constant="12" id="XZh-kf-deu"/>
-                    <constraint firstItem="spf-nK-GNr" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="c7E-n3-sew"/>
+                    <constraint firstAttribute="bottom" secondItem="VRy-WS-DKy" secondAttribute="bottom" constant="12" id="NbV-JJ-tzF"/>
+                    <constraint firstItem="VRy-WS-DKy" firstAttribute="top" secondItem="aiN-VL-Na7" secondAttribute="bottom" constant="12" id="dlQ-M7-RJK"/>
                     <constraint firstAttribute="trailing" secondItem="aiN-VL-Na7" secondAttribute="trailing" constant="24" id="dnM-pz-qsA"/>
                     <constraint firstItem="a4Z-xH-u3n" firstAttribute="centerY" secondItem="Ulx-9q-53Y" secondAttribute="centerY" id="g85-tj-iDG"/>
-                    <constraint firstItem="spf-nK-GNr" firstAttribute="top" secondItem="aiN-VL-Na7" secondAttribute="bottom" constant="12" id="lGi-ef-J5o"/>
+                    <constraint firstAttribute="trailing" secondItem="VRy-WS-DKy" secondAttribute="trailing" id="wDE-Ek-eWT"/>
                     <constraint firstItem="oc7-1d-TXK" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="zku-Gd-9u9"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="favoriteIcon" destination="oc7-1d-TXK" id="07V-tO-nHN"/>
-                <outlet property="gasPricesStackView" destination="spf-nK-GNr" id="QlU-hr-O2Y"/>
+                <outlet property="gasPricesStackView" destination="H0s-wp-qYx" id="xKK-Uj-Aaw"/>
                 <outlet property="gasStationAddressLabel" destination="Ulx-9q-53Y" id="Uie-5H-279"/>
                 <outlet property="gasStationIcon" destination="a4Z-xH-u3n" id="EId-eT-neF"/>
                 <outlet property="gasStationName" destination="HPA-Av-WlX" id="1I2-ah-H2g"/>

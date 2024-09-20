@@ -37,9 +37,9 @@ class GasStationTableViewCell: UITableViewCell {
         
         gasPricesStackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
         fuelPrices.forEach({ price in
-            let gasPriceView = FuelPriceView()
-            gasPriceView.setUpUI(fuelPrice: price)
-            gasPricesStackView.addArrangedSubview(gasPriceView)
+//            let gasPriceView = FuelPriceView()
+//            gasPriceView.setUpUI(fuelPrice: price)
+//            gasPricesStackView.addArrangedSubview(gasPriceView)
         })
     }
     

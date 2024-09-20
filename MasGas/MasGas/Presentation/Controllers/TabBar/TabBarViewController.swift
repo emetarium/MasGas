@@ -18,16 +18,16 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
     }
     
     func setUpTabs() {
-        guard let gasStationsIcon = UIImage(named: "gasStationIcon"), let fuelPumpIcon = UIImage(named: "fuelPumpIcon"), let green = Colors.green, let gray = Colors.gray else { return }
+        guard let gasStationsIcon = UIImage(named: "gasStationIcon"), let fuelPumpIcon = UIImage(named: "fuelPumpIcon") else { return }
         
         let fvc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "FuelsViewController") as? FuelsViewController
         guard let fuelsViewController = fvc else { return }
-        let fuelsBarItem = UITabBarItem(title: NSLocalizedString("FUEL_SCREEN_TAB_BAR_TITLE", comment: ""), image: fuelPumpIcon.withTintColor(gray), selectedImage: fuelPumpIcon.withTintColor(green))
+        let fuelsBarItem = UITabBarItem(title: NSLocalizedString("FUEL_SCREEN_TAB_BAR_TITLE", comment: ""), image: fuelPumpIcon.withTintColor(Colors.gray), selectedImage: fuelPumpIcon.withTintColor(Colors.green))
         fuelsViewController.tabBarItem = fuelsBarItem
         
         let gvc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "FavoriteGasStationsViewController") as? FavoriteGasStationsViewController
         guard let favoriteGasStationsViewController = gvc else { return }
-        let favoriteGasStationsBarItem = UITabBarItem(title: NSLocalizedString("GAS_STATIONS_SCREEN_TAB_BAR_TITLE", comment: ""), image: gasStationsIcon.withTintColor(gray), selectedImage: gasStationsIcon.withTintColor(green))
+        let favoriteGasStationsBarItem = UITabBarItem(title: NSLocalizedString("GAS_STATIONS_SCREEN_TAB_BAR_TITLE", comment: ""), image: gasStationsIcon.withTintColor(Colors.gray), selectedImage: gasStationsIcon.withTintColor(Colors.green))
         favoriteGasStationsViewController.tabBarItem = favoriteGasStationsBarItem
         
         self.navigationController?.isNavigationBarHidden = true

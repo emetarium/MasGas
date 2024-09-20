@@ -45,11 +45,9 @@ class TownSelectionViewController: BaseViewController, UITableViewDelegate, UITa
         self.navigationBar.barTintColor = Colors.white
         self.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "Montserrat", size: 15)!, NSAttributedString.Key.foregroundColor: Colors.black]
         self.navigationBarItem.title = NSLocalizedString("TOWN_SELECTION_TITLE", comment: "")
-        if let green = Colors.green {
-            let barButtonItem = UIBarButtonItem(image: UIImage(named: "backButton"), style: .plain, target: self, action: #selector(popToPrevious))
-            barButtonItem.tintColor = green
-            self.navigationBarItem.leftBarButtonItem = barButtonItem
-        }
+        let barButtonItem = UIBarButtonItem(image: UIImage(named: "backButton"), style: .plain, target: self, action: #selector(popToPrevious))
+        barButtonItem.tintColor = Colors.green
+        self.navigationBarItem.leftBarButtonItem = barButtonItem
                                                                    
         townSearchBar.searchBarStyle = .minimal
         

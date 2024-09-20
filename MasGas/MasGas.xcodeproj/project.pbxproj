@@ -28,12 +28,17 @@
 		4C46313227C4FA4F00475AE0 /* TownSelectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C46313027C4FA4F00475AE0 /* TownSelectionTableViewCell.swift */; };
 		4C46313327C4FA4F00475AE0 /* TownSelectionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C46313127C4FA4F00475AE0 /* TownSelectionTableViewCell.xib */; };
 		4C46313727C50D5200475AE0 /* SearchFuelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C46313627C50D5200475AE0 /* SearchFuelViewController.swift */; };
-		4C4D596F28B1126C005E1A85 /* LoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4D596E28B1126C005E1A85 /* LoginButton.swift */; };
+		4C4A10CB2C9D77B7007CCE2A /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4A10CA2C9D77B6007CCE2A /* UIView.swift */; };
+		4C4A10CD2C9D7BA2007CCE2A /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4A10CC2C9D7BA2007CCE2A /* Fonts.swift */; };
+		4C4A10CF2C9D7CA1007CCE2A /* MuliLight-lg9VZ.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4C4A10CE2C9D7CA1007CCE2A /* MuliLight-lg9VZ.ttf */; };
+		4C4D596F28B1126C005E1A85 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4D596E28B1126C005E1A85 /* CustomButton.swift */; };
 		4C4D597628B1345E005E1A85 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4C4D597828B1345E005E1A85 /* InfoPlist.strings */; };
 		4C4D597B28B134A8005E1A85 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4C4D597D28B134A8005E1A85 /* InfoPlist.strings */; };
 		4C579036E2881C44F276B095 /* Pods_MasGas.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 267F76832B175E1E706A47F1 /* Pods_MasGas.framework */; };
 		4C5A7ED027D76C290096FB55 /* GasStationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5A7ECE27D76C290096FB55 /* GasStationTableViewCell.swift */; };
 		4C5A7ED127D76C290096FB55 /* GasStationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C5A7ECF27D76C290096FB55 /* GasStationTableViewCell.xib */; };
+		4C698A3D2C987DFD001AA933 /* FuelPriceCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C698A3C2C987DFD001AA933 /* FuelPriceCollectionViewCell.xib */; };
+		4C698A3E2C987DFD001AA933 /* FuelPriceCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C698A3B2C987DFD001AA933 /* FuelPriceCollectionViewCell.swift */; };
 		4C6DFF3827C26989002289B5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4C6DFF3727C26989002289B5 /* GoogleService-Info.plist */; };
 		4C767EAB27D6882A0034CEBA /* GasStationLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C767EAA27D6882A0034CEBA /* GasStationLocationViewController.swift */; };
 		4C8313F027D14AC90014E956 /* BusquedaCarburante.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8313EF27D14AC90014E956 /* BusquedaCarburante.swift */; };
@@ -59,8 +64,6 @@
 		4C9DD04427BAC55D00B65A25 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9DD04327BAC55D00B65A25 /* Constants.swift */; };
 		4C9E65CC27DFCF4D002DF59F /* SearchFavoriteUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9E65CB27DFCF4D002DF59F /* SearchFavoriteUseCase.swift */; };
 		4CA2654E2C8DCF08003466AB /* BusquedaPreciosGasolinera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA2654D2C8DCF08003466AB /* BusquedaPreciosGasolinera.swift */; };
-		4CA265512C8DD918003466AB /* FuelPriceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA265502C8DD918003466AB /* FuelPriceView.swift */; };
-		4CA265532C8DD930003466AB /* FuelPriceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4CA265522C8DD930003466AB /* FuelPriceView.xib */; };
 		4CA26EA527DF680B002E10C6 /* GetFavoriteGasStationsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA26EA427DF680B002E10C6 /* GetFavoriteGasStationsUseCase.swift */; };
 		4CA26EA727DF6817002E10C6 /* SaveFavoriteGasStationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA26EA627DF6817002E10C6 /* SaveFavoriteGasStationUseCase.swift */; };
 		4CA334C027ECF975004DE029 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CA334BF27ECF975004DE029 /* Repository.swift */; };
@@ -89,6 +92,7 @@
 		4CD9D0D428B17A65007CBE83 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CD9D0D328B17A65007CBE83 /* AboutViewController.swift */; };
 		4CF016CB27A6C28600A0451E /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF016CA27A6C28600A0451E /* UITextField.swift */; };
 		4CF016CD27A6C4CA00A0451E /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CF016CC27A6C4CA00A0451E /* SignUpViewController.swift */; };
+		4CFA629B2C9D895F0087AED7 /* LeftAlignedCollectionFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CFA629A2C9D895F0087AED7 /* LeftAlignedCollectionFlowLayout.swift */; };
 		FE30C066FDC55D9D6C47E73A /* Pods_MasGasTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E7260AC8CB1FBB90AB7F772 /* Pods_MasGasTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -127,12 +131,17 @@
 		4C46313027C4FA4F00475AE0 /* TownSelectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TownSelectionTableViewCell.swift; sourceTree = "<group>"; };
 		4C46313127C4FA4F00475AE0 /* TownSelectionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TownSelectionTableViewCell.xib; sourceTree = "<group>"; };
 		4C46313627C50D5200475AE0 /* SearchFuelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFuelViewController.swift; sourceTree = "<group>"; };
+		4C4A10CA2C9D77B6007CCE2A /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		4C4A10CC2C9D7BA2007CCE2A /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
+		4C4A10CE2C9D7CA1007CCE2A /* MuliLight-lg9VZ.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MuliLight-lg9VZ.ttf"; sourceTree = "<group>"; };
 		4C4D596C28B10FEB005E1A85 /* MasGas.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MasGas.entitlements; sourceTree = "<group>"; };
-		4C4D596E28B1126C005E1A85 /* LoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButton.swift; sourceTree = "<group>"; };
+		4C4D596E28B1126C005E1A85 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		4C4D597728B1345E005E1A85 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		4C4D597C28B134A8005E1A85 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		4C5A7ECE27D76C290096FB55 /* GasStationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GasStationTableViewCell.swift; sourceTree = "<group>"; };
 		4C5A7ECF27D76C290096FB55 /* GasStationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GasStationTableViewCell.xib; sourceTree = "<group>"; };
+		4C698A3B2C987DFD001AA933 /* FuelPriceCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuelPriceCollectionViewCell.swift; sourceTree = "<group>"; };
+		4C698A3C2C987DFD001AA933 /* FuelPriceCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FuelPriceCollectionViewCell.xib; sourceTree = "<group>"; };
 		4C6DFF3727C26989002289B5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4C767EAA27D6882A0034CEBA /* GasStationLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GasStationLocationViewController.swift; sourceTree = "<group>"; };
 		4C8313EF27D14AC90014E956 /* BusquedaCarburante.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusquedaCarburante.swift; sourceTree = "<group>"; };
@@ -166,8 +175,6 @@
 		4C9DD04327BAC55D00B65A25 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		4C9E65CB27DFCF4D002DF59F /* SearchFavoriteUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFavoriteUseCase.swift; sourceTree = "<group>"; };
 		4CA2654D2C8DCF08003466AB /* BusquedaPreciosGasolinera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusquedaPreciosGasolinera.swift; sourceTree = "<group>"; };
-		4CA265502C8DD918003466AB /* FuelPriceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuelPriceView.swift; sourceTree = "<group>"; };
-		4CA265522C8DD930003466AB /* FuelPriceView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FuelPriceView.xib; sourceTree = "<group>"; };
 		4CA26EA427DF680B002E10C6 /* GetFavoriteGasStationsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFavoriteGasStationsUseCase.swift; sourceTree = "<group>"; };
 		4CA26EA627DF6817002E10C6 /* SaveFavoriteGasStationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveFavoriteGasStationUseCase.swift; sourceTree = "<group>"; };
 		4CA334BF27ECF975004DE029 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
@@ -196,6 +203,7 @@
 		4CD9D0D328B17A65007CBE83 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		4CF016CA27A6C28600A0451E /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
 		4CF016CC27A6C4CA00A0451E /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		4CFA629A2C9D895F0087AED7 /* LeftAlignedCollectionFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftAlignedCollectionFlowLayout.swift; sourceTree = "<group>"; };
 		887AE942E0534BF6818305FE /* Pods_MasGas_MasGasUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MasGas_MasGasUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E7260AC8CB1FBB90AB7F772 /* Pods_MasGasTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MasGasTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A980AA75A3976A38950B99B4 /* Pods-MasGas.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MasGas.release.xcconfig"; path = "Target Support Files/Pods-MasGas/Pods-MasGas.release.xcconfig"; sourceTree = "<group>"; };
@@ -246,6 +254,7 @@
 			isa = PBXGroup;
 			children = (
 				4C45348527A1D6C10026E02C /* Montserrat-VariableFont_wght.ttf */,
+				4C4A10CE2C9D7CA1007CCE2A /* MuliLight-lg9VZ.ttf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -261,6 +270,7 @@
 		4C45348C27A1DB330026E02C /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				4C4A10CA2C9D77B6007CCE2A /* UIView.swift */,
 				4CC77E6127A309CB007589F4 /* UIViewController.swift */,
 				4CF016CA27A6C28600A0451E /* UITextField.swift */,
 				4C8394D727BAE47B002C873F /* String.swift */,
@@ -337,8 +347,8 @@
 		4C4D596D28B11252005E1A85 /* CustomComponents */ = {
 			isa = PBXGroup;
 			children = (
-				4CA2654F2C8DD8F9003466AB /* FuelPriceView */,
-				4C4D596E28B1126C005E1A85 /* LoginButton.swift */,
+				4CFA629A2C9D895F0087AED7 /* LeftAlignedCollectionFlowLayout.swift */,
+				4C4D596E28B1126C005E1A85 /* CustomButton.swift */,
 			);
 			path = CustomComponents;
 			sourceTree = "<group>";
@@ -379,9 +389,19 @@
 			path = GasStationCell;
 			sourceTree = "<group>";
 		};
+		4C698A3A2C987DDF001AA933 /* FuelPriceCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				4C698A3B2C987DFD001AA933 /* FuelPriceCollectionViewCell.swift */,
+				4C698A3C2C987DFD001AA933 /* FuelPriceCollectionViewCell.xib */,
+			);
+			path = FuelPriceCollectionViewCell;
+			sourceTree = "<group>";
+		};
 		4C767EA927D687D20034CEBA /* GasStationLocation */ = {
 			isa = PBXGroup;
 			children = (
+				4C698A3A2C987DDF001AA933 /* FuelPriceCollectionViewCell */,
 				4C767EAA27D6882A0034CEBA /* GasStationLocationViewController.swift */,
 			);
 			path = GasStationLocation;
@@ -408,6 +428,7 @@
 				4C9DD04327BAC55D00B65A25 /* Constants.swift */,
 				4C8394D527BAE0A0002C873F /* Colors.swift */,
 				4CD2472F27C1232100E086A4 /* Config.swift */,
+				4C4A10CC2C9D7BA2007CCE2A /* Fonts.swift */,
 			);
 			path = Config;
 			sourceTree = "<group>";
@@ -510,15 +531,6 @@
 				4C8394D927BAE65D002C873F /* Config */,
 			);
 			path = Resources;
-			sourceTree = "<group>";
-		};
-		4CA2654F2C8DD8F9003466AB /* FuelPriceView */ = {
-			isa = PBXGroup;
-			children = (
-				4CA265502C8DD918003466AB /* FuelPriceView.swift */,
-				4CA265522C8DD930003466AB /* FuelPriceView.xib */,
-			);
-			path = FuelPriceView;
 			sourceTree = "<group>";
 		};
 		4CBD01F427BABCF800C36FE2 /* Presentation */ = {
@@ -712,7 +724,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4CA265532C8DD930003466AB /* FuelPriceView.xib in Resources */,
 				4C5A7ED127D76C290096FB55 /* GasStationTableViewCell.xib in Resources */,
 				4C4D597B28B134A8005E1A85 /* InfoPlist.strings in Resources */,
 				4C46313327C4FA4F00475AE0 /* TownSelectionTableViewCell.xib in Resources */,
@@ -720,12 +731,14 @@
 				4C9471E627A1B1D2001F49F9 /* LaunchScreen.storyboard in Resources */,
 				4C9471E327A1B1D2001F49F9 /* Assets.xcassets in Resources */,
 				4C45348627A1D6C30026E02C /* Montserrat-VariableFont_wght.ttf in Resources */,
+				4C698A3D2C987DFD001AA933 /* FuelPriceCollectionViewCell.xib in Resources */,
 				4C8394DE27BAE8BB002C873F /* Localizable.strings in Resources */,
 				4C3543A627CE3E4B0098F408 /* QueryFuelTableViewCell.xib in Resources */,
 				4C6DFF3827C26989002289B5 /* GoogleService-Info.plist in Resources */,
 				4C4D597628B1345E005E1A85 /* InfoPlist.strings in Resources */,
 				4CD9D0CC28B15D8D007CBE83 /* OptionsTableViewCell.xib in Resources */,
 				4C9471E127A1B1D2001F49F9 /* Main.storyboard in Resources */,
+				4C4A10CF2C9D7CA1007CCE2A /* MuliLight-lg9VZ.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -811,7 +824,6 @@
 				4CC77E6827A30ED8007589F4 /* AuthenticationLayer.swift in Sources */,
 				4C92ACEA28185FDB0055F94F /* BasePresenter.swift in Sources */,
 				4CA334C827ED0523004DE029 /* LogOutUseCase.swift in Sources */,
-				4CA265512C8DD918003466AB /* FuelPriceView.swift in Sources */,
 				4CD9D0D428B17A65007CBE83 /* AboutViewController.swift in Sources */,
 				4C17B2C127BC432D00B577E7 /* FavoriteGasStationsViewController.swift in Sources */,
 				4C17B2BA27BC305B00B577E7 /* SignUpPresenter.swift in Sources */,
@@ -819,10 +831,12 @@
 				4C8394D627BAE0A0002C873F /* Colors.swift in Sources */,
 				4CF016CD27A6C4CA00A0451E /* SignUpViewController.swift in Sources */,
 				4C9DD04227BABF7500B65A25 /* RemoteDataStore.swift in Sources */,
+				4C4A10CB2C9D77B7007CCE2A /* UIView.swift in Sources */,
 				4C3662FF27BACB19002A9B10 /* ListaEESSPrecio.swift in Sources */,
 				4CBD01FC27BABE4D00C36FE2 /* Municipio.swift in Sources */,
 				4C8394D427BADB45002C873F /* FuelsViewController.swift in Sources */,
 				4CD9D0D228B170D9007CBE83 /* DeleteAccountUseCase.swift in Sources */,
+				4CFA629B2C9D895F0087AED7 /* LeftAlignedCollectionFlowLayout.swift in Sources */,
 				4CA334C627ED01AE004DE029 /* EmailSignUpUseCase.swift in Sources */,
 				4C3543A527CE3E4B0098F408 /* QueryFuelTableViewCell.swift in Sources */,
 				4C46312E27C4F8F800475AE0 /* TownSelectionPresenter.swift in Sources */,
@@ -831,7 +845,8 @@
 				4C11049227F4B84400C36B69 /* BaseViewController.swift in Sources */,
 				4C01255327E372110026572B /* RemoveFavoriteUseCase.swift in Sources */,
 				4CA334C027ECF975004DE029 /* Repository.swift in Sources */,
-				4C4D596F28B1126C005E1A85 /* LoginButton.swift in Sources */,
+				4C4A10CD2C9D7BA2007CCE2A /* Fonts.swift in Sources */,
+				4C4D596F28B1126C005E1A85 /* CustomButton.swift in Sources */,
 				4C9CE5BF27E10D1500B174CA /* FavoriteGasStationsPresenter.swift in Sources */,
 				4CA26EA527DF680B002E10C6 /* GetFavoriteGasStationsUseCase.swift in Sources */,
 				4CF016CB27A6C28600A0451E /* UITextField.swift in Sources */,
@@ -841,6 +856,7 @@
 				4C96040C27BE8830002A59CA /* LocalDataStore.swift in Sources */,
 				4CAE5D9927CF68E5001E560A /* SearchFuelPresenter.swift in Sources */,
 				4C8313F227D14F5E0014E956 /* LocationLayer.swift in Sources */,
+				4C698A3E2C987DFD001AA933 /* FuelPriceCollectionViewCell.swift in Sources */,
 				4C96040527BE7ABB002A59CA /* FuelTableViewCell.swift in Sources */,
 				4C17B2BC27BC30AB00B577E7 /* LoginPresenter.swift in Sources */,
 				4CD2473027C1232100E086A4 /* Config.swift in Sources */,

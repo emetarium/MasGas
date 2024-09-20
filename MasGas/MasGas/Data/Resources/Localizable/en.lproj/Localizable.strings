@@ -71,6 +71,7 @@
 "NO_LOCATION_PERMISSION_MESSAGE" = "Location not enabled";
 "USER_NOT_LOGGED_TITLE" = "User not logged";
 "USER_NOT_LOGGED_MESSAGE" = "You must be logged in to save favorites";
+"GO_TO_GAS_STATION_MAPS_BUTTON_TITLE" = "Go to gas station";
 
 /* FAVORITES SCREEN */
 "FAVORITE_GAS_STATIONS_TITLE" = "Favorite gas stations";

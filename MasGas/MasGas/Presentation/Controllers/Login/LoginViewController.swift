@@ -21,10 +21,10 @@ class LoginViewController: BaseViewController {
     //MARK: - IBOutlets
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet var loginButton: LoginButton!
+    @IBOutlet var loginButton: CustomButton!
     @IBOutlet var separatorLine: UIView!
-    @IBOutlet var googleSignInButton: LoginButton!
-    @IBOutlet var appleSignInButton: LoginButton!
+    @IBOutlet var googleSignInButton: CustomButton!
+    @IBOutlet var appleSignInButton: CustomButton!
     @IBOutlet weak var signUpLabel: UILabel!
     @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet var notNowButton: UIButton!

@@ -98,7 +98,7 @@ class FavoriteGasStationsViewController: BaseViewController, UITableViewDelegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let gvc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "GasStationLocationViewController") as? GasStationLocationViewController
         guard let vc = gvc else { return }
-        vc.gasStation = favoriteGasStations[indexPath.row].gasolinera
+        vc.gasStation = favoriteGasStations[indexPath.row]
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
