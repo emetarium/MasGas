@@ -25,6 +25,7 @@ class OptionsTableViewCell: UITableViewCell {
         self.optionIcon.tintColor = Colors.green
         
         self.optionLabel.textColor = Colors.black
+        self.optionLabel.font = Fonts.defaultx16
         self.optionLabel.text = title
     }
     

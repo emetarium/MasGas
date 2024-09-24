@@ -24,6 +24,7 @@ class AboutViewController: UIViewController {
         self.view.backgroundColor = Colors.darkGray
         
         let replace: [String : String] = ["[version]" : UIApplication.appVersion()]
+        self.appVersionLabel.font = Fonts.defaultx14
         self.appVersionLabel.text = NSLocalizedString("APP_VERSION_LABEL", comment: "").replace(occurrences: replace)
         self.appVersionLabel.textColor = Colors.white
         

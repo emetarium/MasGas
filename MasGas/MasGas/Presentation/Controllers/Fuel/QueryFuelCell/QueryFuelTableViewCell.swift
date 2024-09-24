@@ -33,10 +33,20 @@ class QueryFuelTableViewCell: UITableViewCell {
         self.contentView.backgroundColor = Colors.lightGray
         self.backgroundCellView.layer.cornerRadius = 10
         self.fuelIcon.tintColor = Colors.black
+        
+        self.fuelPrice.font = Fonts.montserratBoldx17
         self.fuelPrice.text = price + "€/L"
+        
+        self.gasStationName.font = Fonts.montserratBoldx17
         self.gasStationName.text = gasStationName
+        
+        self.scheduleLabel.font = Fonts.boldx16
         self.scheduleLabel.text = "\( NSLocalizedString("SCHEDULE_LABEL", comment: "")):"
+        
+        self.gasStationSchedule.font = Fonts.defaultx16
         self.gasStationSchedule.text = gasStationSchedule
+        
+        self.distanceLabel.font = Fonts.boldx16
         self.distanceLabel.text = "\(String(format:"%.02f", distanceToGasStation)) km"
     }
     

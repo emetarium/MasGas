@@ -22,6 +22,7 @@ class FuelTableViewCell: UITableViewCell {
     }
     
     func setUpUI(fuelName: String, fuelAbb: String) {
+        self.fuelLabel.font = Fonts.defaultx16
         self.fuelLabel.text = fuelName
         self.colorIcon.tintColor = UIColor(named: fuelAbb)
     }

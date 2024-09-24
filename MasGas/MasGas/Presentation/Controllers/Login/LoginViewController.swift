@@ -64,15 +64,18 @@ class LoginViewController: BaseViewController {
         appleSignInButton.titleText = NSLocalizedString("APPLE_LOGIN_BUTTON", comment: "")
         appleSignInButton.style = .bordered
         
+        signUpLabel.font = Fonts.defaultx16
         signUpLabel.text = NSLocalizedString("SIGN_UP_LABEL", comment: "")
         
         signUpButton.setTitle(NSLocalizedString("SIGN_UP_BUTTON", comment: ""), for: .normal)
+        signUpButton.titleLabel?.font = Fonts.defaultx16
         signUpButton.tintColor = Colors.clear
         signUpButton.setTitleColor(Colors.green, for: .normal)
         
         notNowButton.tintColor = Colors.green
         notNowButton.setTitleColor(Colors.green, for: .normal)
         notNowButton.setTitle(NSLocalizedString("NOT_NOW_BUTTON", comment: ""), for: .normal)
+        notNowButton.titleLabel?.font = Fonts.defaultx16
     }
     
     func setGestureHideKeyboard() {

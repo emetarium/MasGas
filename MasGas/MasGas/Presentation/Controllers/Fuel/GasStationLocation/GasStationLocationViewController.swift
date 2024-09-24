@@ -56,7 +56,7 @@ class GasStationLocationViewController: BaseViewController, MKMapViewDelegate {
             self.favoriteIcon.tintColor = Colors.yellow
         }
         else {
-            self.favoriteIcon.tintColor = Colors.lightGray
+            self.favoriteIcon.tintColor = Colors.mediumLightGray
         }
         self.backButton.setTitle("", for: .normal)
         self.backButton.tintColor = Colors.green

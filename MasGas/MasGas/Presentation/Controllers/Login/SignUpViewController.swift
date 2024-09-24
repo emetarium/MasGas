@@ -47,18 +47,22 @@ class SignUpViewController: BaseViewController {
     
     //MARK: - Functions
     func setUpUI() {
+        signUpTitleLabel.font = Fonts.montserratx30
         signUpTitleLabel.text = NSLocalizedString("SIGN_UP_TITLE", comment: "")
         signUpTitleLabel.textColor = Colors.black
         
+        signUpSubtitleLabel.font = Fonts.montserratx15
         signUpSubtitleLabel.text = NSLocalizedString("SIGN_UP_SUBTITLE", comment: "")
         signUpSubtitleLabel.textColor = Colors.gray
         
+        emailLabel.font = Fonts.montserratx13
         emailLabel.text = NSLocalizedString("SIGN_UP_EMAIL_LABEL", comment: "")
         emailLabel.textColor = Colors.gray
         
         emailTextField.backgroundColor = Colors.lightGray
         passwordTextField.backgroundColor = Colors.lightGray
         
+        passwordLabel.font = Fonts.montserratx13
         passwordLabel.text = NSLocalizedString("SIGN_UP_PASSWORD_LABEL", comment: "")
         passwordLabel.textColor = Colors.gray
         

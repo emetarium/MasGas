@@ -21,7 +21,6 @@
 	</array>
 	<key>UIAppFonts</key>
 	<array>
-		<string>MuliLight-lg9VZ.ttf</string>
 		<string>Montserrat-VariableFont_wght.ttf</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>

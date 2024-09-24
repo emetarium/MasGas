@@ -30,7 +30,7 @@ class FuelPriceCollectionViewCell: UICollectionViewCell {
         self.fuelNameLabel.textAlignment = .center
         self.fuelNameLabel.text = NSLocalizedString(fuelName, comment: "")
         
-        self.fuelPriceLabel.font = Fonts.mulix14
+        self.fuelPriceLabel.font = Fonts.defaultx14
         self.fuelPriceLabel.textAlignment = .center
         self.fuelPriceLabel.text = "\(fuelPrice)€"
     }

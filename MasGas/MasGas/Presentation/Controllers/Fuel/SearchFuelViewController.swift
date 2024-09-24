@@ -65,10 +65,12 @@ class SearchFuelViewController: BaseViewController, UITableViewDelegate, UITable
         barButtonItem.tintColor = Colors.white
         self.navigationBarItem.leftBarButtonItem = barButtonItem
         
+        self.fuelLabel.font = Fonts.defaultx16
         self.fuelLabel.text = NSLocalizedString(fuel.nombreProductoAbreviatura, comment: "")
         self.fuelView.backgroundColor = Colors.white
         self.fuelView.layer.cornerRadius = 5
         
+        self.searchModeLabel.font = Fonts.montserratx15
         self.searchModeLabel.textColor = Colors.white
         self.searchModeLabel.text = NSLocalizedString(searchMode.rawValue, comment: "")
         

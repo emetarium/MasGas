@@ -45,6 +45,7 @@ class FavoriteGasStationsViewController: BaseViewController, UITableViewDelegate
     func setUpUI() {
         self.view.backgroundColor = Colors.white
         self.emptyListView.backgroundColor = Colors.clear
+        self.emptyListLabel.font = Fonts.montserratx12
         self.emptyListLabel.text = NSLocalizedString("EMPTY_LIST_MESSAGE", comment: "")
         setUpLocation()
         registerCell()
@@ -91,7 +92,7 @@ class FavoriteGasStationsViewController: BaseViewController, UITableViewDelegate
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = gasStationsTableView.dequeueReusableCell(withIdentifier: "gasStationCell", for: indexPath) as! GasStationTableViewCell
-        cell.setUpUI(gasStationName: favoriteGasStations[indexPath.row].gasolinera.nombre, gasStationAddress: favoriteGasStations[indexPath.row].gasolinera.direccion, gasStationTown: favoriteGasStations[indexPath.row].gasolinera.municipio, fuelPrices: favoriteGasStations[indexPath.row].precios)
+        cell.setUpUI(gasStationName: favoriteGasStations[indexPath.row].gasolinera.nombre, gasStationAddress: favoriteGasStations[indexPath.row].gasolinera.direccion, gasStationTown: favoriteGasStations[indexPath.row].gasolinera.municipio)
         return cell
     }
     

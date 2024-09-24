@@ -15,7 +15,6 @@ class GasStationTableViewCell: UITableViewCell {
     @IBOutlet var gasStationName: UILabel!
     @IBOutlet var gasStationAddressLabel: UILabel!
     @IBOutlet var gasStationTownLabel: UILabel!
-    @IBOutlet var gasPricesStackView: UIStackView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -28,19 +27,18 @@ class GasStationTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func setUpUI(gasStationName: String, gasStationAddress: String, gasStationTown: String, fuelPrices: [PrecioCarburante]) {
+    func setUpUI(gasStationName: String, gasStationAddress: String, gasStationTown: String) {
         self.favoriteIcon.tintColor = Colors.yellow
         self.gasStationIcon.tintColor = Colors.black
-        self.gasStationName.text = gasStationName
-        self.gasStationAddressLabel.text = gasStationAddress
-        self.gasStationTownLabel.text = gasStationTown
         
-        gasPricesStackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
-        fuelPrices.forEach({ price in
-//            let gasPriceView = FuelPriceView()
-//            gasPriceView.setUpUI(fuelPrice: price)
-//            gasPricesStackView.addArrangedSubview(gasPriceView)
-        })
+        self.gasStationName.font = Fonts.montserratBoldx17
+        self.gasStationName.text = gasStationName
+        
+        self.gasStationAddressLabel.font = Fonts.defaultx16
+        self.gasStationAddressLabel.text = gasStationAddress
+        
+        self.gasStationTownLabel.font = Fonts.defaultx16
+        self.gasStationTownLabel.text = gasStationTown
     }
     
 }

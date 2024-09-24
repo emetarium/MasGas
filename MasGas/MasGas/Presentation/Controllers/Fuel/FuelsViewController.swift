@@ -70,12 +70,14 @@ class FuelsViewController: BaseViewController, UITableViewDelegate, UITableViewD
         
         self.view.backgroundColor = Colors.darkGray
         
+        self.townLabel.font = Fonts.montserratx17
         self.townLabel.textColor = Colors.white
         self.townLabel.text = town.nombreMunicipio.formatName()
         
         self.optionsButton.tintColor = Colors.white
         self.optionsButton.setTitle("", for: .normal)
         
+        self.selectFuelLabel.font = Fonts.montserratx24
         self.selectFuelLabel.text = NSLocalizedString("FUEL_SELECTION_LABEL", comment: "")
         self.selectFuelLabel.textColor = Colors.white
         

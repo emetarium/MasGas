@@ -27,6 +27,7 @@ class QueryOptionsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "basicCell", for: indexPath)
+        cell.textLabel?.font = Fonts.defaultx14
         cell.textLabel?.text = NSLocalizedString(queryByFuelOptions.allCases[indexPath.row].rawValue, comment: "")
         return cell
     }

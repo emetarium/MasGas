@@ -30,7 +30,6 @@
 		4C46313727C50D5200475AE0 /* SearchFuelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C46313627C50D5200475AE0 /* SearchFuelViewController.swift */; };
 		4C4A10CB2C9D77B7007CCE2A /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4A10CA2C9D77B6007CCE2A /* UIView.swift */; };
 		4C4A10CD2C9D7BA2007CCE2A /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4A10CC2C9D7BA2007CCE2A /* Fonts.swift */; };
-		4C4A10CF2C9D7CA1007CCE2A /* MuliLight-lg9VZ.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4C4A10CE2C9D7CA1007CCE2A /* MuliLight-lg9VZ.ttf */; };
 		4C4D596F28B1126C005E1A85 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C4D596E28B1126C005E1A85 /* CustomButton.swift */; };
 		4C4D597628B1345E005E1A85 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4C4D597828B1345E005E1A85 /* InfoPlist.strings */; };
 		4C4D597B28B134A8005E1A85 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4C4D597D28B134A8005E1A85 /* InfoPlist.strings */; };
@@ -133,7 +132,6 @@
 		4C46313627C50D5200475AE0 /* SearchFuelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFuelViewController.swift; sourceTree = "<group>"; };
 		4C4A10CA2C9D77B6007CCE2A /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		4C4A10CC2C9D7BA2007CCE2A /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
-		4C4A10CE2C9D7CA1007CCE2A /* MuliLight-lg9VZ.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MuliLight-lg9VZ.ttf"; sourceTree = "<group>"; };
 		4C4D596C28B10FEB005E1A85 /* MasGas.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MasGas.entitlements; sourceTree = "<group>"; };
 		4C4D596E28B1126C005E1A85 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		4C4D597728B1345E005E1A85 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -254,7 +252,6 @@
 			isa = PBXGroup;
 			children = (
 				4C45348527A1D6C10026E02C /* Montserrat-VariableFont_wght.ttf */,
-				4C4A10CE2C9D7CA1007CCE2A /* MuliLight-lg9VZ.ttf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -738,7 +735,6 @@
 				4C4D597628B1345E005E1A85 /* InfoPlist.strings in Resources */,
 				4CD9D0CC28B15D8D007CBE83 /* OptionsTableViewCell.xib in Resources */,
 				4C9471E127A1B1D2001F49F9 /* Main.storyboard in Resources */,
-				4C4A10CF2C9D7CA1007CCE2A /* MuliLight-lg9VZ.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
