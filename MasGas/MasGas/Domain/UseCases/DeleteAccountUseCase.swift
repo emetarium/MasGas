@@ -7,10 +7,21 @@
 
 import Foundation
 
+protocol DeleteAccountUseCaseDelegate {
+    func deletedAccount(error: AuthenticationError?)
+}
+
 class DeleteAccountUseCase {
-    func execute(completion: @escaping (AuthenticationError?) -> ()) {
+    
+    var delegate: DeleteAccountUseCaseDelegate
+    
+    init(delegate: DeleteAccountUseCaseDelegate) {
+        self.delegate = delegate
+    }
+    
+    func execute() {
         Repository.shared.deleteAccount(completion: { authError in
-            completion(authError)
-        }
-    )}
+            self.delegate.deletedAccount(error: authError)
+        })
+    }
 }

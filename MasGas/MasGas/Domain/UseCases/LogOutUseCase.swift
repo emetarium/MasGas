@@ -8,6 +8,9 @@
 import Foundation
 
 class LogOutUseCase {
+    
+    init() {}
+    
     func execute() {
         Repository.shared.signOut()
     }

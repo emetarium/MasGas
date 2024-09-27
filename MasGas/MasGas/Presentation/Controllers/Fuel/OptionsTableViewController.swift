@@ -10,12 +10,11 @@ import UIKit
 class OptionsTableViewController: UITableViewController {
     
     var delegate: OptionsProtocol?
-    var presenter: OptionsPresenter?
+    var viewModel = OptionsViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        presenter = OptionsPresenter(self)
         registerCell()
     }
     
@@ -30,45 +29,35 @@ class OptionsTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let logged = presenter?.isUserLogged() {
-            if logged {
-                return LoggedOptions.allCases.count
-            } else {
-                return NotLoggedOptions.allCases.count
-            }
+        if viewModel.isUserLogged() {
+            return LoggedOptions.allCases.count
         } else {
-            return 0
+            return NotLoggedOptions.allCases.count
         }
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "optionsCellIdentifier", for: indexPath) as! OptionsTableViewCell
         
-        if let logged = presenter?.isUserLogged() {
-            if logged {
-                guard let option = LoggedOptions(rawValue: indexPath.row) else { return UITableViewCell() }
-                cell.setUpUI(icon: option.icon, title: option.description)
-                return cell
-            } else {
-                guard let option = NotLoggedOptions(rawValue: indexPath.row) else { return UITableViewCell() }
-                cell.setUpUI(icon: option.icon, title: option.description)
-                return cell
-            }
+        if viewModel.isUserLogged() {
+            guard let option = LoggedOptions(rawValue: indexPath.row) else { return UITableViewCell() }
+            cell.setUpUI(icon: option.icon, title: option.description)
+            return cell
         } else {
-            return UITableViewCell()
+            guard let option = NotLoggedOptions(rawValue: indexPath.row) else { return UITableViewCell() }
+            cell.setUpUI(icon: option.icon, title: option.description)
+            return cell
         }
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.dismiss(animated: true, completion: nil)
-        if let logged = presenter?.isUserLogged() {
-            if logged {
-                guard let option = LoggedOptions(rawValue: indexPath.row), let delegate = delegate else { return }
-                delegate.loggedOptionSelected(option: option)
-            } else {
-                guard let option = NotLoggedOptions(rawValue: indexPath.row), let delegate = delegate else { return }
-                delegate.notLoggedOptionSelected(option: option)
-            }
+        if viewModel.isUserLogged() {
+            guard let option = LoggedOptions(rawValue: indexPath.row), let delegate = delegate else { return }
+            delegate.loggedOptionSelected(option: option)
+        } else {
+            guard let option = NotLoggedOptions(rawValue: indexPath.row), let delegate = delegate else { return }
+            delegate.notLoggedOptionSelected(option: option)
         }
     }
 }

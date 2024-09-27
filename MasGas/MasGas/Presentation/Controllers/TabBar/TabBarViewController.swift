@@ -18,20 +18,25 @@ class TabBarViewController: UITabBarController, UITabBarControllerDelegate {
     }
     
     func setUpTabs() {
-        guard let gasStationsIcon = UIImage(named: "gasStationIcon"), let fuelPumpIcon = UIImage(named: "fuelPumpIcon") else { return }
-        
-        let fvc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "FuelsViewController") as? FuelsViewController
-        guard let fuelsViewController = fvc else { return }
-        let fuelsBarItem = UITabBarItem(title: NSLocalizedString("FUEL_SCREEN_TAB_BAR_TITLE", comment: ""), image: fuelPumpIcon.withTintColor(Colors.gray), selectedImage: fuelPumpIcon.withTintColor(Colors.green))
-        fuelsViewController.tabBarItem = fuelsBarItem
+        guard let gasStationsIcon = UIImage(named: "gasStationIcon"), let fuelPumpIcon = UIImage(named: "fuelPumpIcon"), let mapIcon = UIImage(named: "mapIcon") else { return }
         
         let gvc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "FavoriteGasStationsViewController") as? FavoriteGasStationsViewController
         guard let favoriteGasStationsViewController = gvc else { return }
         let favoriteGasStationsBarItem = UITabBarItem(title: NSLocalizedString("GAS_STATIONS_SCREEN_TAB_BAR_TITLE", comment: ""), image: gasStationsIcon.withTintColor(Colors.gray), selectedImage: gasStationsIcon.withTintColor(Colors.green))
         favoriteGasStationsViewController.tabBarItem = favoriteGasStationsBarItem
         
+        let fvc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "FuelsViewController") as? FuelsViewController
+        guard let fuelsViewController = fvc else { return }
+        let fuelsBarItem = UITabBarItem(title: NSLocalizedString("FUEL_SCREEN_TAB_BAR_TITLE", comment: ""), image: fuelPumpIcon.withTintColor(Colors.gray), selectedImage: fuelPumpIcon.withTintColor(Colors.green))
+        fuelsViewController.tabBarItem = fuelsBarItem
+        
+        let rvc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "RouteViewController") as? RouteViewController
+        guard let routeViewController = rvc else { return }
+        let routeBarItem = UITabBarItem(title: NSLocalizedString("ROUTE_SCREEN_TAB_BAR_TITLE", comment: ""), image: mapIcon.withTintColor(Colors.gray), selectedImage: mapIcon.withTintColor(Colors.green))
+        routeViewController.tabBarItem = routeBarItem
+        
         self.navigationController?.isNavigationBarHidden = true
-        self.viewControllers = [favoriteGasStationsViewController, fuelsViewController]
+        self.viewControllers = [favoriteGasStationsViewController, fuelsViewController, routeViewController]
     }
     
     override func viewWillAppear(_ animated: Bool) {

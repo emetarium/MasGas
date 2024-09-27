@@ -31,13 +31,14 @@ class GasStationLocationViewController: BaseViewController, MKMapViewDelegate {
     //MARK: - Variables
     var gasStation: PreciosGasolinera?
     var userLocation: CLLocation?
-    var presenter: GasStationLocationPresenter?
+    var viewModel = GasStationLocationViewModel()
 
     //MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter = GasStationLocationPresenter(self)
+        
         setUpUI()
+        setDelegates()
         setUpCollectionView()
         setUpLocation()
     }
@@ -85,7 +86,10 @@ class GasStationLocationViewController: BaseViewController, MKMapViewDelegate {
         
         setUpMap()
         setUpTapGesture()
-        presenter?.checkInternetConnection()
+    }
+    
+    func setDelegates() {
+        viewModel.delegate = self
     }
     
     func setUpTapGesture() {
@@ -99,7 +103,7 @@ class GasStationLocationViewController: BaseViewController, MKMapViewDelegate {
     }
     
     func setUpLocation() {
-        presenter?.getLocation()
+        viewModel.getLocation()
     }
     
     func setUpCollectionView() {
@@ -116,17 +120,17 @@ class GasStationLocationViewController: BaseViewController, MKMapViewDelegate {
     }
     
     @objc func addFav() {
-        guard var gasStation = gasStation, let isLogged = presenter?.isUserLogged() else {
+        guard var gasStation else {
             return
         }
-        if isLogged {
+        if viewModel.isUserLogged() {
             if gasStation.gasolinera.favorita {
-                presenter?.removeFavorite(gasStation: gasStation.gasolinera)
+                viewModel.removeFavorite(gasStation: gasStation.gasolinera)
                 gasStation.gasolinera.favorita = false
                 self.favoriteIcon.tintColor = Colors.white
             }
             else {
-                presenter?.saveFavorite(gasStation: gasStation.gasolinera)
+                viewModel.saveFavorite(gasStation: gasStation.gasolinera)
                 gasStation.gasolinera.favorita = true
                 self.favoriteIcon.tintColor = Colors.yellow
             }
@@ -137,18 +141,6 @@ class GasStationLocationViewController: BaseViewController, MKMapViewDelegate {
     }
     
     func showRouteOnMap() {
-//        guard let gasStationLocation = gasStation?.gasolinera.ubicacion else {
-//            return
-//        }
-//        let destinationPlacemark = MKPlacemark(coordinate: gasStationLocation.coordinate, addressDictionary: nil)
-//
-//        let destinationAnnotation = MKPointAnnotation()
-//
-//        if let location = destinationPlacemark.location {
-//            destinationAnnotation.coordinate = location.coordinate
-//        }
-//
-//        self.mapView.showAnnotations([destinationAnnotation], animated: true )
         
         guard let gasStationLocation = gasStation?.gasolinera.ubicacion else {
             return
@@ -233,7 +225,7 @@ class GasStationLocationViewController: BaseViewController, MKMapViewDelegate {
 
 }
 
-extension GasStationLocationViewController: UpdateLocationProtocol {
+extension GasStationLocationViewController: GasStationLocationViewModelDelegate {
     func updateLocation(location: CLLocation) {
         self.userLocation = location
         DispatchQueue.main.async {
@@ -241,11 +233,11 @@ extension GasStationLocationViewController: UpdateLocationProtocol {
         }
     }
     
-    func showNoConnectionAlert() {
-        let acceptAction = UIAlertAction(title: NSLocalizedString("ACCEPT_ACTION", comment: ""), style: .default) { action in
-            UIApplication.shared.perform(#selector(NSXPCConnection.suspend))
+    func showError(title: String, description: String) {
+        let acceptAction = UIAlertAction(title: NSLocalizedString("ACCEPT_ACTION", comment: ""), style: .default) { _ in
+            self.navigationController?.popViewController(animated: true)
         }
-        self.showAlert(title: NSLocalizedString("NO_CONNECTION_ERROR_TITLE", comment: ""), message: NSLocalizedString("NO_CONNECTION_ERROR_MESSAGE", comment: ""), alternativeAction: nil, acceptAction: acceptAction)
+        self.showAlert(title: title, message: description, alternativeAction: nil, acceptAction: acceptAction)
     }
     
     func showLoadingIndicator() {

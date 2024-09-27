@@ -39,6 +39,7 @@
 /* Tab Bar */
 "FUEL_SCREEN_TAB_BAR_TITLE" = "Carburantes";
 "GAS_STATIONS_SCREEN_TAB_BAR_TITLE" = "Gasolineras";
+"ROUTE_SCREEN_TAB_BAR_TITLE" = "Ruta";
 
 /* FUEL SCREEN */
 "FUEL_SELECTION_LABEL" = "Selecciona un carburante";

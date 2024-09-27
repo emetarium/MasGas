@@ -35,12 +35,13 @@ class SignUpViewController: BaseViewController {
     @IBOutlet weak var signUpButton: UIButton!
     
     //MARK: - Variables
-    var presenter: SignUpPresenter<SignUpViewController>?
+    var viewModel = SignUpViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter = SignUpPresenter(self)
+        
         setUpUI()
+        setDelegates()
         setGestureHideKeyboard()
         // Do any additional setup after loading the view.
     }
@@ -73,6 +74,10 @@ class SignUpViewController: BaseViewController {
         signUpButton.tintColor = Colors.green
     }
     
+    func setDelegates() {
+        viewModel.delegate = self
+    }
+    
     func setGestureHideKeyboard() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.hideKeyboard))
         self.view.addGestureRecognizer(tap)
@@ -81,11 +86,16 @@ class SignUpViewController: BaseViewController {
     // MARK: - IBActions
     @IBAction func signUpButton(_ sender: Any) {
         guard let email = emailTextField.text, let password = passwordTextField.text else { return }
-        presenter?.signUp(email: email, password: password)
+        viewModel.signUp(email: email, password: password)
     }
 }
 
-extension SignUpViewController: SignUpProtocol {
+extension SignUpViewController: SignUpViewModelDelegate {
+    func showError(title: String, message: String) {
+        let acceptAction = UIAlertAction(title: NSLocalizedString("ACCEPT_ACTION", comment: ""), style: .default, handler: nil)
+        self.showAlert(title: title, message: description, alternativeAction: nil, acceptAction: acceptAction)
+    }
+    
     func navigateToLogin() {
         self.navigationController?.popViewController(animated: true)
     }

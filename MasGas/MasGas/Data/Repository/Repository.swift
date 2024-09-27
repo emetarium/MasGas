@@ -10,11 +10,13 @@ import CoreLocation
 
 protocol FuelsRepository {
     func fetchFuels(completion: @escaping ([Carburante]) -> Void)
+    func searchFuelInTown(townIdentifier: String, fuelIdentifier: String,  completion: @escaping ([ListaEESSPrecio]?) -> Void)
     func searchFuels(fuelIdentifier: String, completion: @escaping ([ListaEESSPrecio]?) -> Void)
     func fetchLocalFuels() -> [Carburante]?
 }
 
 protocol TownsRepository {
+    func saveTown(town: Municipio)
     func fetchTowns(completion: @escaping ([Municipio]) -> Void)
     func fetchSelectedTown() -> Municipio?
     func fetchLocalTowns() -> [Municipio]?
@@ -70,6 +72,12 @@ extension Repository: FuelsRepository {
         }
     }
     
+    func searchFuelInTown(townIdentifier: String, fuelIdentifier: String,  completion: @escaping ([ListaEESSPrecio]?) -> Void) {
+        remoteDataStore.getFuelPriceByTown(fuelIdentifier: fuelIdentifier, townIdentifier: townIdentifier) { listaPrecios in
+            completion(listaPrecios)
+        }
+    }
+    
     func searchFuels(fuelIdentifier: String, completion: @escaping ([ListaEESSPrecio]?) -> Void) {
         if let town = localDataStore.fetchSelectedTown() {
             remoteDataStore.getFuelPriceByTown(fuelIdentifier: fuelIdentifier, townIdentifier: town.idMunicipio) { listaPrecios in
@@ -88,6 +96,16 @@ extension Repository: FuelsRepository {
 }
 
 extension Repository: TownsRepository {
+    func saveTown(town: Municipio) {
+        do {
+            let encoder = JSONEncoder()
+
+            let data = try encoder.encode(town)
+
+            UserDefaults.standard.set(data, forKey: "Town")
+        } catch { }
+    }
+    
     func fetchTowns(completion: @escaping ([Municipio]) -> Void) {
         if let towns = fetchLocalTowns() {
             completion(towns)

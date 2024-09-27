@@ -33,7 +33,7 @@ class FuelsViewController: BaseViewController, UITableViewDelegate, UITableViewD
     @IBOutlet var fuelsTableView: UITableView!
     
     //MARK: - Variables
-    var presenter: FuelsPresenter<FuelsViewController>?
+    var viewModel = FuelsViewModel()
     var fuels: [Carburante] = []
     var town: Municipio?
     
@@ -43,24 +43,23 @@ class FuelsViewController: BaseViewController, UITableViewDelegate, UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter = FuelsPresenter(self)
+        
+        setUpUI()
+        setDelegates()
+        
         fetchSelectedTown()
         fetchFuels()
         setUpUI()
         // Do any additional setup after loading the view.
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        presenter?.checkInternetConnection()
-    }
-    
     //MARK: - Functions
     func fetchSelectedTown() {
-        presenter?.fetchSelectedTown()
+        viewModel.fetchSelectedTown()
     }
     
     func fetchFuels() {
-        presenter?.fetchFuels()
+        viewModel.getFuels()
     }
     
     func setUpUI() {
@@ -87,7 +86,10 @@ class FuelsViewController: BaseViewController, UITableViewDelegate, UITableViewD
         self.setUpTapGesture()
         self.registerCell()
         self.setUpTableView()
-        presenter?.checkInternetConnection()
+    }
+    
+    func setDelegates() {
+        viewModel.delegate = self
     }
     
     private func setUpTapGesture() {
@@ -138,9 +140,9 @@ class FuelsViewController: BaseViewController, UITableViewDelegate, UITableViewD
     //MARK: - IBActions
     @IBAction func optionsButtonPressed(_ sender: Any) {
         let ovc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "OptionsTableViewController") as? OptionsTableViewController
-        guard let vc = ovc, let isLogged = presenter?.isUserLogged() else { return }
+        guard let vc = ovc else { return }
         vc.delegate = self
-        if isLogged {
+        if viewModel.isUserLogged() {
             vc.preferredContentSize = CGSize(width: self.view.frame.width * 0.66, height: 120)
         } else {
             vc.preferredContentSize = CGSize(width: self.view.frame.width * 0.66, height: 80)
@@ -156,71 +158,18 @@ class FuelsViewController: BaseViewController, UITableViewDelegate, UITableViewD
     }
 }
 
-extension FuelsViewController: FuelsProtocol {
-    func updateTown(town: Municipio) {
-        self.town = town
-        DispatchQueue.main.async {
-            self.townLabel.text = town.nombreMunicipio.formatName()
-        }
-    }
-    
-    func updateFuels(fuels: [Carburante]) {
-        self.fuels = fuels
-        DispatchQueue.main.async {
-            self.fuelsTableView.reloadData()
-        }
-    }
-    
-    func navigateToLogin() {
-        let loginViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController
-        guard let vc = loginViewController else { return }
-        (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(vc)
-    }
-    
-    func showNoConnectionAlert() {
-        let acceptAction = UIAlertAction(title: NSLocalizedString("ACCEPT_ACTION", comment: ""), style: .default) { action in
-            UIApplication.shared.perform(#selector(NSXPCConnection.suspend))
-        }
-        self.showAlert(title: NSLocalizedString("NO_CONNECTION_ERROR_TITLE", comment: ""), message: NSLocalizedString("NO_CONNECTION_ERROR_MESSAGE", comment: ""), alternativeAction: nil, acceptAction: acceptAction)
-    }
-    
-    func showChangeTownAlert(town: Municipio) {
-        let acceptAction = UIAlertAction(title: NSLocalizedString("ACCEPT_ACTION", comment: ""), style: .default) { action in
-            self.presenter?.saveTown(town: town)
-        }
-        let cancelAction = UIAlertAction(title: NSLocalizedString("CANCEL_ACTION", comment: ""), style: .default)
-        
-        DispatchQueue.main.async {
-            let replace: [String : String] = ["[town]" : town.nombreMunicipio.formatName()]
-            self.showAlert(title: NSLocalizedString("LOCATION_CHANGED_ALERT_TITLE", comment: ""), message: NSLocalizedString("LOCATION_CHANGED_ALERT_MESSAGE", comment: "").replace(occurrences: replace), alternativeAction: cancelAction, acceptAction: acceptAction)
-        }
-    }
-    
-    func showLoadingIndicator() {
-        DispatchQueue.main.async {
-            self.showLoading()
-        }
-    }
-    
-    func hideLoadingIndicator() {
-        DispatchQueue.main.async {
-            self.hideLoading()
-        }
-    }
-}
-
 extension FuelsViewController: OptionsProtocol {
     func loggedOptionSelected(option: LoggedOptions) {
         switch option {
         case .logout:
             let accept = UIAlertAction(title: NSLocalizedString("ACCEPT_ACTION", comment: ""), style: .destructive) { accepted in
-                self.presenter?.logout()
+                self.viewModel.logout()
             }
             let cancel = UIAlertAction(title: NSLocalizedString("CANCEL_ACTION", comment: ""), style: .default)
             self.showAlert(title: NSLocalizedString("LOG_OUT_ALERT_TITLE", comment: ""), message: NSLocalizedString("LOG_OUT_ALERT_MESSAGE", comment: ""), alternativeAction: cancel, acceptAction: accept)
         case .deleteAccount:
             let accept = UIAlertAction(title: NSLocalizedString("ACCEPT_ACTION", comment: ""), style: .destructive) { accepted in
-                self.presenter?.deleteAccount()
+                self.viewModel.deleteAccount()
             }
             let cancel = UIAlertAction(title: NSLocalizedString("CANCEL_ACTION", comment: ""), style: .default)
             self.showAlert(title: NSLocalizedString("DELETE_ACCOUNT_ALERT_TITLE", comment: ""), message: NSLocalizedString("DELETE_ACCOUNT_ALERT_MESSAGE", comment: ""), alternativeAction: cancel, acceptAction: accept)
@@ -248,5 +197,51 @@ extension FuelsViewController: OptionsProtocol {
 extension FuelsViewController: UIAdaptivePresentationControllerDelegate {
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
         return UIModalPresentationStyle.none
+    }
+}
+
+extension FuelsViewController: FuelsViewModelDelegate {
+    func setFuels(fuels: [Carburante]) {
+        self.fuels = fuels
+        DispatchQueue.main.async {
+            self.fuelsTableView.reloadData()
+        }
+    }
+    
+    func navigateToLogin() {
+        let loginViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController
+        guard let vc = loginViewController else { return }
+        (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(vc)
+    }
+    
+    func setSelectedTown(town: Municipio) {
+        self.town = town
+        DispatchQueue.main.async {
+            self.townLabel.text = town.nombreMunicipio.formatName()
+        }
+    }
+    
+    func showChangeTownAlert(town: Municipio) {
+        let acceptAction = UIAlertAction(title: NSLocalizedString("ACCEPT_ACTION", comment: ""), style: .default) { action in
+            self.viewModel.saveTown(town: town)
+        }
+        let cancelAction = UIAlertAction(title: NSLocalizedString("CANCEL_ACTION", comment: ""), style: .default)
+        
+        DispatchQueue.main.async {
+            let replace: [String : String] = ["[town]" : town.nombreMunicipio.formatName()]
+            self.showAlert(title: NSLocalizedString("LOCATION_CHANGED_ALERT_TITLE", comment: ""), message: NSLocalizedString("LOCATION_CHANGED_ALERT_MESSAGE", comment: "").replace(occurrences: replace), alternativeAction: cancelAction, acceptAction: acceptAction)
+        }
+    }
+    
+    func showLoadingIndicator() {
+        DispatchQueue.main.async {
+            self.showLoading()
+        }
+    }
+    
+    func hideLoadingIndicator() {
+        DispatchQueue.main.async {
+            self.hideLoading()
+        }
     }
 }

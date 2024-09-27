@@ -33,7 +33,7 @@ class SearchFuelViewController: BaseViewController, UITableViewDelegate, UITable
     @IBOutlet var navigationBarItem: UINavigationItem!
     
     //MARK: - Variables
-    var presenter: SearchFuelPresenter<SearchFuelViewController>?
+    var viewModel = SearchFuelViewModel()
     var fuel: Carburante?
     var searchMode: queryByFuelOptions = .queryByCheapestNearby
     var fuelList: [BusquedaCarburante]?
@@ -45,8 +45,9 @@ class SearchFuelViewController: BaseViewController, UITableViewDelegate, UITable
     //MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter = SearchFuelPresenter(self)
+        
         setUpUI()
+        setDelegates()
         // Do any additional setup after loading the view.
     }
     
@@ -81,11 +82,14 @@ class SearchFuelViewController: BaseViewController, UITableViewDelegate, UITable
         registerCell()
         setUpTableView()
         searchFuel(fuel: fuel)
-        presenter?.checkInternetConnection()
+    }
+    
+    func setDelegates() {
+        viewModel.delegate = self
     }
     
     func searchFuel(fuel: Carburante) {
-        self.presenter?.searchFuel(fuel: fuel)
+        viewModel.searchFuel(fuel: fuel)
     }
     
     @objc private func popToPrevious() {
@@ -162,9 +166,9 @@ class SearchFuelViewController: BaseViewController, UITableViewDelegate, UITable
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let gvc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "GasStationLocationViewController") as? GasStationLocationViewController
-        guard let vc = gvc, let fuelList = fuelList, let isLogged = presenter?.isUserLogged(), let fuel else { return }
-        if isLogged {
-            presenter?.isFavorite(gasStation: fuelList[indexPath.row], completion: { result in
+        guard let vc = gvc, let fuelList = fuelList, let fuel else { return }
+        if viewModel.isUserLogged() {
+            viewModel.isFavorite(gasStation: fuelList[indexPath.row], completion: { result in
                 let gasolinera = Gasolinera(nombre: fuelList[indexPath.row].nombre, ubicacion: fuelList[indexPath.row].coordenadas, direccion: fuelList[indexPath.row].direccion, municipio: fuelList[indexPath.row].municipio, favorita: result, id: fuelList[indexPath.row].id)
                 let preciosGasolinera = PreciosGasolinera(gasolinera: gasolinera, precios: [PrecioCarburante(carburante: fuel, precio: fuelList[indexPath.row].precioProducto)])
                 vc.gasStation = preciosGasolinera
@@ -184,14 +188,14 @@ extension SearchFuelViewController: SearchModeProtocol {
         self.searchMode = searchMode
         self.searchModeLabel.text = NSLocalizedString(searchMode.rawValue, comment: "")
         guard let fuelList = fuelList else { return }
-        self.presenter?.sortFuels(searchMode: searchMode, fuelList: fuelList)
+        viewModel.sortFuels(searchMode: searchMode, fuelList: fuelList)
         DispatchQueue.main.async {
             self.fuelPricesTableView.reloadData()
         }
     }
 }
 
-extension SearchFuelViewController: SearchFuelProtocol {
+extension SearchFuelViewController: SearchFuelViewModelDelegate {
     func showLoadingIndicator() {
         DispatchQueue.main.async {
             self.showLoading()

@@ -30,19 +30,20 @@ class LoginViewController: BaseViewController {
     @IBOutlet var notNowButton: UIButton!
     
     //MARK: - Variables
-    var presenter: LoginPresenter<LoginViewController>?
+    var viewModel = LoginViewModel()
     var currentNonce: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter = LoginPresenter(self)
+        
         setUpUI()
+        setDelegates()
         setGestureHideKeyboard()
         // Do any additional setup after loading the view.
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        presenter?.checkLogin()
+        viewModel.checkLogin()
     }
     
     //MARK: - Functions
@@ -78,6 +79,10 @@ class LoginViewController: BaseViewController {
         notNowButton.titleLabel?.font = Fonts.defaultx16
     }
     
+    func setDelegates() {
+        viewModel.delegate = self
+    }
+    
     func setGestureHideKeyboard() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.hideKeyboard))
         self.view.addGestureRecognizer(tap)
@@ -88,11 +93,11 @@ class LoginViewController: BaseViewController {
         guard let email = emailTextField.text, let password = passwordTextField.text else {
             return
         }
-        presenter?.emailLogin(email: email, password: password)
+        viewModel.emailLogin(email: email, password: password)
     }
     
     @IBAction func googleLoginButton(_ sender: Any) {
-        presenter?.googleLogin()
+        viewModel.googleLogin()
     }
     
     @IBAction func appleLoginButton(_ sender: Any) {
@@ -101,9 +106,9 @@ class LoginViewController: BaseViewController {
         request.requestedScopes = [.fullName, .email]
 
         // Generate nonce for validation after authentication successful
-        self.currentNonce = presenter?.randomNonceString()
+        self.currentNonce = viewModel.randomNonceString()
         // Set the SHA256 hashed nonce to ASAuthorizationAppleIDRequest
-        request.nonce = presenter?.sha256(currentNonce!)
+        request.nonce = viewModel.sha256(currentNonce!)
 
         // Present Apple authorization form
         let authorizationController = ASAuthorizationController(authorizationRequests: [request])
@@ -119,21 +124,7 @@ class LoginViewController: BaseViewController {
     }
     
     @IBAction func notNowButton(_ sender: Any) {
-        presenter?.checkTown()
-    }
-}
-
-extension LoginViewController: LoginProtocol {
-    func navigateToTabBar() {
-        let tabBarController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabBarController") as? TabBarViewController
-        guard let tbc = tabBarController else { return }
-        (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(tbc)
-    }
-    
-    func navigateToTownSelection() {
-        let townSelectionViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TownSelectionViewController") as? TownSelectionViewController
-        guard let tvc = townSelectionViewController else { return }
-        self.navigationController?.pushViewController(tvc, animated: true)
+        viewModel.checkTown()
     }
 }
 
@@ -176,7 +167,7 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
                     
                     RemoteDataStore().checkUserMigration(uid: authResult.user.uid)
                     
-                    self?.presenter?.checkTown()
+                    self?.viewModel.checkTown()
                 }
             }
         }
@@ -186,5 +177,24 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
 extension LoginViewController: ASAuthorizationControllerPresentationContextProviding {
     func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
         return ASPresentationAnchor()
+    }
+}
+
+extension LoginViewController: LoginViewModelDelegate {
+    func showError(title: String, description: String) {
+        let acceptAction = UIAlertAction(title: NSLocalizedString("ACCEPT_ACTION", comment: ""), style: .default, handler: nil)
+        self.showAlert(title: title, message: description, alternativeAction: nil, acceptAction: acceptAction)
+    }
+    
+    func navigateToTabBar() {
+        let tabBarController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TabBarController") as? TabBarViewController
+        guard let tbc = tabBarController else { return }
+        (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.changeRootViewController(tbc)
+    }
+    
+    func navigateToTownSelection() {
+        let townSelectionViewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "TownSelectionViewController") as? TownSelectionViewController
+        guard let tvc = townSelectionViewController else { return }
+        self.navigationController?.pushViewController(tvc, animated: true)
     }
 }

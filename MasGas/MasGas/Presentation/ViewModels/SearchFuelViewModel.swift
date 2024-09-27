@@ -1,41 +1,41 @@
 //
-//  SearchFuelPresenter.swift
+//  SearchFuelViewModel.swift
 //  MasGas
 //
-//  Created by María García Torres on 2/3/22.
+//  Created by María García Torres on 25/9/24.
 //
 
-import Foundation
-import UIKit
 import CoreLocation
 
-class SearchFuelPresenter<SearchFuelProtocol>: BasePresenter {
-    let view: SearchFuelViewController
-    let searchFuelUseCase: SearchFuelUseCase?
-    let isFavoriteUseCase: SearchFavoriteUseCase?
-    let isLocationEnabledUseCase: IsLocationEnabledUseCase?
-    let getLocationUseCase: GetLocationUseCase?
-    let calculateDistanceUseCase: CalculateDistanceBetweenLocationsUseCase?
+protocol SearchFuelViewModelDelegate {
+    func showLoadingIndicator()
+    func hideLoadingIndicator()
+    func updateFuelList(fuelList: [BusquedaCarburante])
+    func showNoLocationPermissionAlert()
+}
+
+class SearchFuelViewModel {
     
-    init(_ view: SearchFuelViewController) {
-        self.view = view
-        self.searchFuelUseCase = SearchFuelUseCase()
-        self.isFavoriteUseCase = SearchFavoriteUseCase()
-        self.isLocationEnabledUseCase = IsLocationEnabledUseCase()
-        self.getLocationUseCase = GetLocationUseCase()
-        self.calculateDistanceUseCase = CalculateDistanceBetweenLocationsUseCase()
+    var delegate: SearchFuelViewModelDelegate?
+    
+    func isUserLogged() -> Bool {
+        if UserDefaults.standard.object(forKey: "User") != nil {
+            return true
+        }
+        else {
+            return false
+        }
     }
     
     func searchFuel(fuel: Carburante) {
-        self.view.showLoadingIndicator()
+        self.delegate?.showLoadingIndicator()
         
-        guard let isLocationEnabled = isLocationEnabledUseCase?.execute() else { return }
-        if isLocationEnabled {
-            searchFuelUseCase?.execute(fuelIdentifier: fuel.idProducto, completion: { priceList in
-                self.view.hideLoadingIndicator()
+        if IsLocationEnabledUseCase().execute() {
+            SearchFuelUseCase().execute(fuelIdentifier: fuel.idProducto, completion: { priceList in
+                self.delegate?.hideLoadingIndicator()
                 if let priceList = priceList {
-                    self.getLocationUseCase?.execute(completion: { location in
-                        if let location = location {
+                    GetLocationUseCase().execute(completion: { location in
+                        if let location {
                             self.calculateDistance(userLocation: location, gasStationInformation: priceList) { fuelList in
                                 self.sortFuels(searchMode: .queryByCheapestNearby, fuelList: fuelList)
                             }
@@ -44,8 +44,8 @@ class SearchFuelPresenter<SearchFuelProtocol>: BasePresenter {
                 }
             })
         } else {
-            self.view.hideLoadingIndicator()
-            self.view.showNoLocationPermissionAlert()
+            self.delegate?.hideLoadingIndicator()
+            self.delegate?.showNoLocationPermissionAlert()
         }
     }
     
@@ -59,7 +59,7 @@ class SearchFuelPresenter<SearchFuelProtocol>: BasePresenter {
             case .queryByCheapestNearby:
                 orderedList.sort { $0.distancia == $1.distancia ? $0.precioProducto < $1.precioProducto : $0.distancia < $1.distancia }
         }
-        self.view.updateFuelList(fuelList: orderedList)
+        self.delegate?.updateFuelList(fuelList: orderedList)
     }
     
     func calculateDistance(userLocation: CLLocation, gasStationInformation: [ListaEESSPrecio], completion: ([BusquedaCarburante]) -> ()) {
@@ -69,7 +69,7 @@ class SearchFuelPresenter<SearchFuelProtocol>: BasePresenter {
             let longitud = (gasStation.longitud.replacingOccurrences(of: ",", with: ".") as NSString).doubleValue
             let gasStationLocation = CLLocation(latitude: latitud, longitude: longitud)
             
-            self.calculateDistanceUseCase?.execute(userLocation: userLocation, gasStation: gasStationLocation, completion: { distance in
+            CalculateDistanceBetweenLocationsUseCase().execute(userLocation: userLocation, gasStation: gasStationLocation, completion: { distance in
                 let fuelInformation = BusquedaCarburante(nombre: gasStation.rotulo, id: gasStation.idEESS, precioProducto: gasStation.precioProducto, horario: gasStation.horario, distancia: distance, coordenadas: gasStationLocation, direccion: gasStation.direccion, municipio: gasStation.municipio)
                 fuelInformationList.append(fuelInformation)
             })
@@ -78,14 +78,8 @@ class SearchFuelPresenter<SearchFuelProtocol>: BasePresenter {
     }
     
     func isFavorite(gasStation: BusquedaCarburante, completion: @escaping (Bool) -> ()) {
-        isFavoriteUseCase?.execute(gasStationID: gasStation.id, completion: { result in
+        SearchFavoriteUseCase().execute(gasStationID: gasStation.id, completion: { result in
             completion(result)
         })
-    }
-    
-    func checkInternetConnection() {
-        if !isInternetAvailable() {
-            self.view.showNoConnectionAlert()
-        }
     }
 }

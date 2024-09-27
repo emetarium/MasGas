@@ -26,14 +26,15 @@ class TownSelectionViewController: BaseViewController, UITableViewDelegate, UITa
     //MARK: - Variables
     var towns: [Municipio] = []
     var filteredTowns: [Municipio] = []
-    var presenter: TownSelectionPresenter<TownSelectionViewController>?
+    var viewModel = TownSelectionViewModel()
 
     //MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter = TownSelectionPresenter(self)
-        fetchTowns()
+        
         setUpUI()
+        setDelegates()
+        fetchTowns()
         // Do any additional setup after loading the view.
     }
     
@@ -55,8 +56,12 @@ class TownSelectionViewController: BaseViewController, UITableViewDelegate, UITa
         setUpTableView()
     }
     
+    func setDelegates() {
+        viewModel.delegate = self
+    }
+    
     func fetchTowns() {
-        presenter?.fetchTowns()
+        viewModel.fetchTowns()
     }
     
     private func registerCell() {
@@ -90,7 +95,7 @@ class TownSelectionViewController: BaseViewController, UITableViewDelegate, UITa
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        presenter?.saveTown(town: filteredTowns[indexPath.row])
+        viewModel.saveTown(town: filteredTowns[indexPath.row])
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -117,7 +122,7 @@ extension TownSelectionViewController: UISearchBarDelegate {
     }
 }
 
-extension TownSelectionViewController: TownSelectionProtocol {
+extension TownSelectionViewController: TownSelectionViewModelDelegate {
     func updateTowns(towns: [Municipio]) {
         self.towns = towns
         self.filteredTowns = towns

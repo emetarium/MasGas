@@ -27,13 +27,14 @@ class FavoriteGasStationsViewController: BaseViewController, UITableViewDelegate
     //MARK: - Variables
     var userLocation: CLLocation?
     var favoriteGasStations: [PreciosGasolinera] = []
-    var presenter: FavoriteGasStationsPresenter<FavoriteGasStationsViewController>?
+    var viewModel = FavoriteGasStationsViewModel()
 
     //MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter = FavoriteGasStationsPresenter(self)
+        
         setUpUI()
+        setDelegates()
         // Do any additional setup after loading the view.
     }
     
@@ -50,19 +51,20 @@ class FavoriteGasStationsViewController: BaseViewController, UITableViewDelegate
         setUpLocation()
         registerCell()
         setUpTableView()
-        presenter?.checkInternetConnection()
+    }
+    
+    func setDelegates() {
+        viewModel.delegate = self
     }
     
     func getFavoriteGasStations() {
-        if let isLogged = presenter?.isUserLogged() {
-            if isLogged {
-                presenter?.getFavorites()
-            }
+        if viewModel.isUserLogged() {
+            viewModel.getFavorites()
         }
     }
     
     func setUpLocation() {
-        presenter?.setUpMap()
+        viewModel.setUpMap()
     }
     
     private func registerCell() {
@@ -109,14 +111,14 @@ class FavoriteGasStationsViewController: BaseViewController, UITableViewDelegate
 
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if (editingStyle == .delete) {
-            presenter?.removeFavorite(gasStation: favoriteGasStations[indexPath.row].gasolinera)
+            viewModel.removeFavorite(gasStation: favoriteGasStations[indexPath.row].gasolinera)
             favoriteGasStations.remove(at: indexPath.row)
             tableView.reloadData()
         }
     }
 }
 
-extension FavoriteGasStationsViewController: FavoriteGasStationsProtocol {
+extension FavoriteGasStationsViewController: FavoriteGasStationsViewModelDelegate {
     func showLoadingIndicator() {
         DispatchQueue.main.async {
             self.showLoading()

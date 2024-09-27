@@ -1,30 +1,30 @@
 //
-//  LoginPresenter.swift
+//  LoginViewModel.swift
 //  MasGas
 //
-//  Created by María García Torres on 15/2/22.
+//  Created by María García Torres on 25/9/24.
 //
 
 import Foundation
 import CryptoKit
-import UIKit
 
-class LoginPresenter<LoginProtocol>: BasePresenter {
+protocol LoginViewModelDelegate {
+    func navigateToTabBar()
+    func navigateToTownSelection()
+    func showError(title: String, description: String)
+}
+
+class LoginViewModel {
     
-    let view: LoginViewController
-    let fetchFuelsUseCase: FetchFuelsUseCase?
-    let fetchTownsUseCase: FetchTownsUseCase?
-    let fetchSelectedTownUseCase: FetchSelectedTownUseCase?
-    let emailLoginUseCase: EmailLoginUseCase?
-    let googleLoginUseCase: GoogleLoginUseCase?
+    var delegate: LoginViewModelDelegate?
     
-    init(_ view: LoginViewController) {
-        self.view = view
-        self.fetchFuelsUseCase = FetchFuelsUseCase()
-        self.fetchTownsUseCase = FetchTownsUseCase()
-        self.fetchSelectedTownUseCase = FetchSelectedTownUseCase()
-        self.emailLoginUseCase = EmailLoginUseCase()
-        self.googleLoginUseCase = GoogleLoginUseCase()
+    func isUserLogged() -> Bool {
+        if UserDefaults.standard.object(forKey: "User") != nil {
+            return true
+        }
+        else {
+            return false
+        }
     }
     
     func checkLogin() {
@@ -34,20 +34,18 @@ class LoginPresenter<LoginProtocol>: BasePresenter {
     }
     
     func checkTown() {
-        if let town = fetchSelectedTownUseCase?.execute() {
-            self.view.navigateToTabBar()
+        if let town = FetchSelectedTownUseCase().execute() {
+            self.delegate?.navigateToTabBar()
         }
         else {
-            self.view.navigateToTownSelection()
+            self.delegate?.navigateToTownSelection()
         }
     }
     
     func emailLogin(email: String, password: String) {
-        emailLoginUseCase?.execute(email: email, password: password, completion: { authError in
+        EmailLoginUseCase().execute(email: email, password: password, completion: { authError in
             if let authError = authError {
-                let description = authError.get()
-                let acceptAction = UIAlertAction(title: NSLocalizedString("ACCEPT_ACTION", comment: ""), style: .default, handler: nil)
-                self.view.showAlert(title: NSLocalizedString("AUTHENTICATION_ERROR_TITLE", comment: ""), message: description, alternativeAction: nil, acceptAction: acceptAction)
+                self.delegate?.showError(title: NSLocalizedString("AUTHENTICATION_ERROR_TITLE", comment: ""), description: authError.get())
             } else {
                 self.checkTown()
             }
@@ -55,11 +53,9 @@ class LoginPresenter<LoginProtocol>: BasePresenter {
     }
     
     func googleLogin() {
-        googleLoginUseCase?.execute(completion: { authError in
+        GoogleLoginUseCase().execute(completion: { authError in
             if let authError = authError {
-                let description = authError.get()
-                let acceptAction = UIAlertAction(title: NSLocalizedString("ACCEPT_ACTION", comment: ""), style: .default, handler: nil)
-                self.view.showAlert(title: NSLocalizedString("AUTHENTICATION_ERROR_TITLE", comment: ""), message: description, alternativeAction: nil, acceptAction: acceptAction)
+                self.delegate?.showError(title: NSLocalizedString("AUTHENTICATION_ERROR_TITLE", comment: ""), description: authError.get())
             } else {
                 self.checkTown()
             }

@@ -62,6 +62,10 @@ enum Fonts {
     }
     
     // System Font Bold
+    static var boldx14: UIFont {
+        return UIFont.boldSystemFont(ofSize: 14)
+    }
+    
     static var boldx16: UIFont {
         return UIFont.boldSystemFont(ofSize: 16)
     }

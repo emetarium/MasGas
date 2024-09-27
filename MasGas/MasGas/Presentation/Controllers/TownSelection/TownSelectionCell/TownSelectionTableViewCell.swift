@@ -25,7 +25,7 @@ class TownSelectionTableViewCell: UITableViewCell {
     
     func setUpUI(townName: String) {
         self.townLabel.font = Fonts.defaultx16
-        self.townLabel.text = townName
+        self.townLabel.text = townName.formatName()
     }
     
 }
