@@ -301,7 +301,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1LJ-zW-HDZ">
-                                <rect key="frame" x="341" y="63" width="49" height="39"/>
+                                <rect key="frame" x="342" y="63.5" width="48" height="38"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="moreIcon" imagePadding="0.0"/>
                                 <connections>
@@ -742,33 +742,40 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2ah-VX-pRh">
-                                <rect key="frame" x="0.0" y="48" width="414" height="464"/>
+                                <rect key="frame" x="0.0" y="92" width="414" height="456.5"/>
                                 <standardMapConfiguration key="preferredConfiguration"/>
                             </mapView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="qlh-9l-aWb">
-                                <rect key="frame" x="0.0" y="512" width="414" height="350"/>
+                                <rect key="frame" x="0.0" y="548.5" width="414" height="313.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="350" id="8x5-hk-TCq"/>
-                                </constraints>
                             </tableView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C5a-Lf-8Hk">
+                                <rect key="frame" x="0.0" y="48" width="414" height="44"/>
+                                <items>
+                                    <navigationItem title="Title" id="zdo-3n-a7x"/>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="rtB-UT-2Qb"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="rtB-UT-2Qb" firstAttribute="bottom" secondItem="qlh-9l-aWb" secondAttribute="bottom" id="BGK-vy-qXv"/>
-                            <constraint firstItem="2ah-VX-pRh" firstAttribute="top" secondItem="rtB-UT-2Qb" secondAttribute="top" id="CSF-pe-z0B"/>
                             <constraint firstItem="qlh-9l-aWb" firstAttribute="leading" secondItem="rtB-UT-2Qb" secondAttribute="leading" id="CvV-C5-2qy"/>
                             <constraint firstItem="qlh-9l-aWb" firstAttribute="top" secondItem="2ah-VX-pRh" secondAttribute="bottom" id="I6n-XV-cUU"/>
+                            <constraint firstItem="C5a-Lf-8Hk" firstAttribute="leading" secondItem="rtB-UT-2Qb" secondAttribute="leading" id="a2g-dL-Ua4"/>
+                            <constraint firstItem="C5a-Lf-8Hk" firstAttribute="top" secondItem="rtB-UT-2Qb" secondAttribute="top" id="gZa-iz-fXJ"/>
                             <constraint firstItem="rtB-UT-2Qb" firstAttribute="trailing" secondItem="qlh-9l-aWb" secondAttribute="trailing" id="jAD-Jh-J1E"/>
+                            <constraint firstItem="qlh-9l-aWb" firstAttribute="height" secondItem="Lt9-Z3-nU3" secondAttribute="height" multiplier="0.35" id="oix-UH-Nzu"/>
+                            <constraint firstItem="2ah-VX-pRh" firstAttribute="top" secondItem="C5a-Lf-8Hk" secondAttribute="bottom" id="qpp-VW-nBT"/>
                             <constraint firstItem="rtB-UT-2Qb" firstAttribute="trailing" secondItem="2ah-VX-pRh" secondAttribute="trailing" id="up4-2h-E18"/>
                             <constraint firstItem="2ah-VX-pRh" firstAttribute="leading" secondItem="rtB-UT-2Qb" secondAttribute="leading" id="yO5-Za-lqY"/>
+                            <constraint firstItem="rtB-UT-2Qb" firstAttribute="trailing" secondItem="C5a-Lf-8Hk" secondAttribute="trailing" id="zi6-91-QXp"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="gasStationsMapView" destination="2ah-VX-pRh" id="61u-7f-URc"/>
                         <outlet property="gasStationsTableView" destination="qlh-9l-aWb" id="DK8-7L-2Cb"/>
-                        <outlet property="gasStationsTableViewHeight" destination="8x5-hk-TCq" id="OQa-u8-znz"/>
+                        <outlet property="navigationBar" destination="C5a-Lf-8Hk" id="UJY-wv-53u"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pmu-ws-1u4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

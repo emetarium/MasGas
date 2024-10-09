@@ -34,9 +34,28 @@ class RouteViewController: UIViewController {
     var autoCompleteSearch = AutoCompleteSearch()
     var originSuggestions: [MKLocalSearchCompletion] = []
     var destinationSuggestions: [MKLocalSearchCompletion] = []
-    var selectedOrigin: MKPointAnnotation?
-    var selectedDestination: MKPointAnnotation?
-    var selectedFuel: Carburante?
+    var selectedOrigin: MKPointAnnotation? {
+        didSet {
+            if let selectedDestination {
+                calculateRoute()
+            }
+        }
+    }
+    var selectedDestination: MKPointAnnotation? {
+        didSet {
+            if let selectedOrigin {
+                calculateRoute()
+            }
+        }
+    }
+    var selectedRoute: MKRoute?
+    var allRoutes: [MKRoute] = []
+    var polylineToRouteMap: [MKPolyline: MKRoute] = [:]
+    var selectedFuel: Carburante? {
+        didSet {
+            enableButton()
+        }
+    }
     var fuels: [Carburante] = []
     var isFuelsTableViewHidden: Bool = true
     
@@ -56,11 +75,15 @@ class RouteViewController: UIViewController {
         self.originLabel.textColor = Colors.black
         self.originLabel.text = "Origen"
         
+        self.originTextField.clearButtonMode = .whileEditing
+        
         self.destinationLabel.font = Fonts.montserratx13
         self.destinationLabel.textColor = Colors.black
         self.destinationLabel.text = "Destino"
         
-        self.getGasStationsOnRouteButton.style = .filled
+        self.destinationTextField.clearButtonMode = .whileEditing
+        
+        self.getGasStationsOnRouteButton.style = .filledDisabled
         self.getGasStationsOnRouteButton.setTitle("Buscar gasolineras", for: .normal)
         
         self.originSuggestionsTableView.dropShadow()
@@ -77,6 +100,10 @@ class RouteViewController: UIViewController {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(openFuelsDropdownMenu))
         self.fuelsSelectionTextField.isUserInteractionEnabled = true
         self.fuelsSelectionTextField.addGestureRecognizer(tapGesture)
+        
+        let routeTapGesture = UITapGestureRecognizer(target: self, action: #selector(mapTapped(_:)))
+        self.locationsMapView.isUserInteractionEnabled = true
+        self.locationsMapView.addGestureRecognizer(routeTapGesture)
     }
     
     func setDelegates() {
@@ -93,6 +120,8 @@ class RouteViewController: UIViewController {
         
         self.fuelsTableView.delegate = self
         self.fuelsTableView.dataSource = self
+        
+        self.locationsMapView.delegate = self
     }
     
     func initConfiguration() {
@@ -192,10 +221,89 @@ class RouteViewController: UIViewController {
         }
     }
     
+    func calculateRoute() {
+        guard let selectedOrigin, let selectedDestination else { return }
+        
+        self.locationsMapView.overlays.forEach { self.locationsMapView.removeOverlay($0) }
+        self.allRoutes = []
+        self.selectedRoute = nil
+        
+        let originPlacemark = MKPlacemark(coordinate: selectedOrigin.coordinate)
+        let destinationPlacemark = MKPlacemark(coordinate: selectedDestination.coordinate)
+        
+        let request = MKDirections.Request()
+        request.source = MKMapItem(placemark: originPlacemark)
+        request.destination = MKMapItem(placemark: destinationPlacemark)
+        request.transportType = .automobile
+        request.requestsAlternateRoutes = true
+        
+        let directions = MKDirections(request: request)
+        directions.calculate { (response, error) in
+            if let error {
+                print("Error al calcular ruta \(error)")
+            }
+            
+            guard var sortedRoutes = response?.routes else { return }
+            sortedRoutes.sort { $0.expectedTravelTime < $1.expectedTravelTime }
+            
+            self.allRoutes = sortedRoutes
+            self.selectedRoute = sortedRoutes[0]
+            self.enableButton()
+            
+            sortedRoutes.forEach { route in
+                self.locationsMapView.addOverlay(route.polyline)
+                self.polylineToRouteMap[route.polyline] = route
+            }
+            
+            if let firstRoute = sortedRoutes.first {
+                self.locationsMapView.setVisibleMapRect(firstRoute.polyline.boundingMapRect, edgePadding: UIEdgeInsets.init(top: 80.0, left: 20.0, bottom: 100.0, right: 20.0), animated: true)
+            }
+        }
+    }
+    
     func setGestureHideKeyboard() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.hideKeyboard))
         self.locationsView.addGestureRecognizer(tap)
-        self.locationsMapView.addGestureRecognizer(tap)
+    }
+    
+    func enableButton() {
+        guard let selectedOrigin, let selectedDestination, let selectedFuel, let selectedRoute else { return }
+        self.getGasStationsOnRouteButton.style = .filled
+    }
+    
+    private func distanceOf(pt: MKMapPoint, toPoly poly: MKPolyline) -> Double {
+        var distance: Double = Double(MAXFLOAT)
+        for n in 0..<poly.pointCount - 1 {
+            let ptA = poly.points()[n]
+            let ptB = poly.points()[n + 1]
+            let xDelta: Double = ptB.x - ptA.x
+            let yDelta: Double = ptB.y - ptA.y
+            if xDelta == 0.0 && yDelta == 0.0 {
+                // Points must not be equal
+                continue
+            }
+            let u: Double = ((pt.x - ptA.x) * xDelta + (pt.y - ptA.y) * yDelta) / (xDelta * xDelta + yDelta * yDelta)
+            var ptClosest: MKMapPoint
+            if u < 0.0 {
+                ptClosest = ptA
+            }
+            else if u > 1.0 {
+                ptClosest = ptB
+            }
+            else {
+                ptClosest = MKMapPoint(x: ptA.x + u * xDelta, y: ptA.y + u * yDelta)
+            }
+
+            distance = min(distance, ptClosest.distance(to: pt))
+        }
+        return distance
+    }
+
+    private func meters(fromPixel px: Int, at pt: CGPoint) -> Double {
+        let ptB = CGPoint(x: pt.x + CGFloat(px), y: pt.y)
+        let coordA: CLLocationCoordinate2D = locationsMapView.convert(pt, toCoordinateFrom: locationsMapView)
+        let coordB: CLLocationCoordinate2D = locationsMapView.convert(ptB, toCoordinateFrom: locationsMapView)
+        return MKMapPoint(coordA).distance(to: MKMapPoint(coordB))
     }
     
     @objc func hideKeyboard() {
@@ -215,12 +323,50 @@ class RouteViewController: UIViewController {
         self.view.layoutIfNeeded()
     }
     
+    @objc func mapTapped(_ tap: UITapGestureRecognizer) {
+        self.view.endEditing(true)
+        if tap.state == .recognized {
+            // Get map coordinate from touch point
+            let touchPt: CGPoint = tap.location(in: locationsMapView)
+            let coord: CLLocationCoordinate2D = locationsMapView.convert(touchPt, toCoordinateFrom: locationsMapView)
+            let maxMeters: Double = meters(fromPixel: 22, at: touchPt)
+            var nearestDistance: Float = MAXFLOAT
+            var nearestPoly: MKPolyline? = nil
+            // for every overlay ...
+            for overlay: MKOverlay in locationsMapView.overlays {
+                // .. if MKPolyline ...
+                if (overlay is MKPolyline) {
+                    // ... get the distance ...
+                    let distance: Float = Float(distanceOf(pt: MKMapPoint(coord), toPoly: overlay as! MKPolyline))
+                    // ... and find the nearest one
+                    if distance < nearestDistance {
+                        nearestDistance = distance
+                        nearestPoly = overlay as? MKPolyline
+                    }
+
+                }
+            }
+
+            if Double(nearestDistance) <= maxMeters, let polyline = nearestPoly {
+                if let route = polylineToRouteMap[polyline] {
+                    selectedRoute = route
+                    self.locationsMapView.removeOverlays(locationsMapView.overlays)
+
+                    // Añadir de nuevo los overlays
+                    // Por ejemplo, si tienes un array de overlays previamente guardado
+                    locationsMapView.addOverlays(allRoutes.map(\.polyline))
+                }
+            }
+        }
+    }
+    
     @IBAction func getGasStationsButtonClicked(_ sender: Any) {
         let gvc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "GasStationsOnRouteViewController") as? GasStationsOnRouteViewController
         guard let vc = gvc, let selectedOrigin, let selectedDestination, let selectedFuel else { return }
         vc.originLocation = selectedOrigin
         vc.destinationLocation = selectedDestination
         vc.fuel = selectedFuel
+        vc.route = selectedRoute
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -283,7 +429,7 @@ extension RouteViewController: UITableViewDelegate, UITableViewDataSource {
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "fuelTableViewCell", for: indexPath) as! FuelTableViewCell
-            cell.setUpUI(fuelName: fuels[indexPath.row].nombreProducto, fuelAbb: fuels[indexPath.row].nombreProductoAbreviatura)
+            cell.setUpUI(fuelName: NSLocalizedString(fuels[indexPath.row].nombreProductoAbreviatura, comment: ""), fuelAbb: fuels[indexPath.row].nombreProductoAbreviatura)
             return cell
         }
     }
@@ -299,9 +445,31 @@ extension RouteViewController: UITableViewDelegate, UITableViewDataSource {
             destinationTextField.text = destinationSuggestions[indexPath.row].title
             markDestinationOnMap(suggestion: destinationSuggestions[indexPath.row])
         } else {
-            fuelsSelectionTextField.text = fuels[indexPath.row].nombreProducto
+            fuelsSelectionTextField.text = NSLocalizedString(fuels[indexPath.row].nombreProductoAbreviatura, comment: "")
             selectedFuel = fuels[indexPath.row]
         }
+    }
+}
+
+extension RouteViewController: MKMapViewDelegate {
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        if let polyline = overlay as? MKPolyline {
+            let renderer = MKPolylineRenderer(polyline: polyline)
+            
+            // Verificar si esta ruta es la seleccionada
+            if let route = allRoutes.first(where: { $0.polyline == polyline }) {
+                if route == selectedRoute {
+                    renderer.strokeColor = UIColor.systemBlue // Azul oscuro para la ruta seleccionada
+                    renderer.lineWidth = 6.0
+                } else {
+                    renderer.strokeColor = UIColor.systemBlue.withAlphaComponent(0.3) // Azul claro para rutas alternativas
+                    renderer.lineWidth = 10.0
+                }
+            }
+            
+            return renderer
+        }
+        return MKOverlayRenderer()
     }
 }
 

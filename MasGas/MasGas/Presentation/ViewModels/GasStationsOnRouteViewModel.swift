@@ -10,6 +10,7 @@ import MapKit
 protocol GasStationsOnRouteViewModelDelegate {
     func showLoadingIndicator()
     func hideLoadingIndicator()
+    func showError()
 }
 
 class GasStationsOnRouteViewModel {
@@ -49,6 +50,7 @@ class GasStationsOnRouteViewModel {
                 // Esperar a que todas las tareas en el DispatchGroup se completen
                 dispatchGroup.notify(queue: .main) {
                     self.delegate?.hideLoadingIndicator()
+                    posibleGasStations.sort { $0.precioProducto < $1.precioProducto }
                     completion(posibleGasStations)
                 }
             }
@@ -95,28 +97,47 @@ class GasStationsOnRouteViewModel {
     func getMunicipalitiesFromKeyPoints(route: MKRoute, completion: @escaping ([String]) -> Void) {
         let keyPoints = getKeyPointsFromRouteByDistance(route: route)
         var municipalities: [String] = []
-        let intervalBetweenRequests: TimeInterval = 60.0 / 45.0
+        let maxRequestsPerMinute = 50
+        let intervalBetweenRequests: TimeInterval = 60.0 / Double(maxRequestsPerMinute)
         let group = DispatchGroup()
+        
+        // Cola para manejar las solicitudes de geocodificación
+        var requestQueue: [CLLocation] = keyPoints.map { CLLocation(latitude: $0.latitude, longitude: $0.longitude) }
+        
+        // Función para manejar el proceso de cada solicitud de geocodificación
+        func processNextLocation() {
+            guard !requestQueue.isEmpty else {
+                // Cuando se hayan procesado todas las solicitudes
+                group.notify(queue: .main) {
+                    completion(municipalities)
+                }
+                return
+            }
             
-        for point in keyPoints {
-            let location = CLLocation(latitude: point.latitude, longitude: point.longitude)
-            
+            // Obtener la siguiente ubicación
+            let location = requestQueue.removeFirst()
             group.enter()
             
+            // Solicitar la geocodificación
             let geocoder = CLGeocoder()
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + intervalBetweenRequests, execute: {
-                geocoder.reverseGeocodeLocation(location) { placemarks, error in
-                    if let placemark = placemarks?.first, let municipality = placemark.locality, !municipalities.contains(municipality) {
-                        municipalities.append(municipality)
-                    }
-                    group.leave()
+            geocoder.reverseGeocodeLocation(location) { placemarks, error in
+                if let placemark = placemarks?.first, let municipality = placemark.locality, !municipalities.contains(municipality) {
+                    municipalities.append(municipality)
                 }
-            })
+                if let _ = error {
+                    self.delegate?.showError()
+                }
+                group.leave()
+                
+                // Después de procesar esta solicitud, hacer la siguiente tras un intervalo
+                DispatchQueue.main.asyncAfter(deadline: .now() + intervalBetweenRequests) {
+                    processNextLocation()
+                }
+            }
         }
         
-        group.notify(queue: .main) {
-            completion(municipalities)
-        }
+        // Iniciar el procesamiento de la primera ubicación
+        processNextLocation()
     }
 
     // Función auxiliar para obtener los puntos clave de la ruta

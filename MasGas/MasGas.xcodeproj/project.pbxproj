@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		4C01255327E372110026572B /* RemoveFavoriteUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C01255227E372110026572B /* RemoveFavoriteUseCase.swift */; };
+		4C0F412C2CA6A1220018D226 /* GasStationsOnRouteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0F412A2CA6A1220018D226 /* GasStationsOnRouteTableViewCell.swift */; };
+		4C0F412D2CA6A1220018D226 /* GasStationsOnRouteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4C0F412B2CA6A1220018D226 /* GasStationsOnRouteTableViewCell.xib */; };
 		4C11049227F4B84400C36B69 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C11049127F4B84400C36B69 /* BaseViewController.swift */; };
 		4C11049427F4BC1200C36B69 /* FetchSelectedTownUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C11049327F4BC1200C36B69 /* FetchSelectedTownUseCase.swift */; };
 		4C17B2BE27BC3F5500B577E7 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C17B2BD27BC3F5500B577E7 /* TabBarViewController.swift */; };
@@ -118,6 +120,8 @@
 		267F76832B175E1E706A47F1 /* Pods_MasGas.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MasGas.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		27E130D69D8F7E104A72F643 /* Pods-MasGas.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MasGas.debug.xcconfig"; path = "Target Support Files/Pods-MasGas/Pods-MasGas.debug.xcconfig"; sourceTree = "<group>"; };
 		4C01255227E372110026572B /* RemoveFavoriteUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveFavoriteUseCase.swift; sourceTree = "<group>"; };
+		4C0F412A2CA6A1220018D226 /* GasStationsOnRouteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GasStationsOnRouteTableViewCell.swift; sourceTree = "<group>"; };
+		4C0F412B2CA6A1220018D226 /* GasStationsOnRouteTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GasStationsOnRouteTableViewCell.xib; sourceTree = "<group>"; };
 		4C11049127F4B84400C36B69 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		4C11049327F4BC1200C36B69 /* FetchSelectedTownUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchSelectedTownUseCase.swift; sourceTree = "<group>"; };
 		4C17B2BD27BC3F5500B577E7 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TabBarViewController.swift; path = TabBar/TabBarViewController.swift; sourceTree = "<group>"; };
@@ -246,6 +250,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4C0F41292CA6A1100018D226 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				4C0F412A2CA6A1220018D226 /* GasStationsOnRouteTableViewCell.swift */,
+				4C0F412B2CA6A1220018D226 /* GasStationsOnRouteTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		4C17B2BF27BC431300B577E7 /* GasStations */ = {
 			isa = PBXGroup;
 			children = (
@@ -495,6 +508,7 @@
 		4C892BFE2CA4410D0079EB0A /* GasStationsOnRoute */ = {
 			isa = PBXGroup;
 			children = (
+				4C0F41292CA6A1100018D226 /* Cell */,
 				4C892BFF2CA441400079EB0A /* GasStationsOnRouteViewController.swift */,
 			);
 			path = GasStationsOnRoute;
@@ -788,6 +802,7 @@
 				4C8394DE27BAE8BB002C873F /* Localizable.strings in Resources */,
 				4C3543A627CE3E4B0098F408 /* QueryFuelTableViewCell.xib in Resources */,
 				4C6DFF3827C26989002289B5 /* GoogleService-Info.plist in Resources */,
+				4C0F412D2CA6A1220018D226 /* GasStationsOnRouteTableViewCell.xib in Resources */,
 				4C892BE82CA3F88F0079EB0A /* LocationSuggestionTableViewCell.xib in Resources */,
 				4C4D597628B1345E005E1A85 /* InfoPlist.strings in Resources */,
 				4CD9D0CC28B15D8D007CBE83 /* OptionsTableViewCell.xib in Resources */,
@@ -880,6 +895,7 @@
 				4CD9D0D428B17A65007CBE83 /* AboutViewController.swift in Sources */,
 				4C17B2C127BC432D00B577E7 /* FavoriteGasStationsViewController.swift in Sources */,
 				4CAE5D9727CF65F2001E560A /* SearchFuelUseCase.swift in Sources */,
+				4C0F412C2CA6A1220018D226 /* GasStationsOnRouteTableViewCell.swift in Sources */,
 				4C892BEB2CA419D80079EB0A /* RouteViewModel.swift in Sources */,
 				4C8394D627BAE0A0002C873F /* Colors.swift in Sources */,
 				4CF016CD27A6C4CA00A0451E /* SignUpViewController.swift in Sources */,

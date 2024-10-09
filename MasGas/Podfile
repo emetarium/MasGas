@@ -10,6 +10,7 @@ target 'MasGas' do
   # Pods for MasGas
   pod 'Firebase/Core'
   pod 'Firebase/Analytics'
+  pod 'Firebase/Crashlytics'
   pod 'Firebase/Database'
   pod 'Firebase/Auth'
   pod 'GoogleSignIn'

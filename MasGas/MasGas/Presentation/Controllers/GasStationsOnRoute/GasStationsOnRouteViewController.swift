@@ -11,6 +11,7 @@ import MapKit
 class GasStationsOnRouteViewController: BaseViewController {
     
     // MARK: - IBOutlets
+    @IBOutlet var navigationBar: UINavigationBar!
     @IBOutlet var gasStationsMapView: MKMapView!
     @IBOutlet var gasStationsTableView: UITableView!
     @IBOutlet var gasStationsTableViewHeight: NSLayoutConstraint!
@@ -36,7 +37,18 @@ class GasStationsOnRouteViewController: BaseViewController {
     }
     
     func setUpUI() {
+        self.navigationBar.isTranslucent = false
+        self.navigationBar.barTintColor = Colors.white
+        self.navigationBar.topItem?.title = ""
+        let barButtonItem = UIBarButtonItem(image: UIImage(named: "backButton"), style: .plain, target: self, action: #selector(popToPrevious))
+        barButtonItem.tintColor = Colors.green
+        self.navigationBar.topItem?.leftBarButtonItem = barButtonItem
         
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(resetMapZoom))
+        self.gasStationsMapView.addGestureRecognizer(tapGesture)
+        
+        let nib = UINib(nibName: "GasStationsOnRouteTableViewCell", bundle: nil)
+        self.gasStationsTableView.register(nib, forCellReuseIdentifier: "stationsOnRouteCellIdentifier")
     }
     
     func setDelegates() {
@@ -47,45 +59,15 @@ class GasStationsOnRouteViewController: BaseViewController {
     }
     
     func initConfiguration() {
-        guard let fuel else { return }
-        calculateRoute { route in
-            self.viewModel.fetchGasStationsAlongRoute(route: route, fuel: fuel) { listaGasolineras in
-                listaGasolineras.forEach { gasolinera in
-                    self.showPossibleGasStation(gasolinera: gasolinera)
-                }
-                print(listaGasolineras.count)
-                self.posibleGasStations = listaGasolineras
-                self.gasStationsTableView.reloadData()
+        guard let fuel, let route else { return }
+        self.gasStationsMapView.addOverlay((route.polyline), level: MKOverlayLevel.aboveRoads)
+        self.gasStationsMapView.setVisibleMapRect(route.polyline.boundingMapRect, edgePadding: UIEdgeInsets.init(top: 80.0, left: 20.0, bottom: 100.0, right: 20.0), animated: true)
+        self.viewModel.fetchGasStationsAlongRoute(route: route, fuel: fuel) { listaGasolineras in
+            listaGasolineras.forEach { gasolinera in
+                self.showPossibleGasStation(gasolinera: gasolinera)
             }
-        }
-    }
-    
-    func calculateRoute(completion: @escaping (MKRoute) -> Void) {
-        guard let originLocation, let destinationLocation else { return }
-        let originPlacemark = MKPlacemark(coordinate: originLocation.coordinate)
-        let destinationPlacemark = MKPlacemark(coordinate: destinationLocation.coordinate)
-        
-        let request = MKDirections.Request()
-        request.source = MKMapItem(placemark: originPlacemark)
-        request.destination = MKMapItem(placemark: destinationPlacemark)
-        request.transportType = .automobile
-        request.requestsAlternateRoutes = true
-        
-        let directions = MKDirections(request: request)
-        directions.calculate { (response, error) in
-            if let error {
-                print("Error al calcular ruta \(error)")
-            }
-            
-            guard var sortedRoutes = response?.routes else { return }
-            sortedRoutes.sort { $0.expectedTravelTime < $1.expectedTravelTime }
-            
-            guard let route = sortedRoutes.first else { return }
-            
-            self.gasStationsMapView.addOverlay((route.polyline), level: MKOverlayLevel.aboveRoads)
-            self.gasStationsMapView.setVisibleMapRect(route.polyline.boundingMapRect, edgePadding: UIEdgeInsets.init(top: 80.0, left: 20.0, bottom: 100.0, right: 20.0), animated: true)
-
-            completion(route)
+            self.posibleGasStations = listaGasolineras
+            self.gasStationsTableView.reloadData()
         }
     }
     
@@ -106,6 +88,23 @@ class GasStationsOnRouteViewController: BaseViewController {
 
         self.gasStationsMapView.addAnnotation(destinationAnnotation)
     }
+    
+    func showGasStationInfo(gasolinera: ListaEESSPrecio) {
+        guard let latitud = Double(gasolinera.latitud.replacingOccurrences(of: ",", with: ".")), let longitud = Double(gasolinera.longitud.replacingOccurrences(of: ",", with: ".")) else {
+            return
+        }
+        let zoomRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: latitud, longitude: longitud), latitudinalMeters: 500, longitudinalMeters: 500)
+        self.gasStationsMapView.setRegion(zoomRegion, animated: true)
+    }
+    
+    @objc func popToPrevious() {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    @objc func resetMapZoom() {
+        guard let route else { return }
+        self.gasStationsMapView.setVisibleMapRect(route.polyline.boundingMapRect, edgePadding: UIEdgeInsets.init(top: 80.0, left: 20.0, bottom: 100.0, right: 20.0), animated: true)
+    }
 }
 
 extension GasStationsOnRouteViewController: MKMapViewDelegate {
@@ -123,11 +122,22 @@ extension GasStationsOnRouteViewController: UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: "stationsOnRouteCellIdentifier", for: indexPath) as! GasStationsOnRouteTableViewCell
+        cell.setUpUI(gasStationName: posibleGasStations[indexPath.row].rotulo, gasStationLocation: posibleGasStations[indexPath.row].municipio, gasStationSchedule: posibleGasStations[indexPath.row].horario, fuelPrice: posibleGasStations[indexPath.row].precioProducto)
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        self.showGasStationInfo(gasolinera: posibleGasStations[indexPath.row])
     }
 }
 
 extension GasStationsOnRouteViewController: GasStationsOnRouteViewModelDelegate {
+    func showError() {
+        self.showAlert(title: "", message: "Has realizado demasiadas peticiones en poco tiempo. Espera unos minutos y vuelve a intentarlo.", alternativeAction: nil, acceptAction: UIAlertAction(title: "Aceptar", style: .default))
+    }
+    
     func showLoadingIndicator() {
         DispatchQueue.main.async {
             self.showLoading()

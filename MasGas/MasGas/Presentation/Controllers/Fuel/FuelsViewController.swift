@@ -69,9 +69,7 @@ class FuelsViewController: BaseViewController, UITableViewDelegate, UITableViewD
         
         self.view.backgroundColor = Colors.darkGray
         
-        self.townLabel.font = Fonts.montserratx17
-        self.townLabel.textColor = Colors.white
-        self.townLabel.text = town.nombreMunicipio.formatName()
+        self.townLabel.attributedText = NSAttributedString(string: town.nombreMunicipio.formatName(), attributes: [NSAttributedString.Key.foregroundColor : Colors.white, NSAttributedString.Key.underlineColor : Colors.white, NSAttributedString.Key.underlineStyle : NSUnderlineStyle.single.rawValue, NSAttributedString.Key.font : Fonts.montserratx17])
         
         self.optionsButton.tintColor = Colors.white
         self.optionsButton.setTitle("", for: .normal)
@@ -217,13 +215,14 @@ extension FuelsViewController: FuelsViewModelDelegate {
     func setSelectedTown(town: Municipio) {
         self.town = town
         DispatchQueue.main.async {
-            self.townLabel.text = town.nombreMunicipio.formatName()
+            self.townLabel.attributedText = NSAttributedString(string: town.nombreMunicipio.formatName(), attributes: [NSAttributedString.Key.foregroundColor : Colors.white, NSAttributedString.Key.underlineColor : Colors.white, NSAttributedString.Key.underlineStyle : NSUnderlineStyle.single.rawValue, NSAttributedString.Key.font : Fonts.montserratx17])
         }
     }
     
     func showChangeTownAlert(town: Municipio) {
         let acceptAction = UIAlertAction(title: NSLocalizedString("ACCEPT_ACTION", comment: ""), style: .default) { action in
             self.viewModel.saveTown(town: town)
+            self.setSelectedTown(town: town)
         }
         let cancelAction = UIAlertAction(title: NSLocalizedString("CANCEL_ACTION", comment: ""), style: .default)
         

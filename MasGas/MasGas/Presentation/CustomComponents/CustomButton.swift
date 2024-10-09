@@ -9,6 +9,7 @@ import UIKit
 
 enum LoginButtonStyle {
     case filled
+    case filledDisabled
     case bordered
 }
 
@@ -58,12 +59,19 @@ class CustomButton: UIButton {
             self.tintColor = Colors.green
             self.backgroundColor = Colors.green
             self.setTitleColor(Colors.white, for: .normal)
+            self.isUserInteractionEnabled = true
+        case .filledDisabled:
+            self.tintColor = Colors.mediumLightGray
+            self.backgroundColor = Colors.mediumLightGray
+            self.setTitleColor(Colors.white, for: .normal)
+            self.isUserInteractionEnabled = false
         case .bordered:
             self.tintColor = Colors.white
             self.backgroundColor = Colors.white
             self.setTitleColor(Colors.black, for: .normal)
             self.layer.borderWidth = 1
             self.layer.borderColor = Colors.mediumLightGray.cgColor
+            self.isUserInteractionEnabled = true
         }
     }
 
