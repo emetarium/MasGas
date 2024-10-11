@@ -25,6 +25,7 @@ class SignUpViewController: BaseViewController {
             emailTextField.setLeftIcon(image)
         }
     }
+    @IBOutlet var showPasswordImageView: UIImageView!
     @IBOutlet weak var passwordTextField: UITextField! {
         didSet {
             passwordTextField.tintColor = Colors.gray
@@ -32,10 +33,11 @@ class SignUpViewController: BaseViewController {
             passwordTextField.setLeftIcon(image)
         }
     }
-    @IBOutlet weak var signUpButton: UIButton!
+    @IBOutlet weak var signUpButton: CustomButton!
     
     //MARK: - Variables
     var viewModel = SignUpViewModel()
+    var showPassword: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,15 +65,20 @@ class SignUpViewController: BaseViewController {
         emailTextField.backgroundColor = Colors.lightGray
         passwordTextField.backgroundColor = Colors.lightGray
         
+        guard let hidePasswordImage = UIImage(named: "eyeClosedIcon") else { return }
+        showPasswordImageView.image = hidePasswordImage
+        passwordTextField.isSecureTextEntry = true
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hidePassword))
+        showPasswordImageView.isUserInteractionEnabled = true
+        showPasswordImageView.addGestureRecognizer(tapGesture)
+        
         passwordLabel.font = Fonts.montserratx13
         passwordLabel.text = NSLocalizedString("SIGN_UP_PASSWORD_LABEL", comment: "")
         passwordLabel.textColor = Colors.gray
         
-        signUpButton.backgroundColor = Colors.green
-        signUpButton.layer.cornerRadius = 4
-        signUpButton.setTitleColor(Colors.white, for: .normal)
+        signUpButton.style = .filled
         signUpButton.setTitle(NSLocalizedString("SIGN_UP_BUTTON", comment: ""), for: .normal)
-        signUpButton.tintColor = Colors.green
     }
     
     func setDelegates() {
@@ -81,6 +88,19 @@ class SignUpViewController: BaseViewController {
     func setGestureHideKeyboard() {
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.hideKeyboard))
         self.view.addGestureRecognizer(tap)
+    }
+    
+    @objc func hidePassword() {
+        guard let showPasswordImage = UIImage(named: "eyeOpenIcon"), let hidePasswordImage = UIImage(named: "eyeClosedIcon") else { return }
+        showPassword = !showPassword
+        if showPassword {
+            self.passwordTextField.isSecureTextEntry = false
+            showPasswordImageView.image = showPasswordImage
+        } else {
+            self.passwordTextField.isSecureTextEntry = true
+            showPasswordImageView.image = hidePasswordImage
+        }
+        self.view.layoutIfNeeded()
     }
     
     // MARK: - IBActions

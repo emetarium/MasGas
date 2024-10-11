@@ -98,5 +98,5 @@
 "ROUTE_SEARCH_GAS_STATIONS_BUTTON_TITLE" = "Search gas stations";
 
 /* GAS STATIONS ON ROUTE */
-"GAS_STATIONS_ON_ROUTE_NAVIGATION_TITLE" = "Ruta";
+"GAS_STATIONS_ON_ROUTE_NAVIGATION_TITLE" = "Route";
 "ROUTE_LOADING_VIEW_TITLE" = "We are searching gas stations on your route. \nThis could take a while...";

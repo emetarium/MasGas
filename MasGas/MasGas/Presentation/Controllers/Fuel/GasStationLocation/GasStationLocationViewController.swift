@@ -18,13 +18,13 @@ protocol UpdateLocationProtocol {
 class GasStationLocationViewController: BaseViewController, MKMapViewDelegate {
     
     //MARK: - IBOutlets
+    @IBOutlet var navigationBar: UINavigationBar!
     @IBOutlet var mapView: MKMapView!
     @IBOutlet var gasStationInformationView: UIView!
     @IBOutlet var gasStationNameLabel: UILabel!
     @IBOutlet var favoriteIcon: UIImageView!
     @IBOutlet var gasStationFuelsView: UIView!
     @IBOutlet var fuelsCollectionView: UICollectionView!
-    @IBOutlet var backButton: UIButton!
     @IBOutlet var openMapsButton: CustomButton!
     @IBOutlet var fuelsCollectionViewHeightConstraint: NSLayoutConstraint!
     
@@ -50,6 +50,13 @@ class GasStationLocationViewController: BaseViewController, MKMapViewDelegate {
     
     //MARK: - Functions
     func setUpUI() {
+        self.navigationBar.isTranslucent = false
+        self.navigationBar.barTintColor = Colors.white
+        self.navigationBar.topItem?.title = ""
+        let barButtonItem = UIBarButtonItem(image: UIImage(named: "backButton"), style: .plain, target: self, action: #selector(popToPrevious))
+        barButtonItem.tintColor = Colors.green
+        self.navigationBar.topItem?.leftBarButtonItem = barButtonItem
+        
         guard let gasStation = gasStation else {
             return
         }
@@ -59,8 +66,6 @@ class GasStationLocationViewController: BaseViewController, MKMapViewDelegate {
         else {
             self.favoriteIcon.tintColor = Colors.mediumLightGray
         }
-        self.backButton.setTitle("", for: .normal)
-        self.backButton.tintColor = Colors.green
         
         self.gasStationInformationView.layer.cornerRadius = 6
         self.gasStationInformationView.backgroundColor = Colors.white
@@ -117,6 +122,10 @@ class GasStationLocationViewController: BaseViewController, MKMapViewDelegate {
         guard let layout = fuelsCollectionView.collectionViewLayout as? UICollectionViewFlowLayout else { return }
 
         fuelsCollectionViewHeightConstraint.constant = layout.collectionViewContentSize.height
+    }
+    
+    @objc func popToPrevious() {
+        self.navigationController?.popViewController(animated: true)
     }
     
     @objc func addFav() {
