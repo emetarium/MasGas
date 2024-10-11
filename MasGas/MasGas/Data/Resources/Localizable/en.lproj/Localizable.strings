@@ -91,3 +91,12 @@
 /* ABOUT */
 "APP_VERSION_LABEL" = "Version [version]";
 "ABOUT_TITLE" = "About";
+
+/* ROUTE */
+"ROUTE_ORIGIN_TEXT_FIELD_TITLE" = "Origin";
+"ROUTE_DESTINATION_TEXT_FIELD_TITLE" = "Destination";
+"ROUTE_SEARCH_GAS_STATIONS_BUTTON_TITLE" = "Search gas stations";
+
+/* GAS STATIONS ON ROUTE */
+"GAS_STATIONS_ON_ROUTE_NAVIGATION_TITLE" = "Ruta";
+"ROUTE_LOADING_VIEW_TITLE" = "We are searching gas stations on your route. \nThis could take a while...";

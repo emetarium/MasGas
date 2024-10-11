@@ -16,6 +16,7 @@ class RouteViewController: UIViewController {
     @IBOutlet var originLabel: UILabel!
     @IBOutlet var originTextField: UITextField!
     @IBOutlet var originSuggestionsTableView: UITableView!
+    @IBOutlet var switchLocationsImageView: UIImageView!
     @IBOutlet var destinationLabel: UILabel!
     @IBOutlet var destinationTextField: UITextField!
     @IBOutlet var destinationSuggestionsTableView: UITableView!
@@ -73,18 +74,23 @@ class RouteViewController: UIViewController {
         
         self.originLabel.font = Fonts.montserratx13
         self.originLabel.textColor = Colors.black
-        self.originLabel.text = "Origen"
+        self.originLabel.text = NSLocalizedString("ROUTE_ORIGIN_TEXT_FIELD_TITLE", comment: "")
         
         self.originTextField.clearButtonMode = .whileEditing
         
+        self.switchLocationsImageView.image = UIImage(named: "switchIcon")
+        self.switchLocationsImageView.isUserInteractionEnabled = true
+        let switchGesture = UITapGestureRecognizer(target: self, action: #selector(switchLocations))
+        self.switchLocationsImageView.addGestureRecognizer(switchGesture)
+        
         self.destinationLabel.font = Fonts.montserratx13
         self.destinationLabel.textColor = Colors.black
-        self.destinationLabel.text = "Destino"
+        self.destinationLabel.text = NSLocalizedString("ROUTE_DESTINATION_TEXT_FIELD_TITLE", comment: "")
         
         self.destinationTextField.clearButtonMode = .whileEditing
         
         self.getGasStationsOnRouteButton.style = .filledDisabled
-        self.getGasStationsOnRouteButton.setTitle("Buscar gasolineras", for: .normal)
+        self.getGasStationsOnRouteButton.setTitle(NSLocalizedString("ROUTE_SEARCH_GAS_STATIONS_BUTTON_TITLE", comment: ""), for: .normal)
         
         self.originSuggestionsTableView.dropShadow()
         self.originSuggestionsTableView.isHidden = true
@@ -95,7 +101,7 @@ class RouteViewController: UIViewController {
         self.destinationSuggestionsTableView.roundCorners(corners: [.layerMinXMaxYCorner, . layerMaxXMaxYCorner], radius: 4)
         
         guard let dropdownImage = UIImage(named: "downArrow") else { return }
-        self.fuelsSelectionTextField.setRightIcon(dropdownImage.withTintColor(Colors.darkGray))
+        self.fuelsSelectionTextField.setRightIcon(dropdownImage, color: Colors.green)
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(openFuelsDropdownMenu))
         self.fuelsSelectionTextField.isUserInteractionEnabled = true
@@ -178,10 +184,7 @@ class RouteViewController: UIViewController {
         let search = MKLocalSearch(request: searchRequest)
         
         search.start { (response, error) in
-            guard let response = response, let mapItem = response.mapItems.first, error == nil else {
-                print("Error realizando la búsqueda: \(error?.localizedDescription ?? "Desconocido")")
-                return
-            }
+            guard let response = response, let mapItem = response.mapItems.first, error == nil else { return }
             
             let coordinate = mapItem.placemark.coordinate
             
@@ -204,10 +207,7 @@ class RouteViewController: UIViewController {
         let search = MKLocalSearch(request: searchRequest)
         
         search.start { (response, error) in
-            guard let response = response, let mapItem = response.mapItems.first, error == nil else {
-                print("Error realizando la búsqueda: \(error?.localizedDescription ?? "Desconocido")")
-                return
-            }
+            guard let response = response, let mapItem = response.mapItems.first, error == nil else {                 return }
             
             let coordinate = mapItem.placemark.coordinate
             
@@ -240,7 +240,7 @@ class RouteViewController: UIViewController {
         let directions = MKDirections(request: request)
         directions.calculate { (response, error) in
             if let error {
-                print("Error al calcular ruta \(error)")
+                self.showAlert(title: NSLocalizedString("NO_ROUTE_ERROR_TITLE", comment: ""), message: NSLocalizedString("NO_ROUTE_ERROR_MESSAGE", comment: ""), alternativeAction: nil, acceptAction: UIAlertAction(title: NSLocalizedString("ACCEPT_ACTION", comment: ""), style: .default))
             }
             
             guard var sortedRoutes = response?.routes else { return }
@@ -306,6 +306,19 @@ class RouteViewController: UIViewController {
         return MKMapPoint(coordA).distance(to: MKMapPoint(coordB))
     }
     
+    @objc func switchLocations() {
+        guard let origin = originTextField.text, origin != "", let destination = destinationTextField.text, destination != "" else { return }
+        
+        originTextField.text = destination
+        destinationTextField.text = origin
+        
+        let savedOrigin = selectedOrigin
+        selectedOrigin = selectedDestination
+        selectedDestination = savedOrigin
+        
+        self.calculateRoute()
+    }
+    
     @objc func hideKeyboard() {
         self.view.endEditing(true)
     }
@@ -315,10 +328,10 @@ class RouteViewController: UIViewController {
         guard let downImage = UIImage(named: "downArrow"), let upImage = UIImage(named: "upArrow") else { return }
         if fuelsTableView.isHidden {
             self.fuelsTableViewHeight.constant = 0
-            self.fuelsSelectionTextField.setRightIcon(downImage.withTintColor(Colors.darkGray))
+            self.fuelsSelectionTextField.setRightIcon(downImage, color: Colors.green)
         } else {
             self.fuelsTableViewHeight.constant = fuelsTableView.contentSize.height
-            self.fuelsSelectionTextField.setRightIcon(upImage.withTintColor(Colors.darkGray))
+            self.fuelsSelectionTextField.setRightIcon(upImage, color: Colors.green)
         }
         self.view.layoutIfNeeded()
     }
@@ -326,24 +339,18 @@ class RouteViewController: UIViewController {
     @objc func mapTapped(_ tap: UITapGestureRecognizer) {
         self.view.endEditing(true)
         if tap.state == .recognized {
-            // Get map coordinate from touch point
             let touchPt: CGPoint = tap.location(in: locationsMapView)
             let coord: CLLocationCoordinate2D = locationsMapView.convert(touchPt, toCoordinateFrom: locationsMapView)
             let maxMeters: Double = meters(fromPixel: 22, at: touchPt)
             var nearestDistance: Float = MAXFLOAT
             var nearestPoly: MKPolyline? = nil
-            // for every overlay ...
             for overlay: MKOverlay in locationsMapView.overlays {
-                // .. if MKPolyline ...
                 if (overlay is MKPolyline) {
-                    // ... get the distance ...
                     let distance: Float = Float(distanceOf(pt: MKMapPoint(coord), toPoly: overlay as! MKPolyline))
-                    // ... and find the nearest one
                     if distance < nearestDistance {
                         nearestDistance = distance
                         nearestPoly = overlay as? MKPolyline
                     }
-
                 }
             }
 
@@ -351,9 +358,6 @@ class RouteViewController: UIViewController {
                 if let route = polylineToRouteMap[polyline] {
                     selectedRoute = route
                     self.locationsMapView.removeOverlays(locationsMapView.overlays)
-
-                    // Añadir de nuevo los overlays
-                    // Por ejemplo, si tienes un array de overlays previamente guardado
                     locationsMapView.addOverlays(allRoutes.map(\.polyline))
                 }
             }
@@ -369,7 +373,6 @@ class RouteViewController: UIViewController {
         vc.route = selectedRoute
         self.navigationController?.pushViewController(vc, animated: true)
     }
-    
 }
 
 extension RouteViewController: UITextFieldDelegate {

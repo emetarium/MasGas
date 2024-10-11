@@ -103,10 +103,11 @@ class GasStationsOnRouteViewModel {
         
         // Cola para manejar las solicitudes de geocodificación
         var requestQueue: [CLLocation] = keyPoints.map { CLLocation(latitude: $0.latitude, longitude: $0.longitude) }
+        var stopProcessing = false
         
         // Función para manejar el proceso de cada solicitud de geocodificación
         func processNextLocation() {
-            guard !requestQueue.isEmpty else {
+            guard !requestQueue.isEmpty, !stopProcessing else {
                 // Cuando se hayan procesado todas las solicitudes
                 group.notify(queue: .main) {
                     completion(municipalities)
@@ -121,8 +122,15 @@ class GasStationsOnRouteViewModel {
             // Solicitar la geocodificación
             let geocoder = CLGeocoder()
             geocoder.reverseGeocodeLocation(location) { placemarks, error in
-                if let placemark = placemarks?.first, let municipality = placemark.locality, !municipalities.contains(municipality) {
-                    municipalities.append(municipality)
+                if let placemark = placemarks?.first {
+                    if let country = placemark.isoCountryCode, country == "ES" {
+                        if let municipality = placemark.locality, !municipalities.contains(municipality) {
+                            municipalities.append(municipality)
+                        }
+                    } else {
+                        stopProcessing = true
+                        requestQueue.removeAll() // Vaciamos la cola para no procesar más ubicaciones
+                    }
                 }
                 if let _ = error {
                     self.delegate?.showError()

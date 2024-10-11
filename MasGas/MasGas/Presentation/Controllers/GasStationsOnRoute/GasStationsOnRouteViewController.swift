@@ -14,7 +14,10 @@ class GasStationsOnRouteViewController: BaseViewController {
     @IBOutlet var navigationBar: UINavigationBar!
     @IBOutlet var gasStationsMapView: MKMapView!
     @IBOutlet var gasStationsTableView: UITableView!
-    @IBOutlet var gasStationsTableViewHeight: NSLayoutConstraint!
+    @IBOutlet var loadingView: UIView!
+    @IBOutlet var loadingIndicator: UIActivityIndicatorView!
+    @IBOutlet var loadingLabel: UILabel!
+    @IBOutlet var goToGasStationButton: CustomButton!
     
     // MARK: - Vars
     var originLocation: MKPointAnnotation?
@@ -23,6 +26,7 @@ class GasStationsOnRouteViewController: BaseViewController {
     var route: MKRoute?
     let viewModel = GasStationsOnRouteViewModel()
     var posibleGasStations: [ListaEESSPrecio] = []
+    var selectedGasStation: ListaEESSPrecio?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,10 +43,25 @@ class GasStationsOnRouteViewController: BaseViewController {
     func setUpUI() {
         self.navigationBar.isTranslucent = false
         self.navigationBar.barTintColor = Colors.white
-        self.navigationBar.topItem?.title = ""
+        self.navigationBar.topItem?.title = NSLocalizedString("GAS_STATIONS_ON_ROUTE_NAVIGATION_TITLE", comment: "")
         let barButtonItem = UIBarButtonItem(image: UIImage(named: "backButton"), style: .plain, target: self, action: #selector(popToPrevious))
         barButtonItem.tintColor = Colors.green
         self.navigationBar.topItem?.leftBarButtonItem = barButtonItem
+        
+        self.loadingView.backgroundColor = Colors.white.withAlphaComponent(0.9)
+        self.loadingView.layer.cornerRadius = 5
+        self.loadingIndicator.color = Colors.green
+        self.loadingLabel.font = Fonts.montserratx13
+        self.loadingLabel.textColor = Colors.darkGray
+        self.loadingLabel.numberOfLines = 0
+        self.loadingLabel.textAlignment = .center
+        self.loadingLabel.text = NSLocalizedString("ROUTE_LOADING_VIEW_TITLE", comment: "")
+        self.loadingView.dropShadow()
+        self.loadingView.isHidden = true
+        
+        self.goToGasStationButton.style = .filled
+        self.goToGasStationButton.setTitle("Ir", for: .normal)
+        self.goToGasStationButton.isHidden = true
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(resetMapZoom))
         self.gasStationsMapView.addGestureRecognizer(tapGesture)
@@ -93,16 +112,54 @@ class GasStationsOnRouteViewController: BaseViewController {
         guard let latitud = Double(gasolinera.latitud.replacingOccurrences(of: ",", with: ".")), let longitud = Double(gasolinera.longitud.replacingOccurrences(of: ",", with: ".")) else {
             return
         }
+        self.goToGasStationButton.isHidden = false
+        self.selectedGasStation = gasolinera
         let zoomRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: latitud, longitude: longitud), latitudinalMeters: 500, longitudinalMeters: 500)
         self.gasStationsMapView.setRegion(zoomRegion, animated: true)
     }
     
+    // MARK: - IBOutlets
+    @IBAction func goToGasStationButtonPressed(_ sender: Any) {
+        guard let selectedGasStation,
+              let gasStationLatitud = Double(selectedGasStation.latitud.replacingOccurrences(of: ",", with: ".")),
+              let gasStationLongitud = Double(selectedGasStation.longitud.replacingOccurrences(of: ",", with: ".")),
+              let destinationLatitud = destinationLocation?.coordinate.latitude,
+              let destinationLongitud = destinationLocation?.coordinate.longitude,
+              let originLatitud = originLocation?.coordinate.latitude,
+              let originLongitud = originLocation?.coordinate.longitude
+        else { return }
+        
+        let appleURL = "maps://?saddr=\(originLatitud),\(originLongitud)&daddr=\(gasStationLatitud),\(gasStationLongitud)&daddr=\(destinationLatitud),\(destinationLongitud)"
+        let googleURL = "comgooglemaps://?saddr=\(originLatitud),\(originLongitud)&daddr=\(destinationLatitud),\(destinationLongitud)&waypoints=\(gasStationLatitud),\(gasStationLongitud)&directionsmode=driving"
+
+        let googleItem = ("Google Maps", URL(string:googleURL)!)
+        var installedNavigationApps = [("Apple Maps", URL(string:appleURL)!)]
+
+        if UIApplication.shared.canOpenURL(googleItem.1) {
+            installedNavigationApps.append(googleItem)
+        }
+
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        for app in installedNavigationApps {
+            let button = UIAlertAction(title: app.0, style: .default, handler: { _ in
+                UIApplication.shared.open(app.1, options: [:], completionHandler: nil)
+            })
+            alert.addAction(button)
+        }
+        let cancel = UIAlertAction(title: NSLocalizedString("CANCEL_ACTION", comment: ""), style: .cancel, handler: nil)
+        alert.addAction(cancel)
+        present(alert, animated: true)
+    }
+    
+    // MARK: - @objc funcs
     @objc func popToPrevious() {
         self.navigationController?.popViewController(animated: true)
     }
     
     @objc func resetMapZoom() {
         guard let route else { return }
+        self.goToGasStationButton.isHidden = true
+        self.selectedGasStation = nil
         self.gasStationsMapView.setVisibleMapRect(route.polyline.boundingMapRect, edgePadding: UIEdgeInsets.init(top: 80.0, left: 20.0, bottom: 100.0, right: 20.0), animated: true)
     }
 }
@@ -140,13 +197,15 @@ extension GasStationsOnRouteViewController: GasStationsOnRouteViewModelDelegate 
     
     func showLoadingIndicator() {
         DispatchQueue.main.async {
-            self.showLoading()
+            self.loadingView.isHidden = false
+            self.loadingIndicator.startAnimating()
         }
     }
     
     func hideLoadingIndicator() {
         DispatchQueue.main.async {
-            self.hideLoading()
+            self.loadingView.isHidden = true
+            self.loadingIndicator.stopAnimating()
         }
     }
 }
